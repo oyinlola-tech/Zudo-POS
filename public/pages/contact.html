@@ -16,53 +16,14 @@
         theme: {
           extend: {
             "colors": {
-                    "error-container": "#ffdad6",
-                    "on-secondary": "#ffffff",
-                    "secondary-container": "#b188ff",
-                    "inverse-on-surface": "#ebf1ff",
-                    "surface-container-high": "#dde9ff",
-                    "secondary": "#6f46b9",
-                    "on-surface": "#0d1c2f",
-                    "on-error": "#ffffff",
-                    "primary-fixed-dim": "#88d982",
-                    "on-primary-fixed-variant": "#005312",
-                    "tertiary": "#000623",
-                    "on-primary": "#ffffff",
-                    "surface-container-low": "#eff4ff",
-                    "surface-tint": "#1b6d24",
-                    "on-tertiary-fixed-variant": "#264191",
-                    "on-surface-variant": "#45474c",
-                    "on-secondary-fixed": "#260059",
-                    "surface-container-lowest": "#ffffff",
-                    "tertiary-container": "#001a59",
-                    "on-primary-container": "#499849",
-                    "on-error-container": "#93000a",
-                    "outline": "#76777c",
-                    "error": "#ba1a1a",
-                    "on-background": "#0d1c2f",
-                    "surface-container-highest": "#d5e3fd",
-                    "primary-fixed": "#a3f69c",
-                    "secondary-fixed-dim": "#d3bbff",
-                    "tertiary-fixed-dim": "#b6c4ff",
-                    "surface-bright": "#f8f9ff",
-                    "on-tertiary-container": "#6b83d7",
-                    "surface": "#f8f9ff",
-                    "primary-container": "#002704",
-                    "inverse-primary": "#88d982",
-                    "tertiary-fixed": "#dce1ff",
-                    "surface-container": "#e6eeff",
-                    "on-tertiary-fixed": "#00164e",
-                    "secondary-fixed": "#ebdcff",
-                    "background": "#f8f9ff",
-                    "surface-dim": "#ccdbf4",
-                    "on-secondary-container": "#44118d",
-                    "inverse-surface": "#233144",
-                    "surface-variant": "#d5e3fd",
-                    "on-tertiary": "#ffffff",
-                    "primary": "#000b01",
-                    "on-secondary-fixed-variant": "#572ba0",
-                    "outline-variant": "#c6c6cc",
-                    "on-primary-fixed": "#002204"
+                "primary": "#1b6d24", // Emerald Green
+                "secondary": "#1b6d24",
+                "tertiary": "#000623", // Deep Navy
+                "surface": "#f8f9ff",
+                "on-surface": "#0d1c2f",
+                "on-primary": "#ffffff",
+                "slate-white": "#f8faff",
+                "outline-variant": "#c6c6cc"
             },
             "borderRadius": {
                     "DEFAULT": "0.125rem",
@@ -88,16 +49,24 @@
     </style>
 </head>
 <body class="bg-surface text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-[#f8f9ff]/80 dark:bg-[#000b01]/80 backdrop-blur-md">
-<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
-<div class="text-xl font-bold tracking-tight text-[#000b01] dark:text-[#f8f9ff]">
-                Zudo POS
-            </div>
-<div class="hidden md:flex items-center gap-8">
-<a class="text-[#45474c] dark:text-[#c6c6cc] font-medium hover:text-[#6f46b9] transition-colors duration-200" href="#">Product</a>
-<a class="text-[#45474c] dark:text-[#c6c6cc] font-medium hover:text-[#6f46b9] transition-colors duration-200" href="#">Features</a>
-<a class="text-[#45474c] dark:text-[#c6c6cc] font-medium hover:text-[#6f46b9] transition-colors duration-200" href="#">Pricing</a>
+<!-- Navigation -->
+<header class="bg-slate-white/80 backdrop-blur-md sticky top-0 z-50">
+<nav class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-10">
+<span class="text-xl font-extrabold tracking-tight text-tertiary brand-font">Zudo POS</span>
+<div class="hidden lg:flex gap-8 items-center">
+<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="product.html">Product</a>
+<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="features.html">Features</a>
+<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="pricing.html">Pricing</a>
+<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="documentation.html">Documentation</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<a class="text-tertiary font-bold text-sm px-4 py-2 hover:text-primary transition-colors" href="../onboarding/login.html">Login</a>
+<a class="bg-primary text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-primary/90 transition-all shadow-md shadow-primary/10" href="../onboarding/register.html">Get Started</a>
+</div>
+</nav>
+</header>
 <a class="text-[#45474c] dark:text-[#c6c6cc] font-medium hover:text-[#6f46b9] transition-colors duration-200" href="#">About</a>
 </div>
 <div class="flex items-center gap-4">
