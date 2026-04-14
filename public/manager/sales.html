@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manager Terminal | Sales Management</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, .brand-font {
+            font-family: 'Manrope', sans-serif;
+        }
+        /* Custom scrollbar for high-density tables */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c6c6cc;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#45474c",
+                        "on-secondary-fixed-variant": "#572ba0",
+                        "on-tertiary-container": "#6b83d7",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#000b01",
+                        "secondary-fixed-dim": "#d3bbff",
+                        "surface-variant": "#d5e3fd",
+                        "on-secondary-fixed": "#260059",
+                        "on-background": "#0d1c2f",
+                        "inverse-primary": "#88d982",
+                        "surface-container-low": "#eff4ff",
+                        "secondary": "#6f46b9",
+                        "on-secondary-container": "#44118d",
+                        "surface-container": "#e6eeff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#002204",
+                        "tertiary-fixed": "#dce1ff",
+                        "surface": "#f8f9ff",
+                        "secondary-fixed": "#ebdcff",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-tertiary-fixed": "#00164e",
+                        "tertiary": "#000623",
+                        "surface-tint": "#1b6d24",
+                        "outline-variant": "#c6c6cc",
+                        "on-surface": "#0d1c2f",
+                        "surface-container-highest": "#d5e3fd",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#001a59",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#a3f69c",
+                        "surface-container-high": "#dde9ff",
+                        "surface-bright": "#f8f9ff",
+                        "background": "#f8f9ff",
+                        "outline": "#76777c",
+                        "on-primary-container": "#499849",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#233144",
+                        "secondary-container": "#b188ff",
+                        "tertiary-fixed-dim": "#b6c4ff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#264191",
+                        "on-primary-fixed-variant": "#005312",
+                        "primary-fixed-dim": "#88d982",
+                        "primary-container": "#002704",
+                        "surface-dim": "#ccdbf4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- SideNavBar (Manager Role) -->
+<aside class="bg-[#000623] dark:bg-slate-950 h-screen w-64 fixed left-0 top-0 flex flex-col py-6 z-50">
+<div class="px-6 mb-10">
+<h1 class="text-xl font-bold tracking-tight text-white brand-font">Zudo POS</h1>
+<p class="text-slate-400 text-xs font-medium mt-1">Lagos Flagship</p>
+</div>
+<nav class="flex-1 space-y-1 overflow-y-auto px-3 custom-scrollbar">
+<!-- Navigation Items Mapping -->
+<a class="text-slate-400 hover:text-white px-4 py-3 transition-colors flex items-center gap-3 group hover:bg-slate-800/50 rounded-xl" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="text-slate-400 hover:text-white px-4 py-3 transition-colors flex items-center gap-3 group hover:bg-slate-800/50 rounded-xl" href="#">
+<span class="material-symbols-outlined text-lg">monitoring</span>
+<span class="text-sm font-medium">Live Monitor</span>
+</a>
+<a class="bg-emerald-900/30 text-emerald-400 font-semibold border-l-4 border-emerald-500 px-4 py-3 flex items-center gap-3 rounded-r-xl" href="#">
+<span class="material-symbols-outlined text-lg">receipt_long</span>
+<span class="text-sm">Sales</span>
+</a>
+<a class="text-slate-400 hover:text-white px-4 py-3 transition-colors flex items-center gap-3 group hover:bg-slate-800/50 rounded-xl" href="#">
+<span class="material-symbols-outlined text-lg">inventory_2</span>
+<span class="text-sm font-medium">Inventory</span>
+</a>
+<a class="text-slate-400 hover:text-white px-4 py-3 transition-colors flex items-center gap-3 group hover:bg-slate-800/50 rounded-xl" href="#">
+<span class="material-symbols-outlined text-lg">badge</span>
+<span class="text-sm font-medium">Cashiers</span>
+</a>
+<a class="text-slate-400 hover:text-white px-4 py-3 transition-colors flex items-center gap-3 group hover:bg-slate-800/50 rounded-xl" href="#">
+<span class="material-symbols-outlined text-lg">group</span>
+<span class="text-sm font-medium">Customers</span>
+</a>
+<a class="text-slate-400 hover:text-white px-4 py-3 transition-colors flex items-center gap-3 group hover:bg-slate-800/50 rounded-xl" href="#">
+<span class="material-symbols-outlined text-lg">workspace_premium</span>
+<span class="text-sm font-medium">Loyalty</span>
+</a>
+<a class="text-slate-400 hover:text-white px-4 py-3 transition-colors flex items-center gap-3 group hover:bg-slate-800/50 rounded-xl" href="#">
+<span class="material-symbols-outlined text-lg">analytics</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+<a class="text-slate-400 hover:text-white px-4 py-3 transition-colors flex items-center gap-3 group hover:bg-slate-800/50 rounded-xl" href="#">
+<span class="material-symbols-outlined text-lg">schedule</span>
+<span class="text-sm font-medium">Shifts</span>
+</a>
+<a class="text-slate-400 hover:text-white px-4 py-3 transition-colors flex items-center gap-3 group hover:bg-slate-800/50 rounded-xl" href="#">
+<span class="material-symbols-outlined text-lg">notifications</span>
+<span class="text-sm font-medium">Notifications</span>
+</a>
+<a class="text-slate-400 hover:text-white px-4 py-3 transition-colors flex items-center gap-3 group hover:bg-slate-800/50 rounded-xl" href="#">
+<span class="material-symbols-outlined text-lg">description</span>
+<span class="text-sm font-medium">Reports</span>
+</a>
+</nav>
+<div class="px-3 mt-6 pt-6 border-t border-slate-800">
+<a class="text-slate-400 hover:text-white px-4 py-3 transition-colors flex items-center gap-3 group hover:bg-slate-800/50 rounded-xl mb-1" href="#">
+<span class="material-symbols-outlined text-lg">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<a class="text-slate-400 hover:text-white px-4 py-3 transition-colors flex items-center gap-3 group hover:bg-slate-800/50 rounded-xl" href="#">
+<span class="material-symbols-outlined text-lg">logout</span>
+<span class="text-sm font-medium">Logout</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="bg-[#f8f9ff]/80 dark:bg-slate-900/80 backdrop-blur-md sticky top-0 flex justify-between items-center w-full pl-72 pr-8 h-20 z-40">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/60">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2.5 pl-12 pr-4 focus:ring-2 focus:ring-secondary/20 text-sm placeholder:text-on-surface-variant/50" placeholder="Search transactions, customers, or SKUs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">sync</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full text-sm font-bold tracking-tight hover:opacity-90 transition-all scale-95 active:scale-90">
+                End Shift
+            </button>
+<div class="flex items-center gap-3 border-l pl-6 border-surface-container">
+<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="professional male manager headshot with neutral background, soft studio lighting, sharp focus and corporate aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9XoVujN2VormtjvPV3-i_JOFvLUlU0lMmbAyAlCYPuIpuf6YI7fRbH0Snbv2c6sz5MYzR8Gne_ukxPrsrjFSDXrG2AcYzW6CfUO7iCFzepaNDvfbJ_n5XDmkJf-Dp9ehGskL-Hm_tcOIe1bGlN5sjBkPi1VVOG0rTlumHNiEIJ2uKIan3hT14WCXZaR8eel09SpxIDiUjvREVBP9-8Ukbz_2SdeRfgbWgtjnmWH_uO2ue9_aWBBpx5d4r5qmndtD9xRVs2hJMHU3Z"/>
+<div class="hidden lg:block">
+<p class="text-xs font-bold text-primary">Admin User</p>
+<p class="text-[10px] text-on-surface-variant font-medium">Manager</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pl-64 pt-6 pr-8 pb-12 bg-surface min-h-screen">
+<div class="max-w-7xl mx-auto space-y-6">
+<!-- Page Header & Stats Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="md:col-span-4 flex justify-between items-end mb-2">
+<div>
+<h2 class="text-3xl font-extrabold text-primary brand-font leading-tight">Sales Management</h2>
+<p class="text-on-surface-variant text-sm mt-1">Detailed branch transaction logs and performance filters.</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-surface-container-low text-on-surface-variant px-4 py-2.5 rounded-xl text-sm font-semibold flex items-center gap-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-lg">file_download</span>
+                            Export CSV
+                        </button>
+<button class="bg-surface-tint text-on-primary px-5 py-2.5 rounded-xl text-sm font-bold flex items-center gap-2 hover:opacity-90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-lg">add</span>
+                            New Transaction
+                        </button>
+</div>
+</div>
+<!-- Stats Cards -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border-l-4 border-emerald-500 shadow-sm transition-transform hover:-translate-y-1">
+<p class="text-xs font-bold text-on-surface-variant/70 uppercase tracking-widest">Total Sales (Today)</p>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-3xl font-black text-primary brand-font">₦24.8M</span>
+<span class="text-emerald-600 text-xs font-bold flex items-center">
+<span class="material-symbols-outlined text-sm">arrow_upward</span> 12%
+                        </span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border-l-4 border-secondary shadow-sm transition-transform hover:-translate-y-1">
+<p class="text-xs font-bold text-on-surface-variant/70 uppercase tracking-widest">Transactions</p>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-3xl font-black text-primary brand-font">1,402</span>
+<span class="text-emerald-600 text-xs font-bold flex items-center">
+<span class="material-symbols-outlined text-sm">arrow_upward</span> 4%
+                        </span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border-l-4 border-on-tertiary-container shadow-sm transition-transform hover:-translate-y-1">
+<p class="text-xs font-bold text-on-surface-variant/70 uppercase tracking-widest">Avg. Ticket Size</p>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-3xl font-black text-primary brand-font">₦17,680</span>
+<span class="text-error text-xs font-bold flex items-center">
+<span class="material-symbols-outlined text-sm">arrow_downward</span> 2%
+                        </span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border-l-4 border-primary shadow-sm transition-transform hover:-translate-y-1">
+<p class="text-xs font-bold text-on-surface-variant/70 uppercase tracking-widest">Active Cashiers</p>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-3xl font-black text-primary brand-font">12/15</span>
+<span class="text-on-surface-variant/40 text-xs font-bold">Peak Hr</span>
+</div>
+</div>
+</div>
+<!-- Filters Bar -->
+<div class="bg-surface-container-low p-4 rounded-xl flex flex-wrap items-center gap-4">
+<div class="flex items-center gap-2 bg-surface-container-lowest px-4 py-2 rounded-lg border border-outline-variant/20 min-w-[200px]">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">calendar_today</span>
+<span class="text-sm font-medium text-on-surface">Oct 24, 2023 - Today</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-lowest px-4 py-2 rounded-lg border border-outline-variant/20">
+<span class="text-xs font-bold text-on-surface-variant">Cashier:</span>
+<select class="text-sm font-medium bg-transparent border-none p-0 focus:ring-0 text-on-surface">
+<option>All Staff</option>
+<option>Bisi Akindele</option>
+<option>Chidi Okafor</option>
+<option>Ibrahim Musa</option>
+</select>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-lowest px-4 py-2 rounded-lg border border-outline-variant/20">
+<span class="text-xs font-bold text-on-surface-variant">Method:</span>
+<select class="text-sm font-medium bg-transparent border-none p-0 focus:ring-0 text-on-surface">
+<option>All Methods</option>
+<option>POS Terminal</option>
+<option>Transfer</option>
+<option>Cash</option>
+</select>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-lowest px-4 py-2 rounded-lg border border-outline-variant/20">
+<span class="text-xs font-bold text-on-surface-variant">Status:</span>
+<select class="text-sm font-medium bg-transparent border-none p-0 focus:ring-0 text-on-surface">
+<option>Completed</option>
+<option>Refunded</option>
+<option>Pending</option>
+</select>
+</div>
+<div class="ml-auto flex items-center gap-2">
+<button class="text-sm font-bold text-secondary px-4 py-2 hover:bg-secondary-container/20 rounded-lg transition-colors">Clear All</button>
+<button class="bg-primary text-on-primary px-5 py-2 rounded-lg text-sm font-bold shadow-md">Apply Filters</button>
+</div>
+</div>
+<!-- Transactions Table -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm border border-surface-container">
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-6 py-4 text-[11px] font-black text-on-surface-variant/70 uppercase tracking-widest">Transaction ID</th>
+<th class="px-6 py-4 text-[11px] font-black text-on-surface-variant/70 uppercase tracking-widest">Cashier</th>
+<th class="px-6 py-4 text-[11px] font-black text-on-surface-variant/70 uppercase tracking-widest">Customer</th>
+<th class="px-6 py-4 text-[11px] font-black text-on-surface-variant/70 uppercase tracking-widest">Items</th>
+<th class="px-6 py-4 text-[11px] font-black text-on-surface-variant/70 uppercase tracking-widest">Total Value</th>
+<th class="px-6 py-4 text-[11px] font-black text-on-surface-variant/70 uppercase tracking-widest">Payment</th>
+<th class="px-6 py-4 text-[11px] font-black text-on-surface-variant/70 uppercase tracking-widest">Time</th>
+<th class="px-6 py-4 text-[11px] font-black text-on-surface-variant/70 uppercase tracking-widest">Status</th>
+<th class="px-6 py-4 text-[11px] font-black text-on-surface-variant/70 uppercase tracking-widest"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Zebra row 1 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-4 font-mono text-xs text-primary font-bold">#TRX-90821</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center text-[10px] font-bold text-on-secondary-container">BA</div>
+<span class="text-sm font-medium">Bisi Akindele</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium">Adewale Johnson</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">4 items</td>
+<td class="px-6 py-4 font-black text-primary">₦42,500.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-[10px] font-bold uppercase tracking-tight text-on-surface-variant">
+<span class="material-symbols-outlined text-xs">credit_card</span> POS
+                                    </span>
+</td>
+<td class="px-6 py-4 text-xs font-medium text-on-surface-variant">14:22 PM</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black uppercase tracking-tight">Completed</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Zebra row 2 (Recessed) -->
+<tr class="bg-surface-container-low/20 hover:bg-surface-container-low/40 transition-colors">
+<td class="px-6 py-4 font-mono text-xs text-primary font-bold">#TRX-90820</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-tertiary-fixed-dim flex items-center justify-center text-[10px] font-bold text-on-tertiary-fixed">CO</div>
+<span class="text-sm font-medium">Chidi Okafor</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium text-on-surface-variant italic">Guest Checkout</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">1 item</td>
+<td class="px-6 py-4 font-black text-primary">₦5,200.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-[10px] font-bold uppercase tracking-tight text-on-surface-variant">
+<span class="material-symbols-outlined text-xs">payments</span> Cash
+                                    </span>
+</td>
+<td class="px-6 py-4 text-xs font-medium text-on-surface-variant">14:18 PM</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black uppercase tracking-tight">Completed</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-4 font-mono text-xs text-primary font-bold">#TRX-90819</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary-fixed-dim flex items-center justify-center text-[10px] font-bold text-on-primary-fixed">IM</div>
+<span class="text-sm font-medium">Ibrahim Musa</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium">Sandra Eze</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">12 items</td>
+<td class="px-6 py-4 font-black text-primary">₦112,800.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-[10px] font-bold uppercase tracking-tight text-on-surface-variant">
+<span class="material-symbols-outlined text-xs">account_balance</span> Transfer
+                                    </span>
+</td>
+<td class="px-6 py-4 text-xs font-medium text-on-surface-variant">14:05 PM</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full bg-error-container text-on-error-container text-[10px] font-black uppercase tracking-tight">Refunded</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="bg-surface-container-low/20 hover:bg-surface-container-low/40 transition-colors">
+<td class="px-6 py-4 font-mono text-xs text-primary font-bold">#TRX-90818</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center text-[10px] font-bold text-on-secondary-container">BA</div>
+<span class="text-sm font-medium">Bisi Akindele</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium">Tunde Bakare</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">3 items</td>
+<td class="px-6 py-4 font-black text-primary">₦18,400.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-[10px] font-bold uppercase tracking-tight text-on-surface-variant">
+<span class="material-symbols-outlined text-xs">credit_card</span> POS
+                                    </span>
+</td>
+<td class="px-6 py-4 text-xs font-medium text-on-surface-variant">13:58 PM</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black uppercase tracking-tight">Completed</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-4 font-mono text-xs text-primary font-bold">#TRX-90817</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-tertiary-fixed flex items-center justify-center text-[10px] font-bold text-on-tertiary-fixed">NM</div>
+<span class="text-sm font-medium">Ngozi Madu</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium italic text-on-surface-variant">Guest Checkout</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">5 items</td>
+<td class="px-6 py-4 font-black text-primary">₦61,000.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-[10px] font-bold uppercase tracking-tight text-on-surface-variant">
+<span class="material-symbols-outlined text-xs">payments</span> Cash
+                                    </span>
+</td>
+<td class="px-6 py-4 text-xs font-medium text-on-surface-variant">13:42 PM</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black uppercase tracking-tight">Completed</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 flex items-center justify-between border-t border-surface-container">
+<p class="text-xs font-bold text-on-surface-variant">Showing 1-25 of 1,402 transactions</p>
+<div class="flex items-center gap-1">
+<button class="p-2 rounded-lg hover:bg-surface-container transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary text-xs font-bold">1</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-xs font-bold transition-colors">2</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-xs font-bold transition-colors">3</button>
+<span class="px-2 text-on-surface-variant">...</span>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-xs font-bold transition-colors">57</button>
+<button class="p-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Branch Performance Micro-Bento -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+<div class="bg-tertiary p-6 rounded-xl text-white flex justify-between items-center overflow-hidden relative">
+<div class="z-10">
+<h3 class="brand-font text-lg font-bold">Lagos Flagship Efficiency</h3>
+<p class="text-slate-400 text-xs mt-1 italic">Last 60 mins activity</p>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="text-2xl font-black">94%</span>
+<span class="text-[10px] text-emerald-400 font-bold uppercase">Optimal Range</span>
+</div>
+</div>
+<!-- Abstract Background Texture -->
+<div class="absolute right-0 top-0 w-32 h-full bg-emerald-500/10 blur-3xl rounded-full translate-x-12"></div>
+<span class="material-symbols-outlined text-emerald-500/30 text-8xl absolute -right-4 -bottom-4">speed</span>
+</div>
+<div class="bg-surface-container-high p-6 rounded-xl border border-outline-variant/10">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="brand-font text-lg font-bold text-primary">Active Shift Health</h3>
+<p class="text-on-surface-variant text-xs mt-1">Average wait time: 1m 24s</p>
+</div>
+<div class="flex gap-1">
+<span class="w-1.5 h-6 bg-emerald-500 rounded-full"></span>
+<span class="w-1.5 h-8 bg-emerald-500 rounded-full"></span>
+<span class="w-1.5 h-5 bg-emerald-500 rounded-full"></span>
+<span class="w-1.5 h-9 bg-emerald-600 rounded-full"></span>
+<span class="w-1.5 h-12 bg-emerald-400 rounded-full"></span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-4">
+<div class="flex -space-x-2">
+<img class="w-7 h-7 rounded-full border-2 border-surface-container-high object-cover" data-alt="male employee portrait with friendly smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFREPTbRfycjaBQ1FU27rW2jUV4F4bAbVXBguW03VFaDOS_jXc1BXykIl3SCaFFiZNowzgEUs1VJlH0_uerr0bKlRyNtdSJ_LYTbQuhRxMkAW6c_SBF-op8wxAHag5w40FqhoarXDZjen0NbK21SrZIVfSHBEDb4evIHLiN-IG_AMcex0BYnN_C7Md4nWdHmDQJFPwBtqNkhYRT6YlhqkFOdJapGTWA6PNvmhCXWMWCXeJ8HuqyZ-8dOZn_FngVN14q6fNfnD-gMiH"/>
+<img class="w-7 h-7 rounded-full border-2 border-surface-container-high object-cover" data-alt="female cashier portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4MdJz0zU8cRWwQDDQpZhrjpt6BuPql-gfdFE6Fd7XI7ByX38iKRBQbs0Y2fLs5fg-JG2PSZwfQHImbb0VvroUdS8zfrLDsOIHWr9bq2zV2Xf5nvBj_G9X6YAcMOfLp09SvP3eaz3ZvSKa1wUIiETvf-x-YRrfGTMtDJCjUeaamXiFXSHDfyGFLerHj71owt-eWssltEqgJeSh-w8cmWlpovTiXnCj6aJhIquFl1XaubHnS1pU4ru_vFXU-kgu9HZxD2Ns6me94bLq"/>
+<img class="w-7 h-7 rounded-full border-2 border-surface-container-high object-cover" data-alt="male staff member headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1Q5z9kbPH61s3XsEKnvwa7ZXB8-Vjbt6uzuCOz6cZ_Pj7ZrEVQJavaRIFCmziSNj5RiS1PGtp8nzU53YUOO54t1hP6uO7JJ55qH_8GcxUsN4xnpH5frLR_XzOmTcwnSBdZhz8fbGzuOpZi2Uhq3NI2xGxoXHNxJpC5ICBGIQZGnKed-OzSk-CMbsB41oHMe50ZUs8u8t0fDWdrqrzHDw0F20VGAZme0I8eS9eRKGjcdJuspGvMJpy4KoNqrz53oWHK5sRhj_F_Wq2"/>
+<div class="w-7 h-7 rounded-full bg-on-surface text-[8px] font-black flex items-center justify-center text-white border-2 border-surface-container-high">+9</div>
+</div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Cashiers on Floor</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

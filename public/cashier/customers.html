@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zudo POS - Customer Search</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#499849",
+                    "on-surface": "#0d1c2f",
+                    "primary-container": "#002704",
+                    "surface-container-highest": "#d5e3fd",
+                    "on-tertiary-fixed-variant": "#264191",
+                    "on-tertiary-fixed": "#00164e",
+                    "surface-container-low": "#eff4ff",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#44118d",
+                    "outline": "#76777c",
+                    "tertiary-fixed-dim": "#b6c4ff",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#b188ff",
+                    "on-surface-variant": "#45474c",
+                    "surface-dim": "#ccdbf4",
+                    "surface-tint": "#1b6d24",
+                    "on-background": "#0d1c2f",
+                    "on-primary-fixed-variant": "#005312",
+                    "primary-fixed-dim": "#88d982",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#88d982",
+                    "on-secondary-fixed": "#260059",
+                    "surface-variant": "#d5e3fd",
+                    "tertiary": "#000623",
+                    "surface-container": "#e6eeff",
+                    "surface-bright": "#f8f9ff",
+                    "on-tertiary-container": "#6b83d7",
+                    "surface": "#f8f9ff",
+                    "inverse-surface": "#233144",
+                    "tertiary-fixed": "#dce1ff",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#001a59",
+                    "primary-fixed": "#a3f69c",
+                    "primary": "#000b01",
+                    "inverse-on-surface": "#ebf1ff",
+                    "background": "#f8f9ff",
+                    "secondary-fixed": "#ebdcff",
+                    "surface-container-high": "#dde9ff",
+                    "on-secondary-fixed-variant": "#572ba0",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#002204",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#d3bbff",
+                    "outline-variant": "#c6c6cc",
+                    "secondary": "#6f46b9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .naira-symbol::before {
+            content: "₦";
+            font-family: 'Manrope', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(248, 249, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased overflow-hidden h-screen w-screen">
+<!-- Terminal Background (Simulated Underlay) -->
+<main class="fixed inset-0 grid grid-cols-12 gap-0 overflow-hidden">
+<!-- Sidebar Navigation -->
+<nav class="col-span-2 flex flex-col h-full bg-[#eff4ff] dark:bg-slate-900 border-r-0 z-40 overflow-y-auto">
+<div class="p-6">
+<h1 class="font-bold text-[#000b01] dark:text-white text-xl tracking-tight">Zudo POS</h1>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant mt-1">Fluid Authority</p>
+</div>
+<div class="mt-8 flex flex-col gap-1">
+<div class="bg-[#ffffff] dark:bg-slate-800 text-[#6f46b9] dark:text-[#b188ff] rounded-l-full ml-4 shadow-sm font-bold flex items-center px-6 py-4">
+<span class="material-symbols-outlined mr-4" data-icon="point_of_sale">point_of_sale</span>
+<span class="font-label text-xs uppercase tracking-wider">Terminal</span>
+</div>
+<div class="text-[#45474c] dark:text-slate-400 px-6 py-4 hover:text-[#000b01] dark:hover:text-white hover:bg-[#dde9ff] dark:hover:bg-slate-800 transition-colors flex items-center">
+<span class="material-symbols-outlined mr-4" data-icon="receipt_long">receipt_long</span>
+<span class="font-label text-xs uppercase tracking-wider">Sales History</span>
+</div>
+<div class="text-[#45474c] dark:text-slate-400 px-6 py-4 hover:text-[#000b01] dark:hover:text-white hover:bg-[#dde9ff] dark:hover:bg-slate-800 transition-colors flex items-center">
+<span class="material-symbols-outlined mr-4" data-icon="group">group</span>
+<span class="font-label text-xs uppercase tracking-wider">Customers</span>
+</div>
+</div>
+</nav>
+<!-- Main Workspace -->
+<section class="col-span-10 flex flex-col bg-surface relative">
+<header class="flex justify-between items-center w-full px-6 py-3 h-16 bg-[#f8f9ff] dark:bg-slate-950">
+<div class="flex items-center gap-4">
+<div class="bg-surface-container-low rounded-xl px-4 py-2 flex items-center gap-3 w-80">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+<span class="text-on-surface-variant text-sm font-body">Scan barcode or type...</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="cloud_done">cloud_done</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface" data-icon="account_circle">account_circle</span>
+<span class="text-sm font-semibold">Tunde Eniola</span>
+</div>
+</div>
+</header>
+<!-- Product Grid Placeholder -->
+<div class="p-8 grid grid-cols-4 gap-6 opacity-40 select-none">
+<div class="aspect-square bg-surface-container-lowest rounded-xl shadow-sm p-4 flex flex-col justify-end">
+<div class="w-full h-32 bg-surface-container-low mb-4 rounded-lg"></div>
+<p class="font-bold">Aguda Leather Belt</p>
+<p class="naira-symbol text-lg font-black text-on-primary-container">12,500</p>
+</div>
+<div class="aspect-square bg-surface-container-lowest rounded-xl shadow-sm p-4 flex flex-col justify-end">
+<div class="w-full h-32 bg-surface-container-low mb-4 rounded-lg"></div>
+<p class="font-bold">Ikeja Silk Scarf</p>
+<p class="naira-symbol text-lg font-black text-on-primary-container">8,200</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-on-surface/40 backdrop-blur-sm px-6">
+<!-- Modal Content Container -->
+<div class="w-full max-w-5xl bg-surface rounded-xl shadow-[0px_12px_32px_rgba(13,28,47,0.06)] overflow-hidden flex flex-col max-h-[921px]">
+<!-- Modal Header -->
+<div class="px-8 py-6 flex justify-between items-center bg-surface-container-low border-b-0">
+<div>
+<h2 class="text-2xl font-extrabold font-headline tracking-tight text-on-surface">Identify Customer</h2>
+<p class="text-sm text-on-surface-variant font-body">Lookup loyalty profiles or register a new shopper</p>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="close">close</span>
+</button>
+</div>
+<!-- Modal Body (Two Column Layout) -->
+<div class="flex-1 overflow-hidden grid grid-cols-12">
+<!-- Search & Results Section -->
+<div class="col-span-7 p-8 border-r-0 bg-surface-container-lowest flex flex-col gap-6">
+<!-- Large Search Input -->
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-secondary text-2xl" data-icon="search">search</span>
+</div>
+<input autofocus="" class="block w-full pl-14 pr-4 py-6 bg-surface-container-low border-none rounded-xl focus:ring-0 focus:bg-white text-xl font-headline font-semibold placeholder:text-on-surface-variant/40 transition-all border-l-4 border-l-secondary" placeholder="Enter Name or Phone Number (e.g. 080...)" type="text"/>
+</div>
+<!-- Search Results -->
+<div class="flex flex-col gap-4 overflow-y-auto">
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 px-2">Top Matches</p>
+<!-- Customer Row: Gold Tier -->
+<div class="group flex items-center justify-between p-5 bg-surface-container-low rounded-xl cursor-pointer hover:bg-secondary-container/20 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img class="w-full h-full object-cover" data-alt="portrait of a confident nigerian woman with a bright smile in an office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnxoscBzvg69n9MDiLLOHL4-eMDXHr9ezv8IKiKiXOZYLN4sBlVb3sTLBic5_umDz87ITBhoYnzkO62RruXWQhgDMvYFCbb_-d8hTc8FF2YXIWGkZ5vO_SvGwAne9iivN04Xp-cguf5ZNDAQMknkhO2d1QuvOMooF6b5NjtlxqCaWrX5IwBU9shJCbshHafm8Rrrs83I_es9DqjaR54JZE5OCcIEjvoXs1D__AsdiTWZuyLMayn_jSt6nMEynzLkPVlcDU9wzP3A_a"/>
+</div>
+<div>
+<h4 class="font-bold text-lg leading-tight">Chinelo Okoro</h4>
+<p class="text-sm text-on-surface-variant font-medium">+234 803 123 4567</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-3 py-1 bg-primary-container text-primary-fixed text-[10px] font-black uppercase tracking-widest rounded-full mb-1">Gold Tier</span>
+<p class="font-headline font-extrabold text-on-surface text-lg">2,450 <span class="text-xs font-medium text-on-surface-variant">pts</span></p>
+</div>
+</div>
+<!-- Customer Row: Silver Tier -->
+<div class="group flex items-center justify-between p-5 bg-surface rounded-xl cursor-pointer border border-outline-variant/10 hover:bg-secondary-container/20 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full overflow-hidden border-2 border-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="a stylish young man wearing traditional attire and glasses looking towards the camera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwLSwOTvBO-i8xYzbrbMk1Idj_-gVPbR5UyXyQUeGB4yLSYKsOuPqRs06I6QJmrE7mhOmlgLZYnYMVOhzqP4pyHwYvZzz8ms8CnOvN0RsaQYCYkyNfslDOZFkTlrVilMmzsbG7L3FIaSY1iQFAWh2duld5IH_Mxvsp5i_Jdz4-QqKOG14WHbaK-aGDi3PLOMJi-oV8X-O6m4ONrP7ymY58VccAidVeLoJU5R2aPURDeo3jntYnJuZvTZi4uHx25GcLouzCHoawRXdK"/>
+</div>
+<div>
+<h4 class="font-bold text-lg leading-tight">Babajide Sanwo</h4>
+<p class="text-sm text-on-surface-variant font-medium">+234 901 888 2211</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-3 py-1 bg-surface-container-high text-on-tertiary-fixed-variant text-[10px] font-black uppercase tracking-widest rounded-full mb-1">Silver Tier</span>
+<p class="font-headline font-extrabold text-on-surface text-lg">890 <span class="text-xs font-medium text-on-surface-variant">pts</span></p>
+</div>
+</div>
+<!-- Customer Row: Bronze Tier -->
+<div class="group flex items-center justify-between p-5 bg-surface rounded-xl cursor-pointer border border-outline-variant/10 hover:bg-secondary-container/20 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full overflow-hidden border-2 border-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="close up of a cheerful man with beard and natural sunlight reflecting on face" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjbeD8yWm6y5hzaKFioTkG8a4FzxZlhGN1qMER5gWfGYudXap4445Ts5uaIdsiIG9QGDLZbW7f-IJEk6UMSiWt_3gdvI4nxZtgKCfNXgvtmftME5hO_XjIrf2d4v-0LRFmiy-ej7aLkSqDDJx2-8nIcR7PC-BWpP4vhF2lezs5IxmdRAsldjOGtLgD2zYKHyW8b30Ic4uBUBtNgaIKzbXZI3qrRICV_Ika-bAguaMkr3hwwofJry3xDgWWrLUB2FpWBjL8qmN2cLXm"/>
+</div>
+<div>
+<h4 class="font-bold text-lg leading-tight">Emeka Nwosu</h4>
+<p class="text-sm text-on-surface-variant font-medium">+234 705 334 1221</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-3 py-1 bg-surface-container-low text-on-surface-variant text-[10px] font-black uppercase tracking-widest rounded-full mb-1">Bronze Tier</span>
+<p class="font-headline font-extrabold text-on-surface text-lg">120 <span class="text-xs font-medium text-on-surface-variant">pts</span></p>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Add Side Panel -->
+<div class="col-span-5 p-8 bg-surface-container-low flex flex-col">
+<div class="mb-8">
+<h3 class="font-extrabold text-xl font-headline text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="person_add">person_add</span>
+                            Quick Add
+                        </h3>
+<p class="text-sm text-on-surface-variant mt-1">Register customer for loyalty rewards</p>
+</div>
+<form class="space-y-6">
+<div>
+<label class="block text-[10px] font-black uppercase tracking-widest text-on-surface-variant mb-2">Full Name</label>
+<input class="w-full px-5 py-4 bg-surface rounded-lg border-none focus:ring-2 focus:ring-secondary/20 font-medium text-on-surface placeholder:text-on-surface-variant/30" placeholder="e.g. Adeola Williams" type="text"/>
+</div>
+<div>
+<label class="block text-[10px] font-black uppercase tracking-widest text-on-surface-variant mb-2">Phone Number</label>
+<div class="flex gap-2">
+<div class="px-3 py-4 bg-surface rounded-lg text-sm font-bold text-on-surface-variant flex items-center">+234</div>
+<input class="flex-1 px-5 py-4 bg-surface rounded-lg border-none focus:ring-2 focus:ring-secondary/20 font-medium text-on-surface placeholder:text-on-surface-variant/30" placeholder="812 345 6789" type="tel"/>
+</div>
+</div>
+<div class="pt-4 flex flex-col gap-4">
+<button class="w-full py-5 bg-[#000b01] bg-gradient-to-br from-[#000b01] to-[#002704] text-white font-black uppercase tracking-widest text-sm rounded-xl hover:scale-[0.98] transition-transform active:scale-95 shadow-lg" type="submit">
+                                Create &amp; Apply to Cart
+                            </button>
+<div class="flex items-center gap-3 p-4 bg-secondary-container/20 rounded-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="auto_awesome">auto_awesome</span>
+<p class="text-xs text-on-secondary-fixed-variant leading-relaxed">
+                                    New customers automatically start at <span class="font-bold">Bronze Tier</span> and earn 50 welcome points.
+                                </p>
+</div>
+</div>
+</form>
+<div class="mt-auto pt-8 border-t border-outline-variant/20">
+<button class="w-full py-4 text-on-surface-variant font-label text-xs uppercase tracking-widest hover:text-on-surface transition-colors">
+                            Dismiss &amp; Continue Guest Checkout
+                        </button>
+</div>
+</div>
+</div>
+<!-- Footer Quick Actions -->
+<div class="px-8 py-4 bg-white flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
+<div class="flex gap-6">
+<span class="flex items-center gap-1"><span class="bg-surface-container-high px-2 py-0.5 rounded text-on-surface">Esc</span> to Close</span>
+<span class="flex items-center gap-1"><span class="bg-surface-container-high px-2 py-0.5 rounded text-on-surface">Tab</span> to Switch Form</span>
+<span class="flex items-center gap-1"><span class="bg-surface-container-high px-2 py-0.5 rounded text-on-surface">Enter</span> to Select</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-surface-tint"></span>
+                    Terminal Online: Station 04
+                </div>
+</div>
+</div>
+</div>
+</body></html>

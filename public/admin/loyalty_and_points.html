@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Loyalty &amp; Rewards Configuration | Zudo POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "secondary": "#6f46b9",
+                "on-secondary-fixed": "#260059",
+                "inverse-surface": "#233144",
+                "inverse-primary": "#88d982",
+                "secondary-fixed": "#ebdcff",
+                "on-error-container": "#93000a",
+                "primary": "#000b01",
+                "outline-variant": "#c6c6cc",
+                "on-tertiary": "#ffffff",
+                "on-primary": "#ffffff",
+                "error-container": "#ffdad6",
+                "background": "#f8f9ff",
+                "on-background": "#0d1c2f",
+                "on-tertiary-container": "#6b83d7",
+                "on-tertiary-fixed-variant": "#264191",
+                "on-surface": "#0d1c2f",
+                "on-secondary": "#ffffff",
+                "on-primary-container": "#499849",
+                "secondary-fixed-dim": "#d3bbff",
+                "tertiary-fixed": "#dce1ff",
+                "surface-container-highest": "#d5e3fd",
+                "surface-container-lowest": "#ffffff",
+                "outline": "#76777c",
+                "surface-bright": "#f8f9ff",
+                "on-primary-fixed": "#002204",
+                "tertiary": "#000623",
+                "surface-tint": "#1b6d24",
+                "error": "#ba1a1a",
+                "on-secondary-container": "#44118d",
+                "on-error": "#ffffff",
+                "on-surface-variant": "#45474c",
+                "primary-container": "#002704",
+                "on-secondary-fixed-variant": "#572ba0",
+                "surface-container": "#e6eeff",
+                "tertiary-container": "#001a59",
+                "primary-fixed-dim": "#88d982",
+                "surface-container-low": "#eff4ff",
+                "inverse-on-surface": "#ebf1ff",
+                "tertiary-fixed-dim": "#b6c4ff",
+                "surface-variant": "#d5e3fd",
+                "on-tertiary-fixed": "#00164e",
+                "surface-container-high": "#dde9ff",
+                "surface-dim": "#ccdbf4",
+                "primary-fixed": "#a3f69c",
+                "surface": "#f8f9ff",
+                "on-primary-fixed-variant": "#005312",
+                "secondary-container": "#b188ff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "fontFamily": {
+                "headline": ["Manrope"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 overflow-y-auto bg-slate-950 flex flex-col shadow-2xl z-50">
+<div class="p-6">
+<h1 class="text-xl font-bold text-white tracking-tight">Zudo POS</h1>
+<p class="text-slate-500 text-xs font-medium uppercase tracking-widest mt-1">Admin Dashboard</p>
+</div>
+<nav class="flex-1 px-0 mt-4">
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-manrope text-sm font-medium">Overview</span>
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-manrope text-sm font-medium">Sales</span>
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-manrope text-sm font-medium">Inventory</span>
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-manrope text-sm font-medium">Staff</span>
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-manrope text-sm font-medium">Customers</span>
+</a>
+<a class="bg-emerald-500/10 text-emerald-400 border-l-4 border-emerald-500 py-3 px-6 flex items-center gap-3 hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="card_membership">card_membership</span>
+<span class="font-manrope text-sm font-medium">Loyalty</span>
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-manrope text-sm font-medium">Analytics</span>
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-manrope text-sm font-medium">Branches</span>
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-manrope text-sm font-medium">Notifications</span>
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-manrope text-sm font-medium">Settings</span>
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-manrope text-sm font-medium">Audit Logs</span>
+</a>
+</nav>
+<div class="p-6 mt-auto">
+<button class="w-full py-3 bg-emerald-500 text-slate-950 font-bold rounded-lg transition-transform active:scale-95 duration-150">
+                Switch to Cashier
+            </button>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/50 flex justify-between items-center px-8 h-16">
+<div class="flex items-center gap-4">
+<span class="text-emerald-600 font-bold font-manrope text-base">Branch Selector</span>
+<span class="material-symbols-outlined text-slate-400">expand_more</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="material-symbols-outlined text-slate-500 cursor-pointer hover:bg-slate-100 p-2 rounded-full transition-all" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-emerald-500 rounded-full border-2 border-white"></span>
+</div>
+<div class="flex items-center gap-3 cursor-pointer hover:bg-slate-100 p-1 pr-3 rounded-full transition-all">
+<img class="w-8 h-8 rounded-full object-cover border-2 border-slate-100" data-alt="Corporate professional headshot of a business administrator in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbBFbmBcSaHbRPGVku-Rox6RMZsoxPP_UL7S9jW0odhYmhRu9UoNGxeJE_eeAE_4Vdi5GnfJM8zOzDhtFx_bH4PwMmhIDrtUzh85chEWUh6P1WenimFGbSkbHBH_jpcY8UDA6l8eCBzcaYBnpEoxqKxBW_hfunroOHvr0-EbEHXLMF8AjsxTqk0bf8opYMgsr1PtMSQo6doAvlXonlFYlr6EUlfRt-83UbRywkKalWhqZRooLKlzEEK-bYTn7DeAsdiq6YnjQ2iAmt"/>
+<span class="material-symbols-outlined text-slate-500" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Canvas Content -->
+<section class="mt-16 p-8 overflow-y-auto">
+<div class="max-w-7xl mx-auto">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-10">
+<div>
+<h2 class="text-3xl font-extrabold tracking-tight text-primary">Loyalty &amp; Rewards</h2>
+<p class="text-on-surface-variant mt-1">Configure your customer retention mechanics and tier thresholds.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2.5 bg-surface-container-low text-primary font-bold rounded-lg border border-outline-variant/30 hover:bg-surface-container-high transition-all">Export Report</button>
+<button class="px-6 py-2.5 bg-primary text-on-primary font-bold rounded-lg shadow-xl shadow-primary/10 hover:opacity-90 transition-all">Save Changes</button>
+</div>
+</div>
+<!-- Bento Statistics Layer -->
+<div class="bento-grid mb-8">
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<span class="text-on-surface-variant text-sm font-medium">Total Points Issued</span>
+<span class="material-symbols-outlined text-emerald-600 bg-emerald-50 p-2 rounded-lg" data-icon="database">database</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold text-primary">1,284,500</span>
+<span class="text-emerald-600 text-xs font-bold">+12% this month</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<span class="text-on-surface-variant text-sm font-medium">Points Redeemed</span>
+<span class="material-symbols-outlined text-secondary bg-secondary-fixed p-2 rounded-lg" data-icon="redeem">redeem</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold text-primary">492,120</span>
+<span class="text-on-surface-variant text-xs">38.3% Redemption Rate</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<span class="text-on-surface-variant text-sm font-medium">Active Members</span>
+<span class="material-symbols-outlined text-primary bg-surface-container-high p-2 rounded-lg" data-icon="groups">groups</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold text-primary">8,421</span>
+<span class="text-on-surface-variant text-xs">Across 3 Tiers</span>
+</div>
+</div>
+</div>
+<!-- Configuration Sections -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Left Column: Rules & Expiry -->
+<div class="col-span-12 lg:col-span-7 space-y-6">
+<!-- Points Accrual Rule -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm">
+<h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="settings_suggest">settings_suggest</span>
+                                Accrual Engine
+                            </h3>
+<div class="space-y-6">
+<div class="flex items-center gap-8 p-6 bg-surface-container-low rounded-xl">
+<div class="flex-1">
+<label class="block text-xs font-bold uppercase text-on-surface-variant mb-2">Spending Threshold</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-lg">₦</span>
+<input class="w-full pl-10 pr-4 py-3 bg-white border-none rounded-lg font-bold text-lg focus:ring-2 focus:ring-secondary/20" type="text" value="1,000"/>
+</div>
+</div>
+<div class="text-2xl font-black text-slate-300">=</div>
+<div class="flex-1">
+<label class="block text-xs font-bold uppercase text-on-surface-variant mb-2">Points Earned</label>
+<div class="relative">
+<input class="w-full px-4 py-3 bg-white border-none rounded-lg font-bold text-lg focus:ring-2 focus:ring-secondary/20 text-right" type="text" value="50"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 font-medium text-slate-400 text-sm">PTS</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between py-4 border-t border-outline-variant/20">
+<div>
+<h4 class="font-bold">Point Expiry Rule</h4>
+<p class="text-sm text-on-surface-variant">Define when unused points become void.</p>
+</div>
+<select class="bg-surface-container-low border-none rounded-lg px-4 py-2 font-medium text-sm focus:ring-2 focus:ring-secondary/20">
+<option>Never Expire</option>
+<option selected="">6 Months</option>
+<option>12 Months</option>
+<option>24 Months</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Manual Adjustment -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm">
+<h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="edit_note">edit_note</span>
+                                Manual Points Adjustment
+                            </h3>
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div>
+<label class="block text-xs font-bold uppercase text-on-surface-variant mb-2">Customer Search</label>
+<input class="w-full px-4 py-3 bg-surface-container-low border-none rounded-lg" placeholder="Name or Phone..." type="text"/>
+</div>
+<div>
+<label class="block text-xs font-bold uppercase text-on-surface-variant mb-2">Point Delta (+/-)</label>
+<input class="w-full px-4 py-3 bg-surface-container-low border-none rounded-lg" placeholder="e.g. 100" type="number"/>
+</div>
+</div>
+<div class="mb-6">
+<label class="block text-xs font-bold uppercase text-on-surface-variant mb-2">Adjustment Reason <span class="text-error">*</span></label>
+<textarea class="w-full px-4 py-3 bg-surface-container-low border-none rounded-lg resize-none" placeholder="Describe why this adjustment is being made for the audit trail..." rows="2"></textarea>
+</div>
+<button class="w-full py-4 bg-tertiary text-white font-bold rounded-xl transition-all hover:bg-black active:scale-95">Commit Adjustment</button>
+</div>
+</div>
+<!-- Right Column: Tiers -->
+<div class="col-span-12 lg:col-span-5">
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm h-full">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-600" data-icon="star">star</span>
+                                    Membership Tiers
+                                </h3>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-all">
+<span class="material-symbols-outlined text-slate-400" data-icon="add">add</span>
+</button>
+</div>
+<div class="space-y-4">
+<!-- Tier Card: Gold -->
+<div class="p-6 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border border-amber-200/50">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-amber-400 rounded-full flex items-center justify-center text-white shadow-lg shadow-amber-200">
+<span class="material-symbols-outlined" data-icon="workspace_premium" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<h4 class="font-extrabold text-amber-900">Gold Tier</h4>
+<p class="text-xs text-amber-700 font-medium uppercase tracking-wider">Premium Status</p>
+</div>
+</div>
+<span class="text-xs font-bold bg-amber-400/10 text-amber-700 px-3 py-1 rounded-full border border-amber-400/20">Active</span>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block text-xs font-bold text-amber-900/60 uppercase mb-1">Entry Threshold</label>
+<div class="flex items-center gap-2">
+<span class="font-black text-2xl text-amber-900">50,000</span>
+<span class="text-sm font-bold text-amber-900/40">PTS</span>
+</div>
+</div>
+<div class="pt-4 border-t border-amber-200 flex justify-between items-center">
+<span class="text-sm text-amber-900 font-medium">Multiplier: <span class="font-bold">1.5x</span></span>
+<button class="text-amber-700 text-sm font-bold hover:underline">Edit Rules</button>
+</div>
+</div>
+</div>
+<!-- Tier Card: Silver -->
+<div class="p-6 bg-surface-container-low rounded-2xl border border-outline-variant/10">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-slate-300 rounded-full flex items-center justify-center text-white shadow-lg shadow-slate-100">
+<span class="material-symbols-outlined" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div>
+<h4 class="font-extrabold text-slate-900">Silver Tier</h4>
+<p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Mid-Level</p>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1">Entry Threshold</label>
+<div class="flex items-center gap-2">
+<span class="font-black text-2xl text-slate-900">15,000</span>
+<span class="text-sm font-bold text-slate-400">PTS</span>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-200 flex justify-between items-center">
+<span class="text-sm text-slate-700 font-medium">Multiplier: <span class="font-bold">1.2x</span></span>
+<button class="text-slate-500 text-sm font-bold hover:underline">Edit Rules</button>
+</div>
+</div>
+</div>
+<!-- Tier Card: Bronze -->
+<div class="p-6 bg-white rounded-2xl border border-outline-variant/20 shadow-sm">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center text-white shadow-lg shadow-orange-50">
+<span class="material-symbols-outlined" data-icon="military_tech" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+<div>
+<h4 class="font-extrabold text-slate-900">Bronze Tier</h4>
+<p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Entry Level</p>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1">Entry Threshold</label>
+<div class="flex items-center gap-2">
+<span class="font-black text-2xl text-slate-900">0</span>
+<span class="text-sm font-bold text-slate-400">PTS</span>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-100 flex justify-between items-center">
+<span class="text-sm text-slate-700 font-medium">Multiplier: <span class="font-bold">1.0x</span></span>
+<button class="text-slate-500 text-sm font-bold hover:underline">Edit Rules</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Audit Log Preview -->
+<div class="mt-8 bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
+<div class="px-8 py-6 border-b border-outline-variant/10 flex justify-between items-center">
+<h3 class="text-lg font-bold">Recent Loyalty Activity</h3>
+<a class="text-secondary font-bold text-sm hover:underline" href="#">View Full Audit Log</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low text-on-surface-variant text-xs font-bold uppercase tracking-widest">
+<tr>
+<th class="px-8 py-4">Timestamp</th>
+<th class="px-8 py-4">Customer</th>
+<th class="px-8 py-4">Action</th>
+<th class="px-8 py-4">Delta</th>
+<th class="px-8 py-4">Reason / Source</th>
+<th class="px-8 py-4">Admin</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="hover:bg-surface-container-low/50 transition-all">
+<td class="px-8 py-4 text-sm whitespace-nowrap">Oct 24, 14:22</td>
+<td class="px-8 py-4 text-sm font-bold">Chidi Okoro</td>
+<td class="px-8 py-4 text-sm"><span class="bg-emerald-50 text-emerald-700 px-2 py-1 rounded text-xs font-bold">Accrual</span></td>
+<td class="px-8 py-4 text-sm font-black text-emerald-600">+450</td>
+<td class="px-8 py-4 text-sm text-on-surface-variant italic truncate max-w-xs">Order #POS-8921-X</td>
+<td class="px-8 py-4 text-sm font-medium">System</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-all">
+<td class="px-8 py-4 text-sm whitespace-nowrap">Oct 24, 11:05</td>
+<td class="px-8 py-4 text-sm font-bold">Amina Bello</td>
+<td class="px-8 py-4 text-sm"><span class="bg-secondary-fixed text-on-secondary-container px-2 py-1 rounded text-xs font-bold">Manual</span></td>
+<td class="px-8 py-4 text-sm font-black text-secondary">+1,000</td>
+<td class="px-8 py-4 text-sm text-on-surface-variant italic truncate max-w-xs">Birthday gift correction as per manager</td>
+<td class="px-8 py-4 text-sm font-medium">admin_jason</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-all">
+<td class="px-8 py-4 text-sm whitespace-nowrap">Oct 23, 17:45</td>
+<td class="px-8 py-4 text-sm font-bold">Tunde Adeyemi</td>
+<td class="px-8 py-4 text-sm"><span class="bg-error-container text-on-error-container px-2 py-1 rounded text-xs font-bold">Redeem</span></td>
+<td class="px-8 py-4 text-sm font-black text-error">-2,500</td>
+<td class="px-8 py-4 text-sm text-on-surface-variant italic truncate max-w-xs">Voucher ID: VCH-992</td>
+<td class="px-8 py-4 text-sm font-medium">System</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB for Quick Actions - suppressed on config screens as per mandate, but adding a "Draft Mode" toggle if needed -->
+</body></html>

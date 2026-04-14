@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Live Monitor | Zudo POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#d5e3fd",
+                    "tertiary-container": "#001a59",
+                    "surface-container-highest": "#d5e3fd",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#b188ff",
+                    "tertiary": "#000623",
+                    "on-tertiary-fixed": "#00164e",
+                    "surface-container-low": "#eff4ff",
+                    "surface-dim": "#ccdbf4",
+                    "surface-container": "#e6eeff",
+                    "secondary-fixed-dim": "#d3bbff",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#dde9ff",
+                    "on-tertiary-container": "#6b83d7",
+                    "tertiary-fixed": "#dce1ff",
+                    "secondary": "#6f46b9",
+                    "on-secondary-fixed": "#260059",
+                    "on-tertiary-fixed-variant": "#264191",
+                    "on-background": "#0d1c2f",
+                    "on-surface": "#0d1c2f",
+                    "on-primary-fixed": "#002204",
+                    "on-primary-container": "#499849",
+                    "inverse-surface": "#233144",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#ebf1ff",
+                    "background": "#f8f9ff",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#ebdcff",
+                    "primary-fixed-dim": "#88d982",
+                    "primary-fixed": "#a3f69c",
+                    "surface-tint": "#1b6d24",
+                    "inverse-primary": "#88d982",
+                    "primary": "#000b01",
+                    "tertiary-fixed-dim": "#b6c4ff",
+                    "outline": "#76777c",
+                    "on-surface-variant": "#45474c",
+                    "on-secondary-container": "#44118d",
+                    "primary-container": "#002704",
+                    "surface": "#f8f9ff",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#005312",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#c6c6cc",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#572ba0",
+                    "surface-bright": "#f8f9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-glass {
+            background: rgba(248, 249, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface">
+<!-- Sidebar Navigation (SideNavBar) -->
+<aside class="bg-slate-950 dark:bg-black h-screen w-64 fixed left-0 top-0 z-50 flex flex-col py-6 shadow-2xl">
+<div class="px-6 mb-8">
+<h1 class="text-emerald-50 font-black tracking-tight text-xl font-headline">Zudo POS</h1>
+<p class="text-slate-400 text-xs font-label mt-1">Lagos Central Branch</p>
+</div>
+<nav class="flex-1 space-y-1 overflow-y-auto">
+<!-- Active State: Live Monitor -->
+<a class="text-slate-400 hover:text-slate-100 px-4 py-3 flex items-center gap-3 transition-all duration-200 hover:bg-slate-900 group" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="text-sm font-medium font-label">Overview</span>
+</a>
+<a class="bg-emerald-600/10 text-emerald-400 border-l-4 border-emerald-500 px-4 py-3 flex items-center gap-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-xl">monitoring</span>
+<span class="text-sm font-medium font-label">Live Monitor</span>
+</a>
+<a class="text-slate-400 hover:text-slate-100 px-4 py-3 flex items-center gap-3 transition-all duration-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined text-xl">receipt_long</span>
+<span class="text-sm font-medium font-label">Sales</span>
+</a>
+<a class="text-slate-400 hover:text-slate-100 px-4 py-3 flex items-center gap-3 transition-all duration-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined text-xl">inventory_2</span>
+<span class="text-sm font-medium font-label">Inventory</span>
+</a>
+<a class="text-slate-400 hover:text-slate-100 px-4 py-3 flex items-center gap-3 transition-all duration-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined text-xl">badge</span>
+<span class="text-sm font-medium font-label">Cashiers</span>
+</a>
+<a class="text-slate-400 hover:text-slate-100 px-4 py-3 flex items-center gap-3 transition-all duration-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+<span class="text-sm font-medium font-label">Customers</span>
+</a>
+<a class="text-slate-400 hover:text-slate-100 px-4 py-3 flex items-center gap-3 transition-all duration-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined text-xl">star</span>
+<span class="text-sm font-medium font-label">Loyalty</span>
+</a>
+<a class="text-slate-400 hover:text-slate-100 px-4 py-3 flex items-center gap-3 transition-all duration-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined text-xl">analytics</span>
+<span class="text-sm font-medium font-label">Analytics</span>
+</a>
+<a class="text-slate-400 hover:text-slate-100 px-4 py-3 flex items-center gap-3 transition-all duration-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined text-xl">schedule</span>
+<span class="text-sm font-medium font-label">Shifts</span>
+</a>
+<a class="text-slate-400 hover:text-slate-100 px-4 py-3 flex items-center gap-3 transition-all duration-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined text-xl">notifications</span>
+<span class="text-sm font-medium font-label">Notifications</span>
+</a>
+<a class="text-slate-400 hover:text-slate-100 px-4 py-3 flex items-center gap-3 transition-all duration-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined text-xl">description</span>
+<span class="text-sm font-medium font-label">Reports</span>
+</a>
+</nav>
+<div class="px-4 mt-auto space-y-1">
+<button class="w-full mb-4 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span>
+<span class="text-sm uppercase tracking-wider font-label">New Transaction</span>
+</button>
+<a class="text-slate-400 hover:text-slate-100 px-4 py-2 flex items-center gap-3 transition-all duration-200 text-sm font-label" href="#">
+<span class="material-symbols-outlined text-xl">help</span>
+                Support
+            </a>
+<a class="text-slate-400 hover:text-slate-100 px-4 py-2 flex items-center gap-3 transition-all duration-200 text-sm font-label" href="#">
+<span class="material-symbols-outlined text-xl">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md h-16 w-full flex justify-between items-center px-8 shadow-sm">
+<div class="flex items-center gap-4">
+<span class="text-xl font-bold text-slate-900 font-headline">Live Monitoring</span>
+<div class="h-4 w-[1px] bg-slate-200 mx-2"></div>
+<div class="flex items-center gap-2 px-3 py-1 bg-slate-100 rounded-full">
+<span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+<span class="text-xs font-medium text-slate-600">Lagos Central Branch</span>
+<span class="material-symbols-outlined text-sm text-slate-400">expand_more</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="material-symbols-outlined text-slate-500">notifications</span>
+<span class="absolute -top-1 -right-1 w-4 h-4 bg-error text-white text-[10px] flex items-center justify-center rounded-full border-2 border-white font-bold">3</span>
+</div>
+<span class="material-symbols-outlined text-slate-500">settings</span>
+<div class="flex items-center gap-3 pl-4 border-l border-slate-100">
+<div class="text-right">
+<p class="text-xs font-bold text-slate-900 font-headline">Johnathan D.</p>
+<p class="text-[10px] text-slate-500 font-label">Branch Manager</p>
+</div>
+<img alt="Manager Profile Avatar" class="w-8 h-8 rounded-full border border-slate-200 object-cover" data-alt="Close-up portrait of a professional man with a confident smile in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH8HJCWjF7_fDu6RcuNg0GpfKHhcPni0p7UX_muO_TX9arHnXZvLt6jQouI4IsmrCjhoWT2U8tSzHF6VX-lCG9njlLuWnwhKuNwb_4cV3Jxl0D8putzA8xqH_hx1DQmLvJ_mCTX08gJ5MYox-nxd4DWX2HwrzUHTbssoBACDlUkOLwXV_8d7fgi-OTMpy3epa8K5sb_23jStTBMOd8o07EaLSdLuPbIXNGbChLuhOS6VCs19SIPPJeFrDQrP4uxE3rzPDNMWCflDNy"/>
+</div>
+</div>
+</header>
+<div class="p-8 max-w-7xl mx-auto space-y-8">
+<!-- High-Level Branch Summary: Bento Style -->
+<section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<div class="col-span-1 md:col-span-2 bg-surface-container-lowest p-6 rounded-xl shadow-sm border-l-4 border-emerald-500 flex justify-between items-center">
+<div>
+<p class="text-xs font-medium uppercase tracking-widest text-on-surface-variant font-label mb-1">Total Live Revenue</p>
+<h2 class="text-4xl font-extrabold text-on-surface font-headline flex items-baseline gap-1">
+<span class="text-2xl font-headline">₦</span>4,892,150<span class="text-sm font-medium text-emerald-600 ml-2">.00</span>
+</h2>
+<p class="text-xs text-on-surface-variant mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-emerald-500">trending_up</span>
+<span class="font-semibold text-emerald-600">+12.4%</span> from previous shift
+                        </p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-full">
+<span class="material-symbols-outlined text-4xl text-emerald-600">payments</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border-l-4 border-secondary flex flex-col justify-center">
+<p class="text-xs font-medium uppercase tracking-widest text-on-surface-variant font-label mb-1">Active Terminals</p>
+<div class="flex items-baseline gap-2">
+<h2 class="text-4xl font-extrabold text-on-surface font-headline">09</h2>
+<span class="text-sm font-medium text-on-surface-variant">/ 12 total</span>
+</div>
+<div class="mt-4 flex -space-x-2">
+<span class="w-6 h-6 rounded-full bg-emerald-500 border-2 border-white"></span>
+<span class="w-6 h-6 rounded-full bg-emerald-500 border-2 border-white"></span>
+<span class="w-6 h-6 rounded-full bg-emerald-500 border-2 border-white"></span>
+<span class="w-6 h-6 rounded-full bg-emerald-500 border-2 border-white"></span>
+<div class="w-6 h-6 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center text-[8px] font-bold">+5</div>
+</div>
+</div>
+<div class="bg-tertiary text-white p-6 rounded-xl shadow-sm flex flex-col justify-center relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-xs font-medium uppercase tracking-widest text-slate-400 font-label mb-1">Average Wait Time</p>
+<h2 class="text-4xl font-extrabold font-headline">2.4<span class="text-sm font-normal text-slate-400 ml-1">mins</span></h2>
+<div class="mt-2 h-1 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-emerald-400 w-[65%]"></div>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-7xl opacity-5">timer</span>
+</div>
+</section>
+<!-- Active Cashier Sessions: Fluid Table -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="px-6 py-5 border-b border-surface-container-low flex justify-between items-center bg-surface-bright">
+<div>
+<h3 class="text-lg font-bold text-on-surface font-headline">Active Cashier Sessions</h3>
+<p class="text-xs text-on-surface-variant">Real-time terminal pulse from all checkout zones.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex bg-surface-container-low p-1 rounded-lg">
+<button class="px-3 py-1.5 text-xs font-bold font-label rounded-md bg-white shadow-sm text-primary">Table</button>
+<button class="px-3 py-1.5 text-xs font-medium font-label text-on-surface-variant hover:text-primary transition-colors">Grid</button>
+</div>
+<button class="p-2 border border-outline-variant/30 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-xl">filter_list</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-on-surface-variant font-label">Cashier &amp; Terminal</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-on-surface-variant font-label">Status</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-on-surface-variant font-label text-right">Active Cart</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-on-surface-variant font-label text-right">Shift Sales</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-on-surface-variant font-label">Last Activity</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-on-surface-variant font-label text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low">
+<!-- Row 1: Processing Cart -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-secondary font-bold text-sm">CO</div>
+<div>
+<p class="text-sm font-bold text-on-surface font-headline">Chidi Okoro</p>
+<p class="text-xs text-on-surface-variant font-label">T-04 • Main Entrance</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[11px] font-bold uppercase tracking-wider font-label">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                        Processing Cart
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<p class="text-sm font-bold text-on-surface font-headline">₦12,450.00</p>
+<p class="text-[10px] text-on-surface-variant font-label">14 items</p>
+</td>
+<td class="px-6 py-5 text-right">
+<p class="text-sm font-bold text-on-surface font-headline">₦845,900.00</p>
+<p class="text-[10px] text-emerald-600 font-label">Target Met</p>
+</td>
+<td class="px-6 py-5">
+<p class="text-xs text-on-surface-variant font-label">Just now</p>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<a class="text-xs font-bold text-secondary uppercase font-label hover:underline" href="#">View Current Cart</a>
+<button class="p-2 text-error hover:bg-error-container rounded-lg transition-colors">
+<span class="material-symbols-outlined text-xl">logout</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Idle -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-secondary font-bold text-sm">AM</div>
+<div>
+<p class="text-sm font-bold text-on-surface font-headline">Amina Musa</p>
+<p class="text-xs text-on-surface-variant font-label">T-02 • Food Court</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-[11px] font-bold uppercase tracking-wider font-label">
+                                        Idle
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<p class="text-sm font-bold text-on-surface-variant font-headline">₦0.00</p>
+</td>
+<td class="px-6 py-5 text-right">
+<p class="text-sm font-bold text-on-surface font-headline">₦612,400.00</p>
+<p class="text-[10px] text-on-surface-variant font-label">72% of shift</p>
+</td>
+<td class="px-6 py-5">
+<p class="text-xs text-on-surface-variant font-label">4m 22s ago</p>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-error hover:bg-error-container rounded-lg transition-colors">
+<span class="material-symbols-outlined text-xl">logout</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Away -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-secondary font-bold text-sm">EE</div>
+<div>
+<p class="text-sm font-bold text-on-surface font-headline">Emeka Eze</p>
+<p class="text-xs text-on-surface-variant font-label">T-08 • Fast Track</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-[11px] font-bold uppercase tracking-wider font-label">
+                                        Away
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<p class="text-sm font-bold text-on-surface-variant font-headline">₦0.00</p>
+</td>
+<td class="px-6 py-5 text-right">
+<p class="text-sm font-bold text-on-surface font-headline">₦1,240,500.00</p>
+<p class="text-[10px] text-emerald-600 font-label">Shift High</p>
+</td>
+<td class="px-6 py-5">
+<p class="text-xs text-on-surface-variant font-label">12m 45s ago</p>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-error hover:bg-error-container rounded-lg transition-colors">
+<span class="material-symbols-outlined text-xl">logout</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Processing Cart -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-secondary font-bold text-sm">BA</div>
+<div>
+<p class="text-sm font-bold text-on-surface font-headline">Bisi Adeyemi</p>
+<p class="text-xs text-on-surface-variant font-label">T-05 • Kiosk Zone</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[11px] font-bold uppercase tracking-wider font-label">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                        Processing Cart
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<p class="text-sm font-bold text-on-surface font-headline">₦4,200.00</p>
+<p class="text-[10px] text-on-surface-variant font-label">2 items</p>
+</td>
+<td class="px-6 py-5 text-right">
+<p class="text-sm font-bold text-on-surface font-headline">₦321,050.00</p>
+<p class="text-[10px] text-amber-600 font-label">Below Avg</p>
+</td>
+<td class="px-6 py-5">
+<p class="text-xs text-on-surface-variant font-label">Just now</p>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<a class="text-xs font-bold text-secondary uppercase font-label hover:underline" href="#">View Current Cart</a>
+<button class="p-2 text-error hover:bg-error-container rounded-lg transition-colors">
+<span class="material-symbols-outlined text-xl">logout</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Idle -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-secondary font-bold text-sm">FT</div>
+<div>
+<p class="text-sm font-bold text-on-surface font-headline">Fatima Tukur</p>
+<p class="text-xs text-on-surface-variant font-label">T-01 • Customer Service</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-[11px] font-bold uppercase tracking-wider font-label">
+                                        Idle
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<p class="text-sm font-bold text-on-surface-variant font-headline">₦0.00</p>
+</td>
+<td class="px-6 py-5 text-right">
+<p class="text-sm font-bold text-on-surface font-headline">₦154,200.00</p>
+<p class="text-[10px] text-on-surface-variant font-label">Half shift</p>
+</td>
+<td class="px-6 py-5">
+<p class="text-xs text-on-surface-variant font-label">8m ago</p>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-error hover:bg-error-container rounded-lg transition-colors">
+<span class="material-symbols-outlined text-xl">logout</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 bg-surface-container-low/30 border-t border-surface-container-low flex justify-between items-center">
+<p class="text-xs font-medium text-on-surface-variant font-label">Showing 5 of 9 active sessions</p>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant/30 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined text-xl">chevron_left</span>
+</button>
+<button class="p-2 border border-outline-variant/30 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Bottom Floating Management Actions -->
+<div class="fixed bottom-8 right-8 z-40 flex items-center gap-4">
+<button class="bg-glass border border-white/50 px-6 py-3 rounded-full shadow-lg flex items-center gap-3 text-secondary font-bold text-sm uppercase tracking-wider font-label hover:shadow-xl transition-all">
+<span class="material-symbols-outlined">analytics</span>
+                    Real-time Report
+                </button>
+<button class="bg-primary text-on-primary px-6 py-4 rounded-full shadow-lg flex items-center gap-3 font-bold text-sm uppercase tracking-wider font-label hover:shadow-xl hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined">add</span>
+                    Override Terminal
+                </button>
+</div>
+</div>
+</main>
+</body></html>

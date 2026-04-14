@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding Step 3: Add Products | Zudo POS</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#001a59",
+                        "primary-fixed-dim": "#88d982",
+                        "on-secondary-fixed": "#260059",
+                        "secondary-container": "#b188ff",
+                        "surface-container-high": "#dde9ff",
+                        "on-background": "#0d1c2f",
+                        "outline-variant": "#c6c6cc",
+                        "on-surface": "#0d1c2f",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#b6c4ff",
+                        "primary": "#000b01",
+                        "surface-dim": "#ccdbf4",
+                        "primary-fixed": "#a3f69c",
+                        "on-surface-variant": "#45474c",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-primary": "#88d982",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#44118d",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-fixed-variant": "#264191",
+                        "surface-container": "#e6eeff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#00164e",
+                        "on-primary-fixed": "#002204",
+                        "surface-tint": "#1b6d24",
+                        "tertiary": "#000623",
+                        "on-secondary-fixed-variant": "#572ba0",
+                        "on-primary-container": "#499849",
+                        "surface-container-highest": "#d5e3fd",
+                        "secondary-fixed-dim": "#d3bbff",
+                        "tertiary-fixed": "#dce1ff",
+                        "background": "#f8f9ff",
+                        "primary-container": "#002704",
+                        "surface": "#f8f9ff",
+                        "outline": "#76777c",
+                        "secondary-fixed": "#ebdcff",
+                        "secondary": "#6f46b9",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#233144",
+                        "surface-variant": "#d5e3fd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#005312",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#6b83d7",
+                        "inverse-on-surface": "#ebf1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .brand-font { font-family: 'Manrope', sans-serif; }
+        .glass-panel {
+            background: rgba(248, 249, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex overflow-hidden">
+<!-- SideNavBar (Authority Source: JSON) -->
+<nav class="bg-[#000623] text-white fixed left-0 top-0 h-full w-64 border-r border-white/10 shadow-xl flex flex-col h-full py-6 z-50">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+</div>
+<div>
+<div class="text-white font-['Inter'] text-sm tracking-wide font-semibold">Onboarding</div>
+<div class="text-slate-400 text-xs">Step 3 of 6</div>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-1/2"></div>
+</div>
+</div>
+<div class="flex-grow space-y-1">
+<a class="text-slate-400 hover:text-white flex items-center px-4 py-3 mx-2 my-1 transition-all hover:bg-white/5 group" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="storefront">storefront</span>
+<span class="font-['Inter'] text-sm tracking-wide">Store Setup</span>
+</a>
+<a class="text-slate-400 hover:text-white flex items-center px-4 py-3 mx-2 my-1 transition-all hover:bg-white/5 group" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="inventory_2">inventory_2</span>
+<span class="font-['Inter'] text-sm tracking-wide">Products</span>
+</a>
+<!-- Active State: Add Products matches 'Products' but context is manual adding -->
+<div class="bg-[#6f46b9] text-white rounded-lg mx-2 my-1 flex items-center px-4 py-3 font-semibold translate-x-1 duration-200">
+<span class="material-symbols-outlined mr-3" data-icon="badge">badge</span>
+<span class="font-['Inter'] text-sm tracking-wide">Staff</span>
+</div>
+<a class="text-slate-400 hover:text-white flex items-center px-4 py-3 mx-2 my-1 transition-all hover:bg-white/5 group" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="task_alt">task_alt</span>
+<span class="font-['Inter'] text-sm tracking-wide">Finalize</span>
+</a>
+</div>
+<div class="mt-auto px-2 space-y-1">
+<button class="w-full bg-secondary/20 text-secondary border border-secondary/30 rounded-lg py-3 px-4 mb-4 font-bold text-xs uppercase tracking-widest hover:bg-secondary/30 transition-all">
+                Save Progress
+            </button>
+<a class="text-slate-400 hover:text-white flex items-center px-4 py-2 transition-all hover:bg-white/5" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="contact_support">contact_support</span>
+<span class="font-['Inter'] text-sm tracking-wide">Support</span>
+</a>
+<a class="text-slate-400 hover:text-white flex items-center px-4 py-2 transition-all hover:bg-white/5" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="logout">logout</span>
+<span class="font-['Inter'] text-sm tracking-wide">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow ml-64 min-h-screen flex flex-col bg-surface">
+<!-- TopAppBar (Authority Source: JSON) -->
+<header class="bg-[#f8f9ff] text-[#000b01] font-['Manrope'] font-bold text-lg flex justify-between items-center px-8 py-4 w-full h-16 sticky top-0 z-40">
+<div class="text-xl font-black text-[#000b01] tracking-tight">Zudo POS</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-[#dde9ff] p-2 rounded-full transition-colors" data-icon="help">help</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-[#dde9ff] p-2 rounded-full transition-colors" data-icon="settings">settings</button>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-high ring-2 ring-surface-container-highest">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP-gHHYBRof7nshkiNTg7TdvG8PjA_ESJ2I_dEuEwawr0cl-erfKsNJqZCiZ_d_kKlQuEtjvFKEiRI-6FKoqgkGZ-MyPsBuQ0qBBPwPr9SMum1REVrEzDtJ3BszlX6jl50yc7r8ktRuVRCb1NQl4jWLocb_GKxtq5SIx_4sHsWtg9sMGh7ORwBs17ffdtzrjcuFh3oXOV74DAK_NJwcfIfQijwtPKyF3PlUwq_p-6VGcr1CBeclFhqLkiY1hJLt3QfIa1eg6gCCfkA"/>
+</div>
+</div>
+</header>
+<div class="flex-grow p-8 lg:p-12 max-w-7xl mx-auto w-full">
+<div class="mb-12">
+<h1 class="text-4xl font-extrabold text-primary mb-2 tracking-tight">Add Your First Products</h1>
+<p class="text-on-surface-variant text-lg max-w-2xl">Start building your inventory. You can manually enter details for a single item or upload your entire catalog via CSV.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Manual Add Form (The Sheet) -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-8 shadow-[0px_12px_32px_rgba(13,28,47,0.06)] border border-outline-variant/10">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+                            Add Manually
+                        </h2>
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant bg-surface-container-low px-3 py-1 rounded-full">New Entry</span>
+</div>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="md:col-span-2">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Product Name</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest transition-all" placeholder="e.g. Vintage Leather Journal" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Category</label>
+<select class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest transition-all appearance-none">
+<option>Select Category</option>
+<option>Stationery</option>
+<option>Accessories</option>
+<option>Bags</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Price (₦)</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-primary">₦</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg p-4 pl-10 focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest transition-all font-headline font-bold" placeholder="0.00" type="number"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Stock Quantity</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest transition-all" placeholder="0" type="number"/>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Barcode</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<span class="text-[10px] font-bold text-secondary uppercase opacity-0 group-hover:opacity-100 transition-opacity">Auto-gen</span>
+<div class="relative inline-block w-8 h-4 bg-surface-dim rounded-full transition-colors peer-checked:bg-secondary">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="absolute left-1 top-1 bg-white w-2 h-2 rounded-full transition-transform peer-checked:translate-x-4"></div>
+</div>
+</label>
+</div>
+<div class="flex gap-2">
+<input class="flex-grow bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest transition-all font-mono" placeholder="Scan or type barcode" type="text"/>
+<button class="bg-surface-container-high p-4 rounded-lg hover:bg-surface-container-highest transition-colors" type="button">
+<span class="material-symbols-outlined" data-icon="barcode_scanner">barcode_scanner</span>
+</button>
+</div>
+</div>
+</div>
+<div class="pt-4">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-4 px-6 rounded-lg font-bold uppercase tracking-widest text-sm hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/10" type="submit">
+<span>Save &amp; Add Product</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Bulk Import & Guidance (The Well) -->
+<div class="lg:col-span-5 space-y-8">
+<!-- Bulk Import Card -->
+<div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="upload_file">upload_file</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Bulk Import Catalog</h3>
+<p class="text-on-surface-variant text-sm mb-8">Have a lot of products? Upload a .csv or .xlsx file to add them all at once.</p>
+<button class="w-full border-2 border-dashed border-outline-variant rounded-xl p-8 hover:bg-surface-container hover:border-secondary transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary mb-2" data-icon="cloud_upload">cloud_upload</span>
+<span class="block text-xs font-bold text-on-surface-variant uppercase tracking-widest">Drop CSV here or Browse</span>
+</button>
+<a class="mt-4 text-secondary text-xs font-bold flex items-center gap-1 hover:underline" href="#">
+<span class="material-symbols-outlined text-xs" data-icon="download">download</span>
+                            Download Sample Template
+                        </a>
+</div>
+<!-- Visual Empty State/Preview -->
+<div class="bg-white rounded-xl overflow-hidden shadow-sm border border-outline-variant/10 relative group">
+<div class="h-48 bg-surface-container-low flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="Minimalist top-down view of organized stationery items including notebooks, pens and aesthetic desk accessories on a clean white surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdgm14V7es5EQDkeX0VO7ecJ8WC8MI67aYtxe1BnUSu0WiQVVeu5FFD2CPyUNTkRlhcVV6D3JCxyXs5ng7ZRPGwcTu_T6kdTAs1tQLUYswXDdoXJQ_K1vlauO8Ak0zZyUsZwt3ClnZZ211D5YwpYFrwBXY54mw-2CePZEeDJXZqJgnnmF6Nc61YaAclOQjl2FwCOW0yXVFc3Dz4W9cOtS6AX3Iu8qxAn7Rp3erFGXbliZKkrrDiPsBytFb4FEEIGrM7Z8vTMhJeemB"/>
+<div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-white/80 backdrop-blur-md px-6 py-3 rounded-full shadow-lg border border-white/50">
+<span class="text-xs font-bold text-primary tracking-widest uppercase">Live Preview</span>
+</div>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="h-4 w-32 bg-surface-container-high rounded mb-2"></div>
+<div class="h-3 w-20 bg-surface-container rounded"></div>
+</div>
+<div class="h-6 w-16 bg-secondary/10 rounded-full"></div>
+</div>
+<div class="pt-4 border-t border-surface-container flex justify-between items-center">
+<div class="h-5 w-24 bg-surface-container-highest rounded"></div>
+<div class="h-8 w-8 bg-surface-container-high rounded-full"></div>
+</div>
+</div>
+<!-- Empty State Overlay -->
+<div class="absolute inset-0 bg-surface-container-lowest/40 backdrop-blur-[2px] flex items-center justify-center p-8 text-center">
+<div class="bg-white p-6 rounded-xl shadow-xl">
+<span class="material-symbols-outlined text-outline-variant text-4xl mb-2" data-icon="inventory">inventory</span>
+<p class="text-xs font-medium text-on-surface-variant italic">No products added yet. Your catalog will appear here as you add items.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Footer Navigation (Glassmorphism FAB) -->
+<div class="fixed bottom-8 right-8 z-50 flex items-center gap-4">
+<button class="bg-surface-container-lowest text-primary px-6 py-4 rounded-full font-bold shadow-xl border border-outline-variant/10 hover:bg-surface-bright transition-all flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+                Back
+            </button>
+<button class="bg-gradient-to-r from-secondary to-[#572ba0] text-white px-8 py-4 rounded-full font-bold shadow-2xl shadow-secondary/20 hover:translate-y-[-2px] transition-all flex items-center gap-2 active:scale-95">
+                Next: Add Staff
+                <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</main>
+</body></html>

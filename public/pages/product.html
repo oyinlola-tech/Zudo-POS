@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zudo POS | Precision Retail Engine</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#000623",
+                    "on-tertiary-container": "#6b83d7",
+                    "inverse-surface": "#233144",
+                    "error-container": "#ffdad6",
+                    "on-secondary-container": "#44118d",
+                    "on-surface-variant": "#45474c",
+                    "on-tertiary-fixed-variant": "#264191",
+                    "on-error-container": "#93000a",
+                    "on-background": "#0d1c2f",
+                    "surface-container-highest": "#d5e3fd",
+                    "background": "#f8f9ff",
+                    "surface-variant": "#d5e3fd",
+                    "on-primary-fixed-variant": "#005312",
+                    "primary-container": "#002704",
+                    "tertiary-fixed": "#dce1ff",
+                    "surface": "#f8f9ff",
+                    "primary-fixed": "#a3f69c",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#499849",
+                    "on-secondary-fixed-variant": "#572ba0",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed": "#260059",
+                    "secondary-fixed-dim": "#d3bbff",
+                    "on-primary-fixed": "#002204",
+                    "inverse-primary": "#88d982",
+                    "surface-dim": "#ccdbf4",
+                    "outline-variant": "#c6c6cc",
+                    "secondary": "#6f46b9",
+                    "secondary-container": "#b188ff",
+                    "primary": "#000b01",
+                    "inverse-on-surface": "#ebf1ff",
+                    "on-tertiary-fixed": "#00164e",
+                    "on-error": "#ffffff",
+                    "surface-container": "#e6eeff",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#dde9ff",
+                    "surface-bright": "#f8f9ff",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#88d982",
+                    "outline": "#76777c",
+                    "secondary-fixed": "#ebdcff",
+                    "on-surface": "#0d1c2f",
+                    "tertiary-fixed-dim": "#b6c4ff",
+                    "surface-container-low": "#eff4ff",
+                    "tertiary-container": "#001a59",
+                    "surface-tint": "#1b6d24"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; color: #0d1c2f; }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+        .glass-nav { background: rgba(248, 249, 255, 0.8); backdrop-filter: blur(20px); }
+        .text-gradient { background: linear-gradient(45deg, #000b01, #1b6d24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#f8f9ff]/80 dark:bg-[#000b01]/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-black text-[#000b01] dark:text-[#f8f9ff] tracking-tighter font-headline">Zudo POS</div>
+<div class="hidden md:flex items-center gap-8 font-manrope font-bold text-sm tracking-tight">
+<a class="text-[#6f46b9] dark:text-[#b188ff] border-b-2 border-[#6f46b9] pb-1" href="#">Products</a>
+<a class="text-[#45474c] dark:text-[#dde9ff] hover:text-[#000b01] transition-colors duration-300" href="#">Solutions</a>
+<a class="text-[#45474c] dark:text-[#dde9ff] hover:text-[#000b01] transition-colors duration-300" href="#">Pricing</a>
+<a class="text-[#45474c] dark:text-[#dde9ff] hover:text-[#000b01] transition-colors duration-300" href="#">Resources</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-[#45474c] font-bold text-sm hover:text-primary transition-all">Login</button>
+<button class="bg-primary text-on-primary px-5 py-2.5 rounded-lg font-bold text-sm scale-95 active:duration-75 ease-in-out hover:bg-surface-tint transition-all">Get Started</button>
+</div>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-6 py-20 lg:py-32">
+<div class="flex flex-col items-center text-center max-w-4xl mx-auto">
+<span class="px-4 py-1.5 rounded-full bg-surface-container-high text-secondary text-xs font-bold tracking-widest uppercase mb-6">Nigeria's Premier Retail Infrastructure</span>
+<h1 class="text-5xl md:text-7xl font-black font-headline tracking-tighter text-on-surface mb-8 leading-[1.1]">
+                    The Most <span class="text-gradient">Powerful Engine</span> for Nigerian Retail.
+                </h1>
+<p class="text-lg text-on-surface-variant leading-relaxed mb-12 max-w-2xl">
+                    Experience the fluidity of high-end design met with precision local engineering. From Lagos boutiques to nationwide chains, we provide the authority you need to scale.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="px-8 py-4 bg-primary text-on-primary rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-surface-tint transition-all">
+                        Deploy Your Instance <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="px-8 py-4 bg-surface-container-lowest text-primary border border-outline-variant/20 rounded-xl font-bold hover:bg-surface-container-low transition-all">
+                        Watch Demo
+                    </button>
+</div>
+</div>
+<!-- Hero Mockup -->
+<div class="mt-20 relative">
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent z-10 h-32 bottom-0"></div>
+<div class="rounded-2xl overflow-hidden shadow-2xl border border-outline-variant/10 bg-surface-container-low">
+<img alt="Zudo POS Interface" class="w-full h-auto object-cover" data-alt="A clean, minimalist high-end retail point of sale interface displayed on a sleek tablet in a modern boutique environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi0STQiNSAEcQcR3FS7RQmyO988fxiyoxm-ghSaC_c3L3PmBtecPGNCDVbtFa7x46uiUe7sXNRrqK5wHbp1dow7eMlb5gioWDJ4ZAyeoBfO-tpfrgSD9JOZ1L5kDn53-ZGij40TWYdL7GQqgnzaOrn3TvlWPw2Xzrhn_yAu-wa5TK63M2AvbXwCqbTC2Jfq1aSae1iRG8qCx4YsZdb1rFERt4ytkVzUhguEtE3mDxYkOb3ytuVI-oRePCjeJKGVDwG0_YLCNi1VsHe"/>
+</div>
+</div>
+</section>
+<!-- Interactive Modules -->
+<section class="bg-surface-container-low py-24">
+<div class="max-w-7xl mx-auto px-6">
+<div class="mb-16">
+<h2 class="text-3xl md:text-5xl font-black font-headline tracking-tight mb-4">Precision Modules.</h2>
+<p class="text-on-surface-variant max-w-xl">Every component is engineered for high-speed scanning and transactional authority.</p>
+</div>
+<div class="bento-grid">
+<!-- Point of Sale -->
+<div class="col-span-12 md:col-span-8 bg-surface-container-lowest p-8 rounded-full border border-outline-variant/10 relative overflow-hidden group">
+<div class="relative z-20">
+<h3 class="text-2xl font-black font-headline mb-4">Point of Sale</h3>
+<p class="text-on-surface-variant max-w-md mb-8">Zero-latency checkout experience with smart Naira symbol anchors and tactile payment selectors.</p>
+<div class="flex items-center gap-4">
+<div class="bg-primary-fixed p-3 rounded-lg flex items-center justify-center">
+<span class="text-on-primary-fixed font-bold text-xl">₦</span>
+</div>
+<div>
+<div class="text-xs font-bold text-outline uppercase tracking-widest">Total Due</div>
+<div class="text-3xl font-black font-headline">42,500.00</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-[-20%] right-[-10%] w-2/3 opacity-40 group-hover:opacity-100 transition-opacity">
+<img alt="POS Interface Mockup" data-alt="Close up of a sleek digital checkout screen showing currency values in Naira and green success indicators" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtrmPUJlAUZ1wsH3slAcLYdEIlxNESEbNF8jNpKmSzdJB5GekeP751SURj_dg4__ejH43NeYk_YMmJLxWbxeT7EBT_zgt10dBYCQ3GK25Uty4yEKI1UcIzxYCpMqaE3hTmtr_XHIwIEJshkfhmfdyrRvIQc915Rp1z4p3r-QzUswvl3KJyUIIJaihyCmfpX1Amd3A4iGb9WZkUwn2JJB3o0pVOas6MG3tb9AO3onwl6OKlnssOkb3oqDXUDaZg5G31yf4PFgieL__9"/>
+</div>
+</div>
+<!-- Inventory Engine -->
+<div class="col-span-12 md:col-span-4 bg-tertiary text-white p-8 rounded-full flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary-fixed text-4xl mb-6">inventory_2</span>
+<h3 class="text-2xl font-black font-headline mb-4">Inventory Engine</h3>
+<p class="text-tertiary-fixed-dim text-sm leading-relaxed">Automated tracking for thousands of SKUs. Low-stock alerts that matter.</p>
+</div>
+<div class="mt-12 bg-white/5 p-4 rounded-xl">
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs uppercase font-bold tracking-widest">Global Stock</span>
+<span class="text-primary-fixed font-bold">98%</span>
+</div>
+<div class="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary-fixed w-[98%]"></div>
+</div>
+</div>
+</div>
+<!-- Loyalty Hub -->
+<div class="col-span-12 md:col-span-4 bg-secondary-container p-8 rounded-full text-on-secondary-container">
+<span class="material-symbols-outlined text-4xl mb-6">loyalty</span>
+<h3 class="text-2xl font-black font-headline mb-4">Loyalty Hub</h3>
+<p class="text-on-secondary-container/80 text-sm">Turn one-time shoppers into lifetime advocates with tiered rewards.</p>
+</div>
+<!-- Multi-Store Manager -->
+<div class="col-span-12 md:col-span-8 bg-surface-container p-8 rounded-full border border-outline-variant/10 flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-1">
+<h3 class="text-2xl font-black font-headline mb-4">Multi-Store Manager</h3>
+<p class="text-on-surface-variant mb-6">Lagos, Abuja, Port Harcourt. Manage your entire retail empire from a single command center.</p>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface-container-highest rounded-full text-[10px] font-bold uppercase tracking-widest">Lagos Office</span>
+<span class="px-3 py-1 bg-surface-container-highest rounded-full text-[10px] font-bold uppercase tracking-widest">Abuja Hub</span>
+</div>
+</div>
+<div class="w-full md:w-64 h-40 rounded-xl overflow-hidden shadow-sm">
+<img alt="Analytics Dashboard" data-alt="Digital dashboard with clean analytics charts and graphs showing retail performance metrics across multiple cities" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArw6fnJ-dKcKYzDTOQxtYpmzekS2oEWVAYDdlRLs2WSu9AodansuodydJ-Mbh2U-pE4HttJ1tI1mSIavhbgJ9ZklKndwG1rC6UjyI3caRovCyJuEqMfFiQVuGW9IHKNdYzwpvGMMZX_C_bGHFU9IUSk2xmQGnC-MESYWVZNYhB4ZQYXCFtzSzXsMhEkqgbmOeo9D5F6gNJIumnuEmZR_BiewMThDLo_tSp-ADoMepB_eKGG1804IMPL7xB7vJ5ovU0QHFqp1AlSG22"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Hardware Integration -->
+<section class="py-24 max-w-7xl mx-auto px-6">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<div class="lg:w-1/2">
+<h2 class="text-3xl md:text-5xl font-black font-headline tracking-tight mb-6">Built for the Local Ecosystem.</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-10">
+                        Zudo POS isn't just software. It’s a bridge to your physical workspace. We offer native support for the hardware that powers Nigeria’s economy.
+                    </p>
+<ul class="space-y-6">
+<li class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-white text-sm">check</span>
+</div>
+<div>
+<h4 class="font-bold font-headline">Thermal Receipt Printers</h4>
+<p class="text-sm text-on-surface-variant">USB &amp; Network-based printing for instant customer records.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-white text-sm">check</span>
+</div>
+<div>
+<h4 class="font-bold font-headline">Cloud-Linked Scanners</h4>
+<p class="text-sm text-on-surface-variant">Rapid SKU scanning with zero-latency visual feedback.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-white text-sm">check</span>
+</div>
+<div>
+<h4 class="font-bold font-headline">Local Card Terminals</h4>
+<p class="text-sm text-on-surface-variant">Deep integration with major Nigerian payment processors.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="lg:w-1/2 grid grid-cols-2 gap-4">
+<div class="rounded-2xl overflow-hidden h-64 bg-surface-container-low">
+<img alt="Scanner Hardware" class="w-full h-full object-cover" data-alt="A professional barcode scanner on a clean retail counter with modern design elements" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBppwkPBGI-n-9s_JUkW69zx6SsrSUVcSYVb1WaW98DeoPAzuq43M-WTsW4CbYPJ2Ha4kPNrowbizlmPFdZ2QXiLcAYJmpQTSbBqgnyQ0mOAH6aHx-I6s7m-5UsldzTP8kR7K1wT4xJX1fRt_BgHbbMUBn3-56p8O5EsSWQZHRx5wKDp6tHV-vI395ruU5CsL5471LqX7hMVjkkRzSErbDpxdmZXwYb4Xuj0DPGBIV8K2aTHwVEE37H4IKEpE5pd7d3Rlnp_g7xnrkH"/>
+</div>
+<div class="rounded-2xl overflow-hidden h-64 mt-12 bg-surface-container-low">
+<img alt="Payment Hardware" class="w-full h-full object-cover" data-alt="A modern payment terminal in a minimalist Nigerian retail store showing successful transaction signal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy-I3fMntoMbeq9GeqRgRFW_jHJ9B_UwImGiCPhcBfHiI_AEh9cW0K0i1eZf_e6_LlxTtjtGyXt6Xgn65eW6_U8CY4Wfh4srvfNnOloNK7GMXsKIJbRzcjck4r-rnlo5RPmYeKiTvO1FuyUysLQm1GJ1FBLUw3czooy5etvWkjyrdQpXX6a1DaM9w3b_uJnXTP2tKlQkVf5lzU5HZTdByez1yZqyzZl5IGBsje8SXq9e_MCtLw_9BAVECM6E4YE2YnjX4_CCoBk5oa"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Offline-First Technology -->
+<section class="py-24 bg-primary text-white overflow-hidden relative">
+<div class="max-w-7xl mx-auto px-6 relative z-20">
+<div class="max-w-3xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-tint rounded-full mb-6">
+<span class="material-symbols-outlined text-xs">wifi_off</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Offline-First Tech</span>
+</div>
+<h2 class="text-4xl md:text-6xl font-black font-headline mb-8">Sync when you're back.</h2>
+<p class="text-primary-fixed/80 text-xl leading-relaxed mb-12">
+                        Connectivity in Nigeria can be fluid. Our architecture ensures your business never stops. Process sales, track inventory, and manage staff entirely offline. The moment you reconnect, our 'Fluid Sync' protocol reconciles your data instantly.
+                    </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="p-6 bg-white/5 rounded-xl border border-white/10">
+<h4 class="font-bold mb-2">Local Persistence</h4>
+<p class="text-xs text-white/60">Every transaction is stored in a secure local encrypted vault.</p>
+</div>
+<div class="p-6 bg-white/5 rounded-xl border border-white/10">
+<h4 class="font-bold mb-2">Conflict Resolution</h4>
+<p class="text-xs text-white/60">Intelligent merging of multi-store data post-outage.</p>
+</div>
+<div class="p-6 bg-white/5 rounded-xl border border-white/10">
+<h4 class="font-bold mb-2">Zero Downtime</h4>
+<p class="text-xs text-white/60">Customers won't even notice the internet is gone.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Element -->
+<div class="absolute right-[-10%] top-1/2 -translate-y-1/2 opacity-10">
+<span class="material-symbols-outlined text-[400px]" style="font-variation-settings: 'FILL' 1;">cloud_sync</span>
+</div>
+</section>
+<!-- Enterprise Ready -->
+<section class="py-24 max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-black font-headline mb-4">Enterprise Architecture.</h2>
+<p class="text-on-surface-variant">Built for scale, secured for peace of mind.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-12">
+<div class="text-center">
+<div class="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-secondary text-3xl">hub</span>
+</div>
+<h4 class="font-bold font-headline text-lg mb-3">Multi-Tenant Hub</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Isolate data perfectly across franchises while maintaining centralized visibility and control.</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-secondary text-3xl">security</span>
+</div>
+<h4 class="font-bold font-headline text-lg mb-3">Military-Grade Security</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">AES-256 encryption for all transaction data and strict role-based access control (RBAC).</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-secondary text-3xl">api</span>
+</div>
+<h4 class="font-bold font-headline text-lg mb-3">Robust API</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Connect your existing ERP, accounting software, or e-commerce storefront with ease.</p>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="max-w-7xl mx-auto px-6 pb-24">
+<div class="bg-surface-container-low rounded-[2rem] p-12 md:p-24 text-center border border-outline-variant/10">
+<h2 class="text-4xl md:text-6xl font-black font-headline tracking-tighter mb-8 max-w-3xl mx-auto">Ready to command your retail space?</h2>
+<p class="text-on-surface-variant text-lg mb-12 max-w-2xl mx-auto">Join the elite retailers across Nigeria who trust Zudo POS for their daily operations.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="px-10 py-5 bg-primary text-on-primary rounded-xl font-bold hover:scale-105 transition-transform">Get Started Now</button>
+<button class="px-10 py-5 bg-white text-primary rounded-xl font-bold border border-outline-variant/20 hover:bg-surface-container-low transition-colors">Speak to Sales</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#000623] dark:bg-[#000000] text-[#ffffff] border-t border-[#45474c]/20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 px-8 py-12 w-full max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="font-manrope font-black text-lg text-white mb-6">Zudo POS</div>
+<p class="text-[#c6c6cc] text-xs leading-relaxed uppercase tracking-widest opacity-80">
+                    Precision instruments for the fluid authority.
+                </p>
+</div>
+<div>
+<h4 class="font-inter text-xs uppercase tracking-widest text-white mb-6">Platform</h4>
+<div class="flex flex-col gap-4">
+<a class="text-[#c6c6cc] text-xs uppercase tracking-widest hover:text-white transition-all opacity-80 hover:opacity-100" href="#">Products</a>
+<a class="text-[#c6c6cc] text-xs uppercase tracking-widest hover:text-white transition-all opacity-80 hover:opacity-100" href="#">Solutions</a>
+<a class="text-[#c6c6cc] text-xs uppercase tracking-widest hover:text-white transition-all opacity-80 hover:opacity-100" href="#">Hardware</a>
+</div>
+</div>
+<div>
+<h4 class="font-inter text-xs uppercase tracking-widest text-white mb-6">Company</h4>
+<div class="flex flex-col gap-4">
+<a class="text-[#c6c6cc] text-xs uppercase tracking-widest hover:text-white transition-all opacity-80 hover:opacity-100" href="#">Lagos Office</a>
+<a class="text-[#c6c6cc] text-xs uppercase tracking-widest hover:text-white transition-all opacity-80 hover:opacity-100" href="#">Abuja Hub</a>
+<a class="text-[#c6c6cc] text-xs uppercase tracking-widest hover:text-white transition-all opacity-80 hover:opacity-100" href="#">Contact Support</a>
+</div>
+</div>
+<div>
+<h4 class="font-inter text-xs uppercase tracking-widest text-white mb-6">Legal</h4>
+<div class="flex flex-col gap-4">
+<a class="text-[#c6c6cc] text-xs uppercase tracking-widest hover:text-white transition-all opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-[#c6c6cc] text-xs uppercase tracking-widest hover:text-white transition-all opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+<div class="px-8 py-8 border-t border-white/5 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-inter text-xs uppercase tracking-widest text-[#c6c6cc] opacity-80">© 2026 Zudo POS. Built for the Fluid Authority. Lagos, Nigeria.</p>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-white opacity-60 hover:opacity-100 cursor-pointer">public</span>
+<span class="material-symbols-outlined text-white opacity-60 hover:opacity-100 cursor-pointer">language</span>
+</div>
+</div>
+</footer>
+</body></html>

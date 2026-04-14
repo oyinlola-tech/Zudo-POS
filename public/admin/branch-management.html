@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#6f46b9",
+                    "on-secondary-fixed": "#260059",
+                    "inverse-surface": "#233144",
+                    "inverse-primary": "#88d982",
+                    "secondary-fixed": "#ebdcff",
+                    "on-error-container": "#93000a",
+                    "primary": "#000b01",
+                    "outline-variant": "#c6c6cc",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "background": "#f8f9ff",
+                    "on-background": "#0d1c2f",
+                    "on-tertiary-container": "#6b83d7",
+                    "on-tertiary-fixed-variant": "#264191",
+                    "on-surface": "#0d1c2f",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#499849",
+                    "secondary-fixed-dim": "#d3bbff",
+                    "tertiary-fixed": "#dce1ff",
+                    "surface-container-highest": "#d5e3fd",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#76777c",
+                    "surface-bright": "#f8f9ff",
+                    "on-primary-fixed": "#002204",
+                    "tertiary": "#000623",
+                    "surface-tint": "#1b6d24",
+                    "error": "#ba1a1a",
+                    "on-secondary-container": "#44118d",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#45474c",
+                    "primary-container": "#002704",
+                    "on-secondary-fixed-variant": "#572ba0",
+                    "surface-container": "#e6eeff",
+                    "tertiary-container": "#001a59",
+                    "primary-fixed-dim": "#88d982",
+                    "surface-container-low": "#eff4ff",
+                    "inverse-on-surface": "#ebf1ff",
+                    "tertiary-fixed-dim": "#b6c4ff",
+                    "surface-variant": "#d5e3fd",
+                    "on-tertiary-fixed": "#00164e",
+                    "surface-container-high": "#dde9ff",
+                    "surface-dim": "#ccdbf4",
+                    "primary-fixed": "#a3f69c",
+                    "surface": "#f8f9ff",
+                    "on-primary-fixed-variant": "#005312",
+                    "secondary-container": "#b188ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+        .glass-header {
+            background: rgba(248, 249, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 overflow-y-auto bg-slate-950 flex flex-col h-full shadow-2xl z-50">
+<div class="p-6">
+<div class="text-xl font-bold text-white tracking-tight font-manrope">Zudo POS</div>
+<div class="text-slate-400 text-xs font-medium uppercase tracking-widest mt-1">Admin Dashboard</div>
+</div>
+<nav class="flex-1 mt-4">
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Overview
+            </a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+                Sales
+            </a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+                Inventory
+            </a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+                Staff
+            </a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                Customers
+            </a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="card_membership">card_membership</span>
+                Loyalty
+            </a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                Analytics
+            </a>
+<a class="bg-emerald-500/10 text-emerald-400 border-l-4 border-emerald-500 py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+                Branches
+            </a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+                Notifications
+            </a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                Audit Logs
+            </a>
+</nav>
+<div class="p-4 mt-auto">
+<button class="w-full py-3 px-4 bg-emerald-500 text-slate-950 font-bold rounded-lg text-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="sync_alt">sync_alt</span>
+                Switch to Cashier
+            </button>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 ml-64 flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 flex justify-between items-center px-8 h-16 w-full glass-header border-b border-slate-200/50">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container rounded-lg border border-outline-variant/20">
+<span class="material-symbols-outlined text-emerald-600" data-icon="location_on">location_on</span>
+<span class="text-sm font-medium text-on-surface">Lagos Central</span>
+<span class="material-symbols-outlined text-sm" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<button class="p-2 rounded-full hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<div class="flex items-center gap-3 pl-4 border-l border-slate-200">
+<div class="text-right">
+<p class="text-sm font-bold text-on-surface">Chioma Adeyemi</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Super Admin</p>
+</div>
+<img class="w-10 h-10 rounded-full object-cover border-2 border-emerald-500/20" data-alt="portrait of a professional nigerian businesswoman in a clean corporate setting with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCorTsu3QcNixfs8ccMWuQsxllL85KnonY-kYpd0MGm0bymnpFtIphUCfnkhe5cFbwpeplNexi5D2xb5GIfPUZ2_xxtPy4D3QJc34S5M6rn9QL0wCOMV7TnP9DWieRmUXfX_gDMo9lesKwVoTDnx1Kc9P_pZ699Fg0x5MpsQ9XDL1Rrr8GHNeLL7kpjw1keYJjigNWrRhryfb-2zpaRkvEkrwe9KlKkIOiE2O10d7g7ViKhH-9OfIvVU4DsS9YAhpq-luj0-GKvCGv9"/>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<section class="mt-16 p-8 space-y-8">
+<!-- Page Header -->
+<div class="flex justify-between items-end">
+<div>
+<h1 class="text-3xl font-extrabold text-primary tracking-tight">Branch Management</h1>
+<p class="text-on-surface-variant font-body">Monitor and manage operational health across your Nigerian retail network.</p>
+</div>
+<div class="flex gap-3">
+<div class="bg-surface-container-low p-1 rounded-lg flex border border-outline-variant/10">
+<button class="px-4 py-2 bg-surface-container-lowest shadow-sm rounded-md flex items-center gap-2 text-sm font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="list">list</span>
+                            List View
+                        </button>
+<button class="px-4 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-md flex items-center gap-2 text-sm font-medium transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="map">map</span>
+                            Map View
+                        </button>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg flex items-center gap-2 font-bold hover:opacity-90 transition-all active:scale-95 shadow-lg">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                        Add New Branch
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Stats -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Total Branches</p>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-extrabold text-primary">12</span>
+<span class="text-emerald-600 bg-emerald-100 px-2 py-1 rounded text-xs font-bold">+2 New</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Active Staff</p>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-extrabold text-primary">142</span>
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="groups">groups</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Network Health</p>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-extrabold text-primary">98%</span>
+<span class="flex gap-1">
+<span class="w-1.5 h-6 bg-emerald-500 rounded-full"></span>
+<span class="w-1.5 h-4 bg-emerald-500 rounded-full mt-2"></span>
+<span class="w-1.5 h-5 bg-emerald-500 rounded-full mt-1"></span>
+</span>
+</div>
+</div>
+<div class="bg-primary-container p-6 rounded-xl shadow-lg relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-xs font-bold text-on-primary-container uppercase tracking-widest mb-1 opacity-80">Network Daily Sales</p>
+<span class="text-3xl font-extrabold text-white">₦ 4.2M</span>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10 scale-150 rotate-12">
+<span class="material-symbols-outlined text-[120px]" data-icon="trending_up">trending_up</span>
+</div>
+</div>
+</div>
+<!-- Branch List Table -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant/10 shadow-sm">
+<div class="p-6 bg-surface-container-low flex justify-between items-center">
+<h3 class="font-headline font-bold text-lg">Operational Locations</h3>
+<div class="flex gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-2 text-on-surface-variant text-sm" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-1.5 rounded-lg border-none bg-surface-container-lowest text-sm focus:ring-2 focus:ring-secondary/20 w-64" placeholder="Search branches..." type="text"/>
+</div>
+<button class="p-2 hover:bg-surface-container-high rounded-lg transition-all">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</div>
+<table class="w-full border-collapse">
+<thead class="bg-surface-container-low/50">
+<tr>
+<th class="px-6 py-4 text-left text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Branch Name</th>
+<th class="px-6 py-4 text-left text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Daily Sales</th>
+<th class="px-6 py-4 text-left text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Inventory Status</th>
+<th class="px-6 py-4 text-left text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Assigned Manager</th>
+<th class="px-6 py-4 text-left text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Staff</th>
+<th class="px-6 py-4 text-right text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Lagos Central -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5">
+<div>
+<p class="font-bold text-on-surface group-hover:text-emerald-700 transition-colors">Lagos Central</p>
+<p class="text-xs text-on-surface-variant">Ikeja, Lagos State</p>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="font-bold text-on-surface">₦ 1,240,500</p>
+<div class="w-24 bg-surface-container h-1 rounded-full mt-2">
+<div class="bg-emerald-500 h-1 rounded-full w-[85%]"></div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 bg-emerald-50 text-emerald-700 text-[10px] font-bold rounded uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                    Healthy
+                                </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<img class="w-6 h-6 rounded-full" data-alt="professional male manager portrait in modern business attire with bright warm indoor lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdp0HXSASefjEj0oj5J8ulT3KbT4TTyxyF1qfTSwaqHOynmQbNbppAyS52TL10fpThqIj2F8ktI_qDyIGK67zrKqdr4rwXPPnKs9BXBLMeBt1j8TBua85DG10t7fjmwHnYx5vki78JvwdZBFnFvIxZg7BlsKTmtmPzwdmfm0-69E-jqYj0WKb6RB1geywew6MqMIYgQTN9HKJecVDzENpSqGA3o9FZH86wUwWm7ZanrRHvAdvR8Lx7EhuRJo9fhnaztkPw-ZFh885u"/>
+<span class="text-sm font-medium text-on-surface">Tunde Bakare</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm font-medium">24 Active</td>
+<td class="px-6 py-5 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-all p-2 rounded-lg hover:bg-surface-container-high">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Abuja Mall -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5">
+<div>
+<p class="font-bold text-on-surface group-hover:text-emerald-700 transition-colors">Abuja Mall</p>
+<p class="text-xs text-on-surface-variant">Garki, FCT</p>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="font-bold text-on-surface">₦ 890,200</p>
+<div class="w-24 bg-surface-container h-1 rounded-full mt-2">
+<div class="bg-emerald-500 h-1 rounded-full w-[60%]"></div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 bg-secondary-fixed text-on-secondary-container text-[10px] font-bold rounded uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                    Restocking
+                                </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<img class="w-6 h-6 rounded-full" data-alt="african woman manager smiling in a sleek professional office setting with soft backlighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUfg3rJWhTsL0NrvCrG_7EdBfxAaUKe0PXsHeMNAsBx4I5OnCm9kAZe5Mg2O_ex5fHevroyJFjwus8MmuoyDuZ_EoByp3J8_mCzARbjErPTIyRO07qvIqZKsWBYHab5q-I6zxGyDqoS0CXbMYdclRBPxQ0S3dE_TjIiufNfWtXcTcQlZJgKyhEfVsp--zkBVa-QOaTJ-uw8z0-nuxLsNNoBVAyLcbFlewZbn960luGwbpC3SfkfjokN8i5eLd6bFr3FNWStd5iAXPc"/>
+<span class="text-sm font-medium text-on-surface">Amina Bello</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm font-medium">18 Active</td>
+<td class="px-6 py-5 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-all p-2 rounded-lg hover:bg-surface-container-high">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Port Harcourt Hub -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5">
+<div>
+<p class="font-bold text-on-surface group-hover:text-emerald-700 transition-colors">Port Harcourt Hub</p>
+<p class="text-xs text-on-surface-variant">GRA Phase 2, Rivers</p>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="font-bold text-on-surface">₦ 542,000</p>
+<div class="w-24 bg-surface-container h-1 rounded-full mt-2">
+<div class="bg-emerald-500 h-1 rounded-full w-[45%]"></div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 bg-error-container text-on-error-container text-[10px] font-bold rounded uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                                    Low Stock
+                                </span>
+</td>
+<td class="px-6 py-5">
+<button class="px-3 py-1 border border-outline-variant rounded-full text-xs font-bold text-on-surface-variant hover:bg-surface-container-high transition-all">
+                                    Assign Manager
+                                </button>
+</td>
+<td class="px-6 py-5 text-sm font-medium">12 Active</td>
+<td class="px-6 py-5 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-all p-2 rounded-lg hover:bg-surface-container-high">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Kano Express -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5">
+<div>
+<p class="font-bold text-on-surface group-hover:text-emerald-700 transition-colors">Kano Express</p>
+<p class="text-xs text-on-surface-variant">Hotoro, Kano State</p>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="font-bold text-on-surface">₦ 210,400</p>
+<div class="w-24 bg-surface-container h-1 rounded-full mt-2">
+<div class="bg-emerald-500 h-1 rounded-full w-[20%]"></div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 bg-emerald-50 text-emerald-700 text-[10px] font-bold rounded uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                    Healthy
+                                </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<img class="w-6 h-6 rounded-full" data-alt="professional male accountant or manager in a crisp white shirt in a clean office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBviNB5CgpJxWbz7Ge44JIdttUYYSTAWjxSS7DpZptK9u_28k9Vc5FGzhF8DFJUZ2mDwqgbFH212TKWxjBKDFgmkQm02jcW8jJOrLx1JNRvBNTf4azY9CdhSSW9TFThhk7_pSDZZkULLD82TdYZEVdvWq2--AOcffSQmN5B8nh3htI0cO7a4uu2r4mS1ImW9aGfMgkNwETpzbmN_j2i5SutzyopT0Sba2Li-D8bxYVuRSGuTMEGUNHVO7fG6vYx8UPlJAM4cW3qMfTt"/>
+<span class="text-sm font-medium text-on-surface">Ibrahim Musa</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm font-medium">8 Active</td>
+<td class="px-6 py-5 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-all p-2 rounded-lg hover:bg-surface-container-high">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Asymmetric Utility Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 pb-12">
+<!-- Quick Reports -->
+<div class="lg:col-span-2 bg-tertiary text-white rounded-3xl p-8 flex flex-col justify-between min-h-[300px] shadow-xl overflow-hidden relative">
+<div class="absolute right-0 top-0 w-1/2 h-full opacity-20 pointer-events-none">
+<div class="absolute w-[400px] h-[400px] bg-emerald-500 rounded-full blur-[100px] -right-48 -top-48"></div>
+</div>
+<div class="relative z-10">
+<h3 class="text-2xl font-extrabold font-headline mb-2">Regional Performance Analysis</h3>
+<p class="text-tertiary-fixed-dim max-w-md">Get deep insights into which regions are outperforming expectations and identify resource gaps in real-time.</p>
+</div>
+<div class="relative z-10 flex gap-4 mt-8">
+<button class="bg-emerald-500 text-slate-950 px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-emerald-400 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                            Download Network Report
+                        </button>
+<button class="bg-white/10 hover:bg-white/20 backdrop-blur-md px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all">
+                            View Comparisons
+                        </button>
+</div>
+</div>
+<!-- Recent Activity / Logs -->
+<div class="bg-surface-container-high rounded-3xl p-8 border border-outline-variant/10 shadow-sm flex flex-col">
+<h3 class="font-headline font-bold text-on-surface mb-6">Recent Logins</h3>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-emerald-700 text-sm" data-icon="login">login</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Abuja Mall POS 01</p>
+<p class="text-xs text-on-surface-variant">2 minutes ago • IP: 192.168.1.1</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="sync">sync</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Lagos Central Sync</p>
+<p class="text-xs text-on-surface-variant">15 minutes ago • Inventory Updated</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-emerald-700 text-sm" data-icon="login">login</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Kano Express POS 04</p>
+<p class="text-xs text-on-surface-variant">42 minutes ago • Shift Started</p>
+</div>
+</div>
+</div>
+<button class="mt-auto w-full py-3 text-sm font-bold text-emerald-700 hover:bg-emerald-50 rounded-xl transition-all">
+                        View Detailed Audit Log
+                    </button>
+</div>
+</div>
+</section>
+</main>
+</body></html>

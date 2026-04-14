@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pricing | Zudo POS</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#000623",
+                    "on-tertiary-container": "#6b83d7",
+                    "inverse-surface": "#233144",
+                    "error-container": "#ffdad6",
+                    "on-secondary-container": "#44118d",
+                    "on-surface-variant": "#45474c",
+                    "on-tertiary-fixed-variant": "#264191",
+                    "on-error-container": "#93000a",
+                    "on-background": "#0d1c2f",
+                    "surface-container-highest": "#d5e3fd",
+                    "background": "#f8f9ff",
+                    "surface-variant": "#d5e3fd",
+                    "on-primary-fixed-variant": "#005312",
+                    "primary-container": "#002704",
+                    "tertiary-fixed": "#dce1ff",
+                    "surface": "#f8f9ff",
+                    "primary-fixed": "#a3f69c",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#499849",
+                    "on-secondary-fixed-variant": "#572ba0",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed": "#260059",
+                    "secondary-fixed-dim": "#d3bbff",
+                    "on-primary-fixed": "#002204",
+                    "inverse-primary": "#88d982",
+                    "surface-dim": "#ccdbf4",
+                    "outline-variant": "#c6c6cc",
+                    "secondary": "#6f46b9",
+                    "secondary-container": "#b188ff",
+                    "primary": "#000b01",
+                    "inverse-on-surface": "#ebf1ff",
+                    "on-tertiary-fixed": "#00164e",
+                    "on-error": "#ffffff",
+                    "surface-container": "#e6eeff",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#dde9ff",
+                    "surface-bright": "#f8f9ff",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#88d982",
+                    "outline": "#76777c",
+                    "secondary-fixed": "#ebdcff",
+                    "on-surface": "#0d1c2f",
+                    "tertiary-fixed-dim": "#b6c4ff",
+                    "surface-container-low": "#eff4ff",
+                    "tertiary-container": "#001a59",
+                    "surface-tint": "#1b6d24"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-gradient {
+            background: linear-gradient(135deg, #000b01 0%, #002704 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#f8f9ff]/80 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-black text-[#000b01] tracking-tighter font-headline">Zudo POS</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-headline font-bold text-sm tracking-tight text-[#45474c] hover:text-[#000b01] transition-colors" href="#">Products</a>
+<a class="font-headline font-bold text-sm tracking-tight text-[#45474c] hover:text-[#000b01] transition-colors" href="#">Solutions</a>
+<a class="font-headline font-bold text-sm tracking-tight text-[#6f46b9] border-b-2 border-[#6f46b9] pb-1" href="#">Pricing</a>
+<a class="font-headline font-bold text-sm tracking-tight text-[#45474c] hover:text-[#000b01] transition-colors" href="#">Resources</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="font-headline font-bold text-sm tracking-tight text-[#000b01] px-4 py-2 hover:bg-[#dde9ff]/50 rounded transition-colors">Login</button>
+<button class="font-headline font-bold text-sm tracking-tight bg-[#000b01] text-[#ffffff] px-6 py-2.5 rounded-lg hover:opacity-90 active:scale-95 transition-all">Get Started</button>
+</div>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="editorial-gradient text-white py-24 px-6">
+<div class="max-w-7xl mx-auto text-center">
+<span class="font-headline font-extrabold uppercase tracking-[0.2em] text-secondary-fixed-dim text-sm mb-6 block">Pricing for Professionals</span>
+<h1 class="font-headline font-black text-5xl md:text-7xl tracking-tighter mb-8 max-w-4xl mx-auto leading-[0.95]">Invest in Fluid Authority.</h1>
+<p class="font-body text-lg text-outline-variant max-w-2xl mx-auto mb-12">Flexible plans designed for Nigeria's most ambitious retail teams. No hardware lock-ins, no hidden fees.</p>
+<!-- Toggle -->
+<div class="flex items-center justify-center gap-4">
+<span class="text-sm font-label font-medium opacity-60">Monthly</span>
+<div class="w-14 h-7 bg-primary-container rounded-full p-1 flex items-center justify-end relative">
+<div class="w-5 h-5 bg-primary-fixed rounded-full shadow-lg"></div>
+</div>
+<span class="text-sm font-label font-bold text-primary-fixed">Yearly <span class="bg-surface-tint text-[10px] px-2 py-0.5 rounded-full ml-1 text-white uppercase tracking-wider">2 Months Free</span></span>
+</div>
+</div>
+</section>
+<!-- Pricing Cards -->
+<section class="max-w-7xl mx-auto px-6 -mt-16 pb-24">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-0 bg-surface-container-lowest shadow-2xl rounded-xl overflow-hidden">
+<!-- Starter Plan -->
+<div class="p-10 border-r border-outline-variant/10 flex flex-col">
+<h3 class="font-headline font-bold text-xl mb-2 text-on-surface">Starter</h3>
+<p class="text-on-surface-variant text-sm mb-8">For single boutique owners and pop-up retailers.</p>
+<div class="mb-8">
+<span class="font-headline font-black text-4xl">₦15,000</span>
+<span class="text-on-surface-variant text-sm">/mo</span>
+</div>
+<div class="space-y-4 mb-12 flex-grow">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-surface-tint text-xl" data-icon="check_circle">check_circle</span>
+<span class="text-sm text-on-surface-variant">1 Terminal Device</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-surface-tint text-xl" data-icon="check_circle">check_circle</span>
+<span class="text-sm text-on-surface-variant">Unlimited Inventory</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-surface-tint text-xl" data-icon="check_circle">check_circle</span>
+<span class="text-sm text-on-surface-variant">Standard Daily Reports</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-outline text-xl" data-icon="cancel">cancel</span>
+<span class="text-sm text-outline">Warehouse Management</span>
+</div>
+</div>
+<button class="w-full py-4 font-headline font-bold text-sm tracking-widest uppercase border-2 border-primary text-primary hover:bg-surface-container-low transition-colors">Start Trial</button>
+</div>
+<!-- Business Plan (Featured) -->
+<div class="p-10 bg-surface-container-low relative flex flex-col ring-4 ring-primary z-10">
+<div class="absolute top-0 right-0 bg-primary text-primary-fixed font-headline font-black text-[10px] uppercase tracking-widest px-4 py-2">Most Popular</div>
+<h3 class="font-headline font-bold text-xl mb-2 text-primary">Business</h3>
+<p class="text-on-surface-variant text-sm mb-8">Scale multiple locations with centralized control.</p>
+<div class="mb-8">
+<span class="font-headline font-black text-4xl text-primary">₦45,000</span>
+<span class="text-on-surface-variant text-sm">/mo</span>
+</div>
+<div class="space-y-4 mb-12 flex-grow">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-surface-tint text-xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-sm font-semibold text-on-surface">Up to 5 Terminal Devices</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-surface-tint text-xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-sm font-semibold text-on-surface">Advanced Stock Transfers</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-surface-tint text-xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-sm font-semibold text-on-surface">Customer Loyalty API</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-surface-tint text-xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-sm font-semibold text-on-surface">Bank Transfer Reconciliation</span>
+</div>
+</div>
+<button class="w-full py-4 font-headline font-bold text-sm tracking-widest uppercase bg-primary text-white hover:opacity-90 active:scale-[0.98] transition-all">Go Professional</button>
+</div>
+<!-- Enterprise Plan -->
+<div class="p-10 border-l border-outline-variant/10 flex flex-col">
+<h3 class="font-headline font-bold text-xl mb-2 text-on-surface">Enterprise</h3>
+<p class="text-on-surface-variant text-sm mb-8">Bespoke solutions for high-volume retail chains.</p>
+<div class="mb-8">
+<span class="font-headline font-black text-4xl">Custom</span>
+</div>
+<div class="space-y-4 mb-12 flex-grow">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-surface-tint text-xl" data-icon="check_circle">check_circle</span>
+<span class="text-sm text-on-surface-variant">Unlimited Everything</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-surface-tint text-xl" data-icon="check_circle">check_circle</span>
+<span class="text-sm text-on-surface-variant">Dedicated Success Manager</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-surface-tint text-xl" data-icon="check_circle">check_circle</span>
+<span class="text-sm text-on-surface-variant">Custom ERP Integrations</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-surface-tint text-xl" data-icon="check_circle">check_circle</span>
+<span class="text-sm text-on-surface-variant">24/7 On-site Tech Support</span>
+</div>
+</div>
+<button class="w-full py-4 font-headline font-bold text-sm tracking-widest uppercase border-2 border-primary text-primary hover:bg-surface-container-low transition-colors">Contact Sales</button>
+</div>
+</div>
+<!-- Trust Section -->
+<div class="mt-12 text-center bg-surface-container rounded-lg py-8 px-6 border border-outline-variant/20">
+<div class="flex flex-col md:flex-row items-center justify-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-surface-tint" data-icon="verified_user">verified_user</span>
+<span class="font-label font-bold text-sm uppercase tracking-widest">No hidden fees</span>
+</div>
+<div class="hidden md:block w-px h-4 bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-surface-tint" data-icon="account_balance">account_balance</span>
+<span class="font-label font-bold text-sm uppercase tracking-widest text-on-surface">7.5% VAT inclusive</span>
+</div>
+<div class="hidden md:block w-px h-4 bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-surface-tint" data-icon="speed">speed</span>
+<span class="font-label font-bold text-sm uppercase tracking-widest">Instant Activation</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Comparison Table -->
+<section class="max-w-7xl mx-auto px-6 py-24 border-t border-outline-variant/10">
+<h2 class="font-headline font-black text-3xl tracking-tight mb-16">Feature Comparison</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-primary">
+<th class="py-6 font-headline font-bold text-sm uppercase tracking-widest text-outline">Capabilities</th>
+<th class="py-6 font-headline font-extrabold text-lg">Starter</th>
+<th class="py-6 font-headline font-extrabold text-lg">Business</th>
+<th class="py-6 font-headline font-extrabold text-lg">Enterprise</th>
+</tr>
+</thead>
+<tbody class="font-body">
+<tr class="border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors">
+<td class="py-6 text-on-surface font-medium">Monthly Active Terminals</td>
+<td class="py-6">1</td>
+<td class="py-6">Up to 5</td>
+<td class="py-6">Unlimited</td>
+</tr>
+<tr class="border-b border-outline-variant/10 bg-surface-container-low/30 hover:bg-surface-container-low transition-colors">
+<td class="py-6 text-on-surface font-medium">Offline Mode Storage</td>
+<td class="py-6">24 Hours</td>
+<td class="py-6">7 Days</td>
+<td class="py-6">Unlimited</td>
+</tr>
+<tr class="border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors">
+<td class="py-6 text-on-surface font-medium">Bank Transfer Matching</td>
+<td class="py-6">Manual</td>
+<td class="py-6">Automated API</td>
+<td class="py-6">Automated API</td>
+</tr>
+<tr class="border-b border-outline-variant/10 bg-surface-container-low/30 hover:bg-surface-container-low transition-colors">
+<td class="py-6 text-on-surface font-medium">Inventory Variants</td>
+<td class="py-6">Basic</td>
+<td class="py-6">Advanced</td>
+<td class="py-6">Custom Matrix</td>
+</tr>
+<tr class="border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors">
+<td class="py-6 text-on-surface font-medium">Staff Account Controls</td>
+<td class="py-6">3 Staff</td>
+<td class="py-6">Unlimited Staff</td>
+<td class="py-6">Unlimited Staff</td>
+</tr>
+<tr class="border-b border-outline-variant/10 bg-surface-container-low/30 hover:bg-surface-container-low transition-colors">
+<td class="py-6 text-on-surface font-medium">Multi-warehouse Sync</td>
+<td class="py-6 text-outline">
+<span class="material-symbols-outlined text-sm" data-icon="horizontal_rule">horizontal_rule</span>
+</td>
+<td class="py-6">
+<span class="material-symbols-outlined text-surface-tint" data-icon="check" style="font-variation-settings: 'wght' 700;">check</span>
+</td>
+<td class="py-6">
+<span class="material-symbols-outlined text-surface-tint" data-icon="check" style="font-variation-settings: 'wght' 700;">check</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="bg-surface-container-low py-24">
+<div class="max-w-4xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="font-headline font-black text-4xl tracking-tight mb-4">Nigerian Business FAQs</h2>
+<p class="text-on-surface-variant font-body">Everything you need to know about operating with The Editorial.</p>
+</div>
+<div class="space-y-8">
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm">
+<h4 class="font-headline font-extrabold text-lg mb-3">Does it work when the internet is down?</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Yes. Our "Fluid Sync" technology allows you to keep selling even during network outages. Transactions are stored locally and automatically sync to the cloud once connectivity is restored.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm">
+<h4 class="font-headline font-extrabold text-lg mb-3">How does it handle Bank Transfers?</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">We integrate with major Nigerian banks and payment switches. For the Business plan, the system generates a unique dynamic account number for each transaction, automatically confirming payment within seconds.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm">
+<h4 class="font-headline font-extrabold text-lg mb-3">Do I have to buy hardware from you?</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">No. We are hardware-agnostic. Zudo POS runs on Android, iPadOS, and Web. If you already have thermal printers or barcode scanners, we can likely integrate them via Bluetooth or USB.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm">
+<h4 class="font-headline font-extrabold text-lg mb-3">Can I manage multiple stores from one phone?</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Absolutely. The owner's dashboard provides a consolidated view of all your locations. You can track stock movements between your Lekki and Ikeja branches in real-time from anywhere in the world.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-24 px-6 text-center max-w-7xl mx-auto">
+<div class="editorial-gradient rounded-3xl p-16 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-fixed/10 blur-[100px] rounded-full"></div>
+<h2 class="font-headline font-black text-4xl text-white mb-6 relative z-10">Ready to command your retail floor?</h2>
+<p class="text-outline-variant mb-10 text-lg max-w-xl mx-auto relative z-10">Join 2,500+ Nigerian businesses using The Editorial to scale their authority.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
+<button class="bg-primary-fixed text-primary px-10 py-4 font-headline font-black uppercase tracking-widest rounded hover:bg-white transition-all">Start Free Trial</button>
+<button class="bg-transparent border border-outline-variant text-white px-10 py-4 font-headline font-black uppercase tracking-widest rounded hover:bg-white/10 transition-all">Schedule Demo</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#000623] text-[#ffffff] border-t border-[#45474c]/20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 px-8 py-12 w-full max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="font-manrope font-black text-lg text-white mb-4">Zudo POS</div>
+<p class="font-inter text-xs uppercase tracking-widest text-[#c6c6cc]">Built for the Fluid Authority.</p>
+</div>
+<div class="flex flex-col space-y-4">
+<span class="font-headline font-bold text-[10px] uppercase tracking-widest text-[#45474c]">Products</span>
+<a class="font-inter text-xs uppercase tracking-widest text-[#c6c6cc] hover:text-white transition-all" href="#">Features</a>
+<a class="font-inter text-xs uppercase tracking-widest text-[#c6c6cc] hover:text-white transition-all" href="#">Hardware</a>
+<a class="font-inter text-xs uppercase tracking-widest text-[#c6c6cc] hover:text-white transition-all" href="#">API Docs</a>
+</div>
+<div class="flex flex-col space-y-4">
+<span class="font-headline font-bold text-[10px] uppercase tracking-widest text-[#45474c]">Company</span>
+<a class="font-inter text-xs uppercase tracking-widest text-[#c6c6cc] hover:text-white transition-all" href="#">Privacy Policy</a>
+<a class="font-inter text-xs uppercase tracking-widest text-[#c6c6cc] hover:text-white transition-all" href="#">Terms of Service</a>
+<a class="font-inter text-xs uppercase tracking-widest text-[#c6c6cc] hover:text-white transition-all" href="#">Contact Support</a>
+</div>
+<div class="flex flex-col space-y-4">
+<span class="font-headline font-bold text-[10px] uppercase tracking-widest text-[#45474c]">Locate Us</span>
+<a class="font-inter text-xs uppercase tracking-widest text-[#c6c6cc] hover:text-white transition-all" href="#">Lagos Office</a>
+<a class="font-inter text-xs uppercase tracking-widest text-[#c6c6cc] hover:text-white transition-all" href="#">Abuja Hub</a>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 py-6 border-t border-[#45474c]/10 text-center md:text-left">
+<p class="font-inter text-[10px] uppercase tracking-[0.2em] text-[#45474c]">© 2026 Zudo POS. Built for the Fluid Authority. Lagos, Nigeria.</p>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Notification Center | Zudo POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#d3bbff",
+                        "inverse-primary": "#88d982",
+                        "on-secondary-container": "#44118d",
+                        "surface-container-highest": "#d5e3fd",
+                        "tertiary-fixed-dim": "#b6c4ff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#264191",
+                        "on-secondary-fixed-variant": "#572ba0",
+                        "surface-dim": "#ccdbf4",
+                        "surface-tint": "#1b6d24",
+                        "on-background": "#0d1c2f",
+                        "secondary-container": "#b188ff",
+                        "tertiary": "#000623",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#88d982",
+                        "primary": "#000b01",
+                        "on-tertiary-container": "#6b83d7",
+                        "on-primary-container": "#499849",
+                        "surface-container-high": "#dde9ff",
+                        "outline": "#76777c",
+                        "tertiary-fixed": "#dce1ff",
+                        "surface-container": "#e6eeff",
+                        "inverse-surface": "#233144",
+                        "secondary-fixed": "#ebdcff",
+                        "inverse-on-surface": "#ebf1ff",
+                        "primary-fixed": "#a3f69c",
+                        "on-surface-variant": "#45474c",
+                        "background": "#f8f9ff",
+                        "primary-container": "#002704",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#d5e3fd",
+                        "outline-variant": "#c6c6cc",
+                        "on-primary-fixed-variant": "#005312",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "surface": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#00164e",
+                        "on-surface": "#0d1c2f",
+                        "secondary": "#6f46b9",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#260059",
+                        "on-primary-fixed": "#002204",
+                        "tertiary-container": "#001a59"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .left-accent-border-active-2px {
+            border-left: 2px solid #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background min-h-screen">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-[#000623] dark:bg-[#000210] flex flex-col h-screen py-6 z-50">
+<div class="px-6 mb-10">
+<h1 class="text-[#ffffff] font-extrabold uppercase tracking-widest text-xl font-headline">Zudo POS</h1>
+<p class="text-[#dde9ff] opacity-60 text-xs font-label">Fluid Authority</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard Tab -->
+<a class="flex items-center px-6 py-3 text-[#c6c6cc] opacity-70 hover:opacity-100 hover:bg-white/10 transition-all mx-2 my-1 rounded-lg" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="font-label text-sm font-semibold tracking-wider">DASHBOARD</span>
+</a>
+<!-- Reports Tab -->
+<a class="flex items-center px-6 py-3 text-[#c6c6cc] opacity-70 hover:opacity-100 hover:bg-white/10 transition-all mx-2 my-1 rounded-lg" href="#">
+<span class="material-symbols-outlined mr-3">analytics</span>
+<span class="font-label text-sm font-semibold tracking-wider">REPORTS</span>
+</a>
+<!-- Inventory Tab -->
+<a class="flex items-center px-6 py-3 text-[#c6c6cc] opacity-70 hover:opacity-100 hover:bg-white/10 transition-all mx-2 my-1 rounded-lg" href="#">
+<span class="material-symbols-outlined mr-3">inventory_2</span>
+<span class="font-label text-sm font-semibold tracking-wider">INVENTORY</span>
+</a>
+<!-- Sales Tab -->
+<a class="flex items-center px-6 py-3 text-[#c6c6cc] opacity-70 hover:opacity-100 hover:bg-white/10 transition-all mx-2 my-1 rounded-lg" href="#">
+<span class="material-symbols-outlined mr-3">payments</span>
+<span class="font-label text-sm font-semibold tracking-wider">SALES</span>
+</a>
+<!-- Notifications Tab (ACTIVE) -->
+<a class="flex items-center px-6 py-3 bg-[#6f46b9] text-white rounded-lg mx-2 my-1 left-accent-border-active-2px" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="font-label text-sm font-semibold tracking-wider">NOTIFICATIONS</span>
+</a>
+</nav>
+<div class="px-4 mt-auto space-y-4">
+<button class="w-full bg-surface-tint text-on-primary font-bold py-4 rounded-xl flex items-center justify-center hover:brightness-110 transition-all active:scale-95">
+<span class="material-symbols-outlined mr-2">add</span>
+<span class="font-label uppercase text-sm">New Report</span>
+</button>
+<div class="pt-6 space-y-1">
+<a class="flex items-center px-6 py-3 text-[#c6c6cc] opacity-70 hover:opacity-100 hover:bg-white/10 transition-all mx-2 my-1 rounded-lg" href="#">
+<span class="material-symbols-outlined mr-3">help</span>
+<span class="font-label text-sm">Help Center</span>
+</a>
+<a class="flex items-center px-6 py-3 text-[#c6c6cc] opacity-70 hover:opacity-100 hover:bg-white/10 transition-all mx-2 my-1 rounded-lg" href="#">
+<span class="material-symbols-outlined mr-3">logout</span>
+<span class="font-label text-sm">Sign Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pl-64 min-h-screen">
+<!-- TopAppBar Component -->
+<header class="fixed top-0 left-64 right-0 z-40 bg-[#f8f9ff]/80 backdrop-blur-md h-16 flex justify-between items-center px-8">
+<div class="flex items-center gap-4">
+<span class="font-headline text-xl font-extrabold tracking-tight text-[#000b01]">Notification Center</span>
+<div class="hidden md:flex bg-surface-container-low px-4 py-1.5 rounded-full items-center">
+<span class="material-symbols-outlined text-outline-variant text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 font-body" placeholder="Search alerts..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative p-2 hover:bg-[#eff4ff] transition-colors rounded-full text-on-surface">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<button class="p-2 hover:bg-[#eff4ff] transition-colors rounded-full text-on-surface">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="flex items-center gap-3 ml-4">
+<div class="text-right">
+<p class="text-xs font-bold font-headline text-primary">Iyanu Okoro</p>
+<p class="text-[10px] text-on-surface-variant font-label">Manager Profile</p>
+</div>
+<img alt="Manager Profile" class="w-8 h-8 rounded-full border-2 border-surface-container-high object-cover" data-alt="professional portrait of a confident West African man in a light blue oxford shirt with soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAyEEkajWZYL7j7JoUgBtWchSXjyzb29-05KKwkooddrlz9XSa6y3fEdPXJOlE60ndEtId27r1HZbe9KiiUODFPvwlYBTtP6PgfqsoOd25ymWWrhwjUoUZaAj-NH_lZTvkIGZ1PMf8sUpw6sqdSVmrT_7D7JMBXvuL5CBhN0D8IoxRqsaoc6gbXtoLXdam8njObVeGXX-U3Mf6dJ1NqO3yruhaQeeB-NgzjAj4UoC4vu36uE3j7gpIhJYVrqYMi0aK_eHNoJsBhrGV"/>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="pt-24 pb-12 px-8">
+<div class="grid grid-cols-12 gap-8">
+<!-- Left Column: Global Channels & System Integrity -->
+<div class="col-span-12 lg:col-span-4 space-y-8">
+<!-- Global Channels -->
+<section class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_12px_32px_rgba(13,28,47,0.06)] border border-outline-variant/10">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline text-lg font-bold text-primary">Global Channels</h2>
+<span class="material-symbols-outlined text-secondary">broadcast_on_home</span>
+</div>
+<div class="space-y-6">
+<!-- Channel Item: Email -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div>
+<p class="font-semibold text-sm">Email Alerts</p>
+<p class="text-xs text-on-surface-variant">Daily digest &amp; critical reports</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Channel Item: SMS -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">sms</span>
+</div>
+<div>
+<p class="font-semibold text-sm">SMS Gateway</p>
+<p class="text-xs text-on-surface-variant">Urgent security &amp; stock alerts</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Channel Item: In-App -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+<div>
+<p class="font-semibold text-sm">In-App Toggles</p>
+<p class="text-xs text-on-surface-variant">Real-time terminal notifications</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- System Integrity Status -->
+<section class="bg-tertiary p-6 rounded-xl text-on-tertiary">
+<h2 class="font-headline text-lg font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed">verified_user</span>
+                            System Integrity
+                        </h2>
+<div class="space-y-4">
+<div class="p-3 bg-white/5 rounded-lg border border-white/10 flex items-center justify-between">
+<span class="text-xs font-label opacity-70">Server Latency</span>
+<span class="text-xs font-bold text-primary-fixed">12ms - Optimal</span>
+</div>
+<div class="p-3 bg-white/5 rounded-lg border border-white/10 flex items-center justify-between">
+<span class="text-xs font-label opacity-70">Cloud Sync</span>
+<span class="text-xs font-bold text-primary-fixed">Synced 2m ago</span>
+</div>
+<div class="p-3 bg-white/5 rounded-lg border border-white/10 flex items-center justify-between">
+<span class="text-xs font-label opacity-70">Security Protocol</span>
+<span class="text-xs font-bold text-primary-fixed">TLS 1.3 Active</span>
+</div>
+</div>
+<button class="w-full mt-6 py-2 text-xs font-bold font-label uppercase tracking-widest bg-primary-fixed text-on-primary-fixed rounded-lg hover:brightness-110 transition-all">
+                            Run Diagnostics
+                        </button>
+</section>
+</div>
+<!-- Right Column: Alert Rules & Thresholds -->
+<div class="col-span-12 lg:col-span-8">
+<section class="bg-surface p-8 rounded-2xl border border-outline-variant/20 h-full">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h2 class="font-headline text-2xl font-extrabold text-primary">Alert Rules &amp; Thresholds</h2>
+<p class="text-on-surface-variant text-sm mt-1">Configure automated triggers for business intelligence</p>
+</div>
+<button class="bg-secondary text-white px-6 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 hover:shadow-lg transition-all">
+<span class="material-symbols-outlined">rule</span>
+                                New Rule
+                            </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Inventory Rule Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border-l-4 border-primary-container shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between mb-4">
+<div class="w-12 h-12 bg-primary-fixed rounded-xl flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<span class="bg-primary-fixed/20 text-on-primary-fixed-variant px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Active</span>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1">Inventory Alerts</h3>
+<p class="text-xs text-on-surface-variant mb-6 leading-relaxed">Trigger when stock levels fall below safety margins.</p>
+<div class="space-y-4">
+<div>
+<label class="block text-[10px] font-bold text-outline uppercase mb-2">Threshold Quantity</label>
+<div class="flex items-center gap-3">
+<input class="w-full accent-surface-tint" max="50" min="0" type="range" value="5"/>
+<span class="font-headline font-bold text-primary">&lt;5</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<input checked="" class="rounded border-outline-variant text-surface-tint focus:ring-surface-tint" type="checkbox"/>
+<span class="text-xs text-on-surface">Notify Manager via SMS</span>
+</div>
+</div>
+</div>
+<!-- Transaction Rule Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border-l-4 border-secondary shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between mb-4">
+<div class="w-12 h-12 bg-secondary-container rounded-xl flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<span class="bg-secondary-container/20 text-on-secondary-fixed-variant px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Active</span>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1">Transaction Alerts</h3>
+<p class="text-xs text-on-surface-variant mb-6 leading-relaxed">Monitor for unusual refund patterns or large sales.</p>
+<div class="space-y-4">
+<div>
+<label class="block text-[10px] font-bold text-outline uppercase mb-2">Refund Cap (Daily)</label>
+<div class="flex items-center gap-3">
+<span class="text-lg font-headline font-bold text-primary">₦</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg text-sm font-bold focus:ring-secondary py-1.5 px-3" type="text" value="50,000"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<input class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="text-xs text-on-surface">Auto-lock Terminal on breach</span>
+</div>
+</div>
+</div>
+<!-- Security Rule Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border-l-4 border-error shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between mb-4">
+<div class="w-12 h-12 bg-error-container rounded-xl flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined">security</span>
+</div>
+<span class="bg-error-container/20 text-on-error-container px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">CRITICAL</span>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1">System Security</h3>
+<p class="text-xs text-on-surface-variant mb-6 leading-relaxed">Notify on unauthorized login attempts or shifts.</p>
+<div class="space-y-4">
+<div>
+<label class="block text-[10px] font-bold text-outline uppercase mb-2">Failed Attempts Allowed</label>
+<select class="w-full bg-surface-container-low border-none rounded-lg text-sm font-bold focus:ring-error py-1.5 px-3">
+<option>3 attempts</option>
+<option>5 attempts</option>
+</select>
+</div>
+<div class="flex items-center gap-2">
+<input checked="" class="rounded border-outline-variant text-error focus:ring-error" type="checkbox"/>
+<span class="text-xs text-on-surface">Enable Two-Factor Overrides</span>
+</div>
+</div>
+</div>
+<!-- Compliance Rule Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border-l-4 border-tertiary-container shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between mb-4">
+<div class="w-12 h-12 bg-tertiary-fixed rounded-xl flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<span class="bg-tertiary-fixed/20 text-on-tertiary-fixed-variant px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">STANDBY</span>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1">Tax Compliance</h3>
+<p class="text-xs text-on-surface-variant mb-6 leading-relaxed">Automated checks for VAT reconciliation cycles.</p>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-xs text-on-surface-variant">Last Audit: 3 days ago</span>
+<button class="text-secondary text-xs font-bold uppercase tracking-widest hover:underline">Settings</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Recent Activity Log Section -->
+<section class="mt-8 bg-surface-container-low p-8 rounded-2xl">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline text-xl font-bold text-primary">Recent Activity Log</h2>
+<div class="flex gap-2">
+<button class="px-4 py-1.5 bg-white rounded-full text-xs font-bold border border-outline-variant/30 text-on-surface-variant">All Logs</button>
+<button class="px-4 py-1.5 hover:bg-white/50 rounded-full text-xs font-bold text-on-surface-variant transition-colors">Alerts Only</button>
+</div>
+</div>
+<div class="space-y-3">
+<!-- Log Item 1: Stock Alert -->
+<div class="flex items-center justify-between bg-surface-container-lowest p-4 rounded-xl group hover:bg-white transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-error-container/20 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-sm">warning</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Critical Stock Alert: <span class="font-medium text-on-surface-variant">Premium Espresso Beans</span></p>
+<p class="text-[10px] text-outline font-label uppercase tracking-widest mt-0.5">Inventory Monitor • 14:32 • Store 01</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-xs font-bold text-on-surface-variant">Units: 4</span>
+<button class="p-2 opacity-0 group-hover:opacity-100 transition-opacity text-secondary">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Log Item 2: New Login -->
+<div class="flex items-center justify-between bg-surface-container-lowest p-4 rounded-xl group hover:bg-white transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-fixed/30 flex items-center justify-center text-surface-tint">
+<span class="material-symbols-outlined text-sm">login</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">New Manager Login: <span class="font-medium text-on-surface-variant">Adewale K. via Terminal 04</span></p>
+<p class="text-[10px] text-outline font-label uppercase tracking-widest mt-0.5">Security Auth • 12:15 • Ikeja HQ</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-xs font-bold text-on-surface-variant">Auth: Verified</span>
+<button class="p-2 opacity-0 group-hover:opacity-100 transition-opacity text-secondary">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Log Item 3: Policy Change -->
+<div class="flex items-center justify-between bg-surface-container-lowest p-4 rounded-xl group hover:bg-white transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-sm">settings_suggest</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Alert Threshold Updated: <span class="font-medium text-on-surface-variant">Refund Limit → ₦50,000</span></p>
+<p class="text-[10px] text-outline font-label uppercase tracking-widest mt-0.5">Config Manager • 09:45 • Admin Portal</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-xs font-bold text-on-surface-variant">Global Sync</span>
+<button class="p-2 opacity-0 group-hover:opacity-100 transition-opacity text-secondary">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-6 text-center">
+<button class="text-sm font-bold font-headline text-secondary py-2 px-6 rounded-full border border-secondary/20 hover:bg-secondary/5 transition-all">
+                        View Full Activity Log
+                    </button>
+</div>
+</section>
+</div>
+</main>
+</body></html>

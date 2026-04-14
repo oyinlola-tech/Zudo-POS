@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#1b6d24", // Emerald Green
+                        "secondary": "#6f46b9",
+                        "tertiary": "#000623", // Deep Navy
+                        "surface": "#f8f9ff",
+                        "on-surface": "#0d1c2f",
+                        "on-primary": "#ffffff",
+                        "slate-white": "#f8faff",
+                        "outline-variant": "#c6c6cc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, .brand-font { font-family: 'Manrope', sans-serif; }
+        .no-line-layout section { border: none !important; }
+    </style>
+</head>
+<body class="bg-slate-white text-tertiary selection:bg-primary/20 no-line-layout">
+<!-- Navigation -->
+<header class="bg-slate-white/80 backdrop-blur-md sticky top-0 z-50">
+<nav class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-10">
+<span class="text-xl font-extrabold tracking-tight text-tertiary brand-font">Zudo POS</span>
+<div class="hidden lg:flex gap-8 items-center">
+<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="#">Product</a>
+<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="public\pages\features.html">Features</a>
+<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="#">Pricing</a>
+<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="#">Documentation</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-tertiary font-bold text-sm px-4 py-2 hover:text-primary transition-colors">Login</button>
+<button class="bg-primary text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-primary/90 transition-all shadow-md shadow-primary/10">Get Started</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-16 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+<div class="z-10 text-center lg:text-left">
+
+<h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-tertiary leading-[1.05] mb-6">
+                    The Fluid Authority for <span class="text-primary">Nigerian Retail.</span>
+</h1>
+<p class="text-tertiary/70 text-lg md:text-xl leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">
+                    The high-performance, barcode-ready POS that scales with your ambition. Built for supermarkets, pharmacies, and boutiques across Nigeria.
+                </p>
+<div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+<button class="bg-tertiary text-white h-14 px-8 rounded-full font-bold flex items-center justify-center gap-3 hover:bg-tertiary/90 transition-all shadow-xl active:scale-95">
+                        Start Your Free Trial <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="bg-white text-tertiary border-2 border-tertiary/10 h-14 px-8 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-slate-50 transition-all active:scale-95">
+                        Request a Demo
+                    </button>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-secondary/10 rounded-[2.5rem] blur-2xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
+<!-- Device Mockup Container -->
+<div class="relative bg-tertiary rounded-[2.5rem] p-4 shadow-2xl border-4 border-tertiary/10 overflow-hidden transform lg:rotate-2 group-hover:rotate-0 transition-transform duration-700">
+<div class="bg-white rounded-[1.5rem] overflow-hidden aspect-[4/3] flex items-center justify-center">
+<img alt="POS Interface Mockup" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUw8LKbk3OVKUrEgOrjyPlxytCvb3nY246ebEKubEXxUQqDnSlRpUUZJJb_YeBh-x24G0p5berC1UTNm_P4TvT5z4ihxFh7Ul_q7OVDJ2KY9tooJgE3WR3xP58tTpiwfbCQzAIM4am132gW3TQ-qm6TlIO74cQ8OigSmztNGwyGoPo7Ua2zel7UKj1sITM0lGmHGQO7ayftMWDl4lBTCQCzS3e3u36_E7GKJEZDjKxVvrWUBI_p7Om5OssFTY87ALUVKx8eBbFpEAZ"/>
+</div>
+</div>
+<!-- Floating Card -->
+<div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-2xl border border-slate-100 hidden md:block animate-bounce-slow">
+<div class="flex items-center gap-4 mb-2">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl">payments</span>
+</div>
+<div>
+<p class="text-[10px] text-tertiary/50 uppercase font-bold tracking-widest">Today's Sales</p>
+<p class="text-xl font-extrabold text-tertiary">₦2,480,500</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Proof / Logo Cloud -->
+<section class="py-12 bg-white/50 border-y border-slate-100">
+<div class="max-w-7xl mx-auto px-6">
+<p class="text-center text-tertiary/40 text-sm font-bold uppercase tracking-[0.2em] mb-10">Trusted by Leading Nigerian Brands</p>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+<span class="text-2xl font-black italic tracking-tighter">LagosBoutique</span>
+<span class="text-2xl font-black italic tracking-tighter">HealthFirst Pharmacy</span>
+<span class="text-2xl font-black italic tracking-tighter">IkejaSuperstores</span>
+<span class="text-2xl font-black italic tracking-tighter">AbujaRetailHub</span>
+<span class="text-2xl font-black italic tracking-tighter">MartExpress</span>
+</div>
+</div>
+</section>
+<!-- Value Propositions -->
+<section class="py-24 lg:py-32">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center max-w-3xl mx-auto mb-20">
+<h2 class="text-4xl md:text-5xl font-extrabold text-tertiary mb-6">Built for the specific rhythm of Nigerian commerce.</h2>
+<p class="text-tertiary/60 text-lg">We didn't just build a POS; we engineered an authority tool that handles local challenges with fluid elegance.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Value Prop 1 -->
+<div class="group bg-white p-10 rounded-3xl hover:bg-tertiary transition-all duration-500 shadow-sm border border-slate-100">
+<div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:text-white transition-colors">wifi_off</span>
+</div>
+<h3 class="text-2xl font-bold text-tertiary mb-4 group-hover:text-white transition-colors">Offline-First Reliability</h3>
+<p class="text-tertiary/60 leading-relaxed group-hover:text-white/70 transition-colors">Network downtime is inevitable. Our core architecture ensures your registers never stop, syncing every ₦ transaction the moment you're back online.</p>
+</div>
+<!-- Value Prop 2 -->
+<div class="group bg-white p-10 rounded-3xl hover:bg-tertiary transition-all duration-500 shadow-sm border border-slate-100">
+<div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:text-white transition-colors">barcode_scanner</span>
+</div>
+<h3 class="text-2xl font-bold text-tertiary mb-4 group-hover:text-white transition-colors">Precision Inventory with Barcodes</h3>
+<p class="text-tertiary/60 leading-relaxed group-hover:text-white/70 transition-colors">Manage thousands of SKUs with millisecond lookup speeds. Our engine is optimized for high-volume supermarkets and pharmacies requiring absolute precision.</p>
+</div>
+<!-- Value Prop 3 -->
+<div class="group bg-white p-10 rounded-3xl hover:bg-tertiary transition-all duration-500 shadow-sm border border-slate-100">
+<div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:text-white transition-colors">domain</span>
+</div>
+<h3 class="text-2xl font-bold text-tertiary mb-4 group-hover:text-white transition-colors">Multi-Store Mastery</h3>
+<p class="text-tertiary/60 leading-relaxed group-hover:text-white/70 transition-colors">Control your entire retail empire from a single dashboard. Real-time stock transfers and cross-location reporting built for ambitious nationwide chains.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works -->
+<section class="py-24 bg-tertiary text-white overflow-hidden">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid lg:grid-cols-2 gap-20 items-center">
+<div>
+<h2 class="text-4xl md:text-5xl font-extrabold mb-8">Sell with Authority <br/>in minutes.</h2>
+<p class="text-white/60 text-lg mb-12">Our deployment process is as refined as our software. No complex setups, just fluid transition.</p>
+<div class="space-y-12">
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 bg-primary rounded-full flex items-center justify-center font-bold text-xl">1</div>
+<div>
+<h4 class="text-xl font-bold mb-2">Instant Signup</h4>
+<p class="text-white/50">Register your business in 60 seconds. No credit card required to explore the interface.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center font-bold text-xl">2</div>
+<div>
+<h4 class="text-xl font-bold mb-2">Guided Onboarding</h4>
+<p class="text-white/50">Import your inventory via Excel or manual scan. Our team assists with terminal configuration.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center font-bold text-xl">3</div>
+<div>
+<h4 class="text-xl font-bold mb-2">Sell with Authority</h4>
+<p class="text-white/50">Launch your first sale. Experience the precision of a POS designed for professional commerce.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="absolute inset-0 bg-primary/20 blur-[120px]"></div>
+<div class="relative bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-[3rem] shadow-2xl">
+<div class="aspect-video bg-tertiary/50 rounded-2xl overflow-hidden border border-white/5 flex items-center justify-center group cursor-pointer">
+<div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl">play_arrow</span>
+</div>
+</div>
+<p class="text-center mt-6 text-white/40 text-sm font-medium">Watch the 2-minute product walkthrough</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing (Consolidated & Refined) -->
+<section class="py-24 lg:py-32">
+<div class="max-w-7xl mx-auto px-6 text-center">
+<h2 class="text-4xl md:text-5xl font-extrabold mb-16">Simple, Scalable Pricing.</h2>
+<div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+<div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 flex flex-col items-center">
+<p class="text-primary font-bold text-sm tracking-widest uppercase mb-4">Boutique</p>
+<div class="text-4xl font-black mb-6">₦15,000<span class="text-base text-tertiary/40 font-normal">/mo</span></div>
+<ul class="text-left space-y-4 mb-10 text-sm text-tertiary/70 flex-grow">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> 1 Physical Terminal</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> 500 SKUs</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> Email Support</li>
+</ul>
+<button class="w-full py-4 rounded-full border-2 border-tertiary/10 font-bold hover:bg-slate-50 transition-colors">Choose Plan</button>
+</div>
+<div class="bg-tertiary p-10 rounded-[2.5rem] border border-white/10 flex flex-col items-center relative shadow-2xl scale-105 z-10 text-white">
+<div class="absolute -top-4 bg-primary text-white px-6 py-1 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase">Most Popular</div>
+<p class="text-primary font-bold text-sm tracking-widest uppercase mb-4">Growth</p>
+<div class="text-4xl font-black mb-6">₦45,000<span class="text-base text-white/40 font-normal">/mo</span></div>
+<ul class="text-left space-y-4 mb-10 text-sm text-white/70 flex-grow">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> 5 Physical Terminals</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> Unlimited SKUs</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> Real-time Inventory Sync</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> 24/7 Priority Support</li>
+</ul>
+<button class="w-full py-4 rounded-full bg-primary font-bold hover:bg-primary/90 transition-colors">Start Free Trial</button>
+</div>
+<div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 flex flex-col items-center">
+<p class="text-primary font-bold text-sm tracking-widest uppercase mb-4">Enterprise</p>
+<div class="text-3xl font-black mb-6">Custom</div>
+<ul class="text-left space-y-4 mb-10 text-sm text-tertiary/70 flex-grow">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> Unlimited Terminals</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> Dedicated Manager</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> ERP API Access</li>
+</ul>
+<button class="w-full py-4 rounded-full border-2 border-tertiary/10 font-bold hover:bg-slate-50 transition-colors">Contact Sales</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="max-w-7xl mx-auto px-6 mb-32">
+<div class="relative bg-tertiary rounded-[4rem] p-12 md:p-24 overflow-hidden text-center lg:text-left">
+<div class="absolute -right-1/4 -top-1/4 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px]"></div>
+<div class="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-4xl md:text-6xl font-extrabold text-white mb-8 leading-tight">Elevate your store's <span class="text-primary">authority</span> today.</h2>
+<p class="text-white/50 text-xl mb-12">Join over 2,500 Nigerian retailers managing billions in monthly revenue with Zudo POS.</p>
+<div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+<button class="bg-primary text-white h-16 px-10 rounded-full font-bold hover:scale-95 transition-all shadow-lg shadow-primary/20">Get Started Free</button>
+<button class="text-white flex items-center gap-2 font-bold hover:gap-4 transition-all px-4">Contact Our Experts <span class="material-symbols-outlined">arrow_right_alt</span></button>
+</div>
+</div>
+<div class="hidden lg:block">
+<div class="bg-white/10 backdrop-blur-md p-4 rounded-3xl border border-white/10 rotate-3">
+<img alt="Retail Store" class="rounded-2xl w-full grayscale contrast-125 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsRyGhkpffLgHbWZiRxTsxU-3GBNkIUmymTJIgbB2d6b5A8UMfHJqBRfeZGWnBi0C2hGjs9V6vH0srRgCNatPYe1jzC5swWco8_lDl2KBXXUT8MDp3nlw2r2gEfbt9xpoFCA5PiAwWUZRQ5vjsyj8FNenbASOBfa1rW_iruZMFKT3W1pdJ47FEP8tDwHzcVu32fkm8is0jXuP-0zDvPo53p_3fZCVMHli5da1mvocpjJogD6XNEunvIXC78p2Q30V_hQkzeqC8D37D"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-tertiary py-24 text-white">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-24">
+<div class="col-span-2 md:col-span-1">
+<span class="text-2xl font-extrabold tracking-tight brand-font mb-8 block">Zudo POS</span>
+<p class="text-white/40 text-sm leading-relaxed max-w-xs">Engineered for the speed and reliability required by modern Nigerian commerce. The fluid authority in point of sale systems.</p>
+</div>
+<div>
+<h5 class="font-bold mb-6 text-primary">Product</h5>
+<ul class="space-y-4 text-sm text-white/50">
+<li><a class="hover:text-white transition-colors" href="#">Terminal Software</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Inventory Manager</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Analytics Engine</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Integrations</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6 text-primary">Company</h5>
+<ul class="space-y-4 text-sm text-white/50">
+<li><a class="hover:text-white transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Success Stories</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6 text-primary">Stay Updated</h5>
+<p class="text-sm text-white/40 mb-6">Get the latest on retail trends and updates.</p>
+<form class="flex">
+<input class="bg-white/5 border border-white/10 rounded-l-xl px-4 py-3 w-full text-sm focus:ring-1 focus:ring-primary focus:border-primary outline-none" placeholder="Email address" type="email"/>
+<button class="bg-primary px-6 rounded-r-xl hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-white">arrow_forward</span>
+</button>
+</form>
+</div>
+</div>
+<div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-white/30 text-[10px] font-bold tracking-widest uppercase">
+<p>© 2026 Zudo POS. Built for Nigeria.</p>
+<div class="flex gap-8">
+<a class="hover:text-white transition-colors" href="#">Twitter</a>
+<a class="hover:text-white transition-colors" href="#">LinkedIn</a>
+<a class="hover:text-white transition-colors" href="#">Instagram</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+    // Simple intersection observer for basic fade-in effects
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100');
+                entry.target.classList.remove('opacity-0', 'translate-y-4');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-4');
+        observer.observe(section);
+    });
+</script>
+</body></html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Documentation | Zudo POS</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#b188ff",
+                    "inverse-on-surface": "#ebf1ff",
+                    "surface-container-high": "#dde9ff",
+                    "secondary": "#6f46b9",
+                    "on-surface": "#0d1c2f",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#88d982",
+                    "on-primary-fixed-variant": "#005312",
+                    "tertiary": "#000623",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#eff4ff",
+                    "surface-tint": "#1b6d24",
+                    "on-tertiary-fixed-variant": "#264191",
+                    "on-surface-variant": "#45474c",
+                    "on-secondary-fixed": "#260059",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#001a59",
+                    "on-primary-container": "#499849",
+                    "on-error-container": "#93000a",
+                    "outline": "#76777c",
+                    "error": "#ba1a1a",
+                    "on-background": "#0d1c2f",
+                    "surface-container-highest": "#d5e3fd",
+                    "primary-fixed": "#a3f69c",
+                    "secondary-fixed-dim": "#d3bbff",
+                    "tertiary-fixed-dim": "#b6c4ff",
+                    "surface-bright": "#f8f9ff",
+                    "on-tertiary-container": "#6b83d7",
+                    "surface": "#f8f9ff",
+                    "primary-container": "#002704",
+                    "inverse-primary": "#88d982",
+                    "tertiary-fixed": "#dce1ff",
+                    "surface-container": "#e6eeff",
+                    "on-tertiary-fixed": "#00164e",
+                    "secondary-fixed": "#ebdcff",
+                    "background": "#f8f9ff",
+                    "surface-dim": "#ccdbf4",
+                    "on-secondary-container": "#44118d",
+                    "inverse-surface": "#233144",
+                    "surface-variant": "#d5e3fd",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#000b01",
+                    "on-secondary-fixed-variant": "#572ba0",
+                    "outline-variant": "#c6c6cc",
+                    "on-primary-fixed": "#002204"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-[#f8f9ff]/80 backdrop-blur-md">
+<nav class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-bold tracking-tight text-[#000b01] font-headline">Zudo POS</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-[#45474c] font-medium hover:text-[#6f46b9] transition-colors duration-200" href="#">Product</a>
+<a class="text-[#45474c] font-medium hover:text-[#6f46b9] transition-colors duration-200" href="#">Features</a>
+<a class="text-[#45474c] font-medium hover:text-[#6f46b9] transition-colors duration-200" href="#">Pricing</a>
+<a class="text-[#6f46b9] font-bold border-b-2 border-[#6f46b9] pb-1" href="#">Documentation</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="px-4 py-2 text-sm font-semibold tracking-wider text-[#000b01] font-label uppercase">Login</button>
+<button class="px-6 py-2 bg-primary text-on-primary rounded-lg font-semibold tracking-wider font-label uppercase transition-transform active:scale-95 duration-150">Get Started</button>
+</div>
+</nav>
+</header>
+<main class="pt-24 min-h-screen flex max-w-7xl mx-auto px-8 gap-8">
+<!-- Sidebar Navigation -->
+<aside class="hidden lg:block w-72 shrink-0 border-r border-outline-variant/20 sticky top-24 self-start h-[calc(100vh-6rem)] overflow-y-auto hide-scrollbar pb-8">
+<div class="space-y-8 pr-4">
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-lg">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-3 focus:ring-2 focus:ring-secondary/20 text-sm" placeholder="Search documentation..." type="text"/>
+</div>
+<nav class="space-y-1">
+<p class="px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60">Core Guides</p>
+<a class="flex items-center space-x-3 px-3 py-2.5 rounded-lg bg-secondary-container text-on-secondary-container font-semibold transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+<span class="text-sm">Getting Started</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">print</span>
+<span class="text-sm">Hardware Setup</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+<span class="text-sm">Inventory Management</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+<span class="text-sm">Staff Roles</span>
+</a>
+</nav>
+<nav class="space-y-1">
+<p class="px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60">Advanced</p>
+<a class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">code</span>
+<span class="text-sm">API Reference</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">webhook</span>
+<span class="text-sm">Webhooks</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Content Area -->
+<article class="flex-1 pb-24 max-w-3xl">
+<header class="mb-12">
+<nav class="flex items-center space-x-2 text-xs font-medium text-on-surface-variant mb-4">
+<span>Docs</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-secondary">Getting Started</span>
+</nav>
+<h1 class="text-5xl font-extrabold font-headline tracking-tight text-on-surface mb-6 leading-tight">Getting Started Guide</h1>
+<p class="text-lg text-on-surface-variant leading-relaxed">Welcome to Zudo POS. This guide will help you set up your workspace, configure your first inventory items, and process your inaugural transaction in under 10 minutes.</p>
+</header>
+<section class="space-y-12">
+<!-- Step 1 -->
+<div class="relative pl-12 group">
+<div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-sm shadow-lg shadow-secondary/20">1</div>
+<div class="absolute left-[15px] top-8 bottom-0 w-px bg-outline-variant/30 group-last:hidden"></div>
+<h3 class="text-xl font-bold font-headline mb-4">Create Your Workspace</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">Login to your dashboard and navigate to the <span class="bg-surface-container-low px-1.5 py-0.5 rounded text-secondary font-mono text-xs">Settings &gt; General</span> section. Here you'll define your shop name, currency (₦ by default), and tax rates.</p>
+<div class="aspect-video w-full rounded-xl bg-surface-container-low overflow-hidden relative">
+<img class="w-full h-full object-cover opacity-90 mix-blend-multiply" data-alt="Modern retail dashboard interface showing business settings on a high-resolution tablet with soft studio lighting and clean minimalist design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvD8JAWHkz0tN75TEbtQYuJHIM_eq33iOFt8RUYSoo2dMyf-eMRE7p-AtEeUONfE1ljXRNqOnblYvjmAvAVI4y7pTWvJ1HCtDpPejc3jXhe1DcP7pf3QWysVxHEi3qEU9PClhKkCo8UhwKlL-0ujBlRTE7z-AOJYvYBNOacROINUV9aVb-grGTs_56EeKia51wuVjRjseack1ULfQH6FC3ytDTT6Q5fxJCDgfy8LbsJuFznreUGY6GBwcOxe2G0L0bNIRamswfoowN"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low/80 to-transparent"></div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative pl-12 group">
+<div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-sm shadow-lg shadow-secondary/20">2</div>
+<div class="absolute left-[15px] top-8 bottom-0 w-px bg-outline-variant/30 group-last:hidden"></div>
+<h3 class="text-xl font-bold font-headline mb-4">Onboard Hardware</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">Connect your thermal printer and barcode scanner via USB or Bluetooth. The POS will automatically detect most devices. For specific Nigerian market printers, please refer to our <a class="text-secondary underline underline-offset-4 decoration-secondary/30 hover:decoration-secondary" href="#">Hardware Setup</a> list.</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 rounded-xl bg-surface-container-lowest border-l-4 border-secondary shadow-sm">
+<span class="material-symbols-outlined text-secondary mb-2">bluetooth</span>
+<h4 class="font-bold text-sm mb-1">Wireless Sync</h4>
+<p class="text-xs text-on-surface-variant">Best for mobile tablet registers.</p>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-lowest border-l-4 border-outline-variant shadow-sm">
+<span class="material-symbols-outlined text-on-surface-variant mb-2">usb</span>
+<h4 class="font-bold text-sm mb-1">Direct USB</h4>
+<p class="text-xs text-on-surface-variant">Highest reliability for busy counters.</p>
+</div>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative pl-12 group">
+<div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-sm shadow-lg shadow-secondary/20">3</div>
+<div class="absolute left-[15px] top-8 bottom-0 w-px bg-outline-variant/30 group-last:hidden"></div>
+<h3 class="text-xl font-bold font-headline mb-4">Import Inventory</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">Upload a CSV file containing your product list or add items manually using our tactile "Quick-Add" interface. Remember to set your **Alert Thresholds** for low-stock notifications.</p>
+<div class="bg-tertiary text-on-tertiary-fixed rounded-2xl p-8 relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="text-lg font-bold mb-2">Pro Tip: Zebra Lists</h4>
+<p class="text-sm opacity-80 leading-relaxed max-w-md">Our UI uses "Zebra Striping" instead of borders to help cashiers scan item rows faster during peak traffic. Look for the subtle tonal shifts in the product grid.</p>
+</div>
+<span class="absolute -right-4 -bottom-4 material-symbols-outlined text-8xl opacity-10">inventory</span>
+</div>
+</div>
+</section>
+<footer class="mt-20 pt-10 border-t border-outline-variant/20 flex justify-between items-center">
+<div>
+<p class="text-sm text-on-surface-variant mb-1">Still need help?</p>
+<a class="text-secondary font-bold flex items-center hover:translate-x-1 transition-transform" href="#">
+                        Talk to an Agent 
+                        <span class="material-symbols-outlined ml-1 text-[18px]">arrow_forward</span>
+</a>
+</div>
+<div class="flex space-x-2">
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">thumb_up</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">thumb_down</span>
+</button>
+</div>
+</footer>
+</article>
+<!-- Right Side - Table of Contents (Contextual) -->
+<aside class="hidden xl:block w-48 shrink-0 sticky top-24 self-start">
+<nav class="space-y-4">
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60">On this page</p>
+<ul class="space-y-3 text-xs font-medium text-on-surface-variant">
+<li><a class="hover:text-secondary block border-l-2 border-secondary pl-3 text-on-surface" href="#">Create Workspace</a></li>
+<li><a class="hover:text-secondary block border-l-2 border-transparent pl-3" href="#">Onboard Hardware</a></li>
+<li><a class="hover:text-secondary block border-l-2 border-transparent pl-3" href="#">Import Inventory</a></li>
+<li><a class="hover:text-secondary block border-l-2 border-transparent pl-3" href="#">First Transaction</a></li>
+</ul>
+</nav>
+</aside>
+</main>
+<!-- Footer -->
+<footer class="mt-auto bg-[#eff4ff] dark:bg-[#000623]">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 px-8 py-12 max-w-7xl mx-auto">
+<div class="col-span-2 md:col-span-1">
+<div class="text-lg font-black text-[#000b01] font-headline mb-4">Zudo POS</div>
+<p class="text-xs text-[#45474c] leading-relaxed">Redefining retail authority through modern speed and editorial precision.</p>
+</div>
+<div>
+<p class="font-bold text-sm mb-4 text-[#000b01]">Resources</p>
+<ul class="space-y-2 text-xs">
+<li><a class="text-[#45474c] hover:text-[#000b01] transition-all" href="#">Documentation</a></li>
+<li><a class="text-[#45474c] hover:text-[#000b01] transition-all" href="#">API Reference</a></li>
+<li><a class="text-[#45474c] hover:text-[#000b01] transition-all" href="#">Support Center</a></li>
+</ul>
+</div>
+<div>
+<p class="font-bold text-sm mb-4 text-[#000b01]">Legal</p>
+<ul class="space-y-2 text-xs">
+<li><a class="text-[#45474c] hover:text-[#000b01] transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-[#45474c] hover:text-[#000b01] transition-all" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<p class="font-bold text-sm mb-4 text-[#000b01]">Connect</p>
+<ul class="space-y-2 text-xs">
+<li><a class="text-[#45474c] hover:text-[#000b01] transition-all" href="#">Contact Sales</a></li>
+<li><a class="text-[#45474c] hover:text-[#000b01] transition-all" href="#">Developer Hub</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 py-6 border-t border-outline-variant/10 text-center md:text-left">
+<p class="text-[10px] text-[#45474c]">© 2026 Zudo POS. All rights reserved. Built for The Fluid Authority.</p>
+</div>
+</footer>
+</body></html>

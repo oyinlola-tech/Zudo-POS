@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Settings - Zudo POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#0d1c2f",
+                        "tertiary-container": "#001a59",
+                        "on-tertiary-container": "#6b83d7",
+                        "on-tertiary-fixed": "#00164e",
+                        "surface-dim": "#ccdbf4",
+                        "secondary-container": "#b188ff",
+                        "secondary": "#6f46b9",
+                        "on-secondary-fixed-variant": "#572ba0",
+                        "error-container": "#ffdad6",
+                        "surface": "#f8f9ff",
+                        "primary-container": "#002704",
+                        "tertiary-fixed-dim": "#b6c4ff",
+                        "inverse-surface": "#233144",
+                        "on-tertiary-fixed-variant": "#264191",
+                        "tertiary": "#000623",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "primary-fixed-dim": "#88d982",
+                        "surface-container-low": "#eff4ff",
+                        "on-surface": "#0d1c2f",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#005312",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#000b01",
+                        "on-surface-variant": "#45474c",
+                        "surface-container": "#e6eeff",
+                        "inverse-on-surface": "#ebf1ff",
+                        "background": "#f8f9ff",
+                        "outline": "#76777c",
+                        "secondary-fixed-dim": "#d3bbff",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#88d982",
+                        "on-secondary-container": "#44118d",
+                        "on-primary-fixed": "#002204",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#dce1ff",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#ebdcff",
+                        "surface-variant": "#d5e3fd",
+                        "surface-container-high": "#dde9ff",
+                        "on-secondary-fixed": "#260059",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#1b6d24",
+                        "primary-fixed": "#a3f69c",
+                        "outline-variant": "#c6c6cc",
+                        "on-primary-container": "#499849",
+                        "surface-container-highest": "#d5e3fd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- SideNavBar Component -->
+<aside class="hidden md:flex flex-col h-full py-6 bg-slate-950 dark:bg-black h-screen w-64 fixed left-0 top-0 z-40">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-black text-lg">E</div>
+<div>
+<h2 class="text-lg font-black text-white leading-tight">Editorial Retail</h2>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Admin Terminal</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-slate-400 hover:text-white px-4 py-3 hover:bg-slate-800 transition-all mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-white px-4 py-3 hover:bg-slate-800 transition-all mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-medium">Transactions</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-white px-4 py-3 hover:bg-slate-800 transition-all mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-medium">Inventory</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-white px-4 py-3 hover:bg-slate-800 transition-all mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-medium">Team</span>
+</a>
+<!-- Active State Logic: Settings is the current page -->
+<a class="flex items-center gap-3 bg-indigo-600 text-white rounded-lg mx-2 px-4 py-3 scale 0.98x" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-2 space-y-1">
+<a class="flex items-center gap-3 text-slate-400 hover:text-white px-4 py-3 hover:bg-slate-800 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+<span class="font-medium">Support</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-white px-4 py-3 hover:bg-slate-800 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-medium">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:pl-64 min-h-screen">
+<!-- TopNavBar Component (Simplified for sub-page) -->
+<header class="bg-white/80 backdrop-blur-md sticky top-0 w-full z-30 shadow-[0px_12px_32px_rgba(13,28,47,0.06)]">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-screen-2xl mx-auto">
+<h1 class="text-xl font-bold tracking-tight text-slate-900">Account Settings</h1>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-50 transition-colors rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of a mature business owner with a confident expression, soft office lighting, editorial style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEb-vvppclEztMY7Z-bmL1YOLVbgEb3bEgACF7F0oXQul4Z4sWfw8z_I-so8HoUcCvcx4Lst-ApiQGR-cd1yk139Rijl4Mjidi1dTqTYkcTXqCrNPlMCrgpyZReIq8pbBVVa11BZqFwXXsID2S4kQTreeTUCRlt_qN3is0ASEpH3CZF_qqmDKJOsxRKZp-eC48FNanHl2uYFteDyKZL1DiQewoW5TFEn92mR8_rW2ijKGKZjKzCImMUXwdP_CIgShZO0LEvUx41E4-"/>
+</div>
+</div>
+</div>
+</header>
+<div class="p-6 md:p-10 max-w-6xl mx-auto space-y-8">
+<!-- Bento Layout Start -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Section: Personal Profile -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-xl p-8 transition-all">
+<div class="flex flex-col md:flex-row items-center gap-8">
+<div class="relative group">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of an African male business executive in a tailored suit, modern office background, soft sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFmizpX0mGhjQtfMrcwTl5yTbbpv7ksBbtRTMEhwf83EoSnGXC8MLE7dTvdlcQMdHy4jW8cBCoXjo153gxJEhdY7r8IpVGHZrvDx_zKDYaBSQqVSlnPHo86Vlku5gAcs3OO4qcpc4GHYyWPFzFuxJ-oAtU6r_37f534vUjUMByTFTQ7uAwsMbC-H1Yr-QmEkA0ASi95Jc1m_ITBb7rli31_3IbfJN6412UAk5w-Nx02EJbKuzqkMu6noCWdeXj_VkduMGC08SKgbrF"/>
+</div>
+<button class="absolute bottom-1 right-1 bg-secondary text-white p-2 rounded-full shadow-lg hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<div class="flex-1 text-center md:text-left">
+<div class="inline-block px-3 py-1 bg-primary-container text-on-primary-container text-[10px] font-bold uppercase tracking-widest rounded-full mb-2">
+                                System Administrator
+                            </div>
+<h2 class="text-3xl font-bold text-on-surface mb-1">Chidi Okechukwu</h2>
+<p class="text-on-surface-variant mb-4">chidi.o@lagosretail.com</p>
+<div class="flex flex-wrap gap-3 justify-center md:justify-start">
+<button class="px-6 py-2 bg-primary text-on-primary font-bold text-sm rounded-lg hover:opacity-90 transition-opacity">Edit Profile</button>
+<button class="px-6 py-2 text-secondary font-bold text-sm rounded-lg border border-outline-variant/20 hover:bg-surface-container-low transition-colors">Change Avatar</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Organization Details -->
+<div class="md:col-span-4 bg-surface-container-low rounded-xl p-6 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-4 text-on-surface-variant">
+<span class="material-symbols-outlined">domain</span>
+<span class="text-xs font-bold uppercase tracking-wider">Organization</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface">Lagos Retail Group</h3>
+<p class="text-sm text-on-surface-variant mt-2 leading-relaxed">Headquarters: Victoria Island, Lagos, Nigeria.</p>
+</div>
+<div class="mt-6 pt-6 border-t border-outline-variant/10">
+<button class="w-full flex items-center justify-between text-sm font-bold text-primary">
+                            Update Business Info
+                            <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Section: Billing & Subscription -->
+<div class="md:col-span-5 bg-tertiary text-white rounded-xl p-8 relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-10">
+<div>
+<p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Current Plan</p>
+<h3 class="text-2xl font-black">Business Plan</h3>
+</div>
+<div class="bg-indigo-600/30 border border-indigo-400/30 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">Active</div>
+</div>
+<div class="mb-8">
+<span class="text-4xl font-black font-headline">₦15,000</span>
+<span class="text-slate-400 font-medium">/mo</span>
+</div>
+<div class="flex items-center gap-2 mb-6">
+<div class="flex-1 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+<div class="w-3/4 h-full bg-indigo-500"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400">12/15 Nodes</span>
+</div>
+<button class="w-full py-4 bg-white text-slate-950 font-black rounded-lg text-sm hover:bg-slate-100 transition-colors uppercase tracking-widest">
+                            Manage Subscription
+                        </button>
+</div>
+<!-- Decorative background element -->
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-indigo-600/10 rounded-full blur-3xl"></div>
+</div>
+<!-- Section: Security & 2FA -->
+<div class="md:col-span-7 bg-surface-container-lowest rounded-xl p-8 flex flex-col">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-xl font-bold text-on-surface">Security &amp; Privacy</h3>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div class="space-y-6">
+<div class="flex items-center justify-between p-4 rounded-xl bg-surface-container-low transition-colors hover:bg-surface-container">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-slate-600">lock_reset</span>
+</div>
+<div>
+<p class="font-bold text-sm">Account Password</p>
+<p class="text-xs text-on-surface-variant">Last changed 4 months ago</p>
+</div>
+</div>
+<button class="text-secondary font-bold text-xs uppercase tracking-widest">Update</button>
+</div>
+<div class="flex items-center justify-between p-4 rounded-xl bg-surface-container-low transition-colors hover:bg-surface-container">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-indigo-600" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div>
+<p class="font-bold text-sm">Two-Factor Authentication</p>
+<p class="text-xs text-on-surface-variant">Protected by Authenticator App</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-surface-tint"></span>
+<span class="text-[10px] font-bold text-surface-tint uppercase tracking-tighter">Enabled</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Audit Log (Activity Feed) -->
+<div class="md:col-span-12 bg-surface-container-low rounded-xl p-8">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-xl font-bold text-on-surface">System Audit Log</h3>
+<p class="text-xs text-on-surface-variant mt-1">Real-time oversight of administrative actions</p>
+</div>
+<button class="px-4 py-2 text-xs font-bold uppercase tracking-widest border border-outline-variant/30 rounded-lg hover:bg-white transition-colors">
+                            Export CSV
+                        </button>
+</div>
+<div class="space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-4 items-center gap-4 py-4 px-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-sm">update</span>
+</div>
+<span class="text-sm font-bold">Plan Upgrade</span>
+</div>
+<div class="text-xs text-on-surface-variant font-medium">Changed from Starter to Business</div>
+<div class="text-xs text-on-surface-variant">Today, 10:45 AM</div>
+<div class="text-right">
+<span class="text-[10px] font-black uppercase text-slate-400">ID: 99283-X</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 items-center gap-4 py-4 px-6 bg-white/50 rounded-xl">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500 text-sm">person_add</span>
+</div>
+<span class="text-sm font-bold">New Staff Added</span>
+</div>
+<div class="text-xs text-on-surface-variant font-medium">Adebayo S. (Cashier Level 2)</div>
+<div class="text-xs text-on-surface-variant">Yesterday, 4:20 PM</div>
+<div class="text-right">
+<span class="text-[10px] font-black uppercase text-slate-400">ID: 99271-B</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 items-center gap-4 py-4 px-6 bg-white/50 rounded-xl">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500 text-sm">password</span>
+</div>
+<span class="text-sm font-bold">Security Update</span>
+</div>
+<div class="text-xs text-on-surface-variant font-medium">2FA method verified</div>
+<div class="text-xs text-on-surface-variant">2 days ago, 9:15 AM</div>
+<div class="text-right">
+<span class="text-[10px] font-black uppercase text-slate-400">ID: 99210-S</span>
+</div>
+</div>
+</div>
+<div class="mt-8 text-center">
+<button class="text-xs font-black text-indigo-600 uppercase tracking-widest hover:underline">
+                            View Full History (540 Entries)
+                        </button>
+</div>
+</div>
+</div>
+<!-- Bento Layout End -->
+<footer class="pt-10 pb-20 border-t border-outline-variant/10 text-center">
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">Zudo POS — Version 4.2.0-Production</p>
+<div class="flex justify-center gap-6 mt-4">
+<a class="text-xs text-slate-400 hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-xs text-slate-400 hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-xs text-slate-400 hover:text-primary transition-colors" href="#">GDPR Compliance</a>
+</div>
+</footer>
+</div>
+</main>
+<!-- BottomNavBar Component (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-slate-50/90 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200/20 rounded-t-2xl z-50 shadow-[0px_-4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex flex-col items-center justify-center text-slate-500">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[11px] font-bold uppercase tracking-wider Manrope mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="text-[11px] font-bold uppercase tracking-wider Manrope mt-1">Sales</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500">
+<span class="material-symbols-outlined">schedule</span>
+<span class="text-[11px] font-bold uppercase tracking-wider Manrope mt-1">Shifts</span>
+</div>
+<!-- Active State Logic: Profile/Settings -->
+<div class="flex flex-col items-center justify-center bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-200 rounded-2xl px-6 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-[11px] font-bold uppercase tracking-wider Manrope mt-1">Profile</span>
+</div>
+</nav>
+</body></html>

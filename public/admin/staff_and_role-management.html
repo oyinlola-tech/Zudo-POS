@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Staff &amp; Role Management | Zudo POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#d3bbff",
+                        "surface-container-highest": "#d5e3fd",
+                        "primary-fixed": "#a3f69c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#0d1c2f",
+                        "outline": "#76777c",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#001a59",
+                        "on-primary-container": "#499849",
+                        "surface-container-low": "#eff4ff",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#000623",
+                        "on-tertiary-fixed-variant": "#264191",
+                        "on-surface-variant": "#45474c",
+                        "on-secondary-fixed": "#260059",
+                        "surface-tint": "#1b6d24",
+                        "inverse-on-surface": "#ebf1ff",
+                        "secondary-container": "#b188ff",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#88d982",
+                        "on-primary-fixed-variant": "#005312",
+                        "on-error": "#ffffff",
+                        "secondary": "#6f46b9",
+                        "on-surface": "#0d1c2f",
+                        "surface-container-high": "#dde9ff",
+                        "on-secondary-fixed-variant": "#572ba0",
+                        "primary": "#000b01",
+                        "on-primary-fixed": "#002204",
+                        "outline-variant": "#c6c6cc",
+                        "inverse-surface": "#233144",
+                        "surface-dim": "#ccdbf4",
+                        "on-secondary-container": "#44118d",
+                        "secondary-fixed": "#ebdcff",
+                        "background": "#f8f9ff",
+                        "surface-variant": "#d5e3fd",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "primary-container": "#002704",
+                        "tertiary-fixed": "#dce1ff",
+                        "surface-container": "#e6eeff",
+                        "on-tertiary-fixed": "#00164e",
+                        "inverse-primary": "#88d982",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-container": "#6b83d7",
+                        "tertiary-fixed-dim": "#b6c4ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar -->
+<aside class="h-screen w-72 flex flex-col fixed left-0 top-0 bg-[#000623] dark:bg-[#000623] py-6 z-50">
+<div class="px-6 mb-8">
+<span class="text-xl font-manrope font-black text-white">Zudo POS</span>
+<p class="text-[10px] text-slate-400 font-inter uppercase tracking-widest mt-1">Fluid Authority Admin</p>
+</div>
+<nav class="flex-1 overflow-y-auto no-scrollbar space-y-1">
+<!-- Overview -->
+<a class="flex items-center px-4 py-2 text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="dashboard">dashboard</span>
+<span class="font-inter text-sm font-medium">Overview</span>
+</a>
+<!-- Sales Management -->
+<a class="flex items-center px-4 py-2 text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="receipt_long">receipt_long</span>
+<span class="font-inter text-sm font-medium">Sales Management</span>
+</a>
+<!-- Products & Inventory -->
+<a class="flex items-center px-4 py-2 text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="inventory_2">inventory_2</span>
+<span class="font-inter text-sm font-medium">Products &amp; Inventory</span>
+</a>
+<!-- POS Session Monitor -->
+<a class="flex items-center px-4 py-2 text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="point_of_sale">point_of_sale</span>
+<span class="font-inter text-sm font-medium">POS Session Monitor</span>
+</a>
+<!-- Staff & Role Management (Active) -->
+<a class="flex items-center px-4 py-2 bg-[#6f46b9] text-white rounded-lg mx-2 my-1" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="badge">badge</span>
+<span class="font-inter text-sm font-medium">Staff &amp; Role Management</span>
+</a>
+<!-- Customer Management -->
+<a class="flex items-center px-4 py-2 text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="group">group</span>
+<span class="font-inter text-sm font-medium">Customer Management</span>
+</a>
+<!-- Loyalty & Points -->
+<a class="flex items-center px-4 py-2 text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="star">star</span>
+<span class="font-inter text-sm font-medium">Loyalty &amp; Points</span>
+</a>
+<!-- Analytics -->
+<a class="flex items-center px-4 py-2 text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="monitoring">monitoring</span>
+<span class="font-inter text-sm font-medium">Analytics</span>
+</a>
+<!-- Branch Management -->
+<a class="flex items-center px-4 py-2 text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="storefront">storefront</span>
+<span class="font-inter text-sm font-medium">Branch Management</span>
+</a>
+<!-- Notification Center -->
+<a class="flex items-center px-4 py-2 text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="notifications">notifications</span>
+<span class="font-inter text-sm font-medium">Notification Center</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center px-4 py-2 text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="settings">settings</span>
+<span class="font-inter text-sm font-medium">Settings</span>
+</a>
+<!-- Audit Logs -->
+<a class="flex items-center px-4 py-2 text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="history">history</span>
+<span class="font-inter text-sm font-medium">Audit Logs</span>
+</a>
+</nav>
+<div class="px-4 mt-auto pt-6 border-t border-white/10">
+<div class="flex items-center p-2 rounded-xl bg-white/5">
+<img alt="Admin User Profile" class="w-10 h-10 rounded-lg object-cover" data-alt="professional portrait of a nigerian male executive in a smart casual outfit against a neutral office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp6JLhLChpfR1BX_kokKCVh_eTYwwzgaqcXQrhzt1Fr9ZvvgCUnKW9nTnYEGTgiCnK4lL-QKbY2qHjs6QNXN4mVPDzwNzV2OUIU91aRdseaZDI3bUnAp3rsfPPRijJ8pC_xYDkvEnzl4UOwLYKe-VZb5K8p90WKz0gWJcLLGIRb-Q9LykQ0TDJLflt9Fb_yuaAjvQuaIpTJwcIMqo_ucEZEi_9eW4oyYZjskOaAujb7Bf-8KmSbYpUHZGj_Z3V5_b_1qy3ntu6Uri4"/>
+<div class="ml-3">
+<p class="text-white text-xs font-bold font-manrope">Chinedu Okafor</p>
+<p class="text-slate-400 text-[10px]">Super Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-72 min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center px-8 h-16 sticky top-0 z-40 bg-[#f8f9ff]/80 backdrop-blur-md">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low rounded-xl border-none focus:ring-2 focus:ring-secondary/20 font-inter text-sm text-on-surface" placeholder="Search staff, roles, or branch..." type="text"/>
+</div>
+</div>
+<div class="flex items-center space-x-6 ml-8">
+<button class="relative text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="apps">apps</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center">
+<img alt="Manager Avatar" class="w-full h-full rounded-full" data-alt="close-up headshot of a professional manager with a friendly expression, soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA40mTZ-hxhNQwVIgZueEBJ5inkgE-YUqsiJh4xXtXST8WtJxlPcY1U07Uj8YzcMzeA_kiAYRmD2WU81P8oWRAm3xZLecRmtxt4eQju6hwMuiOnTbXUkUP2COBFlUQiEbCPhdnh7UchXqsRhaWY-gYWqsPfCleghXCj4dFB8Acdb1hwDPc-EH9gPPDLZEfhs2k0vsjbcSIdgqHSFmdMifgvp-aRh1X7UQ1lcCSc5Nf-c9S4_gCgGdMTUWFJUVv4pT_Xc7SOGe4QghSK"/>
+</div>
+</div>
+</header>
+<div class="p-8">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<h1 class="text-3xl font-black font-headline tracking-tight text-on-surface">Staff &amp; Role Management</h1>
+<p class="text-on-surface-variant font-body mt-1">Manage permissions, track performance, and audit staff access across branches.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center px-6 h-12 bg-surface-container-low text-secondary font-bold rounded-xl hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined mr-2" data-icon="filter_list">filter_list</span>
+                        Filter by Role
+                    </button>
+<button class="flex items-center px-6 h-12 bg-primary text-white font-bold rounded-xl hover:opacity-90 transition-all shadow-sm">
+<span class="material-symbols-outlined mr-2" data-icon="person_add">person_add</span>
+                        Create User
+                    </button>
+</div>
+</div>
+<!-- Dashboard Stats Grid (Bento Style) -->
+<div class="grid grid-cols-4 gap-6 mb-8">
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Total Staff</p>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-black font-headline">42</span>
+<span class="text-primary-container font-bold text-sm bg-primary-fixed px-2 py-1 rounded-lg">+3 this month</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Active Sessions</p>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-black font-headline">18</span>
+<span class="flex items-center text-secondary font-bold text-xs"><span class="w-2 h-2 bg-secondary rounded-full mr-1 animate-pulse"></span> Live Now</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Efficiency Rate</p>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-black font-headline">94%</span>
+<span class="material-symbols-outlined text-primary" data-icon="trending_up">trending_up</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Pending Audits</p>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-black font-headline">05</span>
+<span class="text-error font-bold text-sm">Action Required</span>
+</div>
+</div>
+</div>
+<!-- Staff Data Table -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant text-[11px] uppercase font-black tracking-widest">
+<th class="px-6 py-4">Staff Member</th>
+<th class="px-6 py-4">Role</th>
+<th class="px-6 py-4">Contact Info</th>
+<th class="px-6 py-4">Last Active</th>
+<th class="px-6 py-4">Sales Performance (7D)</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1: Admin -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high overflow-hidden">
+<img alt="Staff Avatar" class="w-full h-full object-cover" data-alt="headshot of an african woman in professional attire, confident smile, clean bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6kSeVd0P8hRBg-sr_MjY2dRHj_vw-kXwrylGefj481ua3hNAjs2RG49z9KpztoQ6i7YvrccsKs4zDUQEoakjuFCltIc8Cf4sQ7sX2I257lXf5jyNUqPVQ2SrQxtkp0a-7FGFsGuCQ2FmusUsF7d5W6LFAy76p2mIGvvTh5mVy3K9pxU3556H5TDMm3-eN0ZU-oyhZhIOLA1HHCYHCnITQVcoaLjIyN_3ug9at0sSUn5lBFZhGwDnrlyOGwU4SDSLywuCPTflpt445"/>
+</div>
+<div class="ml-4">
+<p class="font-bold text-on-surface font-manrope">Funke Akindele</p>
+<p class="text-xs text-on-surface-variant">ID: EMP-001</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-primary-container/10 text-on-primary-container text-[10px] font-black uppercase rounded-full border border-primary-container/20">Admin</span>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-medium">f.akindele@editorial.ng</p>
+<p class="text-xs text-on-surface-variant">+234 801 234 5678</p>
+</td>
+<td class="px-6 py-5 text-sm">
+                                Just now
+                            </td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="flex-1 min-w-[80px] h-8 flex items-end gap-[2px]">
+<div class="bg-primary-container w-full h-1/2 rounded-t-sm"></div>
+<div class="bg-primary-container w-full h-3/4 rounded-t-sm"></div>
+<div class="bg-primary-container w-full h-2/3 rounded-t-sm"></div>
+<div class="bg-primary-container w-full h-full rounded-t-sm"></div>
+<div class="bg-primary-container w-full h-5/6 rounded-t-sm"></div>
+<div class="bg-primary-container w-full h-3/4 rounded-t-sm"></div>
+<div class="bg-primary-container w-full h-full rounded-t-sm"></div>
+</div>
+<span class="text-sm font-black font-manrope">₦4.2M</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-secondary" title="Edit Profile">
+<span class="material-symbols-outlined text-xl" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-error/10 rounded-lg text-error" title="Suspend">
+<span class="material-symbols-outlined text-xl" data-icon="block">block</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-on-surface-variant" title="More Options">
+<span class="material-symbols-outlined text-xl" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Manager -->
+<tr class="hover:bg-surface-container-low transition-colors group bg-surface-container-low/30">
+<td class="px-6 py-5">
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high overflow-hidden">
+<img alt="Staff Avatar" class="w-full h-full object-cover" data-alt="headshot of a middle-aged african man with glasses, professional workspace in background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyAodRkijsF-7pHEuSwtAb5AU1gGUed3XcOl_3YWXg1SqBgo-EMUDZQw_nV7yawaXK3i4284ITyqG_TvxlWZyoUkatxjYbpyjJORRhjBz9Z2UtZ8KrE8HY-69NHTSuRoLpma_ZqsLBS3qjkOEk3xA69mlv3yOqy27HPlhXEE-5TidleLMDT1eB1-tIcpVOyimehUprAwheh56SUjT0nLm1Wyfx_s9RylBtgy7PwjJGE42oU8Qokdz9ParJT_24hJyva1Geri2ijl02"/>
+</div>
+<div class="ml-4">
+<p class="font-bold text-on-surface font-manrope">Emeka Obi</p>
+<p class="text-xs text-on-surface-variant">ID: EMP-014</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-secondary-container/20 text-on-secondary-container text-[10px] font-black uppercase rounded-full border border-secondary-container/30">Manager</span>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-medium">e.obi@editorial.ng</p>
+<p class="text-xs text-on-surface-variant">+234 809 987 6543</p>
+</td>
+<td class="px-6 py-5 text-sm">
+                                2 hours ago
+                            </td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="flex-1 min-w-[80px] h-8 flex items-end gap-[2px]">
+<div class="bg-secondary w-full h-1/3 rounded-t-sm"></div>
+<div class="bg-secondary w-full h-2/3 rounded-t-sm"></div>
+<div class="bg-secondary w-full h-1/2 rounded-t-sm"></div>
+<div class="bg-secondary w-full h-3/4 rounded-t-sm"></div>
+<div class="bg-secondary w-full h-full rounded-t-sm"></div>
+<div class="bg-secondary w-full h-2/3 rounded-t-sm"></div>
+<div class="bg-secondary w-full h-1/2 rounded-t-sm"></div>
+</div>
+<span class="text-sm font-black font-manrope">₦2.8M</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-secondary">
+<span class="material-symbols-outlined text-xl" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-error/10 rounded-lg text-error">
+<span class="material-symbols-outlined text-xl" data-icon="block">block</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined text-xl" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Cashier -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high overflow-hidden">
+<img alt="Staff Avatar" class="w-full h-full object-cover" data-alt="portrait of a young african woman in a modern shop environment, bright daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgiW9oKlYFiRL2X9pDQxoD03fCDgFW_dq2i912CuLGLnWp2gZ7lKfMzU8lb0agMWr2QNam2YfTPO-PfJJ4drZRRdwX6Jkq0NJ7o6_F0sbqkoxpDnMdqwICfoROQho-N7aqowPsvyVlUQvzyPDJuwnkPUkNof-AZ3RmZ6WLcaqvuRqz5v_AU9p32PhKBO2g4W4bCW_wI3JJUJxGYvhg3AT1Gs3MPA0XXg1-UWEpTEx-Jk5Jb5XgFp8G3iZ6r245G3yHLCpPPHoXWQ8N"/>
+</div>
+<div class="ml-4">
+<p class="font-bold text-on-surface font-manrope">Musa Adamu</p>
+<p class="text-xs text-on-surface-variant">ID: EMP-089</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant text-[10px] font-black uppercase rounded-full border border-outline-variant/30">Cashier</span>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-medium">m.adamu@editorial.ng</p>
+<p class="text-xs text-on-surface-variant">+234 902 345 6789</p>
+</td>
+<td class="px-6 py-5 text-sm">
+                                4 mins ago
+                            </td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="flex-1 min-w-[80px] h-8 flex items-end gap-[2px]">
+<div class="bg-outline w-full h-1/4 rounded-t-sm"></div>
+<div class="bg-outline w-full h-2/4 rounded-t-sm"></div>
+<div class="bg-outline w-full h-1/3 rounded-t-sm"></div>
+<div class="bg-outline w-full h-5/6 rounded-t-sm"></div>
+<div class="bg-outline w-full h-2/3 rounded-t-sm"></div>
+<div class="bg-outline w-full h-3/4 rounded-t-sm"></div>
+<div class="bg-outline w-full h-full rounded-t-sm"></div>
+</div>
+<span class="text-sm font-black font-manrope">₦840k</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-secondary">
+<span class="material-symbols-outlined text-xl" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-error/10 rounded-lg text-error">
+<span class="material-symbols-outlined text-xl" data-icon="block">block</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined text-xl" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Cashier (Suspended) -->
+<tr class="hover:bg-surface-container-low transition-colors group opacity-60 bg-surface-container-low/10">
+<td class="px-6 py-5">
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high grayscale overflow-hidden">
+<img alt="Staff Avatar" class="w-full h-full object-cover" data-alt="portrait of a professional nigerian woman, muted colors, grayscale effect" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDys8NVCK92CB8si0sfMDFxtrha1m30nFD308vm2wqmwQznSzLQTQxPIeY8c2LnAgPTUQMf79j5CYAXR6eHA3Qh0BrPAWWwYbkptRCLQ_6mKJNi3WtUGwwWL3OsCnoLI_JcdEZvl8zDJc_EojyYVeIneWPXTTCdXocmS43z4zoz2WOZuiSvRi2HDWsd00w8M8pRjTKqv1JDDJC8Sevqk_GR4so_OMyoNyC6o472GLyvsARlpxcM6-nY0Q2cZT4wxpITlbKJ0ZKlAuEq"/>
+</div>
+<div class="ml-4">
+<p class="font-bold text-on-surface font-manrope">Zainab Eze</p>
+<p class="text-xs text-on-surface-variant">ID: EMP-102</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-error-container/20 text-on-error-container text-[10px] font-black uppercase rounded-full border border-error-container/30">Suspended</span>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-medium">z.eze@editorial.ng</p>
+<p class="text-xs text-on-surface-variant">+234 703 111 2222</p>
+</td>
+<td class="px-6 py-5 text-sm italic">
+                                Last seen 2w ago
+                            </td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="flex-1 min-w-[80px] h-8 flex items-end gap-[2px]">
+<div class="bg-outline-variant w-full h-0 rounded-t-sm"></div>
+<div class="bg-outline-variant w-full h-0 rounded-t-sm"></div>
+<div class="bg-outline-variant w-full h-0 rounded-t-sm"></div>
+<div class="bg-outline-variant w-full h-0 rounded-t-sm"></div>
+<div class="bg-outline-variant w-full h-0 rounded-t-sm"></div>
+<div class="bg-outline-variant w-full h-0 rounded-t-sm"></div>
+<div class="bg-outline-variant w-full h-0 rounded-t-sm"></div>
+</div>
+<span class="text-sm font-black font-manrope">₦0.00</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-primary-fixed/20 rounded-lg text-on-primary-container" title="Restore">
+<span class="material-symbols-outlined text-xl" data-icon="undo">undo</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined text-xl" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="p-6 bg-surface-container-low/50 flex justify-between items-center">
+<p class="text-xs text-on-surface-variant font-medium">Showing <span class="font-bold">1-4</span> of 42 staff members</p>
+<div class="flex gap-2">
+<button class="px-4 py-2 text-sm font-bold bg-white rounded-lg border border-outline-variant/10 hover:bg-surface-container-high transition-all">Previous</button>
+<button class="px-4 py-2 text-sm font-bold bg-primary text-white rounded-lg shadow-sm hover:opacity-90 transition-all">Next</button>
+</div>
+</div>
+</div>
+<!-- Role Permissions Overview (Bento Section) -->
+<div class="mt-12 grid grid-cols-3 gap-6">
+<div class="col-span-2 bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-black font-headline">Recent Access Logs</h3>
+<button class="text-secondary text-xs font-bold uppercase tracking-widest hover:underline">View All Logs</button>
+</div>
+<div class="space-y-4">
+<div class="flex items-center p-4 bg-surface-container-low rounded-xl">
+<div class="w-2 h-2 bg-primary rounded-full mr-4"></div>
+<div class="flex-1">
+<p class="text-sm font-bold">Funke Akindele (Admin)</p>
+<p class="text-xs text-on-surface-variant">Authorized manual inventory correction at Store 04</p>
+</div>
+<span class="text-[10px] font-medium text-on-surface-variant">12:45 PM</span>
+</div>
+<div class="flex items-center p-4 bg-surface-container-low rounded-xl">
+<div class="w-2 h-2 bg-secondary rounded-full mr-4"></div>
+<div class="flex-1">
+<p class="text-sm font-bold">Emeka Obi (Manager)</p>
+<p class="text-xs text-on-surface-variant">Approved discount override for Order #98221</p>
+</div>
+<span class="text-[10px] font-medium text-on-surface-variant">11:20 AM</span>
+</div>
+<div class="flex items-center p-4 bg-surface-container-low rounded-xl">
+<div class="w-2 h-2 bg-outline rounded-full mr-4"></div>
+<div class="flex-1">
+<p class="text-sm font-bold">Musa Adamu (Cashier)</p>
+<p class="text-xs text-on-surface-variant">Logged in to Terminal 02 - Morning Shift</p>
+</div>
+<span class="text-[10px] font-medium text-on-surface-variant">08:00 AM</span>
+</div>
+</div>
+</div>
+<div class="bg-primary text-white p-8 rounded-xl relative overflow-hidden flex flex-col justify-between">
+<div class="relative z-10">
+<h3 class="text-2xl font-black font-headline leading-tight">Security &amp; Roles Health</h3>
+<p class="text-primary-fixed text-sm mt-2 opacity-90">All 42 active accounts are protected with 2FA.</p>
+</div>
+<div class="mt-8 space-y-4 relative z-10">
+<div class="flex justify-between items-center">
+<span class="text-xs font-bold uppercase opacity-60">Uptime</span>
+<span class="text-sm font-bold">99.9%</span>
+</div>
+<div class="w-full bg-white/10 h-1 rounded-full overflow-hidden">
+<div class="bg-primary-fixed w-[99.9%] h-full"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs font-bold uppercase opacity-60">System Security</span>
+<span class="text-sm font-bold">Optimal</span>
+</div>
+<div class="w-full bg-white/10 h-1 rounded-full overflow-hidden">
+<div class="bg-primary-fixed w-full h-full"></div>
+</div>
+</div>
+<!-- Decorative background icon -->
+<span class="material-symbols-outlined absolute -bottom-10 -right-10 text-[200px] opacity-10 rotate-12" data-icon="verified_user">verified_user</span>
+</div>
+</div>
+</div>
+<footer class="mt-auto p-8 border-t border-outline-variant/10 text-on-surface-variant text-[10px] font-bold uppercase tracking-widest flex justify-between">
+<span>© 2026 Zudo POS - Fluid Authority Admin Suite</span>
+<div class="flex gap-6">
+<a class="hover:text-secondary" href="#">Privacy Protocol</a>
+<a class="hover:text-secondary" href="#">Audit Standards</a>
+<a class="hover:text-secondary" href="#">Security Policy</a>
+</div>
+</footer>
+</main>
+<!-- Contextual FAB (Hidden on this page as per rules, but included if needed by logic) -->
+<!-- Suppression logic: On Settings/Profile/Details/Transactional screens, suppress FAB. This is a management page, so we use the button in the header instead. -->
+</body></html>

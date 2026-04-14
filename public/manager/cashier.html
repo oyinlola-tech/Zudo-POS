@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cashier Management | Zudo POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#d5e3fd",
+                        "tertiary-container": "#001a59",
+                        "surface-container-highest": "#d5e3fd",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#b188ff",
+                        "tertiary": "#000623",
+                        "on-tertiary-fixed": "#00164e",
+                        "surface-container-low": "#eff4ff",
+                        "surface-dim": "#ccdbf4",
+                        "surface-container": "#e6eeff",
+                        "secondary-fixed-dim": "#d3bbff",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#dde9ff",
+                        "on-tertiary-container": "#6b83d7",
+                        "tertiary-fixed": "#dce1ff",
+                        "secondary": "#6f46b9",
+                        "on-secondary-fixed": "#260059",
+                        "on-tertiary-fixed-variant": "#264191",
+                        "on-background": "#0d1c2f",
+                        "on-surface": "#0d1c2f",
+                        "on-primary-fixed": "#002204",
+                        "on-primary-container": "#499849",
+                        "inverse-surface": "#233144",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#ebf1ff",
+                        "background": "#f8f9ff",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#ebdcff",
+                        "primary-fixed-dim": "#88d982",
+                        "primary-fixed": "#a3f69c",
+                        "surface-tint": "#1b6d24",
+                        "inverse-primary": "#88d982",
+                        "primary": "#000b01",
+                        "tertiary-fixed-dim": "#b6c4ff",
+                        "outline": "#76777c",
+                        "on-surface-variant": "#45474c",
+                        "on-secondary-container": "#44118d",
+                        "primary-container": "#002704",
+                        "surface": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#005312",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c6c6cc",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#572ba0",
+                        "surface-bright": "#f8f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Sidebar (NavigationDrawer) -->
+<aside class="h-screen w-64 fixed left-0 top-0 z-50 bg-slate-950 flex flex-col py-6 shadow-2xl">
+<div class="px-6 mb-8">
+<h1 class="text-emerald-50 font-black tracking-tight text-xl headline">Zudo POS</h1>
+<p class="text-slate-400 text-xs font-medium">Lagos Central Branch</p>
+</div>
+<nav class="flex-1 space-y-1 px-2">
+<a class="flex items-center text-slate-400 hover:text-slate-100 px-4 py-3 hover:bg-slate-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="dashboard">dashboard</span>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="flex items-center text-slate-400 hover:text-slate-100 px-4 py-3 hover:bg-slate-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="monitoring">monitoring</span>
+<span class="text-sm font-medium">Live Monitor</span>
+</a>
+<a class="flex items-center text-slate-400 hover:text-slate-100 px-4 py-3 hover:bg-slate-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="receipt_long">receipt_long</span>
+<span class="text-sm font-medium">Sales</span>
+</a>
+<a class="flex items-center text-slate-400 hover:text-slate-100 px-4 py-3 hover:bg-slate-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="inventory_2">inventory_2</span>
+<span class="text-sm font-medium">Inventory</span>
+</a>
+<a class="bg-emerald-600/10 text-emerald-400 border-l-4 border-emerald-500 flex items-center px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="badge" style="font-variation-settings: 'FILL' 1;">badge</span>
+<span class="text-sm font-medium">Cashiers</span>
+</a>
+<a class="flex items-center text-slate-400 hover:text-slate-100 px-4 py-3 hover:bg-slate-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="group">group</span>
+<span class="text-sm font-medium">Customers</span>
+</a>
+<a class="flex items-center text-slate-400 hover:text-slate-100 px-4 py-3 hover:bg-slate-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="star">star</span>
+<span class="text-sm font-medium">Loyalty</span>
+</a>
+<a class="flex items-center text-slate-400 hover:text-slate-100 px-4 py-3 hover:bg-slate-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="analytics">analytics</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+<a class="flex items-center text-slate-400 hover:text-slate-100 px-4 py-3 hover:bg-slate-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="schedule">schedule</span>
+<span class="text-sm font-medium">Shifts</span>
+</a>
+<a class="flex items-center text-slate-400 hover:text-slate-100 px-4 py-3 hover:bg-slate-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="notifications">notifications</span>
+<span class="text-sm font-medium">Notifications</span>
+</a>
+<a class="flex items-center text-slate-400 hover:text-slate-100 px-4 py-3 hover:bg-slate-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="description">description</span>
+<span class="text-sm font-medium">Reports</span>
+</a>
+</nav>
+<div class="px-4 mt-auto pt-6 border-t border-slate-800">
+<a class="flex items-center text-slate-400 hover:text-slate-100 px-4 py-3 hover:bg-slate-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="help">help</span>
+<span class="text-sm font-medium">Support</span>
+</a>
+<a class="flex items-center text-slate-400 hover:text-slate-100 px-4 py-3 hover:bg-slate-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="logout">logout</span>
+<span class="text-sm font-medium">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-8 h-16 w-full sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-6">
+<h2 class="text-xl font-bold text-slate-900 headline">Cashier Management</h2>
+<div class="flex items-center bg-surface-container-low px-4 py-1.5 rounded-full border border-outline-variant/20">
+<span class="material-symbols-outlined text-outline text-sm mr-2" data-icon="location_on">location_on</span>
+<span class="text-sm font-medium text-on-surface">Lagos Central</span>
+<span class="material-symbols-outlined text-outline text-xs ml-2" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined text-slate-500 hover:bg-slate-50 p-2 rounded-full cursor-pointer transition-colors" data-icon="notifications">notifications</span>
+<div class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></div>
+</div>
+<span class="material-symbols-outlined text-slate-500 hover:bg-slate-50 p-2 rounded-full cursor-pointer transition-colors" data-icon="settings">settings</span>
+<div class="h-8 w-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant/30">
+<img alt="Manager Profile Avatar" class="w-full h-full object-cover" data-alt="professional portrait of a manager wearing a smart blazer with a clean minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY9U7fp8VeWZDWlUILQcc7MTwOThTL2BUgKCnFr5KPvUDo-3f0hc-5uDtu9-fk5TQ5ZheLiz35-PbulRhnjdbLaIS_Wrk7wpinWq-mW8FbXePsJONNjU--4fXT4VbeMYbAfk_kNBbdORGCYRe7HQVPYxl-IL9i3EHanwRLJxyLSEYkZ8W3gJReV3DI30xmb7zK2PIwn86yPOBZpqlSHTsh0Pl9bCps_bfQnotrq2dOXmJL8gjEe3H8q_2abbCtDMdaG3Fkw94tvmDy"/>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-8 space-y-8">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h3 class="text-3xl font-extrabold text-on-surface headline tracking-tight">Staff Oversight</h3>
+<p class="text-on-surface-variant mt-1 font-body">Manage branch efficiency and cashier performance metrics.</p>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary flex items-center px-6 h-14 rounded-xl transition-all duration-200 active:scale-95 shadow-md">
+<span class="material-symbols-outlined mr-2" data-icon="person_add">person_add</span>
+<span class="font-bold tracking-wide text-sm">CREATE CASHIER ACCOUNT</span>
+</button>
+</div>
+<!-- Bento Metrics -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm col-span-1 md:col-span-1">
+<div class="flex items-center justify-between mb-4">
+<div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+</div>
+<span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">+12%</span>
+</div>
+<p class="text-on-surface-variant text-sm font-medium">Daily Sales</p>
+<h4 class="text-2xl font-black headline text-on-surface">₦4,280,000</h4>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm col-span-1 md:col-span-1">
+<div class="flex items-center justify-between mb-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="receipt">receipt</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm font-medium">Transactions</p>
+<h4 class="text-2xl font-black headline text-on-surface">1,142</h4>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm col-span-1 md:col-span-2 relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-on-surface-variant text-sm font-medium mb-1">Peak Performance Window</p>
+<h4 class="text-xl font-bold headline text-on-surface">12:30 PM — 02:45 PM</h4>
+<p class="text-xs text-on-surface-variant mt-4 flex items-center">
+<span class="material-symbols-outlined text-xs mr-1" data-icon="info">info</span>
+                            Highest efficiency recorded across 8 terminals
+                        </p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-5">
+<span class="material-symbols-outlined text-9xl" data-icon="bolt">bolt</span>
+</div>
+</div>
+</div>
+<!-- Management Table Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
+<!-- Search & Filters -->
+<div class="p-6 bg-surface-container-low/30 flex flex-wrap items-center justify-between gap-4">
+<div class="relative flex-1 min-w-[300px]">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="search">search</span>
+<input class="w-full pl-12 pr-4 py-3 rounded-lg bg-surface-container-lowest border-none focus:ring-2 focus:ring-secondary/20 placeholder:text-outline/60 text-sm" placeholder="Search by name, ID or terminal..." type="text"/>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2.5 rounded-lg border border-outline-variant text-sm font-medium flex items-center hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm mr-2" data-icon="filter_list">filter_list</span>
+                            Filter Status
+                        </button>
+<button class="px-4 py-2.5 rounded-lg border border-outline-variant text-sm font-medium flex items-center hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm mr-2" data-icon="calendar_month">calendar_month</span>
+                            Last 7 Days
+                        </button>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50 text-on-surface-variant uppercase text-[10px] tracking-widest font-bold border-b border-outline-variant/10">
+<th class="px-6 py-4">Cashier Identity</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4">Total Sales (₦)</th>
+<th class="px-6 py-4">Volume</th>
+<th class="px-6 py-4">Efficiency</th>
+<th class="px-6 py-4 text-right">Management</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/20 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 flex-shrink-0">
+<img alt="Ade profile" class="w-full h-full object-cover rounded-full" data-alt="profile avatar of a young man smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO34s1GdRq-bLFHjx5WMFtHwsAjGa2gL-46QMHsr3LoDGR96xNu18rI9J-ThLWSEZ3fs04NlO4Vrg3EAa4v5bbNkYRngASObnw_py-p6nxhp-046HfkbxRKj-NowGmJEQ20JH3gVOx-5C31zTCVX4s_NPj6o5tOFLAGPuKtPtS4sJNq1wD0_qhoOJrWI-fedh8ILhMMkDPI4jI10BEkm7YFpsYiKMHiRypPT2xpreXwXIjgv4zxrtr3VpqXz1ZJuDpd0ut1JKS9TcK"/>
+</div>
+<div>
+<p class="font-bold text-on-surface text-sm">Adeola Balogun</p>
+<p class="text-xs text-on-surface-variant">ID: CS-9021 | Terminal 04</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center">
+<span class="w-2 h-2 rounded-full bg-emerald-500 mr-2"></span>
+<span class="text-xs font-semibold text-on-surface">Online</span>
+</div>
+</td>
+<td class="px-6 py-4 font-headline font-bold text-sm">₦1,240,500</td>
+<td class="px-6 py-4 text-sm font-medium">342 txn</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500 w-[94%]"></div>
+</div>
+<span class="text-[11px] font-bold text-on-surface">94%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 rounded-lg hover:bg-surface-container-high text-outline transition-colors" title="Reset Password">
+<span class="material-symbols-outlined text-lg" data-icon="lock_reset">lock_reset</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-error/10 text-error transition-colors" title="Suspend Account">
+<span class="material-symbols-outlined text-lg" data-icon="block">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/20 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 flex-shrink-0">
+<img alt="Chinelo profile" class="w-full h-full object-cover rounded-full" data-alt="profile avatar of a woman with braided hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIvbJBXCrRg9-r4e92drviF7pUDsEu4e8xZhoJpZVP7kyPvf-3ZwCIClwlm09s3A2VmJqY4lIJ8H_GDOwM_-FSbmOXxOmOulZ9yLBtXbX2FBIz9C1toN2x6YF8r28pn6IjE1fL5Dhne9uobCo9iGqdrOtHYdtoXDH2-i9EFxMIqXCCv-AuvlImS3aacOjtD0kB7cGVLnFYoF2FKYwXz1D4jF6xUjWiBGv1I81tICrmxQrb4ZZFQJc05tG3k82H_Szb7AwHxZ00R7Kr"/>
+</div>
+<div>
+<p class="font-bold text-on-surface text-sm">Chinelo Okoro</p>
+<p class="text-xs text-on-surface-variant">ID: CS-4451 | Terminal 01</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center">
+<span class="w-2 h-2 rounded-full bg-slate-300 mr-2"></span>
+<span class="text-xs font-semibold text-on-surface-variant">Offline</span>
+</div>
+</td>
+<td class="px-6 py-4 font-headline font-bold text-sm">₦982,100</td>
+<td class="px-6 py-4 text-sm font-medium">210 txn</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[81%]"></div>
+</div>
+<span class="text-[11px] font-bold text-on-surface">81%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 rounded-lg hover:bg-surface-container-high text-outline transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="lock_reset">lock_reset</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-error/10 text-error transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="block">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/20 transition-colors group bg-surface-container-low/10">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 flex-shrink-0">
+<img alt="Musa profile" class="w-full h-full object-cover rounded-full" data-alt="profile avatar of a young man with a small beard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQGrYprtNypcs02woGWphlIxgrI_tcgj_QY85Rj0yPq5x9BnKs3KFtZy7NM9M4aSQ_iYam__gT5ycwnDf3mhfL8XON6GZfhG8-yr9OKyBpoMrEs3SSg7OKENv1fqaGkPaQDU5QH0_uiJg9DctF9-jMJAYHa9qDP1p8Exmv3Fb6YrvCno0D8WeRcFRlt9WaK9BRRNCcEFR7twphoAnPSrsAGTaV2mb8T71XlK3wzUtjO3Zc4oigE3XtfPIJ0l3SA8kRViaP4gznvcfG"/>
+</div>
+<div>
+<p class="font-bold text-on-surface text-sm">Musa Adamu</p>
+<p class="text-xs text-on-surface-variant">ID: CS-2198 | Terminal 08</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center">
+<span class="w-2 h-2 rounded-full bg-emerald-500 mr-2"></span>
+<span class="text-xs font-semibold text-on-surface">Online</span>
+</div>
+</td>
+<td class="px-6 py-4 font-headline font-bold text-sm">₦1,105,400</td>
+<td class="px-6 py-4 text-sm font-medium">298 txn</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500 w-[88%]"></div>
+</div>
+<span class="text-[11px] font-bold text-on-surface">88%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 rounded-lg hover:bg-surface-container-high text-outline transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="lock_reset">lock_reset</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-error/10 text-error transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="block">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 (Suspended Example) -->
+<tr class="hover:bg-surface-container-low/20 transition-colors group opacity-60">
+<td class="px-6 py-4 text-outline">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-200 grayscale flex-shrink-0 overflow-hidden">
+<img alt="Ngozi profile" class="w-full h-full object-cover rounded-full" data-alt="profile avatar of a woman looking neutral" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC5PpJYm4562UldQb6YH0UWBa0gsFrXg8XoSZWpUzhGmBnYJ2EgqGgot8kKkDgV9BfeFeazD3RQb6stuG277Qew0h8ZhwNKdPFeolES_5s9oWBPwkZAbfL8H_EtAuy2hIyU8cuBj8vaJ9lmtZknAUDRdeZ7VAMYUvo56Y1lSwK0dv63MyDQwquvc-wUWlsIAKquRzqbcXxRX0Zw70S5e9YUf2z8d2hxkukqV5uUT8qa3GSdZvS_g_npBMI01gj9WGYvCo0Ya0dL74D"/>
+</div>
+<div>
+<p class="font-bold text-sm">Ngozi Ebele</p>
+<p class="text-xs italic">Account Suspended</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center text-error">
+<span class="material-symbols-outlined text-xs mr-2" data-icon="cancel">cancel</span>
+<span class="text-xs font-bold uppercase tracking-wider">Suspended</span>
+</div>
+</td>
+<td class="px-6 py-4 font-headline font-bold text-sm">₦0</td>
+<td class="px-6 py-4 text-sm font-medium">--</td>
+<td class="px-6 py-4">
+<span class="text-xs text-outline italic">Inactive</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="bg-secondary/10 text-secondary px-4 py-1.5 rounded-lg text-xs font-bold hover:bg-secondary/20 transition-colors">
+                                        REINSTATE
+                                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination/Footer -->
+<div class="p-6 border-t border-outline-variant/10 flex items-center justify-between">
+<p class="text-xs text-on-surface-variant font-medium">Showing 4 of 28 staff members</p>
+<div class="flex gap-2">
+<button class="p-2 rounded border border-outline-variant hover:bg-surface-container-low transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="p-2 rounded border border-outline-variant bg-surface-container-high font-bold text-xs px-4">1</button>
+<button class="p-2 rounded border border-outline-variant hover:bg-surface-container-low font-medium text-xs px-4 transition-colors">2</button>
+<button class="p-2 rounded border border-outline-variant hover:bg-surface-container-low font-medium text-xs px-4 transition-colors">3</button>
+<button class="p-2 rounded border border-outline-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Asymmetric Efficiency Insight -->
+<div class="flex flex-col lg:flex-row gap-8 mt-12">
+<div class="flex-1 bg-surface-container p-8 rounded-2xl relative overflow-hidden">
+<div class="relative z-10">
+<h5 class="text-xl font-black headline text-on-surface mb-2">Automated Shift Report</h5>
+<p class="text-on-surface-variant text-sm max-w-md">Our algorithm suggests re-assigning <span class="font-bold text-on-surface">Adeola Balogun</span> to the Express Counter during peak hours (1 PM) to optimize throughput based on her 94% efficiency rating.</p>
+<button class="mt-6 text-secondary font-bold text-xs uppercase tracking-widest flex items-center group">
+                            Generate detailed forecast
+                            <span class="material-symbols-outlined text-sm ml-2 group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="absolute -bottom-10 -right-10 w-48 h-48 bg-secondary-container/10 rounded-full blur-3xl"></div>
+</div>
+<div class="w-full lg:w-1/3 bg-tertiary p-8 rounded-2xl text-on-tertiary">
+<div class="flex items-center gap-4 mb-6">
+<div class="p-3 bg-on-tertiary-container rounded-xl">
+<span class="material-symbols-outlined text-tertiary" data-icon="security" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<h5 class="text-lg font-bold headline">Access Logs</h5>
+</div>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<div class="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2"></div>
+<div>
+<p class="text-sm font-medium">New account: Musa Adamu</p>
+<p class="text-[10px] opacity-60">Created by Manager | 2h ago</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary-container mt-2"></div>
+<div>
+<p class="text-sm font-medium">Password Reset: Chinelo Okoro</p>
+<p class="text-[10px] opacity-60">System Generated | 5h ago</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-1.5 h-1.5 rounded-full bg-error mt-2"></div>
+<div>
+<p class="text-sm font-medium">Failed login attempt: CS-9021</p>
+<p class="text-[10px] opacity-60">Terminal 04 | Yesterday</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Create Account) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-secondary text-on-secondary rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group z-50">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span class="absolute right-full mr-4 bg-tertiary text-on-tertiary px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Quick Create</span>
+</button>
+</body></html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Audit Logs | Zudo POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#d3bbff",
+                      "surface-container-highest": "#d5e3fd",
+                      "primary-fixed": "#a3f69c",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#0d1c2f",
+                      "outline": "#76777c",
+                      "error": "#ba1a1a",
+                      "on-error-container": "#93000a",
+                      "tertiary-container": "#001a59",
+                      "on-primary-container": "#499849",
+                      "surface-container-low": "#eff4ff",
+                      "on-primary": "#ffffff",
+                      "tertiary": "#000623",
+                      "on-tertiary-fixed-variant": "#264191",
+                      "on-surface-variant": "#45474c",
+                      "on-secondary-fixed": "#260059",
+                      "surface-tint": "#1b6d24",
+                      "inverse-on-surface": "#ebf1ff",
+                      "secondary-container": "#b188ff",
+                      "on-secondary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "primary-fixed-dim": "#88d982",
+                      "on-primary-fixed-variant": "#005312",
+                      "on-error": "#ffffff",
+                      "secondary": "#6f46b9",
+                      "on-surface": "#0d1c2f",
+                      "surface-container-high": "#dde9ff",
+                      "on-secondary-fixed-variant": "#572ba0",
+                      "primary": "#000b01",
+                      "on-primary-fixed": "#002204",
+                      "outline-variant": "#c6c6cc",
+                      "inverse-surface": "#233144",
+                      "surface-dim": "#ccdbf4",
+                      "on-secondary-container": "#44118d",
+                      "secondary-fixed": "#ebdcff",
+                      "background": "#f8f9ff",
+                      "surface-variant": "#d5e3fd",
+                      "on-tertiary": "#ffffff",
+                      "surface": "#f8f9ff",
+                      "primary-container": "#002704",
+                      "tertiary-fixed": "#dce1ff",
+                      "surface-container": "#e6eeff",
+                      "on-tertiary-fixed": "#00164e",
+                      "inverse-primary": "#88d982",
+                      "surface-bright": "#f8f9ff",
+                      "on-tertiary-container": "#6b83d7",
+                      "tertiary-fixed-dim": "#b6c4ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope", "sans-serif"],
+                      "body": ["Inter", "sans-serif"],
+                      "label": ["Inter", "sans-serif"],
+                      "mono": ["JetBrains Mono", "monospace"]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .mono-text { font-family: 'JetBrains Mono', monospace; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f8f9ff; }
+        ::-webkit-scrollbar-thumb { background: #dde9ff; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen">
+<!-- SideNavBar (Execution from JSON) -->
+<aside class="h-screen w-72 flex flex-col fixed left-0 top-0 bg-[#000623] dark:bg-[#000623] py-6 z-50">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary-fixed flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+</div>
+<span class="text-xl font-manrope font-black text-white">Zudo POS</span>
+</div>
+<div class="flex-1 overflow-y-auto space-y-1">
+<!-- Nav Item: Overview -->
+<div class="text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 flex items-center gap-3 px-4 py-3 cursor-pointer hover:text-[#6f46b9] transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-inter text-sm">Overview</span>
+</div>
+<!-- Nav Item: Sales Management -->
+<div class="text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 flex items-center gap-3 px-4 py-3 cursor-pointer hover:text-[#6f46b9] transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-inter text-sm">Sales Management</span>
+</div>
+<!-- Nav Item: Products & Inventory -->
+<div class="text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 flex items-center gap-3 px-4 py-3 cursor-pointer hover:text-[#6f46b9] transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-inter text-sm">Products &amp; Inventory</span>
+</div>
+<!-- Nav Item: POS Session Monitor -->
+<div class="text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 flex items-center gap-3 px-4 py-3 cursor-pointer hover:text-[#6f46b9] transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span class="font-inter text-sm">POS Session Monitor</span>
+</div>
+<!-- Nav Item: Staff & Role Management -->
+<div class="text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 flex items-center gap-3 px-4 py-3 cursor-pointer hover:text-[#6f46b9] transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-inter text-sm">Staff &amp; Role Management</span>
+</div>
+<!-- Nav Item: Customer Management -->
+<div class="text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 flex items-center gap-3 px-4 py-3 cursor-pointer hover:text-[#6f46b9] transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-inter text-sm">Customer Management</span>
+</div>
+<!-- Nav Item: Loyalty & Points -->
+<div class="text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 flex items-center gap-3 px-4 py-3 cursor-pointer hover:text-[#6f46b9] transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="star">star</span>
+<span class="font-inter text-sm">Loyalty &amp; Points</span>
+</div>
+<!-- Nav Item: Analytics -->
+<div class="text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 flex items-center gap-3 px-4 py-3 cursor-pointer hover:text-[#6f46b9] transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-inter text-sm">Analytics</span>
+</div>
+<!-- Nav Item: Branch Management -->
+<div class="text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 flex items-center gap-3 px-4 py-3 cursor-pointer hover:text-[#6f46b9] transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-inter text-sm">Branch Management</span>
+</div>
+<!-- Nav Item: Notification Center -->
+<div class="text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 flex items-center gap-3 px-4 py-3 cursor-pointer hover:text-[#6f46b9] transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-inter text-sm">Notification Center</span>
+</div>
+<!-- Nav Item: Settings -->
+<div class="text-slate-400 hover:bg-[#6f46b9]/10 rounded-lg mx-2 my-1 flex items-center gap-3 px-4 py-3 cursor-pointer hover:text-[#6f46b9] transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-inter text-sm">Settings</span>
+</div>
+<!-- Nav Item: Audit Logs (ACTIVE) -->
+<div class="bg-[#6f46b9] text-white rounded-lg mx-2 my-1 flex items-center gap-3 px-4 py-3 cursor-pointer transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="history" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="font-inter text-sm font-semibold">Audit Logs</span>
+</div>
+</div>
+<div class="mt-auto px-6 pt-6 border-t border-slate-800">
+<div class="flex items-center gap-3">
+<img alt="Admin User Profile" class="w-10 h-10 rounded-full border border-slate-700" data-alt="professional portrait of a confident male manager in business attire with soft lighting and neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYI9baZtvm4McQLLvkbxnstY0xSzLCpbMNMsFdRqW_Z6yFftAKHSQ9GB1nB88nnhA9heUGH-EOGkYLijEW0DMn7CyrbiTWJieHlb5r5VRYUBGdlivrtvqmKbHrmb_MVSUT5Cvw0ZJmiyTYfOTBxNe8Vxu4knir5rHM1jKsmfaHZ609H4RQDMR87-gBQpC1s5vCgWKlqiKWwHfPk9lsvPVtAE1K_DuBSY2WMGXEUu9JDfNnbFDX3-jYiA74yCpLqDZjqp7vpvx-_IDK"/>
+<div>
+<p class="text-sm font-bold text-white">Fluid Authority Admin</p>
+<p class="text-xs text-slate-400">Master Control</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="ml-72 flex-1 flex flex-col min-h-screen">
+<!-- TopNavBar (Execution from JSON) -->
+<header class="flex justify-between items-center px-8 h-16 sticky top-0 z-40 bg-[#f8f9ff]/80 backdrop-blur-md">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-[#6f46b9]/20 font-inter outline-none" placeholder="Search system audit records..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-[#45474c]">
+<span class="material-symbols-outlined cursor-pointer hover:text-[#6f46b9] transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-[#6f46b9] transition-colors" data-icon="help">help</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-[#6f46b9] transition-colors" data-icon="apps">apps</span>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant opacity-20"></div>
+<div class="flex items-center gap-2">
+<span class="font-manrope font-semibold text-sm text-[#000b01]">Manager Avatar</span>
+<img alt="Manager Avatar" class="w-8 h-8 rounded-full" data-alt="close up headshot of a professional female tech leader with a friendly expression and sharp office attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVhrYWVN1eWrqRdhX1Q8f2OU3n1iqGhMLuHUkp_U-oJ1M_QyQsQSGb6zyWCxSaj8B7PMdzRMkI5909IH9L9weVH25WwWfRKe6m0MTAQUrHb6XrC4hzX1ia68KJmyI8D68toj0ahdb9tujKY8_ye0zbuuX1dR2X3uejudhtyKeGuM2zkWEw0ZC43zp1t4CfSGzTjvQNaZas_hb0da9zorYObhct6fZ7wv7oVc-5mvOBkK1aonoyKchUuRgezQ3yDcLzZ_S3GT6Sgcr-"/>
+</div>
+</div>
+</header>
+<section class="p-8 space-y-8">
+<!-- Header Section -->
+<div class="flex justify-between items-end">
+<div>
+<h1 class="text-3xl font-manrope font-black tracking-tight text-on-surface">System Audit Logs</h1>
+<p class="text-on-surface-variant font-inter mt-1">Real-time security monitoring and activity tracking across all branches.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 flex items-center gap-2 bg-surface-container-low text-secondary font-semibold rounded-lg hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                        EXPORT CSV
+                    </button>
+<button class="px-4 py-2 flex items-center gap-2 bg-secondary text-white font-semibold rounded-lg hover:bg-[#572ba0] transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="shield">shield</span>
+                        SECURITY REPORT
+                    </button>
+</div>
+</div>
+<!-- Advanced Filtering Bento -->
+<div class="grid grid-cols-12 gap-4">
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest p-5 rounded-xl border-l-4 border-secondary">
+<label class="text-xs font-bold text-secondary uppercase tracking-wider block mb-2">Timeframe</label>
+<div class="flex items-center justify-between bg-surface-container-low p-3 rounded-lg cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="calendar_today">calendar_today</span>
+<span class="text-sm font-semibold">Oct 24, 2023 - Oct 31, 2023</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest p-5 rounded-xl">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider block mb-2">Filter by User</label>
+<select class="w-full bg-surface-container-low border-none rounded-lg p-3 text-sm font-semibold focus:ring-0 appearance-none">
+<option>All System Users</option>
+<option>Admin: Chidi Kalu</option>
+<option>Cashier: Tunde Yusuf</option>
+<option>Manager: Sarah Obi</option>
+</select>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest p-5 rounded-xl">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider block mb-2">Action Type</label>
+<div class="flex gap-2">
+<button class="flex-1 px-3 py-2 bg-primary-container text-on-primary-container rounded-lg text-xs font-bold transition-all border border-on-primary-container/20">ALL</button>
+<button class="flex-1 px-3 py-2 bg-surface-container-low text-on-surface-variant rounded-lg text-xs font-bold hover:bg-surface-container-high transition-all">SALES</button>
+<button class="flex-1 px-3 py-2 bg-surface-container-low text-on-surface-variant rounded-lg text-xs font-bold hover:bg-surface-container-high transition-all">STOCKS</button>
+<button class="flex-1 px-3 py-2 bg-surface-container-low text-on-surface-variant rounded-lg text-xs font-bold hover:bg-surface-container-high transition-all">POINTS</button>
+</div>
+</div>
+</div>
+<!-- Audit Data Table -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant text-xs font-bold uppercase tracking-widest border-b border-outline-variant/10">
+<th class="px-6 py-4">Timestamp</th>
+<th class="px-6 py-4">Operator</th>
+<th class="px-6 py-4">Action &amp; Category</th>
+<th class="px-6 py-4">Detail Snapshot</th>
+<th class="px-6 py-4">Value Shift</th>
+<th class="px-6 py-4">Origin Info</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low">
+<!-- Row 1: Stock Change -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-5">
+<div class="mono-text text-sm font-medium text-on-surface">2023-10-31</div>
+<div class="mono-text text-[11px] text-on-surface-variant">14:22:15.004</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<img alt="User Avatar" class="w-8 h-8 rounded-full" data-alt="close up of a smiling man in casual workspace with a modern office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrDcB_g6vbs_tQEU4Qeg5ARI0AKuaFjQw3hdmAk2_uI5cVN3woJA0WNLjXHyhVHswKRruaPLcITMXqbtMZif4IVVT81d4IIwvnb3auKEl0QKOLBzeZqPT5EH_YauEEb20XC0zO1oMGNKxiUDo2E5vm3o86QaMQ2ac80iBJajzFx9mPq7F-JTd9T4yiJkP9sijJ6A5vNXfrvo8biufiM_UfhHAQU17O0kr8enKOI3TBT_q1trfYDw1ikHaWjiAUx-iYy5FkI6YzO14V"/>
+<span class="text-sm font-bold">Chidi Kalu</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-2 py-1 bg-surface-container-high text-on-surface-variant text-[10px] font-bold rounded mb-1 inline-block">STOCK</span>
+<div class="text-sm font-semibold">Inventory Adjustment</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-xs text-on-surface-variant leading-relaxed">Modified stock for <span class="font-bold text-on-surface">Vintage Leather Tote</span> at Ikeja Branch.</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<span class="mono-text text-xs line-through text-error/60">10</span>
+<span class="material-symbols-outlined text-xs text-on-surface-variant" data-icon="trending_flat">trending_flat</span>
+<span class="mono-text text-sm font-bold text-primary-container">05</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="mono-text text-xs text-on-surface-variant">192.168.1.42</div>
+<div class="text-[10px] font-bold text-secondary flex items-center gap-1 uppercase">
+<span class="material-symbols-outlined text-[12px]" data-icon="tablet_mac">tablet_mac</span>
+                                    IPAD_POS_04
+                                </div>
+</td>
+</tr>
+<!-- Row 2: Refund -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-5">
+<div class="mono-text text-sm font-medium text-on-surface">2023-10-31</div>
+<div class="mono-text text-[11px] text-on-surface-variant">13:05:44.291</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<img alt="User Avatar" class="w-8 h-8 rounded-full" data-alt="vibrant portrait of a professional woman with a warm expression and studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1g1j-rS9t2P8VmYbvI5qk5Gvkc3sUmRQ1m-eB0Qotfo-xsH5kcM815czPpcVqOGkKQtNqKr3R7qdZ_MKi4E8qODffqKhsAerNtrvcKR6ik5vf7OGSd59pS3MpFrk9vBH9JCMjwQOWXihqpacqqC2mJSmh-kGZjWW_1CvNlvOUJKFGClWxt05ZClBAlIMq8RcWjPN_dN62DFtGDNNJ74-6XL6iateayZEAlg8lFdy87ePjRj3ioiiCmO7T2jnQmHpOLg-kFXELUBZa"/>
+<span class="text-sm font-bold">Sarah Obi</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-2 py-1 bg-error-container text-on-error-container text-[10px] font-bold rounded mb-1 inline-block">SALE_VOID</span>
+<div class="text-sm font-semibold">Transaction Refund</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-xs text-on-surface-variant leading-relaxed">Processed full refund for Receipt <span class="font-bold text-on-surface">#TRX-9902</span>. Customer requested return.</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<span class="mono-text text-xs text-on-surface">₦45,000</span>
+<span class="material-symbols-outlined text-xs text-on-surface-variant" data-icon="keyboard_double_arrow_right">keyboard_double_arrow_right</span>
+<span class="mono-text text-sm font-bold text-error">₦0.00</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="mono-text text-xs text-on-surface-variant">105.112.33.201</div>
+<div class="text-[10px] font-bold text-secondary flex items-center gap-1 uppercase">
+<span class="material-symbols-outlined text-[12px]" data-icon="desktop_windows">desktop_windows</span>
+                                    MGR_DESKTOP_01
+                                </div>
+</td>
+</tr>
+<!-- Row 3: Point Adjustment -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-5">
+<div class="mono-text text-sm font-medium text-on-surface">2023-10-30</div>
+<div class="mono-text text-[11px] text-on-surface-variant">17:45:10.552</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center font-bold text-xs">SY</div>
+<span class="text-sm font-bold">SYSTEM_AUTO</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded mb-1 inline-block">LOYALTY</span>
+<div class="text-sm font-semibold">Point Adjustment</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-xs text-on-surface-variant leading-relaxed">Automated anniversary bonus points credited to <span class="font-bold text-on-surface">Tayo Amos</span>.</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<span class="mono-text text-xs text-on-surface">850 pts</span>
+<span class="material-symbols-outlined text-xs text-on-primary-container" data-icon="add">add</span>
+<span class="mono-text text-sm font-bold text-on-primary-container">1350 pts</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="mono-text text-xs text-on-surface-variant">Internal_Cron</div>
+<div class="text-[10px] font-bold text-secondary flex items-center gap-1 uppercase">
+<span class="material-symbols-outlined text-[12px]" data-icon="dns">dns</span>
+                                    SERVER_CLOUD_01
+                                </div>
+</td>
+</tr>
+<!-- Row 4: Sale -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-5">
+<div class="mono-text text-sm font-medium text-on-surface">2023-10-30</div>
+<div class="mono-text text-[11px] text-on-surface-variant">09:12:05.118</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<img alt="User Avatar" class="w-8 h-8 rounded-full" data-alt="close up headshot of a young professional woman with a minimalist modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMSZUZQkbBvgZK9TaUErdoXLA3fMaH_fxyrY13fiSRbM2KbQNRUHG2OYpRDvbxFXDWJlGF2qGOsI-J-u4YVquM7yik3brjCLhN92xxVIHZ9mYXi21VRs26uacAgQ55JVQ4b9JbNbR5Iah9LAOE-hIjkCeC575-uwQH9I2TZyJ_Hb7BrGZQhjvNwEXe7ndIsAxBLYV4mgUY9QpFtoxj4tnKRSHYXT_IwT-0voS7epP2tzzgLPabjDXBTZ3uMY3dY6lRKWzZLU5PAwdn"/>
+<span class="text-sm font-bold">Tunde Yusuf</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-2 py-1 bg-primary-container text-on-primary-container text-[10px] font-bold rounded mb-1 inline-block">SALE</span>
+<div class="text-sm font-semibold">Terminal Transaction</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-xs text-on-surface-variant leading-relaxed">Completed multi-item sale <span class="font-bold text-on-surface">#TRX-9908</span> at Victoria Island Branch.</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<span class="mono-text text-xs text-on-surface-variant">PENDING</span>
+<span class="material-symbols-outlined text-xs text-primary-container" data-icon="check_circle">check_circle</span>
+<span class="mono-text text-sm font-bold text-primary-container">COMPLETED</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="mono-text text-xs text-on-surface-variant">192.168.2.15</div>
+<div class="text-[10px] font-bold text-secondary flex items-center gap-1 uppercase">
+<span class="material-symbols-outlined text-[12px]" data-icon="point_of_sale">point_of_sale</span>
+                                    TERM_VI_02
+                                </div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="p-6 bg-surface-container-low/20 flex justify-between items-center">
+<p class="text-xs font-inter text-on-surface-variant">Showing <span class="font-bold text-on-surface">25</span> of <span class="font-bold text-on-surface">1,482</span> records</p>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded bg-surface-container-lowest border border-outline-variant/30 text-on-surface-variant hover:bg-secondary hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="px-3 py-1 rounded bg-secondary text-white text-xs font-bold">1</button>
+<button class="px-3 py-1 rounded bg-surface-container-lowest text-on-surface-variant text-xs font-bold hover:bg-surface-container-high transition-all">2</button>
+<button class="px-3 py-1 rounded bg-surface-container-lowest text-on-surface-variant text-xs font-bold hover:bg-surface-container-high transition-all">3</button>
+<span class="text-on-surface-variant mx-1">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-surface-container-lowest border border-outline-variant/30 text-on-surface-variant hover:bg-secondary hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Integrity Verification Modal (Overlay Simulation) -->
+<div class="bg-tertiary-container text-white p-6 rounded-2xl flex items-center justify-between border-l-8 border-primary-fixed shadow-xl">
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 rounded-full bg-primary-fixed/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed text-4xl" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div>
+<h3 class="text-xl font-manrope font-extrabold">Log Integrity Verified</h3>
+<p class="text-tertiary-fixed-dim text-sm max-w-lg">All activity logs are cryptographically hashed and verified against the secure ledger. No unauthorized tampering detected in the last 24 hours.</p>
+</div>
+</div>
+<button class="bg-primary-fixed text-primary px-6 py-3 rounded-xl font-bold font-manrope uppercase tracking-tight hover:scale-105 active:scale-95 transition-all">
+                    Run Integrity Check
+                </button>
+</div>
+</section>
+</main>
+</body></html>

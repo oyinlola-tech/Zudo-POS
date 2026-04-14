@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zudo POS - Staff Setup</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#001a59",
+                        "primary-fixed-dim": "#88d982",
+                        "on-secondary-fixed": "#260059",
+                        "secondary-container": "#b188ff",
+                        "surface-container-high": "#dde9ff",
+                        "on-background": "#0d1c2f",
+                        "outline-variant": "#c6c6cc",
+                        "on-surface": "#0d1c2f",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#b6c4ff",
+                        "primary": "#000b01",
+                        "surface-dim": "#ccdbf4",
+                        "primary-fixed": "#a3f69c",
+                        "on-surface-variant": "#45474c",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-primary": "#88d982",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#44118d",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-fixed-variant": "#264191",
+                        "surface-container": "#e6eeff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#00164e",
+                        "on-primary-fixed": "#002204",
+                        "surface-tint": "#1b6d24",
+                        "tertiary": "#000623",
+                        "on-secondary-fixed-variant": "#572ba0",
+                        "on-primary-container": "#499849",
+                        "surface-container-highest": "#d5e3fd",
+                        "secondary-fixed-dim": "#d3bbff",
+                        "tertiary-fixed": "#dce1ff",
+                        "background": "#f8f9ff",
+                        "primary-container": "#002704",
+                        "surface": "#f8f9ff",
+                        "outline": "#76777c",
+                        "secondary-fixed": "#ebdcff",
+                        "secondary": "#6f46b9",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#233144",
+                        "surface-variant": "#d5e3fd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#005312",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#6b83d7",
+                        "inverse-on-surface": "#ebf1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- Sidebar Navigation Shell -->
+<aside class="bg-[#000623] dark:bg-[#000623] border-r border-white/10 shadow-xl fixed left-0 top-0 h-full w-64 flex flex-col py-6">
+<div class="px-6 mb-8">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">badge</span>
+</div>
+<div>
+<h2 class="text-white font-headline font-bold text-sm leading-tight">Onboarding</h2>
+<p class="text-slate-400 text-xs">Step 3 of 4</p>
+</div>
+</div>
+</div>
+<nav class="flex-grow">
+<ul class="space-y-1">
+<li class="text-slate-400 hover:text-white flex items-center px-4 py-3 mx-2 my-1 transition-all hover:bg-white/5 rounded-lg">
+<span class="material-symbols-outlined mr-3" data-icon="storefront">storefront</span>
+<span class="font-['Inter'] text-sm tracking-wide">Store Setup</span>
+</li>
+<li class="text-slate-400 hover:text-white flex items-center px-4 py-3 mx-2 my-1 transition-all hover:bg-white/5 rounded-lg">
+<span class="material-symbols-outlined mr-3" data-icon="inventory_2">inventory_2</span>
+<span class="font-['Inter'] text-sm tracking-wide">Products</span>
+</li>
+<li class="bg-[#6f46b9] text-white rounded-lg mx-2 my-1 flex items-center px-4 py-3 font-semibold translate-x-1 duration-200">
+<span class="material-symbols-outlined mr-3" data-icon="badge">badge</span>
+<span class="font-['Inter'] text-sm tracking-wide">Staff</span>
+</li>
+<li class="text-slate-400 hover:text-white flex items-center px-4 py-3 mx-2 my-1 transition-all hover:bg-white/5 rounded-lg">
+<span class="material-symbols-outlined mr-3" data-icon="task_alt">task_alt</span>
+<span class="font-['Inter'] text-sm tracking-wide">Finalize</span>
+</li>
+</ul>
+</nav>
+<div class="mt-auto px-4 border-t border-white/10 pt-6">
+<button class="w-full bg-white/10 hover:bg-white/20 text-white font-label text-xs uppercase tracking-widest py-3 rounded-lg transition-colors mb-6">
+                Save Progress
+            </button>
+<ul class="space-y-1">
+<li class="text-slate-400 hover:text-white flex items-center px-4 py-2 transition-all hover:bg-white/5 rounded-lg">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="contact_support">contact_support</span>
+<span class="text-xs">Support</span>
+</li>
+<li class="text-slate-400 hover:text-white flex items-center px-4 py-2 transition-all hover:bg-white/5 rounded-lg">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="logout">logout</span>
+<span class="text-xs">Logout</span>
+</li>
+</ul>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen bg-surface">
+<!-- Top Navigation Bar -->
+<header class="bg-[#f8f9ff] flex justify-between items-center px-8 py-4 w-full h-16 sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<span class="font-headline font-black text-xl text-[#000b01] tracking-tight">Zudo POS</span>
+<span class="w-px h-6 bg-outline-variant/30"></span>
+<span class="text-on-surface-variant font-medium text-sm">Onboarding Protocol</span>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 text-on-surface-variant hover:bg-[#dde9ff] rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-[#dde9ff] rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden ml-2 ring-2 ring-white shadow-sm">
+<img alt="User profile" data-alt="Close up portrait of a professional man in a clean white shirt with soft studio lighting and neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLp_Gop8aFTu5EXW9OtNesBg3RzSurKD9nm-djYYqs3ZOQWbLkZeMJUw-2AhgyhUiDN7lNy8puXJtTGYOLRwQ2MVQiQw6sLD_wXbS4UaMNVXtgUaMZkKvMadfqnPIkiu-tcF0gAmNt-JFD2VfQYEsDCvfiAyPtFYlkwUFVPqSFXBkKrRNCYNlgMIs9PdOw82THdp-T974vAsEBraEi2TqMfw5TlNKbFOMpI2gWsYEMkHLj0I_6sqfQUFnE71cfQ-6cs3ozldK6Mtdf"/>
+</div>
+</div>
+</header>
+<!-- Onboarding Canvas Section -->
+<div class="p-10 max-w-6xl mx-auto">
+<!-- Progress Header -->
+<div class="mb-12">
+<div class="flex justify-between items-end mb-4">
+<div>
+<h1 class="font-headline text-4xl font-extrabold text-primary tracking-tight mb-2">Build Your Team</h1>
+<p class="text-on-surface-variant text-lg max-w-xl">Assign roles and permissions. High-performing retail teams start with clear authority structures.</p>
+</div>
+<div class="text-right">
+<span class="font-headline font-bold text-primary text-xl">4 <span class="text-on-surface-variant text-base font-medium">/ 6</span></span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-surface-tint w-4/6 transition-all duration-500"></div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Form Section (Bento Cell 1) -->
+<div class="col-span-12 lg:col-span-5 flex flex-col gap-8">
+<section class="bg-surface-container-lowest p-8 rounded-xl shadow-[0px_12px_32px_rgba(13,28,47,0.06)] relative overflow-hidden">
+<!-- Subtle Accent Gradient -->
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
+<h3 class="font-headline font-bold text-xl mb-6 flex items-center">
+<span class="material-symbols-outlined mr-2 text-secondary" style="font-variation-settings: 'FILL' 1;">person_add</span>
+                            Add Staff Member
+                        </h3>
+<form class="space-y-5">
+<div class="space-y-2">
+<label class="text-xs font-label font-bold text-on-surface-variant uppercase tracking-wider">Full Name</label>
+<input class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-secondary/20 rounded-lg py-3 px-4 text-on-surface placeholder:text-outline transition-all" placeholder="e.g. Chinelo Okoro" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-label font-bold text-on-surface-variant uppercase tracking-wider">Role Authority</label>
+<div class="grid grid-cols-2 gap-3">
+<button class="group flex flex-col items-center p-4 rounded-xl border border-outline-variant/20 bg-surface-container-low hover:bg-secondary-fixed transition-all active:scale-95" type="button">
+<span class="material-symbols-outlined text-secondary mb-2" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="text-sm font-semibold">Manager</span>
+</button>
+<button class="group flex flex-col items-center p-4 rounded-xl border-2 border-secondary bg-secondary-container text-on-secondary-container transition-all active:scale-95" type="button">
+<span class="material-symbols-outlined mb-2" data-icon="point_of_sale" style="font-variation-settings: 'FILL' 1;">point_of_sale</span>
+<span class="text-sm font-semibold">Cashier</span>
+</button>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-label font-bold text-on-surface-variant uppercase tracking-wider">Email or Phone</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-secondary/20 rounded-lg py-3 px-10 text-on-surface placeholder:text-outline transition-all" placeholder="name@store.com" type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-3 text-outline text-lg" data-icon="alternate_email">alternate_email</span>
+</div>
+</div>
+<button class="w-full h-[56px] mt-4 rounded-xl bg-gradient-to-br from-secondary to-[#44118d] text-white font-headline font-bold text-sm uppercase tracking-widest shadow-lg hover:shadow-secondary/30 transition-all flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                                Add to Roster
+                            </button>
+</form>
+</section>
+<!-- Info Alert (Bento Cell 2) -->
+<div class="bg-tertiary text-white p-6 rounded-xl flex items-start gap-4">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" data-icon="shield">shield</span>
+<div>
+<p class="font-headline font-bold text-sm mb-1">Security Standards</p>
+<p class="text-xs text-slate-300 leading-relaxed">Each staff member will receive a secure temporary login PIN via email once you finalize the onboarding setup.</p>
+</div>
+</div>
+</div>
+<!-- Staff List Section (Bento Cell 3) -->
+<div class="col-span-12 lg:col-span-7 bg-surface-container-low rounded-xl p-8 border border-white/50">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="font-headline font-bold text-xl">Staff to be added</h3>
+<p class="text-on-surface-variant text-sm">3 members currently in queue</p>
+</div>
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full ring-2 ring-surface bg-surface-container-high flex items-center justify-center">
+<span class="text-[10px] font-bold text-on-surface-variant">4/10</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Staff Item 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container">
+<img alt="Staff Member" data-alt="Professional portrait of a young African woman smiling warmly in an office setting with natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuSgnF0t1bhWEiNpPbWi6CZMmCX9hnI0mlG2hE4vasuU-lTLdFH-B1wNBk7Ch1pEZ_aSj4Zevx9vFJIh97-rCSparqjeLcbipwaAs0S-6vmRvHMy7iG0beWhBSWt1Io8ay_xlDh0auf3KjwJcI77OoPmBxUafOGc-JNx2unRgjJSk9j1DV30eTwwUjF8EhHqJSxZjLtl0n9sMx1x_bkIoUI6OG4xN04cb8eYTxwS3fEdG2izUgyuYh3qvxnnGk_OU4q7RvQfn8E2pc"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Amara Nwosu</h4>
+<div class="flex items-center gap-2">
+<span class="bg-tertiary text-[10px] font-bold text-white px-2 py-0.5 rounded uppercase tracking-tighter">Manager</span>
+<span class="text-xs text-on-surface-variant">amara.n@store.com</span>
+</div>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-error hover:bg-error-container/20 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+<!-- Staff Item 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container">
+<img alt="Staff Member" data-alt="Headshot of a confident young man in a denim shirt with modern office interior in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZ9ySg2pjxqT9CfgSC0Z0STkRjiKZPo3DK9bFWTxEZrot2b9Er2U98DMSs_oE4c08p7d7946GKkDU-l0xBQyR9bzIVX_-A2gvgXwKPXNQg6TQG3ldjWK7nkD4Wk2j3a2S3hEdcW0uwAccgQ4xy-mjAuFjSIu6XN44euPLHJhT7fjwANKphA5fGxSF0ZobA-VOKSz0dSe1rLyaENRMYWrs27kD9ubgai4Gt0dO81Sh-JpBbXvSz8w0X0WfkUgg8om1rFUsMug3T_0F-"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Tunde Adebayo</h4>
+<div class="flex items-center gap-2">
+<span class="bg-secondary-container text-[10px] font-bold text-on-secondary-container px-2 py-0.5 rounded uppercase tracking-tighter">Cashier</span>
+<span class="text-xs text-on-surface-variant">+234 802 123 4567</span>
+</div>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-error hover:bg-error-container/20 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+<!-- Staff Item 3 (Owner Default) -->
+<div class="bg-surface-container/50 p-5 rounded-xl flex items-center justify-between opacity-80 border-2 border-dashed border-outline-variant/30">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">You (Owner)</h4>
+<div class="flex items-center gap-2">
+<span class="bg-primary text-[10px] font-bold text-white px-2 py-0.5 rounded uppercase tracking-tighter">Owner</span>
+<span class="text-xs text-on-surface-variant">Default Super Admin</span>
+</div>
+</div>
+</div>
+<span class="text-xs font-bold text-on-surface-variant px-3 py-1 bg-surface-container rounded-full">Permanent</span>
+</div>
+</div>
+<!-- Visual Empty State Placeholder -->
+<div class="mt-8 flex flex-col items-center justify-center p-10 border-2 border-dashed border-outline-variant/20 rounded-xl bg-surface/50 text-center">
+<div class="w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="group_add">group_add</span>
+</div>
+<p class="text-sm font-medium text-on-surface-variant">No more staff in queue?</p>
+<p class="text-xs text-outline mt-1">You can always add more members later from the Settings menu.</p>
+</div>
+</div>
+</div>
+<!-- Transactional Navigation Footer -->
+<div class="mt-12 pt-8 flex justify-between items-center">
+<button class="flex items-center gap-2 px-6 py-3 rounded-xl border border-outline-variant hover:bg-surface-container-low transition-colors font-bold text-on-surface">
+<span class="material-symbols-outlined text-lg" data-icon="arrow_back">arrow_back</span>
+                    Previous Step
+                </button>
+<div class="flex gap-4">
+<button class="px-6 py-3 rounded-xl text-on-surface-variant font-bold hover:text-on-surface transition-colors">
+                        Skip for now
+                    </button>
+<button class="h-[56px] px-10 rounded-xl bg-surface-tint text-on-primary font-headline font-bold text-sm uppercase tracking-widest shadow-lg hover:brightness-110 transition-all flex items-center gap-3">
+                        Continue to Step 5
+                        <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual Toast Notification (Bottom Right) -->
+<div class="fixed bottom-8 right-8 bg-inverse-surface text-inverse-on-surface p-4 rounded-xl shadow-2xl flex items-center gap-4 z-50 animate-in slide-in-from-bottom-5">
+<div class="w-8 h-8 bg-primary-fixed-dim rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-fixed text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="pr-4">
+<p class="text-sm font-bold">Roster Updated</p>
+<p class="text-xs opacity-70">Tunde Adebayo has been added.</p>
+</div>
+<button class="text-inverse-on-surface/50 hover:text-inverse-on-surface">
+<span class="material-symbols-outlined text-base" data-icon="close">close</span>
+</button>
+</div>
+</body></html>

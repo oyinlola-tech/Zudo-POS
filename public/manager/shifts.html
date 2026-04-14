@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shift Management | Zudo POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#d5e3fd",
+                    "tertiary-container": "#001a59",
+                    "surface-container-highest": "#d5e3fd",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#b188ff",
+                    "tertiary": "#000623",
+                    "on-tertiary-fixed": "#00164e",
+                    "surface-container-low": "#eff4ff",
+                    "surface-dim": "#ccdbf4",
+                    "surface-container": "#e6eeff",
+                    "secondary-fixed-dim": "#d3bbff",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#dde9ff",
+                    "on-tertiary-container": "#6b83d7",
+                    "tertiary-fixed": "#dce1ff",
+                    "secondary": "#6f46b9",
+                    "on-secondary-fixed": "#260059",
+                    "on-tertiary-fixed-variant": "#264191",
+                    "on-background": "#0d1c2f",
+                    "on-surface": "#0d1c2f",
+                    "on-primary-fixed": "#002204",
+                    "on-primary-container": "#499849",
+                    "inverse-surface": "#233144",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#ebf1ff",
+                    "background": "#f8f9ff",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#ebdcff",
+                    "primary-fixed-dim": "#88d982",
+                    "primary-fixed": "#a3f69c",
+                    "surface-tint": "#1b6d24",
+                    "inverse-primary": "#88d982",
+                    "primary": "#000b01",
+                    "tertiary-fixed-dim": "#b6c4ff",
+                    "outline": "#76777c",
+                    "on-surface-variant": "#45474c",
+                    "on-secondary-container": "#44118d",
+                    "primary-container": "#002704",
+                    "surface": "#f8f9ff",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#005312",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#c6c6cc",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#572ba0",
+                    "surface-bright": "#f8f9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+        /* Hide scrollbar but keep functionality */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- Sidebar Navigation (SideNavBar) -->
+<aside class="h-screen w-64 fixed left-0 top-0 z-50 bg-slate-950 flex flex-col py-6 shadow-2xl">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-1">
+<div class="w-10 h-10 rounded-xl bg-emerald-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-950">edit_note</span>
+</div>
+<div>
+<h2 class="text-emerald-50 font-black tracking-tight text-lg">Zudo POS</h2>
+<p class="text-slate-500 text-xs font-medium">Lagos Central Branch</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto no-scrollbar space-y-1">
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 px-6 py-3 transition-all duration-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 px-6 py-3 transition-all duration-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="text-sm font-medium">Live Monitor</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 px-6 py-3 transition-all duration-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-sm font-medium">Sales</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 px-6 py-3 transition-all duration-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-sm font-medium">Inventory</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 px-6 py-3 transition-all duration-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="text-sm font-medium">Cashiers</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 px-6 py-3 transition-all duration-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Customers</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 px-6 py-3 transition-all duration-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined">star</span>
+<span class="text-sm font-medium">Loyalty</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 px-6 py-3 transition-all duration-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+<!-- Active Tab: Shifts -->
+<a class="flex items-center gap-3 bg-emerald-600/10 text-emerald-400 border-l-4 border-emerald-500 px-6 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">schedule</span>
+<span class="text-sm font-medium">Shifts</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 px-6 py-3 transition-all duration-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-sm font-medium">Notifications</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 px-6 py-3 transition-all duration-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-sm font-medium">Reports</span>
+</a>
+</nav>
+<div class="mt-auto px-6 border-t border-slate-900 pt-6 space-y-1">
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-sm font-medium">Support</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm font-medium">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Top Navigation Bar (TopNavBar) -->
+<header class="fixed top-0 right-0 left-64 z-40 bg-white/80 backdrop-blur-md h-16 px-6 flex justify-between items-center shadow-sm">
+<div class="flex items-center gap-4">
+<h1 class="text-xl font-bold text-slate-900">Shift Management</h1>
+<div class="h-4 w-px bg-slate-200 mx-2"></div>
+<div class="flex items-center text-slate-500 bg-slate-100 rounded-xl px-4 py-1.5 gap-2 border-none">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+<span class="text-sm font-medium">Oct 24 - Oct 30, 2023</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-xl text-emerald-900 bg-emerald-50 border border-emerald-100">
+<span class="material-symbols-outlined text-xl">store</span>
+<span class="text-sm font-semibold">Lagos Central</span>
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</div>
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-xl transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-xl transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden ml-2">
+<img alt="Manager Profile Avatar" class="w-full h-full object-cover" data-alt="Close up portrait of a professional manager with a clean-cut look in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT8mRu0V1iFmCXJ-R68ShnLtJUwchb55ndebqgEBuJORlEXv-7BWKTajg8DXMR9hmHOuyzwsSna9m8MaxDBJyzZ3YQuROtpJqaNVXAXO3-i0Ir-T1niYjdpr3jzuvbhgB0PmOG1ve27EOzovp81hJyb5_RTS3-k9Tg8p4BRqj3VfCu81lB4VSIC6fTDSiiqQmXtdp0Kw2TW3XHIThvR7Ch_CWlek7gqmjNojXbhvKmas_BKA3X3BRsn4i1t8j6Cw85MgeS-eCMPmBf"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-20 p-8 min-h-screen space-y-8">
+<!-- Header Actions & Critical Alerts (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Attendance Alerts (Asymmetric high-priority card) -->
+<div class="md:col-span-8 bg-error-container/30 rounded-xl p-6 relative overflow-hidden">
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-error rounded-full flex items-center justify-center text-on-error">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div>
+<h3 class="text-on-error-container font-bold text-lg">Active Alerts (3)</h3>
+<p class="text-on-error-container/70 text-sm">Late arrivals and unauthorized clock-outs requiring review.</p>
+</div>
+</div>
+<button class="bg-error text-white px-5 py-2.5 rounded-xl text-sm font-bold uppercase tracking-wider shadow-sm hover:opacity-90 transition-all">
+                        Resolve All
+                    </button>
+</div>
+<!-- Glassy overlay cards for specific alerts -->
+<div class="mt-6 flex gap-3 overflow-x-auto no-scrollbar">
+<div class="bg-white/60 backdrop-blur-md border border-error/10 p-3 rounded-xl min-w-[240px] flex items-center gap-3 shadow-sm">
+<div class="w-2 h-12 bg-error rounded-full"></div>
+<div>
+<p class="text-xs font-bold text-on-error-container">Chioma Okeke</p>
+<p class="text-[10px] text-slate-600">Late by 42 mins (Morning Shift)</p>
+</div>
+</div>
+<div class="bg-white/60 backdrop-blur-md border border-error/10 p-3 rounded-xl min-w-[240px] flex items-center gap-3 shadow-sm">
+<div class="w-2 h-12 bg-error rounded-full"></div>
+<div>
+<p class="text-xs font-bold text-on-error-container">David Adebayo</p>
+<p class="text-[10px] text-slate-600">Missed Clock-out (Previous Day)</p>
+</div>
+</div>
+<div class="bg-white/60 backdrop-blur-md border border-error/10 p-3 rounded-xl min-w-[240px] flex items-center gap-3 shadow-sm">
+<div class="w-2 h-12 bg-error rounded-full"></div>
+<div>
+<p class="text-xs font-bold text-on-error-container">Amara Eze</p>
+<p class="text-[10px] text-slate-600">Unauthorized Break (15m Over)</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Create New Shift Card -->
+<div class="md:col-span-4 bg-primary rounded-xl p-6 flex flex-col justify-between text-on-primary">
+<div>
+<h3 class="text-xl font-bold mb-2">Shift Planning</h3>
+<p class="text-on-primary/60 text-sm">Assign staff to upcoming time slots or create custom rotations.</p>
+</div>
+<button class="mt-8 bg-primary-container text-on-primary-container w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:brightness-110 transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+                    CREATE NEW SHIFT
+                </button>
+</div>
+</div>
+<!-- Real-time Monitor & Weekly View -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Active Staff Panel (Left) -->
+<div class="lg:col-span-1 bg-surface-container-low rounded-xl p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-lg font-bold">Active Shifts</h3>
+<span class="bg-emerald-100 text-emerald-700 text-[10px] px-2 py-1 rounded-full font-bold">LIVE</span>
+</div>
+<div class="space-y-4">
+<!-- Staff Item -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border-l-4 border-emerald-500 flex items-center gap-4">
+<div class="relative">
+<img alt="Staff Avatar" class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of a smiling young African woman professional in a well-lit studio environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi6zOUhZFNKs15d-PtpbGP58T4QIymEeHLeITCdluEYCKYhKbqW-TTcPLIE-smBljUs-Y_ySiVh05OQ5AwEeR5v83LnZsyeFKAccQhOpRgHfHTXSX3uEVFIe72xtqsAbegQZ-ukscuOw20R_QVlvHLJHMRoHkQB5-eYdb10IynWJ11UQm1d73_Uqm3T-njUh7-F3gg8BroBo347Wcs7VEAFoWIpfm0C02dJrBj3bFbbM-E7YHV9cNLPeQvvWiiUjLFNbjPHUPqrJ_1"/>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-sm font-bold">Zainab Saliu</p>
+<p class="text-[10px] font-medium text-slate-400">Since 08:00 AM</p>
+</div>
+<p class="text-xs text-secondary font-medium">Head Cashier</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border-l-4 border-emerald-500 flex items-center gap-4">
+<div class="relative">
+<img alt="Staff Avatar" class="w-10 h-10 rounded-full object-cover" data-alt="Professional headshot of a middle-aged man with short dark hair in a corporate setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOTef5jaGOAeAibGShN6nwZLt5L5muyhIafG3K-Pta5rQ5BOpunLoP-F6nISPWOOnbluzb1GQMTuSas0dGgmKqo1Uct930RlJeA0IMwWc5oc4QnyCBHIIp9vCjFx5zndP83BOD6dfuyDazdqWBkgNFJ9rVqePs2nNGOTMOyyHcY0wLXTHdoYQdQnJ9T53LVgJfU0U8P0FfeaF6Oxd9cjq8xWIiiHCdnDMqTxr502FrWCWeCZffU0rv2q_UUTTZnplleyRXdZLt_P_2"/>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-sm font-bold">Emeka Obi</p>
+<p class="text-[10px] font-medium text-slate-400">Since 09:15 AM</p>
+</div>
+<p class="text-xs text-secondary font-medium">Inventory Manager</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border-l-4 border-slate-300 flex items-center gap-4 grayscale opacity-70">
+<div class="relative">
+<img alt="Staff Avatar" class="w-10 h-10 rounded-full object-cover" data-alt="Young woman with thoughtful expression in soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMulGbZK6HqqNG_3K8lGz7fps-u6GBviOv9MkPoxxA2JKm49-OmH6NROc52hFPSAqDW6ruhDi5XO42Fy4ZKm1DVtRSHAu2JeBfWW6J-XwVLX7iJ58tby2maNoCZMRAat3VcF0LeB_EpmI3whLjhsYPOQNy73DdQen5WALnq_d3Gt9h8Xd2N4egeXlMkVyR9hkcMga3-jMl6uI0x9I0IxZeGfbKTNwj20DZQjch5CLLViCL9uTFA3WE5vfqJgLeIyAdYddWl60LHnCY"/>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-slate-300 border-2 border-white rounded-full"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-sm font-bold">Fatima Umar</p>
+<p class="text-[10px] font-medium text-slate-400">Out at 10:30 AM</p>
+</div>
+<p class="text-xs text-slate-500 font-medium italic">Clocked Out (Break)</p>
+</div>
+</div>
+</div>
+<div class="mt-8 bg-surface-container p-4 rounded-xl">
+<h4 class="text-xs font-black text-on-surface-variant uppercase tracking-widest mb-4">Coverage Today</h4>
+<div class="h-2 bg-slate-200 rounded-full overflow-hidden flex">
+<div class="w-[40%] bg-emerald-500"></div>
+<div class="w-[15%] bg-secondary"></div>
+<div class="w-[20%] bg-emerald-400"></div>
+</div>
+<div class="flex justify-between mt-2 text-[10px] font-bold text-slate-500">
+<span>MORNING</span>
+<span>AFTERNOON</span>
+<span>NIGHT</span>
+</div>
+</div>
+</div>
+<!-- Shift Table (Right/Center) -->
+<div class="lg:col-span-2 space-y-6">
+<!-- Tabs for View -->
+<div class="flex gap-1 bg-surface-container-low p-1.5 rounded-xl self-start w-fit">
+<button class="bg-white px-4 py-2 rounded-lg text-sm font-bold shadow-sm">Daily Schedule</button>
+<button class="px-4 py-2 rounded-lg text-sm font-medium text-slate-500 hover:text-slate-900">Weekly Planner</button>
+<button class="px-4 py-2 rounded-lg text-sm font-medium text-slate-500 hover:text-slate-900">Monthly Outlook</button>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="px-6 py-4 text-[11px] font-black uppercase tracking-widest text-slate-500">Staff Name</th>
+<th class="px-6 py-4 text-[11px] font-black uppercase tracking-widest text-slate-500">Shift Time</th>
+<th class="px-6 py-4 text-[11px] font-black uppercase tracking-widest text-slate-500">Role</th>
+<th class="px-6 py-4 text-[11px] font-black uppercase tracking-widest text-slate-500">Status</th>
+<th class="px-6 py-4 text-[11px] font-black uppercase tracking-widest text-slate-500"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-50">
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-slate-600">ZO</div>
+<span class="text-sm font-semibold">Zainab Saliu</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-headline font-bold">08:00 — 16:00</div>
+<div class="text-[10px] text-slate-400">Regular Morning Shift</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-[10px] px-2 py-1 bg-secondary/10 text-secondary font-bold rounded-lg">CASHIER</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+<span class="text-xs font-medium text-emerald-700">On-Time</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-slate-300 hover:text-slate-600">more_vert</button>
+</td>
+</tr>
+<tr class="bg-surface-container-low/30 hover:bg-slate-50/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-slate-600">CO</div>
+<span class="text-sm font-semibold">Chioma Okeke</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-headline font-bold">08:00 — 16:00</div>
+<div class="text-[10px] text-slate-400">Regular Morning Shift</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-[10px] px-2 py-1 bg-secondary/10 text-secondary font-bold rounded-lg">CASHIER</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 bg-error rounded-full"></span>
+<span class="text-xs font-medium text-error">Late (42m)</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-slate-300 hover:text-slate-600">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-slate-600">EO</div>
+<span class="text-sm font-semibold">Emeka Obi</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-headline font-bold">09:00 — 18:00</div>
+<div class="text-[10px] text-slate-400">Logistics Shift</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-[10px] px-2 py-1 bg-tertiary-container text-surface-variant font-bold rounded-lg">INVENTORY</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+<span class="text-xs font-medium text-emerald-700">On-Time</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-slate-300 hover:text-slate-600">more_vert</button>
+</td>
+</tr>
+<tr class="bg-surface-container-low/30 hover:bg-slate-50/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-slate-600">DA</div>
+<span class="text-sm font-semibold">David Adebayo</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-headline font-bold">14:00 — 22:00</div>
+<div class="text-[10px] text-slate-400">Night Coverage Shift</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-[10px] px-2 py-1 bg-secondary/10 text-secondary font-bold rounded-lg">SUPERVISOR</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 opacity-50">
+<span class="w-1.5 h-1.5 bg-slate-400 rounded-full"></span>
+<span class="text-xs font-medium text-slate-500">Upcoming</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-slate-300 hover:text-slate-600">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-slate-600">AE</div>
+<span class="text-sm font-semibold">Amara Eze</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-headline font-bold">14:00 — 22:00</div>
+<div class="text-[10px] text-slate-400">Night Coverage Shift</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-[10px] px-2 py-1 bg-secondary/10 text-secondary font-bold rounded-lg">CASHIER</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 bg-error rounded-full" style="font-variation-settings: 'FILL' 1;"></span>
+<span class="text-xs font-medium text-error">Absent</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-slate-300 hover:text-slate-600">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-6 bg-slate-50 flex justify-between items-center">
+<p class="text-xs font-medium text-slate-500">Showing 5 of 12 scheduled shifts for Today</p>
+<div class="flex gap-2">
+<button class="p-1.5 rounded-lg border border-slate-200 hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="p-1.5 rounded-lg border border-slate-200 hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Weekly Coverage Heatmap (Bento Card) -->
+<div class="bg-surface-container-highest/30 rounded-2xl p-8">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h3 class="text-xl font-bold">Staffing Efficiency</h3>
+<p class="text-slate-500 text-sm">Historical coverage levels vs. sales volume for the current week.</p>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-emerald-500 rounded-full"></span>
+<span class="text-[11px] font-bold text-slate-600 uppercase">Coverage</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-secondary rounded-full"></span>
+<span class="text-[11px] font-bold text-slate-600 uppercase">Sales Load</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-4">
+<!-- Day Bar -->
+<div class="space-y-3">
+<div class="h-64 bg-slate-100 rounded-xl relative flex items-end justify-center overflow-hidden">
+<div class="w-1/2 bg-emerald-500/20 h-[80%] absolute bottom-0 left-0"></div>
+<div class="w-1/2 bg-secondary/20 h-[65%] absolute bottom-0 right-0"></div>
+<div class="w-1.5 bg-emerald-500 h-[75%] rounded-full z-10 mx-1"></div>
+</div>
+<p class="text-center text-xs font-bold text-slate-400">MON</p>
+</div>
+<div class="space-y-3">
+<div class="h-64 bg-slate-100 rounded-xl relative flex items-end justify-center overflow-hidden">
+<div class="w-1/2 bg-emerald-500/20 h-[75%] absolute bottom-0 left-0"></div>
+<div class="w-1/2 bg-secondary/20 h-[85%] absolute bottom-0 right-0"></div>
+<div class="w-1.5 bg-emerald-500 h-[70%] rounded-full z-10 mx-1"></div>
+</div>
+<p class="text-center text-xs font-bold text-slate-400">TUE</p>
+</div>
+<div class="space-y-3">
+<div class="h-64 bg-slate-100 rounded-xl relative flex items-end justify-center overflow-hidden border-2 border-emerald-500/30">
+<div class="w-1/2 bg-emerald-500/20 h-[90%] absolute bottom-0 left-0"></div>
+<div class="w-1/2 bg-secondary/20 h-[40%] absolute bottom-0 right-0"></div>
+<div class="w-1.5 bg-emerald-500 h-[85%] rounded-full z-10 mx-1"></div>
+<div class="absolute top-2 right-2 px-1.5 py-0.5 bg-emerald-500 text-white text-[8px] font-black rounded uppercase">Peak</div>
+</div>
+<p class="text-center text-xs font-bold text-slate-900">WED</p>
+</div>
+<div class="space-y-3">
+<div class="h-64 bg-slate-100 rounded-xl relative flex items-end justify-center overflow-hidden">
+<div class="w-1/2 bg-emerald-500/20 h-[60%] absolute bottom-0 left-0"></div>
+<div class="w-1/2 bg-secondary/20 h-[65%] absolute bottom-0 right-0"></div>
+<div class="w-1.5 bg-emerald-500 h-[55%] rounded-full z-10 mx-1"></div>
+</div>
+<p class="text-center text-xs font-bold text-slate-400">THU</p>
+</div>
+<div class="space-y-3">
+<div class="h-64 bg-slate-100 rounded-xl relative flex items-end justify-center overflow-hidden">
+<div class="w-1/2 bg-emerald-500/20 h-[70%] absolute bottom-0 left-0"></div>
+<div class="w-1/2 bg-secondary/20 h-[70%] absolute bottom-0 right-0"></div>
+<div class="w-1.5 bg-emerald-500 h-[65%] rounded-full z-10 mx-1"></div>
+</div>
+<p class="text-center text-xs font-bold text-slate-400">FRI</p>
+</div>
+<div class="space-y-3 opacity-40">
+<div class="h-64 bg-slate-100 rounded-xl relative flex items-end justify-center overflow-hidden">
+<div class="w-1/2 bg-emerald-500/20 h-[20%] absolute bottom-0 left-0"></div>
+<div class="w-1/2 bg-secondary/20 h-[10%] absolute bottom-0 right-0"></div>
+</div>
+<p class="text-center text-xs font-bold text-slate-400">SAT</p>
+</div>
+<div class="space-y-3 opacity-40">
+<div class="h-64 bg-slate-100 rounded-xl relative flex items-end justify-center overflow-hidden">
+<div class="w-1/2 bg-emerald-500/20 h-[15%] absolute bottom-0 left-0"></div>
+<div class="w-1/2 bg-secondary/20 h-[5%] absolute bottom-0 right-0"></div>
+</div>
+<p class="text-center text-xs font-bold text-slate-400">SUN</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB for quick action (Suppressed on details but active here) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-emerald-600 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-105 transition-transform z-50">
+<span class="material-symbols-outlined text-2xl">add</span>
+</button>
+</body></html>

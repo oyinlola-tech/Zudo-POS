@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zudo POS | Shift Status</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#499849",
+                        "on-surface": "#0d1c2f",
+                        "primary-container": "#002704",
+                        "surface-container-highest": "#d5e3fd",
+                        "on-tertiary-fixed-variant": "#264191",
+                        "on-tertiary-fixed": "#00164e",
+                        "surface-container-low": "#eff4ff",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#44118d",
+                        "outline": "#76777c",
+                        "tertiary-fixed-dim": "#b6c4ff",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#b188ff",
+                        "on-surface-variant": "#45474c",
+                        "surface-dim": "#ccdbf4",
+                        "surface-tint": "#1b6d24",
+                        "on-background": "#0d1c2f",
+                        "on-primary-fixed-variant": "#005312",
+                        "primary-fixed-dim": "#88d982",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#88d982",
+                        "on-secondary-fixed": "#260059",
+                        "surface-variant": "#d5e3fd",
+                        "tertiary": "#000623",
+                        "surface-container": "#e6eeff",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-container": "#6b83d7",
+                        "surface": "#f8f9ff",
+                        "inverse-surface": "#233144",
+                        "tertiary-fixed": "#dce1ff",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#001a59",
+                        "primary-fixed": "#a3f69c",
+                        "primary": "#000b01",
+                        "inverse-on-surface": "#ebf1ff",
+                        "background": "#f8f9ff",
+                        "secondary-fixed": "#ebdcff",
+                        "surface-container-high": "#dde9ff",
+                        "on-secondary-fixed-variant": "#572ba0",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#002204",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#d3bbff",
+                        "outline-variant": "#c6c6cc",
+                        "secondary": "#6f46b9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(248, 249, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .naira-symbol {
+            font-family: 'Manrope', sans-serif;
+        }
+        .zebra-list div:nth-child(even) {
+            background-color: #eff4ff;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- SideNavBar Component (Persistent Shell) -->
+<aside class="flex flex-col h-full fixed left-0 top-0 z-40 overflow-y-auto bg-[#eff4ff] dark:bg-slate-900 border-r-0 h-full w-64">
+<div class="px-6 py-8">
+<h1 class="font-bold text-[#000b01] dark:text-white font-headline text-xl tracking-tight">Zudo POS</h1>
+<p class="text-xs font-label uppercase tracking-widest text-on-surface-variant mt-1">Fluid Authority</p>
+</div>
+<nav class="flex-1 mt-4">
+<div class="space-y-1">
+<a class="flex items-center px-6 py-4 text-[#45474c] dark:text-slate-400 hover:text-[#000b01] dark:hover:text-white hover:bg-[#dde9ff] dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="point_of_sale">point_of_sale</span>
+<span class="font-label text-sm font-medium tracking-wide">TERMINAL</span>
+</a>
+<a class="flex items-center px-6 py-4 text-[#45474c] dark:text-slate-400 hover:text-[#000b01] dark:hover:text-white hover:bg-[#dde9ff] dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="receipt_long">receipt_long</span>
+<span class="font-label text-sm font-medium tracking-wide">SALES HISTORY</span>
+</a>
+<a class="flex items-center px-6 py-4 text-[#45474c] dark:text-slate-400 hover:text-[#000b01] dark:hover:text-white hover:bg-[#dde9ff] dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="group">group</span>
+<span class="font-label text-sm font-medium tracking-wide">CUSTOMERS</span>
+</a>
+<a class="flex items-center bg-[#ffffff] dark:bg-slate-800 text-[#6f46b9] dark:text-[#b188ff] rounded-l-full ml-4 shadow-sm font-bold px-6 py-4" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="schedule" style="font-variation-settings: 'FILL' 1;">schedule</span>
+<span class="font-label text-sm font-medium tracking-wide">SHIFTS</span>
+</a>
+<a class="flex items-center px-6 py-4 text-[#45474c] dark:text-slate-400 hover:text-[#000b01] dark:hover:text-white hover:bg-[#dde9ff] dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="settings_backup_restore">settings_backup_restore</span>
+<span class="font-label text-sm font-medium tracking-wide">RETURNS</span>
+</a>
+</div>
+</nav>
+<div class="p-6 mt-auto">
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-highest/50">
+<img alt="Cashier Profile" class="w-10 h-10 rounded-full object-crop shadow-sm" data-alt="Professional portrait of a West African man in a clean white shirt smiling warmly in a bright modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZzc3yUJV9tORJ-pxRxQZ1QckgGSAnxD8U-HINEJ2V8XaXCSh5_UnYJ3mALqZJudDaUO1zrduueWBDWjBawn0LMS_0IF92hCWAoWegAaPxfwNAappHqDWERxDvai7Mh56-Cc3BqvcBM5ZPCaS5ME4hJSTJu9yzgnSsaSmbFUcRr9tO9uOg9sGO19KNxX8-gFIv8CFh3qdimfTaTHquBJNSmmw2Et5qKHVLJv3Pju7qMpiqKls7gWGHpoxWc7xjhQjrYJEPO0YG_YnI"/>
+<div class="overflow-hidden">
+<p class="text-xs font-bold text-on-surface truncate">CHIDI OKEKE</p>
+<p class="text-[10px] text-on-surface-variant">Lagos Main Branch</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen">
+<!-- TopNavBar Component -->
+<header class="flex justify-between items-center w-full px-8 py-3 h-16 bg-[#f8f9ff] dark:bg-slate-950 sticky top-0 z-30">
+<div class="flex items-center gap-4">
+<span class="text-on-surface-variant text-sm font-medium">Session Active</span>
+<span class="w-2 h-2 rounded-full bg-surface-tint animate-pulse"></span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-xl" data-icon="cloud_done">cloud_done</span>
+<span class="text-xs font-medium">Synced</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface cursor-pointer hover:scale-110 transition-transform" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<div class="p-8 max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h2 class="text-on-surface-variant font-label text-xs uppercase tracking-[0.2em] mb-2">Operational Dashboard</h2>
+<h1 class="text-4xl font-extrabold font-headline text-primary tracking-tight">Shift Status</h1>
+<div class="mt-4 inline-flex items-center gap-2 px-3 py-1.5 bg-surface-container-low rounded-lg">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Identity Code:</span>
+<span class="text-sm font-mono font-bold text-secondary">SH-2023-1102-A</span>
+</div>
+</div>
+<button class="h-14 px-8 rounded-xl bg-gradient-to-br from-primary to-primary-container text-on-primary font-label text-sm font-bold uppercase tracking-widest flex items-center gap-3 shadow-xl hover:scale-95 transition-all duration-150">
+<span>End Shift &amp; Generate Report</span>
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</button>
+</div>
+<!-- Bento Grid Metrics -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+<!-- Large Metric Card: Total Sales -->
+<div class="md:col-span-2 bg-surface-container-lowest p-8 rounded-3xl border-l-4 border-surface-tint shadow-sm flex flex-col justify-between h-64">
+<div class="flex justify-between items-start">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Total Sales Volume</span>
+<span class="material-symbols-outlined text-surface-tint" data-icon="trending_up">trending_up</span>
+</div>
+<div class="mt-auto">
+<div class="flex items-baseline gap-2">
+<span class="naira-symbol text-3xl font-bold text-on-surface-variant">₦</span>
+<span class="text-6xl font-black font-headline text-on-surface tracking-tighter">1,245,800</span>
+</div>
+<p class="text-xs text-on-primary-container font-medium mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_upward">arrow_upward</span>
+                            12.5% vs yesterday
+                        </p>
+</div>
+</div>
+<!-- Session Duration -->
+<div class="bg-surface-container-low p-8 rounded-3xl shadow-sm flex flex-col justify-between h-64">
+<div class="flex justify-between items-start">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Session Duration</span>
+<span class="material-symbols-outlined text-secondary" data-icon="timer">timer</span>
+</div>
+<div class="mt-auto">
+<span class="text-5xl font-black font-headline text-on-surface tracking-tight">06:42</span>
+<p class="text-xs text-on-surface-variant font-medium mt-2">Active since 08:30 AM</p>
+</div>
+</div>
+<!-- Transaction Count -->
+<div class="bg-surface-container-low p-8 rounded-3xl shadow-sm flex flex-col justify-between h-64">
+<div class="flex justify-between items-start">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Transactions</span>
+<span class="material-symbols-outlined text-tertiary" data-icon="shopping_basket">shopping_basket</span>
+</div>
+<div class="mt-auto">
+<span class="text-5xl font-black font-headline text-on-surface tracking-tight">142</span>
+<p class="text-xs text-on-surface-variant font-medium mt-2">Avg. ₦8,773 / trans</p>
+</div>
+</div>
+</div>
+<!-- Activity Log & Details Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+<!-- Shift Activity Log -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-3xl shadow-sm overflow-hidden border border-outline-variant/10">
+<div class="p-6 border-b border-outline-variant/10 flex justify-between items-center bg-surface-bright">
+<h3 class="text-sm font-bold text-on-surface uppercase tracking-widest">Shift Activity Log</h3>
+<span class="text-[10px] font-bold px-2 py-1 bg-surface-container-low rounded-full text-on-surface-variant">LIVE FEED</span>
+</div>
+<div class="zebra-list">
+<div class="p-6 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-700">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Sale Completed: #TR-9821</p>
+<p class="text-xs text-on-surface-variant">2 minutes ago • POS-Terminal 04</p>
+</div>
+</div>
+<span class="font-headline font-bold text-on-surface">₦42,000.00</span>
+</div>
+<div class="p-6 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">New Customer Registered</p>
+<p class="text-xs text-on-surface-variant">15 minutes ago • Amara Okafor</p>
+</div>
+</div>
+<span class="text-xs font-bold text-secondary uppercase">PROFILES</span>
+</div>
+<div class="p-6 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-700">
+<span class="material-symbols-outlined" data-icon="replay">replay</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Return Processed: #TR-9705</p>
+<p class="text-xs text-on-surface-variant">42 minutes ago • Manager Approved</p>
+</div>
+</div>
+<span class="font-headline font-bold text-error">- ₦5,200.00</span>
+</div>
+<div class="p-6 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-700">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Sale Completed: #TR-9820</p>
+<p class="text-xs text-on-surface-variant">51 minutes ago • Split Payment (Cash/Card)</p>
+</div>
+</div>
+<span class="font-headline font-bold text-on-surface">₦128,500.00</span>
+</div>
+</div>
+<div class="p-4 bg-surface-container-low text-center">
+<button class="text-[10px] font-bold text-secondary uppercase tracking-widest hover:underline">View Full Activity Feed</button>
+</div>
+</div>
+<!-- Shift Meta Sidebar -->
+<div class="space-y-6">
+<!-- Session Card -->
+<div class="bg-surface-container-high rounded-3xl p-6 shadow-sm">
+<h4 class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-6">Shift Details</h4>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<span class="text-xs text-on-surface-variant">Clock-in Time</span>
+<span class="text-sm font-bold text-on-surface">08:30:12 AM</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs text-on-surface-variant">Break Time</span>
+<span class="text-sm font-bold text-on-surface">00:45:00</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs text-on-surface-variant">Current Till Cash</span>
+<span class="text-sm font-bold text-on-surface">₦15,000.00</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs text-on-surface-variant">Terminal ID</span>
+<span class="text-sm font-bold text-on-surface">LGS-POS-04</span>
+</div>
+</div>
+</div>
+<!-- Payment Distribution -->
+<div class="bg-primary p-6 rounded-3xl shadow-lg relative overflow-hidden">
+<!-- Decorative gradient texture -->
+<div class="absolute inset-0 opacity-10" style="background: linear-gradient(45deg, #1b6d24, #000b01);"></div>
+<h4 class="text-xs font-bold text-primary-fixed-dim uppercase tracking-widest mb-6 relative z-10">Payment Mix</h4>
+<div class="space-y-4 relative z-10">
+<div>
+<div class="flex justify-between text-[10px] text-primary-fixed-dim font-bold uppercase mb-1">
+<span>Card Payments</span>
+<span>82%</span>
+</div>
+<div class="h-1.5 w-full bg-on-primary-fixed-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary-fixed-dim w-[82%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[10px] text-primary-fixed-dim font-bold uppercase mb-1">
+<span>Cash</span>
+<span>15%</span>
+</div>
+<div class="h-1.5 w-full bg-on-primary-fixed-variant rounded-full overflow-hidden">
+<div class="h-full bg-surface-tint w-[15%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[10px] text-primary-fixed-dim font-bold uppercase mb-1">
+<span>Transfers</span>
+<span>3%</span>
+</div>
+<div class="h-1.5 w-full bg-on-primary-fixed-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container w-[3%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action -->
+<div class="glass-panel p-6 rounded-3xl border border-outline-variant/20 flex items-center gap-4">
+<div class="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="help_center">help_center</span>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface">Need assistance?</p>
+<p class="text-[10px] text-on-surface-variant">Notify Floor Manager immediately</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Hidden on this transactional/focused screen as per mandate, but available for other context if needed) -->
+</body></html>

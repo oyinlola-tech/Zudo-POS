@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Loyalty Manager | Zudo POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#45474c",
+                    "on-secondary-fixed-variant": "#572ba0",
+                    "on-tertiary-container": "#6b83d7",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#000b01",
+                    "secondary-fixed-dim": "#d3bbff",
+                    "surface-variant": "#d5e3fd",
+                    "on-secondary-fixed": "#260059",
+                    "on-background": "#0d1c2f",
+                    "inverse-primary": "#88d982",
+                    "surface-container-low": "#eff4ff",
+                    "secondary": "#6f46b9",
+                    "on-secondary-container": "#44118d",
+                    "surface-container": "#e6eeff",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#002204",
+                    "tertiary-fixed": "#dce1ff",
+                    "surface": "#f8f9ff",
+                    "secondary-fixed": "#ebdcff",
+                    "inverse-on-surface": "#ebf1ff",
+                    "on-tertiary-fixed": "#00164e",
+                    "tertiary": "#000623",
+                    "surface-tint": "#1b6d24",
+                    "outline-variant": "#c6c6cc",
+                    "on-surface": "#0d1c2f",
+                    "surface-container-highest": "#d5e3fd",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#001a59",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#a3f69c",
+                    "surface-container-high": "#dde9ff",
+                    "surface-bright": "#f8f9ff",
+                    "background": "#f8f9ff",
+                    "outline": "#76777c",
+                    "on-primary-container": "#499849",
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#233144",
+                    "secondary-container": "#b188ff",
+                    "tertiary-fixed-dim": "#b6c4ff",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#264191",
+                    "on-primary-fixed-variant": "#005312",
+                    "primary-fixed-dim": "#88d982",
+                    "primary-container": "#002704",
+                    "surface-dim": "#ccdbf4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- SideNavBar Shell -->
+<aside class="bg-[#000623] dark:bg-slate-950 h-screen w-64 fixed left-0 top-0 flex flex-col py-6 z-50">
+<div class="px-6 mb-10">
+<h1 class="text-xl font-bold tracking-tight text-white font-headline">Zudo POS</h1>
+<p class="text-slate-400 text-xs font-medium">Lagos Flagship</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-slate-400 hover:text-white px-6 py-3 transition-colors flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="text-slate-400 hover:text-white px-6 py-3 transition-colors flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="text-sm font-medium">Live Monitor</span>
+</a>
+<a class="text-slate-400 hover:text-white px-6 py-3 transition-colors flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-sm font-medium">Sales</span>
+</a>
+<a class="text-slate-400 hover:text-white px-6 py-3 transition-colors flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-sm font-medium">Inventory</span>
+</a>
+<a class="text-slate-400 hover:text-white px-6 py-3 transition-colors flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="text-sm font-medium">Cashiers</span>
+</a>
+<a class="text-slate-400 hover:text-white px-6 py-3 transition-colors flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Customers</span>
+</a>
+<!-- Active Navigation State: Loyalty -->
+<a class="bg-emerald-900/30 text-emerald-400 font-semibold border-l-4 border-emerald-500 px-6 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="text-sm">Loyalty</span>
+</a>
+<a class="text-slate-400 hover:text-white px-6 py-3 transition-colors flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+<a class="text-slate-400 hover:text-white px-6 py-3 transition-colors flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">schedule</span>
+<span class="text-sm font-medium">Shifts</span>
+</a>
+<a class="text-slate-400 hover:text-white px-6 py-3 transition-colors flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-sm font-medium">Notifications</span>
+</a>
+<a class="text-slate-400 hover:text-white px-6 py-3 transition-colors flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-sm font-medium">Reports</span>
+</a>
+</nav>
+<div class="px-6 mt-auto space-y-1">
+<a class="text-slate-400 hover:text-white py-2 flex items-center gap-3 text-sm" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+<a class="text-slate-400 hover:text-white py-2 flex items-center gap-3 text-sm" href="#">
+<span class="material-symbols-outlined">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="pl-64 min-h-screen flex flex-col">
+<!-- TopNavBar Shell -->
+<header class="bg-[#f8f9ff]/80 dark:bg-slate-900/80 backdrop-blur-md flex justify-between items-center w-full px-8 h-20 sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-outline material-symbols-outlined">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-xl text-sm w-80 focus:ring-2 focus:ring-primary-container" placeholder="Search members, transactions..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">sync</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-bold text-sm tracking-wide">
+                    End Shift
+                </button>
+<div class="flex items-center gap-3 pl-4 border-l border-outline-variant/20">
+<div class="text-right">
+<p class="text-xs font-bold font-headline uppercase tracking-tighter">Admin User</p>
+<p class="text-[10px] text-on-surface-variant font-medium">Manager</p>
+</div>
+<img alt="Manager Profile" class="w-10 h-10 rounded-full object-cover border-2 border-surface-container-high" data-alt="portrait of a professional male store manager in a clean white shirt with soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvoS6ZuyIfavOwhEMfLvOiH_76DAAt4RWNCjqHzONFLVIJUbNVWqdWPdIHkhTVnZGYG4mNR1cmT9ZrVAiowQP4yHt2z3HtzOH0Lv7FbcwEz3KqQBmuo_pdqpDCfsnAbKqL0ztzxbc5m-Xb9rEXKHEN0ilHCuWcSanCUHEY36a5DuEpGLM076huYW2dMjgUCYusd-xV3ymbZBmkZkNksMhn3e9cRVOuDBaOiJXVVO3IAVGE-3pKLg7wSgEIzOK9lEK23wLAdD66KoNO"/>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<section class="p-8 space-y-8 max-w-7xl mx-auto w-full">
+<!-- Summary Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="md:col-span-2 p-8 bg-surface-container-lowest rounded-full shadow-sm flex flex-col justify-between border border-emerald-500/10">
+<div>
+<p class="text-on-surface-variant font-label text-sm font-medium mb-1">Today's Points Issued</p>
+<h2 class="text-5xl font-extrabold font-headline text-primary tracking-tight">12,840</h2>
+</div>
+<div class="flex items-center gap-2 mt-4 text-emerald-600 font-bold text-sm">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>14.2% from yesterday</span>
+</div>
+</div>
+<div class="p-6 bg-surface-container-low rounded-full flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-secondary text-3xl mb-2">redeem</span>
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1">Redeemed</p>
+<p class="text-2xl font-headline font-bold">4,200</p>
+</div>
+<div class="p-6 bg-surface-container-low rounded-full flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-on-primary-container text-3xl mb-2">person_add</span>
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1">New Members</p>
+<p class="text-2xl font-headline font-bold">28</p>
+</div>
+</div>
+<!-- Main Interactive Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Customer Leaderboard -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl overflow-hidden">
+<div class="p-6 flex justify-between items-center border-b border-surface-container">
+<h3 class="font-headline font-bold text-lg">Top Loyal Customers</h3>
+<button class="text-sm font-bold text-secondary flex items-center gap-1">
+                            View All <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+<div class="divide-y divide-surface-container-low">
+<!-- Customer Item 1 -->
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container">
+<img alt="Customer 1" class="w-full h-full object-cover" data-alt="portrait of a young woman with a warm smile wearing a colorful scarf in a bright urban setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPnbkigO0wOcC278ZYupYV79E8SvwTdq5BQ9dD257VKCQ3FgsKiVMRkt7ph4FbvGz7gQh_T4Rf21PN8SsTCKy-o-9jRMFSQWOQFuJh0_75xyQSxn4r-hdinB8CzBFmZ0sSvOiJDGyyP--Ktr3L3AhtvQ2PZ48v7T6mXuzrNNNrdU6kgFZzJa7ilSeycypw0lJprAugF5oYCP7IWDKMMaHcuYS7fvo1io536I1G5LaIwpSbiywxMcgQcGlYfBrIgk0TD-zbnr9-eUqC"/>
+</div>
+<div>
+<p class="font-bold text-sm tracking-tight">Chioma Adeyemi</p>
+<p class="text-xs text-on-surface-variant">LGY-88029 • Platinum Member</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline font-extrabold text-emerald-600">4,500 <span class="text-[10px] text-on-surface-variant uppercase font-medium">pts</span></p>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase">Last visit: 2h ago</p>
+</div>
+</div>
+<!-- Customer Item 2 -->
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container">
+<img alt="Customer 2" class="w-full h-full object-cover" data-alt="portrait of a man with short hair looking directly at camera with neutral expression and high contrast lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJein80pAIv1tCsMRUQ0sF56hKeVH7FNYYtHmZE-n3v3eG5TuRII-orTHDk9lcxBvmtL-HubASFh3XrOMiRqowvwoi1W_VAoV3GBMIr1hyiYPFuUOHZ9D_TgVsQASZfZhOJcBTx7YHsJCpXSxDFLIIeUelgCKLp4HO347NX-NDdF0Zxh1Ex8jMEaNv2zHca3dg0QRP5kzzDNlH9vv_NUGHxlBnXWF6HImrQelI847rNzTN_t2IrWVYIYYCMIKLrWQq3Od0s0Zc385K"/>
+</div>
+<div>
+<p class="font-bold text-sm tracking-tight">Abubakar Bello</p>
+<p class="text-xs text-on-surface-variant">LGY-11932 • Gold Member</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline font-extrabold text-emerald-600">3,280 <span class="text-[10px] text-on-surface-variant uppercase font-medium">pts</span></p>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase">Last visit: Yesterday</p>
+</div>
+</div>
+<!-- Customer Item 3 -->
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container">
+<img alt="Customer 3" class="w-full h-full object-cover" data-alt="headshot of a stylish woman with glasses in a professional environment with shallow depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMqNCxZbxNtssPkFk-MgR9AX9oN1yGAygaOD8cPhSmToG99UFbyrDKECesYOjQkt9zxNhXbpldiA7_4QxPVZ1CUNwX9girSwRd_C3HCcoYpAxil_XB5Oo-noOJ97MrgMXHQ7U-4eQ-OC82jL8pcCH4j2M_rbYIOiOFAhQ8Jq2_S5EqIUqmIDPHLJMusDZegvo5-wNwkEZOgqqlwR0JArU-rOE-s1d-j_hX4dfChPNjB1_WyQgiCtf2_u6oEOakn6-MXLBlHeIOUeCn"/>
+</div>
+<div>
+<p class="font-bold text-sm tracking-tight">Oluwaseun Ajayi</p>
+<p class="text-xs text-on-surface-variant">LGY-55210 • Gold Member</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline font-extrabold text-emerald-600">2,900 <span class="text-[10px] text-on-surface-variant uppercase font-medium">pts</span></p>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase">Last visit: 3d ago</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Point Adjustment Panel -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="bg-tertiary text-white p-8 rounded-xl relative overflow-hidden">
+<!-- Decorative Texture -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/20 blur-3xl rounded-full -mr-16 -mt-16"></div>
+<h3 class="font-headline font-extrabold text-xl mb-4 relative z-10">Point Adjustment</h3>
+<p class="text-slate-400 text-sm mb-6 relative z-10">Manager authority override for customer loyalty balances.</p>
+<form class="space-y-4 relative z-10">
+<div>
+<label class="text-[10px] font-bold uppercase tracking-widest text-slate-500 block mb-2">Member ID or Phone</label>
+<input class="w-full bg-slate-900 border-none rounded-lg text-white text-sm py-3 px-4 focus:ring-1 focus:ring-emerald-500" placeholder="080XXXXXXXX" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="text-[10px] font-bold uppercase tracking-widest text-slate-500 block mb-2">Action</label>
+<select class="w-full bg-slate-900 border-none rounded-lg text-white text-sm py-3 px-4 focus:ring-1 focus:ring-emerald-500">
+<option>Add Bonus</option>
+<option>Deduct Points</option>
+</select>
+</div>
+<div>
+<label class="text-[10px] font-bold uppercase tracking-widest text-slate-500 block mb-2">Amount</label>
+<input class="w-full bg-slate-900 border-none rounded-lg text-white text-sm py-3 px-4 focus:ring-1 focus:ring-emerald-500" placeholder="0" type="number"/>
+</div>
+</div>
+<div>
+<label class="text-[10px] font-bold uppercase tracking-widest text-slate-500 block mb-2">Reason (Required)</label>
+<textarea class="w-full bg-slate-900 border-none rounded-lg text-white text-sm py-3 px-4 focus:ring-1 focus:ring-emerald-500" placeholder="e.g. Compensation for delayed order #229" rows="2"></textarea>
+</div>
+<button class="w-full bg-surface-tint text-on-primary py-4 rounded-xl font-headline font-bold text-sm uppercase tracking-widest mt-2 hover:opacity-90 transition-opacity" type="button">
+                                Confirm Adjustment
+                            </button>
+</form>
+</div>
+<!-- Manager Alert / Tip -->
+<div class="bg-secondary-container/30 border border-secondary-container/20 p-6 rounded-xl flex gap-4">
+<span class="material-symbols-outlined text-secondary">info</span>
+<div class="space-y-1">
+<p class="font-bold text-sm text-on-secondary-container">Manager Authority Only</p>
+<p class="text-xs text-on-secondary-container opacity-80 leading-relaxed">Global tier rules and point-to-naira ratios are locked. To modify core rules, contact the HQ System Administrator.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Timeline -->
+<div class="bg-surface-container-low p-8 rounded-xl">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline font-bold text-lg">Branch Loyalty Feed</h3>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-surface-container-lowest rounded-lg text-xs font-bold border border-outline-variant/20">Today</button>
+<button class="px-3 py-1 text-xs font-bold text-on-surface-variant">Yesterday</button>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-start gap-4 bg-surface-container-lowest p-4 rounded-xl border border-transparent hover:border-emerald-500/20 transition-all">
+<div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-600">
+<span class="material-symbols-outlined">add_circle</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between">
+<p class="text-sm font-bold">Manual Bonus Issued</p>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase">10:42 AM</p>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">+500 points issued to **Tunde Folayan** by **Admin User**</p>
+<p class="text-[10px] italic text-on-surface-variant/70 mt-1">"Customer service recovery - spilled drink"</p>
+</div>
+</div>
+<div class="flex items-start gap-4 bg-surface-container-lowest p-4 rounded-xl border border-transparent">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">shopping_cart</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between">
+<p class="text-sm font-bold">Points Redeemed</p>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase">09:15 AM</p>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">1,200 points redeemed for ₦1,500 discount by **Amina Musa**</p>
+</div>
+</div>
+<div class="flex items-start gap-4 bg-surface-container-lowest p-4 rounded-xl border border-transparent">
+<div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-600">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between">
+<p class="text-sm font-bold">Tier Upgrade</p>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase">08:30 AM</p>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">**Chinedu Okafor** promoted to <span class="font-bold text-secondary">Platinum Tier</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

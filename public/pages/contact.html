@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Support | Zudo POS</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#b188ff",
+                    "inverse-on-surface": "#ebf1ff",
+                    "surface-container-high": "#dde9ff",
+                    "secondary": "#6f46b9",
+                    "on-surface": "#0d1c2f",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#88d982",
+                    "on-primary-fixed-variant": "#005312",
+                    "tertiary": "#000623",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#eff4ff",
+                    "surface-tint": "#1b6d24",
+                    "on-tertiary-fixed-variant": "#264191",
+                    "on-surface-variant": "#45474c",
+                    "on-secondary-fixed": "#260059",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#001a59",
+                    "on-primary-container": "#499849",
+                    "on-error-container": "#93000a",
+                    "outline": "#76777c",
+                    "error": "#ba1a1a",
+                    "on-background": "#0d1c2f",
+                    "surface-container-highest": "#d5e3fd",
+                    "primary-fixed": "#a3f69c",
+                    "secondary-fixed-dim": "#d3bbff",
+                    "tertiary-fixed-dim": "#b6c4ff",
+                    "surface-bright": "#f8f9ff",
+                    "on-tertiary-container": "#6b83d7",
+                    "surface": "#f8f9ff",
+                    "primary-container": "#002704",
+                    "inverse-primary": "#88d982",
+                    "tertiary-fixed": "#dce1ff",
+                    "surface-container": "#e6eeff",
+                    "on-tertiary-fixed": "#00164e",
+                    "secondary-fixed": "#ebdcff",
+                    "background": "#f8f9ff",
+                    "surface-dim": "#ccdbf4",
+                    "on-secondary-container": "#44118d",
+                    "inverse-surface": "#233144",
+                    "surface-variant": "#d5e3fd",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#000b01",
+                    "on-secondary-fixed-variant": "#572ba0",
+                    "outline-variant": "#c6c6cc",
+                    "on-primary-fixed": "#002204"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#f8f9ff]/80 dark:bg-[#000b01]/80 backdrop-blur-md">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-bold tracking-tight text-[#000b01] dark:text-[#f8f9ff]">
+                Zudo POS
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#45474c] dark:text-[#c6c6cc] font-medium hover:text-[#6f46b9] transition-colors duration-200" href="#">Product</a>
+<a class="text-[#45474c] dark:text-[#c6c6cc] font-medium hover:text-[#6f46b9] transition-colors duration-200" href="#">Features</a>
+<a class="text-[#45474c] dark:text-[#c6c6cc] font-medium hover:text-[#6f46b9] transition-colors duration-200" href="#">Pricing</a>
+<a class="text-[#45474c] dark:text-[#c6c6cc] font-medium hover:text-[#6f46b9] transition-colors duration-200" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-4 py-2 text-sm font-bold tracking-wide uppercase text-[#000b01] dark:text-[#f8f9ff] hover:opacity-70 transition-opacity">Login</button>
+<button class="px-6 py-2.5 bg-primary text-on-primary rounded-lg text-sm font-bold tracking-wide uppercase shadow-lg hover:scale-95 duration-150 ease-in-out">Get Started</button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-8 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<header class="mb-16">
+<h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4">Support &amp; <span class="text-secondary">Authority</span>.</h1>
+<p class="text-on-surface-variant text-lg max-w-2xl leading-relaxed">Experience a precision-engineered support system designed for high-speed Nigerian retail. Our team is here to ensure your operations remain fluid and uninterrupted.</p>
+</header>
+<!-- Bento Grid Contact Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Urgent Hotline Card -->
+<div class="md:col-span-5 flex flex-col justify-between bg-tertiary text-on-tertiary p-8 rounded-xl relative overflow-hidden">
+<div class="relative z-10">
+<span class="inline-block px-3 py-1 bg-secondary text-on-secondary text-xs font-bold tracking-widest uppercase rounded-full mb-6">Urgent Support</span>
+<h2 class="text-3xl font-bold mb-4">POS Hotline</h2>
+<p class="text-on-tertiary/70 mb-8 max-w-xs">Direct access for critical hardware or transactional issues during peak retail hours.</p>
+</div>
+<div class="relative z-10 mt-auto">
+<div class="text-4xl font-headline font-bold text-secondary-fixed tracking-tight mb-2">0800 EDITORIAL</div>
+<p class="text-sm font-label uppercase tracking-widest opacity-60">24/7 Priority Line</p>
+</div>
+<!-- Abstract Texture Background -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-secondary opacity-10 rounded-full translate-x-20 -translate-y-20 blur-3xl"></div>
+</div>
+<!-- Email Form Card -->
+<div class="md:col-span-7 bg-surface-container-lowest p-8 rounded-xl">
+<h2 class="text-2xl font-bold mb-8">Send an Inquiry</h2>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold tracking-widest uppercase text-on-surface-variant">Full Name</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-secondary/20 p-4 transition-all" placeholder="Chidi Azikiwe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold tracking-widest uppercase text-on-surface-variant">Business Name</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-secondary/20 p-4 transition-all" placeholder="Lagos Central Retail" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold tracking-widest uppercase text-on-surface-variant">Subject</label>
+<select class="w-full bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-secondary/20 p-4 transition-all appearance-none">
+<option>Technical Issue</option>
+<option>Billing &amp; Subscription</option>
+<option>Hardware Installation</option>
+<option>Inventory Sync Help</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold tracking-widest uppercase text-on-surface-variant">Message</label>
+<textarea class="w-full bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-secondary/20 p-4 transition-all" placeholder="How can we help your business thrive today?" rows="4"></textarea>
+</div>
+<button class="w-full h-14 bg-primary text-on-primary rounded-lg font-bold tracking-widest uppercase hover:bg-surface-tint transition-colors shadow-lg">Send Message</button>
+</form>
+</div>
+<!-- Live Chat Card -->
+<div class="md:col-span-12 lg:col-span-4 bg-surface-container-high p-8 rounded-xl flex items-center justify-between group cursor-pointer hover:bg-surface-container-highest transition-all">
+<div>
+<h3 class="text-xl font-bold mb-1">Instant Messaging</h3>
+<p class="text-on-surface-variant text-sm">Average response: 2 minutes</p>
+</div>
+<div class="w-14 h-14 bg-secondary text-on-secondary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+</div>
+</div>
+<!-- Success Visual Card -->
+<div class="md:col-span-12 lg:col-span-8 overflow-hidden rounded-xl h-48 relative">
+<img class="w-full h-full object-cover" data-alt="modern retail store interior in Lagos with professional point of sale hardware and elegant lighting setup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7WNL8w0EMq7c2TrXaGiW27MHtqHhMqaS1s2IMewVDkjaOWN2UFdPPppXb7v3hzZkK9drWHdFC_MEUIOlWFfxi5VH7y_uyhDpyVk-MCS6g7-eMQ75RXKBkYpUSvD7vXFQLtn9trcQZ4iCq--S2IoEYnxC5nBgdTisA4YnPNKUTO8JKX2-SaIorV9PVZCjhOJWVB3e5IY7GbWt2x8dyA5-uYQ93TI-xFbl7-8m6x3dHHVzSGbq88W6wbAKeTywJX3tSJIQfPgLf7Atj"/>
+<div class="absolute inset-0 bg-primary/40 flex items-center px-8">
+<h3 class="text-2xl font-bold text-on-primary max-w-sm leading-tight">Reliability that scales with your ambition.</h3>
+</div>
+</div>
+</div>
+<!-- FAQ Section -->
+<section class="mt-32">
+<div class="mb-12">
+<h2 class="text-4xl font-extrabold tracking-tight mb-2">Frequently Asked Questions</h2>
+<p class="text-on-surface-variant">Quick solutions for common operational queries.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-outline-variant/10 rounded-xl overflow-hidden">
+<!-- FAQ Item 1 -->
+<div class="bg-surface p-8 hover:bg-surface-container-low transition-colors group">
+<h4 class="text-lg font-bold mb-3 flex items-center gap-3">
+<span class="text-secondary material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+                        How do I integrate a new barcode scanner?
+                    </h4>
+<p class="text-on-surface-variant leading-relaxed">Our POS is plug-and-play compatible with 95% of standard USB scanners. Simply connect and go to Settings &gt; Hardware to calibrate.</p>
+</div>
+<!-- FAQ Item 2 -->
+<div class="bg-surface p-8 hover:bg-surface-container-low transition-colors group">
+<h4 class="text-lg font-bold mb-3 flex items-center gap-3">
+<span class="text-secondary material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+                        Does it work without an internet connection?
+                    </h4>
+<p class="text-on-surface-variant leading-relaxed">Yes. Our Fluid Sync technology stores transactions locally and automatically pushes them to the cloud once service is restored.</p>
+</div>
+<!-- FAQ Item 3 -->
+<div class="bg-surface p-8 hover:bg-surface-container-low transition-colors group">
+<h4 class="text-lg font-bold mb-3 flex items-center gap-3">
+<span class="text-secondary material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+                        Can I manage multiple branch inventories?
+                    </h4>
+<p class="text-on-surface-variant leading-relaxed">The Administrative Hub allows real-time monitoring and stock transfers between unlimited physical locations from a single dashboard.</p>
+</div>
+<!-- FAQ Item 4 -->
+<div class="bg-surface p-8 hover:bg-surface-container-low transition-colors group">
+<h4 class="text-lg font-bold mb-3 flex items-center gap-3">
+<span class="text-secondary material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+                        Is the hardware warranty included?
+                    </h4>
+<p class="text-on-surface-variant leading-relaxed">All Enterprise tier hardware comes with a 24-month replacement guarantee. Support cases are handled within 6 hours in major metropolitan hubs.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#eff4ff] dark:bg-[#000623] text-[#000b01] dark:text-[#f8f9ff]">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 px-8 py-12 max-w-7xl mx-auto">
+<div class="col-span-2 md:col-span-1">
+<div class="text-lg font-black text-[#000b01] dark:text-[#f8f9ff] mb-4">Zudo POS</div>
+<p class="text-sm opacity-60 font-body leading-relaxed">Redefining Nigerian retail through authority and fluid design.</p>
+</div>
+<div>
+<h5 class="text-xs font-bold uppercase tracking-widest mb-6">Resources</h5>
+<ul class="space-y-4 text-sm text-[#45474c] dark:text-[#c6c6cc]">
+<li><a class="hover:text-[#000b01] dark:hover:text-[#ffffff] transition-all" href="#">Documentation</a></li>
+<li><a class="hover:text-[#000b01] dark:hover:text-[#ffffff] transition-all" href="#">API Reference</a></li>
+<li><a class="hover:text-[#000b01] dark:hover:text-[#ffffff] transition-all" href="#">Support Center</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-xs font-bold uppercase tracking-widest mb-6">Company</h5>
+<ul class="space-y-4 text-sm text-[#45474c] dark:text-[#c6c6cc]">
+<li><a class="hover:text-[#000b01] dark:hover:text-[#ffffff] transition-all" href="#">Terms of Service</a></li>
+<li><a class="hover:text-[#000b01] dark:hover:text-[#ffffff] transition-all" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-[#000b01] dark:hover:text-[#ffffff] transition-all" href="#">Contact Sales</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-xs font-bold uppercase tracking-widest mb-6">Social</h5>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center cursor-pointer hover:bg-secondary hover:text-on-secondary transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="alternate_email">alternate_email</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center cursor-pointer hover:bg-secondary hover:text-on-secondary transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="share">share</span>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/10 px-8 py-6 text-center text-xs text-[#45474c] dark:text-[#c6c6cc]">
+            © 2026 Zudo POS. All rights reserved. Built for The Fluid Authority.
+        </div>
+</footer>
+</body></html>

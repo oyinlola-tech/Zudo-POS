@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings | Zudo POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#6f46b9",
+                      "on-secondary-fixed": "#260059",
+                      "inverse-surface": "#233144",
+                      "inverse-primary": "#88d982",
+                      "secondary-fixed": "#ebdcff",
+                      "on-error-container": "#93000a",
+                      "primary": "#000b01",
+                      "outline-variant": "#c6c6cc",
+                      "on-tertiary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "background": "#f8f9ff",
+                      "on-background": "#0d1c2f",
+                      "on-tertiary-container": "#6b83d7",
+                      "on-tertiary-fixed-variant": "#264191",
+                      "on-surface": "#0d1c2f",
+                      "on-secondary": "#ffffff",
+                      "on-primary-container": "#499849",
+                      "secondary-fixed-dim": "#d3bbff",
+                      "tertiary-fixed": "#dce1ff",
+                      "surface-container-highest": "#d5e3fd",
+                      "surface-container-lowest": "#ffffff",
+                      "outline": "#76777c",
+                      "surface-bright": "#f8f9ff",
+                      "on-primary-fixed": "#002204",
+                      "tertiary": "#000623",
+                      "surface-tint": "#1b6d24",
+                      "error": "#ba1a1a",
+                      "on-secondary-container": "#44118d",
+                      "on-error": "#ffffff",
+                      "on-surface-variant": "#45474c",
+                      "primary-container": "#002704",
+                      "on-secondary-fixed-variant": "#572ba0",
+                      "surface-container": "#e6eeff",
+                      "tertiary-container": "#001a59",
+                      "primary-fixed-dim": "#88d982",
+                      "surface-container-low": "#eff4ff",
+                      "inverse-on-surface": "#ebf1ff",
+                      "tertiary-fixed-dim": "#b6c4ff",
+                      "surface-variant": "#d5e3fd",
+                      "on-tertiary-fixed": "#00164e",
+                      "surface-container-high": "#dde9ff",
+                      "surface-dim": "#ccdbf4",
+                      "primary-fixed": "#a3f69c",
+                      "surface": "#f8f9ff",
+                      "on-primary-fixed-variant": "#005312",
+                      "secondary-container": "#b188ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9ff;
+        }
+        h1, h2, h3, .brand-font {
+            font-family: 'Manrope', sans-serif;
+        }
+        .sidebar-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sidebar-scroll::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- SideNavBar Component -->
+<aside class="bg-slate-950 h-screen w-64 fixed left-0 top-0 overflow-y-auto flex flex-col shadow-2xl sidebar-scroll z-50">
+<div class="p-6">
+<div class="text-xl font-bold text-white tracking-tight brand-font">Zudo POS</div>
+<div class="text-slate-400 text-xs font-medium uppercase tracking-widest mt-1">Admin Dashboard</div>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<a class="text-slate-400 hover:text-white py-3 px-4 flex items-center gap-3 transition-colors duration-200 hover:bg-slate-900 group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-emerald-400">dashboard</span>
+<span class="font-manrope text-sm font-medium">Overview</span>
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-4 flex items-center gap-3 transition-colors duration-200 hover:bg-slate-900 group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-emerald-400">payments</span>
+<span class="font-manrope text-sm font-medium">Sales</span>
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-4 flex items-center gap-3 transition-colors duration-200 hover:bg-slate-900 group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-emerald-400">inventory_2</span>
+<span class="font-manrope text-sm font-medium">Inventory</span>
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-4 flex items-center gap-3 transition-colors duration-200 hover:bg-slate-900 group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-emerald-400">badge</span>
+<span class="font-manrope text-sm font-medium">Staff</span>
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-4 flex items-center gap-3 transition-colors duration-200 hover:bg-slate-900 group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-emerald-400">group</span>
+<span class="font-manrope text-sm font-medium">Customers</span>
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-4 flex items-center gap-3 transition-colors duration-200 hover:bg-slate-900 group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-emerald-400">card_membership</span>
+<span class="font-manrope text-sm font-medium">Loyalty</span>
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-4 flex items-center gap-3 transition-colors duration-200 hover:bg-slate-900 group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-emerald-400">analytics</span>
+<span class="font-manrope text-sm font-medium">Analytics</span>
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-4 flex items-center gap-3 transition-colors duration-200 hover:bg-slate-900 group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-emerald-400">storefront</span>
+<span class="font-manrope text-sm font-medium">Branches</span>
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-4 flex items-center gap-3 transition-colors duration-200 hover:bg-slate-900 group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-emerald-400">notifications</span>
+<span class="font-manrope text-sm font-medium">Notifications</span>
+</a>
+<!-- Active Navigation -->
+<a class="bg-emerald-500/10 text-emerald-400 border-l-4 border-emerald-500 py-3 px-4 flex items-center gap-3 transition-all duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-manrope text-sm font-medium">Settings</span>
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-4 flex items-center gap-3 transition-colors duration-200 hover:bg-slate-900 group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-emerald-400">history</span>
+<span class="font-manrope text-sm font-medium">Audit Logs</span>
+</a>
+</nav>
+<div class="mt-auto p-4 border-t border-slate-800/50">
+<button class="w-full py-3 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold rounded-lg transition-all active:scale-95 duration-150 text-sm">
+                Switch to Cashier
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopNavBar Component -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-white/80 backdrop-blur-md border-b border-slate-200/50 flex justify-between items-center px-8 h-16">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-emerald-600 font-bold font-manrope">
+<span class="material-symbols-outlined">location_on</span>
+<span>Branch Selector</span>
+</div>
+<div class="relative group">
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-sm w-64 focus:ring-2 focus:ring-emerald-500/20 transition-all" placeholder="Search settings..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-400 text-sm">search</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-slate-500 hover:text-emerald-600 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="text-right">
+<div class="text-sm font-bold text-on-surface">Admin User</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Lagos HQ</div>
+</div>
+<img alt="User Profile" class="w-10 h-10 rounded-full border-2 border-emerald-500/20" data-alt="professional portrait of a confident african male administrator in a clean office environment with soft focus greenery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3rkzwP6f4AzToN6s1cijMGEroKqbbP5w4cfidGoJjh12-NP_aMsv23PBUAYYXorlm_YAet2t4ROFlYRw1M6Oqx0XpXICe4YQ8GBnVW-pMwgrC43Gm1rUadT5r6_ggfIftsPat7BKyodcZWkg5sPjmhJ2Bd5othqzYGsoC8WVecQnIRT0fhM1Ux7ZMzF7eNyrheGvvuUPHCVMiVmqayk5qq22IpaKI2ZxIV_Doxo-bFk06FExyK1RqqTHdphtmXx0L8LBMdqI09wne"/>
+</div>
+</div>
+</header>
+<!-- Settings Canvas -->
+<div class="pt-24 pb-12 px-10 max-w-7xl mx-auto">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h1 class="text-3xl font-extrabold text-on-surface tracking-tight">System Settings</h1>
+<p class="text-on-surface-variant mt-1 font-medium">Configure global parameters and workspace identity.</p>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold flex items-center gap-2 shadow-lg hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined text-lg">save</span>
+                    SAVE CHANGES
+                </button>
+</div>
+<!-- Settings Tabs & Bento Layout -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Navigation Tabs Sidebar -->
+<nav class="col-span-3 space-y-1">
+<button class="w-full text-left p-4 rounded-xl flex items-center gap-3 bg-emerald-500/10 text-emerald-700 font-bold transition-all border-r-4 border-emerald-500">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">business</span>
+                        Business Profile
+                    </button>
+<button class="w-full text-left p-4 rounded-xl flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-low font-medium transition-all">
+<span class="material-symbols-outlined">account_balance</span>
+                        Tax &amp; Fiscal
+                    </button>
+<button class="w-full text-left p-4 rounded-xl flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-low font-medium transition-all">
+<span class="material-symbols-outlined">payments</span>
+                        Payment Methods
+                    </button>
+<button class="w-full text-left p-4 rounded-xl flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-low font-medium transition-all">
+<span class="material-symbols-outlined">receipt_long</span>
+                        Receipt Customization
+                    </button>
+<button class="w-full text-left p-4 rounded-xl flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-low font-medium transition-all">
+<span class="material-symbols-outlined">settings_suggest</span>
+                        Advanced
+                    </button>
+</nav>
+<!-- Configuration Panels -->
+<div class="col-span-9 space-y-8">
+<!-- Section: Business Profile -->
+<div class="bg-surface-container-lowest rounded-2xl p-8 shadow-sm">
+<h2 class="text-xl font-bold text-on-surface mb-6 flex items-center gap-2">
+<span class="w-1.5 h-6 bg-emerald-500 rounded-full"></span>
+                            Business Profile
+                        </h2>
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Business Name</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg p-3 text-on-surface focus:ring-2 focus:ring-emerald-500/50" type="text" value="Zudo POS"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Primary Email</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg p-3 text-on-surface focus:ring-2 focus:ring-emerald-500/50" type="email" value="contact@editorialpos.com"/>
+</div>
+<div class="col-span-2 space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Lagos HQ Address</label>
+<textarea class="w-full bg-surface-container-low border-none rounded-lg p-3 text-on-surface focus:ring-2 focus:ring-emerald-500/50 h-24">12 Admiralty Way, Lekki Phase 1, Lagos, Nigeria</textarea>
+</div>
+</div>
+</div>
+<!-- Section: Payment Methods (Grid Variant) -->
+<div class="bg-surface-container-low rounded-2xl p-8">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="text-xl font-bold text-on-surface flex items-center gap-2">
+<span class="w-1.5 h-6 bg-secondary rounded-full"></span>
+                                    Payment Methods
+                                </h2>
+<p class="text-sm text-on-surface-variant mt-1">Configure active channels for this terminal.</p>
+</div>
+<button class="text-sm font-bold text-secondary flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm">add</span> Add Custom Method
+                            </button>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Cash Tile -->
+<div class="bg-secondary-container p-6 rounded-2xl border-2 border-secondary/20 relative group overflow-hidden">
+<div class="absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-7xl">payments</span>
+</div>
+<span class="material-symbols-outlined text-on-secondary-container mb-2">payments</span>
+<div class="font-bold text-on-secondary-container">Cash</div>
+<div class="text-[10px] text-on-secondary-container/70 uppercase font-bold mt-1 tracking-widest">Active</div>
+</div>
+<!-- Bank Transfer Tile -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 relative group cursor-pointer hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-slate-400 mb-2">account_balance</span>
+<div class="font-bold text-on-surface">Bank Transfer</div>
+<div class="text-[10px] text-on-surface-variant uppercase font-bold mt-1 tracking-widest">Configured</div>
+</div>
+<!-- USSD Tile -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 relative group cursor-pointer hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-slate-400 mb-2">dialpad</span>
+<div class="font-bold text-on-surface">USSD</div>
+<div class="text-[10px] text-on-surface-variant uppercase font-bold mt-1 tracking-widest">Configured</div>
+</div>
+<!-- Card Tile -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 relative group cursor-pointer hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-slate-400 mb-2">credit_card</span>
+<div class="font-bold text-on-surface">Card / POS</div>
+<div class="text-[10px] text-on-surface-variant uppercase font-bold mt-1 tracking-widest">Configured</div>
+</div>
+</div>
+</div>
+<!-- Section: Tax & Receipt -->
+<div class="grid grid-cols-2 gap-8">
+<div class="bg-white rounded-2xl p-6 shadow-sm">
+<h3 class="font-bold text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-600">receipt_long</span>
+                                Receipt Identity
+                            </h3>
+<div class="space-y-4">
+<div class="flex items-center gap-4 p-4 border border-outline-variant/20 rounded-xl bg-surface-container-low">
+<div class="w-12 h-12 bg-white rounded flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-slate-300">image</span>
+</div>
+<div class="flex-1">
+<div class="text-xs font-bold text-on-surface">Terminal Logo</div>
+<button class="text-[10px] text-emerald-600 font-bold uppercase mt-1">Upload New Logo</button>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase">Footer Message</label>
+<input class="w-full text-sm p-3 bg-surface-container-low border-none rounded-lg" placeholder="Thank you for your patronage!" type="text"/>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow-sm">
+<h3 class="font-bold text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">analytics</span>
+                                Fiscal Settings
+                            </h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
+<span class="text-sm font-medium">Standard VAT (7.5%)</span>
+<div class="w-10 h-5 bg-emerald-500 rounded-full relative">
+<div class="w-4 h-4 bg-white rounded-full absolute right-0.5 top-0.5"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
+<span class="text-sm font-medium">Auto-apply Discounts</span>
+<div class="w-10 h-5 bg-slate-300 rounded-full relative">
+<div class="w-4 h-4 bg-white rounded-full absolute left-0.5 top-0.5"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
+<span class="text-sm font-medium">Service Charge</span>
+<div class="w-10 h-5 bg-slate-300 rounded-full relative">
+<div class="w-4 h-4 bg-white rounded-full absolute left-0.5 top-0.5"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Advanced Toggle Cards -->
+<div class="grid grid-cols-3 gap-6">
+<div class="bg-tertiary text-white p-6 rounded-2xl">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-emerald-400">barcode_scanner</span>
+<div class="w-8 h-4 bg-emerald-500/20 border border-emerald-500/50 rounded-full relative">
+<div class="w-3 h-3 bg-emerald-400 rounded-full absolute right-0.5 top-0.5"></div>
+</div>
+</div>
+<div class="font-bold text-sm">Barcode Scanning</div>
+<p class="text-[10px] text-white/60 mt-1">Enable external hardware support for instant checkout.</p>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-emerald-500">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-emerald-600">cloud_off</span>
+<div class="w-8 h-4 bg-emerald-500 rounded-full relative">
+<div class="w-3 h-3 bg-white rounded-full absolute right-0.5 top-0.5"></div>
+</div>
+</div>
+<div class="font-bold text-sm text-on-surface">Offline Sync</div>
+<p class="text-[10px] text-on-surface-variant mt-1">Automatically save transactions during connectivity loss.</p>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-slate-400">history</span>
+<div class="w-8 h-4 bg-slate-200 rounded-full relative">
+<div class="w-3 h-3 bg-white rounded-full absolute left-0.5 top-0.5"></div>
+</div>
+</div>
+<div class="font-bold text-sm text-on-surface">Auto-Archive</div>
+<p class="text-[10px] text-on-surface-variant mt-1">Move transactions older than 90 days to vault.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB for quick actions -->
+<div class="fixed bottom-8 right-8 flex flex-col gap-3">
+<button class="w-14 h-14 bg-secondary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform active:scale-95 group relative">
+<span class="material-symbols-outlined">help</span>
+<div class="absolute right-16 bg-on-surface text-white text-xs px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                System Documentation
+            </div>
+</button>
+</div>
+</body></html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zudo POS - Lagos Central</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#d5e3fd",
+                    "tertiary-container": "#001a59",
+                    "surface-container-highest": "#d5e3fd",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#b188ff",
+                    "tertiary": "#000623",
+                    "on-tertiary-fixed": "#00164e",
+                    "surface-container-low": "#eff4ff",
+                    "surface-dim": "#ccdbf4",
+                    "surface-container": "#e6eeff",
+                    "secondary-fixed-dim": "#d3bbff",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#dde9ff",
+                    "on-tertiary-container": "#6b83d7",
+                    "tertiary-fixed": "#dce1ff",
+                    "secondary": "#6f46b9",
+                    "on-secondary-fixed": "#260059",
+                    "on-tertiary-fixed-variant": "#264191",
+                    "on-background": "#0d1c2f",
+                    "on-surface": "#0d1c2f",
+                    "on-primary-fixed": "#002204",
+                    "on-primary-container": "#499849",
+                    "inverse-surface": "#233144",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#ebf1ff",
+                    "background": "#f8f9ff",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#ebdcff",
+                    "primary-fixed-dim": "#88d982",
+                    "primary-fixed": "#a3f69c",
+                    "surface-tint": "#1b6d24",
+                    "inverse-primary": "#88d982",
+                    "primary": "#000b01",
+                    "tertiary-fixed-dim": "#b6c4ff",
+                    "outline": "#76777c",
+                    "on-surface-variant": "#45474c",
+                    "on-secondary-container": "#44118d",
+                    "primary-container": "#002704",
+                    "surface": "#f8f9ff",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#005312",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#c6c6cc",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#572ba0",
+                    "surface-bright": "#f8f9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-shift { background: linear-gradient(to bottom, #020617, #000000); }
+    </style>
+</head>
+<body class="bg-background text-on-background selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Sidebar Navigation -->
+<aside class="h-screen w-64 fixed left-0 top-0 z-50 bg-slate-950 flex flex-col py-6 shadow-2xl">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-emerald-500 flex items-center justify-center text-slate-950">
+<span class="material-symbols-outlined font-bold">terminal</span>
+</div>
+<div>
+<h1 class="text-emerald-50 font-black tracking-tight text-lg">Zudo POS</h1>
+<p class="text-slate-500 text-xs font-medium">Lagos Central Branch</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 overflow-y-auto px-2">
+<!-- Active Tab: Overview -->
+<a class="flex items-center gap-3 bg-emerald-600/10 text-emerald-400 border-l-4 border-emerald-500 px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 hover:bg-slate-900 px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="text-sm font-medium">Live Monitor</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 hover:bg-slate-900 px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-sm font-medium">Sales</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 hover:bg-slate-900 px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-sm font-medium">Inventory</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 hover:bg-slate-900 px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="text-sm font-medium">Cashiers</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 hover:bg-slate-900 px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-sm font-medium">Customers</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 hover:bg-slate-900 px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="star">star</span>
+<span class="text-sm font-medium">Loyalty</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 hover:bg-slate-900 px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 hover:bg-slate-900 px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+<span class="text-sm font-medium">Shifts</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 hover:bg-slate-900 px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="text-sm font-medium">Notifications</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 hover:bg-slate-900 px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="text-sm font-medium">Reports</span>
+</a>
+</nav>
+<div class="mt-auto px-2 space-y-1">
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 hover:bg-slate-900 px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="text-sm font-medium">Support</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-slate-100 hover:bg-slate-900 px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="text-sm font-medium">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pl-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 h-16 w-full flex justify-between items-center px-8 bg-white/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="absolute inset-y-0 left-3 flex items-center text-slate-400">
+<span class="material-symbols-outlined text-sm">search</span>
+</span>
+<input class="pl-10 pr-4 py-2 bg-slate-100 border-none rounded-xl text-sm w-80 focus:ring-2 focus:ring-emerald-500/20" placeholder="Search transactions, products..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="flex items-center gap-2 text-slate-600 bg-slate-100 px-3 py-2 rounded-xl text-sm font-medium hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-lg">store</span>
+                    Lagos Central
+                    <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="flex items-center gap-4 border-l border-slate-200 pl-6">
+<button class="text-slate-500 hover:text-emerald-600 transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full border-2 border-white"></span>
+</button>
+<button class="text-slate-500 hover:text-emerald-600 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="Manager Profile" class="w-9 h-9 rounded-full object-cover ring-2 ring-emerald-500/10" data-alt="Professional manager headshot portrait with confident expression in a brightly lit modern office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhmm_ZyslLWiarB2WGwI7KCD6CB8mKe3IZSWRl5YXTAG7q-_oXpFN7DHgO-mmWejeiapIQJeMQo3yAFvPY-_sYgjL0zBLvJIRTOcjSPS1rhdd9jGpZJKXP76vJq_inK_ItVLX5b5GegcXmhOfD7ISRaVy_ZXwv_ALCih5JMYdMr3OxJO3cMh0z9CCirFpl2MsaCrqAvrJnwGd-CpHe7rSQAcyG0EygPcvlyO9-GT0038uUNliTrIxc1mYjCeLnDXZ0FwdVCJ97wXJJ"/>
+</div>
+</div>
+</header>
+<div class="p-8 space-y-8">
+<!-- Hero Title Section -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-3xl font-extrabold tracking-tight text-slate-900">Manager Overview</h2>
+<p class="text-on-surface-variant font-medium mt-1">Real-time performance metrics for Lagos Central Branch</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-3 bg-secondary text-on-secondary text-xs font-bold rounded-xl flex items-center gap-2 shadow-lg shadow-secondary/20 hover:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined text-sm">add</span> ADD PRODUCT
+                    </button>
+<button class="px-6 py-3 bg-surface-tint text-on-primary text-xs font-bold rounded-xl flex items-center gap-2 shadow-lg shadow-surface-tint/20 hover:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined text-sm">point_of_sale</span> START POS SESSION
+                    </button>
+</div>
+</div>
+<!-- Metric Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+<!-- Primary Metric -->
+<div class="md:col-span-2 bg-surface-container-lowest p-6 rounded-full border-l-4 border-emerald-500 shadow-sm relative overflow-hidden group">
+<div class="relative z-10">
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-wider mb-2">Today's Total Sales</p>
+<div class="flex items-baseline gap-1">
+<span class="text-headline-sm font-headline font-bold text-on-surface">₦</span>
+<span class="text-4xl font-headline font-black text-on-surface">1,248,500.00</span>
+</div>
+<div class="mt-4 flex items-center gap-2 text-primary-fixed-dim text-sm font-bold bg-primary-container px-3 py-1 rounded-full w-fit">
+<span class="material-symbols-outlined text-sm">trending_up</span> +12.5% vs yesterday
+                        </div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-[0.03] group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-9xl">payments</span>
+</div>
+</div>
+<!-- Secondary Metrics -->
+<div class="bg-surface-container-low p-6 rounded-xl flex flex-col justify-between">
+<div>
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-wider mb-1">Transactions</p>
+<h3 class="text-2xl font-headline font-bold text-on-surface">412</h3>
+</div>
+<div class="mt-2 h-1 w-full bg-slate-200 rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500 w-3/4"></div>
+</div>
+<p class="text-[10px] text-slate-500 mt-2 font-medium">85% of daily target reached</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl flex flex-col justify-between">
+<div>
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-wider mb-1">Active Cashiers</p>
+<div class="flex items-center gap-2">
+<h3 class="text-2xl font-headline font-bold text-on-surface">08</h3>
+<span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+</div>
+</div>
+<div class="flex -space-x-2 mt-2">
+<img alt="C1" class="w-7 h-7 rounded-full border-2 border-white" data-alt="Portrait of a professional cashier woman smiling kindly at work" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZWWrIx0yOesnNLjrrx1aPLXFrUV2KvWEvhTVGhjgeVli7S5srly0pRknwMhqGgPyXGVPR6nF4s5ePR7MJnoaiLQF75eGYrY4j5RA9fo1kU4KWi0JBg_872VXQoD07-5RoSpnm80kRcJFCPVF7dyD70hBZXKMjBlsQ92G1Gsc64Z0-CnNpBLkyNaHmYv3z0NMD8Ye5JoJ0c7ytZc4qH8kE9vs4N_hY32Wa2aO5ZVqdvBdv3MNYISlyD9NVxvAJyfzMg5WGxERVZe8N"/>
+<img alt="C2" class="w-7 h-7 rounded-full border-2 border-white" data-alt="Close up portrait of a male cashier with modern glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4G1b8wJG-RoLKu3HNZI-Ao-rAeJzFFknmZW2jY4Fa-t5-o0oFALQvKVcwz1K6s8TMMJtaiKo-7ZWQ0EnW3AQpXJ5eUwssLG32Ajv6GXlb7ONRbNyirZRb6-x3lMR4Hhb8M3uYhQ3M7YDm5rn5ysLsF6iz4_lmasejwHjT0_16cf7UCJnXpHwCPzff6YMOU-jQ7ZRbLA-mQPpbrU5EX95nBa-q-UjmC9GdR8UGqXvjhBTpHH3x4NCEN9ILD5mbYBEAXCuDN0Rdach9"/>
+<div class="w-7 h-7 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center text-[10px] font-bold text-slate-500">+6</div>
+</div>
+<p class="text-[10px] text-slate-500 mt-2 font-medium hover:text-emerald-600 cursor-pointer underline">View Activity</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl flex flex-col justify-between border border-error/5">
+<div>
+<p class="text-error text-xs font-bold uppercase tracking-wider mb-1">Low Stock</p>
+<h3 class="text-2xl font-headline font-bold text-on-surface">12 SKUs</h3>
+</div>
+<div class="mt-2 px-2 py-1 bg-error-container text-on-error-container text-[10px] font-bold rounded text-center">
+                        ACTION REQUIRED
+                    </div>
+</div>
+</div>
+<!-- Main Dashboard Layout: 2/3 Charts, 1/3 Sidebar Actions -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Chart Area -->
+<div class="lg:col-span-2 space-y-8">
+<!-- Hourly Sales Performance -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-lg font-bold text-on-surface">Hourly Sales Performance</h3>
+<select class="bg-slate-50 border-none text-xs font-bold text-on-surface-variant rounded-lg px-3 py-1">
+<option>Today</option>
+<option>Yesterday</option>
+</select>
+</div>
+<div class="flex items-end justify-between h-48 gap-4 px-2">
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-slate-100 rounded-t-lg h-[40%] group relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">₦85k</div>
+</div>
+<span class="text-[10px] font-bold text-slate-400">09:00</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-slate-100 rounded-t-lg h-[65%] group relative"></div>
+<span class="text-[10px] font-bold text-slate-400">11:00</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-emerald-500 rounded-t-lg h-[95%] group relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] px-2 py-1 rounded opacity-100">₦210k</div>
+</div>
+<span class="text-[10px] font-bold text-emerald-600">13:00</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-slate-100 rounded-t-lg h-[80%] group relative"></div>
+<span class="text-[10px] font-bold text-slate-400">15:00</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-slate-100 rounded-t-lg h-[50%] group relative"></div>
+<span class="text-[10px] font-bold text-slate-400">17:00</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-slate-100 rounded-t-lg h-[30%] group relative border-t-2 border-emerald-500 border-dashed"></div>
+<span class="text-[10px] font-bold text-slate-400">19:00</span>
+</div>
+</div>
+</div>
+<!-- Daily Trend & Best Seller -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm">
+<h3 class="text-sm font-bold text-on-surface mb-4">Daily Sales Trend</h3>
+<div class="h-32 flex items-center justify-center relative">
+<!-- Mock Line Chart -->
+<svg class="w-full h-full" viewbox="0 0 400 100">
+<path d="M0 80 Q 50 70, 100 85 T 200 40 T 300 60 T 400 20" fill="none" stroke="#6f46b9" stroke-linecap="round" stroke-width="3"></path>
+<circle cx="200" cy="40" fill="#6f46b9" r="4"></circle>
+</svg>
+<div class="absolute top-4 left-1/2 transform -translate-x-1/2 bg-secondary-container text-on-secondary-container text-[10px] px-2 py-1 rounded-full font-bold">Peak Day: Wednesday</div>
+</div>
+<div class="flex justify-between mt-4">
+<span class="text-[10px] font-bold text-slate-400">MON</span>
+<span class="text-[10px] font-bold text-slate-400">WED</span>
+<span class="text-[10px] font-bold text-slate-400">FRI</span>
+<span class="text-[10px] font-bold text-slate-400">SUN</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex items-center gap-6 group hover:bg-slate-50 transition-colors cursor-pointer">
+<div class="relative w-24 h-24 rounded-2xl overflow-hidden shadow-md">
+<img alt="Classic Cola" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Close-up of a classic glass soda bottle with condensation and a red label, studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcR0PJCmZmjBpnwtew1cMnUhd-esx0hU26iueyNhD8jK2Cqa0vOvZV4DVnx7oOwHeZ5uNGWW5AcuoxfvoGZPMZJYB-Oxfr1XFq7iUx5W2lo0oOwdDEJRrwcvB_3Cyx5l5-Zg7YUGmPm44dkFXAYsxTiovTzwiB2V6iZFvAhd5KR-W2pud5mxoBNwkbG8aeh4gKQGhvf5EcUM51pjBBlugGKMI6wakabovKlCcpNDO8XhG-s7q64DHFl5XWawSxvXPEgF65zU-c2Vff"/>
+</div>
+<div class="flex-1">
+<p class="text-emerald-600 text-[10px] font-black uppercase tracking-tighter mb-1">Top Performer</p>
+<h4 class="text-xl font-headline font-black text-on-surface leading-tight">Classic Cola</h4>
+<div class="mt-2 flex items-center gap-3">
+<div>
+<p class="text-slate-400 text-[10px] font-medium">Sold Today</p>
+<p class="font-bold text-on-surface">156 Units</p>
+</div>
+<div class="w-px h-6 bg-slate-200"></div>
+<div>
+<p class="text-slate-400 text-[10px] font-medium">Revenue</p>
+<p class="font-bold text-on-surface">₦46,800</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Activity & Widgets -->
+<div class="space-y-8">
+<!-- Recent Notifications Widget -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-md font-bold text-on-surface">Recent Activity</h3>
+<span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded cursor-pointer">Mark all as read</span>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4 group">
+<div class="w-10 h-10 shrink-0 rounded-full bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-lg">warning</span>
+</div>
+<div>
+<p class="text-sm text-on-surface font-semibold leading-snug">Stock Alert: <span class="text-on-surface-variant font-normal">Classic Cola (500ml) is below threshold (5 units left).</span></p>
+<p class="text-[10px] font-bold text-slate-400 mt-1">2 mins ago • Inventory</p>
+</div>
+</div>
+<div class="flex gap-4 group">
+<div class="w-10 h-10 shrink-0 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-lg">payments</span>
+</div>
+<div>
+<p class="text-sm text-on-surface font-semibold leading-snug">Large Transaction: <span class="text-on-surface-variant font-normal">Cashier Bisi just completed a sale of ₦145,000.</span></p>
+<p class="text-[10px] font-bold text-slate-400 mt-1">15 mins ago • Sales</p>
+</div>
+</div>
+<div class="flex gap-4 group">
+<div class="w-10 h-10 shrink-0 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-lg">login</span>
+</div>
+<div>
+<p class="text-sm text-on-surface font-semibold leading-snug">System: <span class="text-on-surface-variant font-normal">New POS session started by Manager (Lagos Admin).</span></p>
+<p class="text-[10px] font-bold text-slate-400 mt-1">45 mins ago • System</p>
+</div>
+</div>
+<div class="flex gap-4 group">
+<div class="w-10 h-10 shrink-0 rounded-full bg-surface-container-high flex items-center justify-center text-slate-500">
+<span class="material-symbols-outlined text-lg">star</span>
+</div>
+<div>
+<p class="text-sm text-on-surface font-semibold leading-snug">Loyalty: <span class="text-on-surface-variant font-normal">New Gold member enrolled (John Wick).</span></p>
+<p class="text-[10px] font-bold text-slate-400 mt-1">1 hour ago • Customers</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 py-3 text-xs font-bold text-slate-500 hover:text-emerald-600 transition-colors uppercase tracking-widest border-t border-slate-100">
+                            View All Notifications
+                        </button>
+</div>
+<!-- Quick Insights -->
+<div class="bg-tertiary p-6 rounded-xl text-white relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="text-sm font-bold text-tertiary-fixed-dim uppercase tracking-widest mb-4">System Health</h4>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-xs text-slate-300">Terminal Connection</span>
+<span class="text-[10px] font-bold text-emerald-400 px-2 py-0.5 bg-emerald-400/10 rounded">99.9%</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-slate-300">Sync Status</span>
+<span class="text-[10px] font-bold text-emerald-400 px-2 py-0.5 bg-emerald-400/10 rounded">LIVE</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-slate-300">Cloud Storage</span>
+<span class="text-[10px] font-bold text-slate-300 px-2 py-0.5 bg-slate-500/10 rounded">1.2 GB / 5 GB</span>
+</div>
+</div>
+</div>
+<div class="absolute -right-8 -bottom-8 opacity-10">
+<span class="material-symbols-outlined text-[120px]">cloud_done</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

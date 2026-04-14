@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zudo POS - Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-primary-container": "#499849",
+                "on-surface": "#0d1c2f",
+                "primary-container": "#002704",
+                "surface-container-highest": "#d5e3fd",
+                "on-tertiary-fixed-variant": "#264191",
+                "on-tertiary-fixed": "#00164e",
+                "surface-container-low": "#eff4ff",
+                "on-error-container": "#93000a",
+                "on-secondary-container": "#44118d",
+                "outline": "#76777c",
+                "tertiary-fixed-dim": "#b6c4ff",
+                "error": "#ba1a1a",
+                "surface-container-lowest": "#ffffff",
+                "secondary-container": "#b188ff",
+                "on-surface-variant": "#45474c",
+                "surface-dim": "#ccdbf4",
+                "surface-tint": "#1b6d24",
+                "on-background": "#0d1c2f",
+                "on-primary-fixed-variant": "#005312",
+                "primary-fixed-dim": "#88d982",
+                "on-error": "#ffffff",
+                "inverse-primary": "#88d982",
+                "on-secondary-fixed": "#260059",
+                "surface-variant": "#d5e3fd",
+                "tertiary": "#000623",
+                "surface-container": "#e6eeff",
+                "surface-bright": "#f8f9ff",
+                "on-tertiary-container": "#6b83d7",
+                "surface": "#f8f9ff",
+                "inverse-surface": "#233144",
+                "tertiary-fixed": "#dce1ff",
+                "on-primary": "#ffffff",
+                "error-container": "#ffdad6",
+                "tertiary-container": "#001a59",
+                "primary-fixed": "#a3f69c",
+                "primary": "#000b01",
+                "inverse-on-surface": "#ebf1ff",
+                "background": "#f8f9ff",
+                "secondary-fixed": "#ebdcff",
+                "surface-container-high": "#dde9ff",
+                "on-secondary-fixed-variant": "#572ba0",
+                "on-secondary": "#ffffff",
+                "on-primary-fixed": "#002204",
+                "on-tertiary": "#ffffff",
+                "secondary-fixed-dim": "#d3bbff",
+                "outline-variant": "#c6c6cc",
+                "secondary": "#6f46b9"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "fontFamily": {
+                "headline": ["Manrope"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .currency-display { font-family: 'Manrope', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface h-screen flex overflow-hidden">
+<!-- SideNavBar Component -->
+<aside class="flex flex-col h-full fixed left-0 top-0 z-40 overflow-y-auto bg-surface-container-low text-secondary w-64 border-r-0">
+<div class="px-6 py-8">
+<h1 class="font-bold text-primary text-xl tracking-tight">Zudo POS</h1>
+<p class="text-xs text-on-surface-variant font-label uppercase tracking-widest mt-1">Fluid Authority</p>
+</div>
+<nav class="flex-1 mt-4">
+<a class="flex items-center bg-surface-container-lowest text-secondary rounded-l-full ml-4 shadow-sm font-bold px-6 py-4 mb-2" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="point_of_sale">point_of_sale</span>
+<span class="text-xs font-label uppercase tracking-wider">Terminal</span>
+</a>
+<a class="flex items-center text-on-surface-variant px-6 py-4 hover:text-primary hover:bg-surface-container-high transition-colors mb-2" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="receipt_long">receipt_long</span>
+<span class="text-xs font-label uppercase tracking-wider">Sales History</span>
+</a>
+<a class="flex items-center text-on-surface-variant px-6 py-4 hover:text-primary hover:bg-surface-container-high transition-colors mb-2" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="group">group</span>
+<span class="text-xs font-label uppercase tracking-wider">Customers</span>
+</a>
+<a class="flex items-center text-on-surface-variant px-6 py-4 hover:text-primary hover:bg-surface-container-high transition-colors mb-2" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="schedule">schedule</span>
+<span class="text-xs font-label uppercase tracking-wider">Shifts</span>
+</a>
+<a class="flex items-center text-on-surface-variant px-6 py-4 hover:text-primary hover:bg-surface-container-high transition-colors mb-2" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="settings_backup_restore">settings_backup_restore</span>
+<span class="text-xs font-label uppercase tracking-wider">Returns</span>
+</a>
+</nav>
+<div class="p-6 flex items-center space-x-3 bg-surface-container">
+<img alt="Cashier Profile" class="w-10 h-10 rounded-full object-cover" data-alt="portrait of a professional male retail cashier in a clean modern store setting with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDO_p4RouGO7Fy1jQ9WDZv8l4XN098_TG2G4U0p73HbXyAXKg7lKeEOVo7HI3sDu6Mv9qj9XevOhLTxl3aiWpTBpmso0Om4wV40qgmCHbkre-FRjm6T5rgr4jWs_YJzOLSH1B7XJ-a5Ad5D6FFG7yZ8vA5Zt0k_Z0lqwkEvTIu72nBZ6MkXco1xF57Wa8qIkarvvt7FOTNnOlDtH5xcHG6qR0wofkAjU9AaR3YOhKI0rk89pOUIrGTscr3bkDed5guQ1UVYxaW62T3O"/>
+<div>
+<p class="text-sm font-bold text-on-surface leading-tight">Adebayo K.</p>
+<p class="text-xs text-on-surface-variant">Floor Manager</p>
+</div>
+</div>
+</aside>
+<!-- Main Workspace -->
+<main class="ml-64 flex flex-col flex-1 h-full">
+<!-- TopNavBar Component -->
+<header class="flex justify-between items-center w-full px-6 py-3 h-16 bg-surface-bright sticky top-0 z-30">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest transition-all" placeholder="Search products or scan barcode..." type="text"/>
+</div>
+</div>
+<div class="flex items-center space-x-6">
+<div class="flex items-center space-x-4">
+<span class="material-symbols-outlined text-surface-tint" data-icon="cloud_done">cloud_done</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="flex flex-1 overflow-hidden p-6 gap-6">
+<!-- Left: Product Grid & Filters -->
+<section class="flex-1 flex flex-col space-y-6 overflow-hidden">
+<!-- Category Tabs -->
+<div class="flex space-x-2 overflow-x-auto no-scrollbar pb-2">
+<button class="px-6 py-2 bg-primary text-on-primary rounded-full text-xs font-bold whitespace-nowrap">All Items</button>
+<button class="px-6 py-2 bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high rounded-full text-xs font-medium whitespace-nowrap transition-colors">Men's Apparel</button>
+<button class="px-6 py-2 bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high rounded-full text-xs font-medium whitespace-nowrap transition-colors">Women's Collection</button>
+<button class="px-6 py-2 bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high rounded-full text-xs font-medium whitespace-nowrap transition-colors">Accessories</button>
+<button class="px-6 py-2 bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high rounded-full text-xs font-medium whitespace-nowrap transition-colors">Footwear</button>
+</div>
+<!-- Bento Grid Products -->
+<div class="flex-1 overflow-y-auto pr-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pb-8">
+<!-- Product Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-3 flex flex-col group cursor-pointer hover:shadow-lg transition-all border border-transparent hover:border-surface-container-high">
+<div class="relative aspect-square mb-3 overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="high quality studio shot of a white organic cotton t-shirt neatly folded on a neutral gray background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUG284R24HZdRIUUJQrLZQPfqHTJa9zGN4KRAxDaoexO1iXGeYBqtJb_AjFDoCayfR-kHpzIof80PKX-rCZd99hKE4GiSyt5WqZq4iqPyKmkkFewLvWXNZVltaisKigRDrcH7Y3lZEdp5dGwbP6NvvSpa3MKKTWzp1ka0qLnDtMorFYJUqG4E2rxNysoZSv72Nrk2kmlSNwpvj2L7IWejZxYPOXpbeoD8NlQiw5Jlz6ZLSZtjrfhMLUOmpKrpXL-5DZu4XratKIl2_"/>
+</div>
+<p class="text-xs font-label text-on-surface-variant uppercase tracking-tighter mb-1">Essentials</p>
+<h3 class="text-sm font-bold text-on-surface mb-2 line-clamp-1">Classic White Tee</h3>
+<div class="mt-auto flex justify-between items-center">
+<span class="text-lg font-extrabold text-primary flex items-baseline">
+<span class="text-xs mr-0.5">₦</span>12,500
+                            </span>
+<span class="material-symbols-outlined text-secondary" data-icon="add_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-3 flex flex-col group cursor-pointer hover:shadow-lg transition-all border border-transparent hover:border-surface-container-high">
+<div class="relative aspect-square mb-3 overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="vibrant red athletic running shoe displayed in a sleek minimalist floating composition with soft studio shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3z19MsEinMFJ2LL8tHfDgY7l8QPw7p29uvFHpIIE8o4Xr1WbdIFvAW3Iwa938ZwXKfh9naDKfQUGUNw1D8UMQUdRjTywa2GC2x4eqL4_F51w4ubMdiKPyE8LgBI9liU824R3PwCfRtyIBdZOslYXCHrYT6ZlsCzKypD5fANBJLN4S9cndQs4KiMiJHOgdWlAHSqhJRqwkcBVHOzfiYUewWFseetzh1IlXxghcaxByk8KTxUl3c0pucVmlu1WGcP4DSDAuDf4r5O_n"/>
+</div>
+<p class="text-xs font-label text-on-surface-variant uppercase tracking-tighter mb-1">Performance</p>
+<h3 class="text-sm font-bold text-on-surface mb-2 line-clamp-1">Crimson Speed Runner</h3>
+<div class="mt-auto flex justify-between items-center">
+<span class="text-lg font-extrabold text-primary flex items-baseline">
+<span class="text-xs mr-0.5">₦</span>45,000
+                            </span>
+<span class="material-symbols-outlined text-secondary" data-icon="add_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-3 flex flex-col group cursor-pointer hover:shadow-lg transition-all border border-transparent hover:border-surface-container-high">
+<div class="relative aspect-square mb-3 overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="luxury dark denim jacket with bronze buttons photographed in sharp focus on a wooden texture background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa2wia38Oo77JAiuvU9akr9uoP2GimOU-s0X1bm4jtzXNv-7O6dL5EgjGyxfnSSNdWU9mIIZLvw8Y69yTuMgnzLxnFzo6L5sC2lrc0VZiZ1Ub312R0q0RjU_nFxh3mKb_ysx8CIlhRK_cMsEebbN96syKm3cbYjKLehJa_XoJUukTnUFwH0q1QyUWc8Ih4YT73sIEWodk7_V6uAr5Anxj5Gz2CDANhtTVU8e5qxb3VMywZFYf2A54UwVttFYHZcEvcAF-DiwkuWQ0O"/>
+</div>
+<p class="text-xs font-label text-on-surface-variant uppercase tracking-tighter mb-1">Outerwear</p>
+<h3 class="text-sm font-bold text-on-surface mb-2 line-clamp-1">Selvedge Denim Jacket</h3>
+<div class="mt-auto flex justify-between items-center">
+<span class="text-lg font-extrabold text-primary flex items-baseline">
+<span class="text-xs mr-0.5">₦</span>32,000
+                            </span>
+<span class="material-symbols-outlined text-secondary" data-icon="add_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-3 flex flex-col group cursor-pointer hover:shadow-lg transition-all border border-transparent hover:border-surface-container-high">
+<div class="relative aspect-square mb-3 overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="premium leather backpack in tan brown with elegant hardware standing upright against a clean beige backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1mCORLnOEZ3zrxabvucgp-waGHTQr6H9JqnOcQzX9B2L6t1sqUqP0NwX5IevffyIbSdUApUuSmbr_VQgehsfHfAQukb7EMJkeX4yXyIJqGrbCaezgbBvaw8ODP7US51RuHOkDhaAWim4mEND04H3q7HBmVSqzQPIdblpoNvNNaaoSimovfcSPcxjPHTegC40kSh-Ewu-YrJ2hd6My0tumT7Nh1p_O48swO_cGoCbi5xuKaIia6hw3emMinRb27BylK0QpxdjwqOck"/>
+</div>
+<p class="text-xs font-label text-on-surface-variant uppercase tracking-tighter mb-1">Carry</p>
+<h3 class="text-sm font-bold text-on-surface mb-2 line-clamp-1">Heritage Leather Pack</h3>
+<div class="mt-auto flex justify-between items-center">
+<span class="text-lg font-extrabold text-primary flex items-baseline">
+<span class="text-xs mr-0.5">₦</span>85,000
+                            </span>
+<span class="material-symbols-outlined text-secondary" data-icon="add_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="bg-surface-container-lowest rounded-xl p-3 flex flex-col group cursor-pointer hover:shadow-lg transition-all border border-transparent hover:border-surface-container-high">
+<div class="relative aspect-square mb-3 overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="close up of a stylish charcoal gray sweater showing the soft knit texture with subtle lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgeFEU_oAHgW3AqGyzpDyoIWZWdZjYCk8maa7R-F6qa2yFdwlRsDaIrsrQgbzadpY5rPZ56C5A1lor29Q0-Yt1GImxJAf_t0eKjO6j3DVoNxWYp9ihbkoIl-e9aNLhRisjuWdcb2BJ6BSkUYUrhNpk8RLNckITsEWI-7bEmSAeUmseJXIk5_8qaYjh1-nvIpMHEK9VXcaemRj4hGevMZptiNMXqBLJ0_IeOSgVep4vxBM-uyQaVpio2kHXRRxbNkDbt2uDPWGU-OmL"/>
+</div>
+<p class="text-xs font-label text-on-surface-variant uppercase tracking-tighter mb-1">Knitwear</p>
+<h3 class="text-sm font-bold text-on-surface mb-2 line-clamp-1">Cashmere Blend Crew</h3>
+<div class="mt-auto flex justify-between items-center">
+<span class="text-lg font-extrabold text-primary flex items-baseline">
+<span class="text-xs mr-0.5">₦</span>55,000
+                            </span>
+<span class="material-symbols-outlined text-secondary" data-icon="add_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="bg-surface-container-lowest rounded-xl p-3 flex flex-col group cursor-pointer hover:shadow-lg transition-all border border-transparent hover:border-surface-container-high">
+<div class="relative aspect-square mb-3 overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="high fashion sunglasses with thick black frames and dark lenses displayed on a reflective surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_wDTpG4hZ1IGIqtveFy121G6HnqjX3_ZrFksOYMHCwFD9hFT0VZSI7yAEqo-zRukm68s10rrxGG4DPo0JO-nG3Zy_K1QKO5SEPbtzHjXgyOOPhISx_-hMfWS2169onLTH4ixePCEcPsxZpE4LULcWUPFsydi8X8dehCnpUeblC3fQ-TUXF76z01-LabxUFziK8qO9Suw2eLhzJDmUZ-sfVj3ntAqQrP9L3yAm3klZy5zgIYc2xGTJHIY2wGwzVdlR-y_sf0fwZpB-"/>
+</div>
+<p class="text-xs font-label text-on-surface-variant uppercase tracking-tighter mb-1">Eyewear</p>
+<h3 class="text-sm font-bold text-on-surface mb-2 line-clamp-1">Midnight Aviators</h3>
+<div class="mt-auto flex justify-between items-center">
+<span class="text-lg font-extrabold text-primary flex items-baseline">
+<span class="text-xs mr-0.5">₦</span>21,000
+                            </span>
+<span class="material-symbols-outlined text-secondary" data-icon="add_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Right: Cart Sidebar -->
+<aside class="w-96 flex flex-col bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden">
+<div class="p-5 border-b border-surface-container">
+<div class="flex justify-between items-center mb-1">
+<h2 class="text-lg font-bold">Current Cart</h2>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">3 Items</span>
+</div>
+<div class="flex items-center text-on-surface-variant text-xs space-x-2">
+<span class="material-symbols-outlined text-sm" data-icon="person">person</span>
+<span>Walk-in Customer</span>
+<button class="text-secondary font-bold hover:underline">Change</button>
+</div>
+</div>
+<!-- Itemized List -->
+<div class="flex-1 overflow-y-auto p-5 space-y-4">
+<!-- Cart Item -->
+<div class="flex items-center justify-between group">
+<div class="flex items-center space-x-3">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="small product thumbnail white t-shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoBAH-XjeO1dO9QyxXx8cygGjAM0_RWenI-DYhIGeGdkAjC_wJExIqmH52yDsvZZERFkaER9exuolJBsgBWq7oidHQRXvCP1Qru1pOSWGm1YM886xhnknSfNMXDh7wbkBa__7-KWKGfClrwJBRWd83w90WZo0qr5esIVmjSfjYhrd6dmwlXGGDmdb5nl8SZtHm1CR97FBwNKizHY5KwXbEelJU447HVYlHdyD9fk2szZbOhgl75RSTOaBzMlcwPZxhrYe-2w5nNfxc"/>
+</div>
+<div>
+<h4 class="text-sm font-bold">Classic White Tee</h4>
+<p class="text-[10px] text-on-surface-variant uppercase">Size: M | Qty: 1</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold">₦12,500</p>
+<button class="text-error opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Zebra spacing effect -->
+<div class="h-px bg-surface-container-low"></div>
+<!-- Cart Item -->
+<div class="flex items-center justify-between group">
+<div class="flex items-center space-x-3">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="small product thumbnail red sneaker" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJRS1oA8QGV7W913aZ_4oQBUWvHhdNmeI32JtzS5jVwTtJFLPVmtqlUL4a1NhV0RzJxj3pCVzmysvWR_aGBZ98WIXMOVjzljIWrl9SqQu9xEd4no7MOioB-gjzw-xEG2KbpXbeLlAT44nXtUDN3KH1tW1EFyNT0VdJXcgHkqQ5Xe1uOsj1waSGoEyLYHUzh61iiPzbm-QD3sCofP9NnH0cvKwR-EWrlUNS27t0_QuXdpPpoKaLLPXEAN1kGFcSWELP5p63uhQLGGLM"/>
+</div>
+<div>
+<h4 class="text-sm font-bold">Crimson Speed Runner</h4>
+<p class="text-[10px] text-on-surface-variant uppercase">Size: 42 | Qty: 1</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold">₦45,000</p>
+<button class="text-error opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<div class="h-px bg-surface-container-low"></div>
+<!-- Cart Item -->
+<div class="flex items-center justify-between group">
+<div class="flex items-center space-x-3">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="small product thumbnail sunglasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgv2PU77PJdmINENsYLbtj5nJVN8u2c5SqMI_Rs_vnd61Shwe2eZZkAEvHZfXiY3llrruhPjWnn3fihHwMzGSGNEBvMx7BWozhXrt_UM07VbqbgqIaHHJ8qmMOWxgobPCtEaw5hkSfx7Y3Fvh9yYq8wwQ_HuHfsQFAwXCCLJzOIgmM3V63hWa1uKfPSFhoY1zKjKQscDXzC9DGcCjOHW2Vb1N8b97mb-OnD6g7--TNd083NkAJthMUOQ1srzgbONPHuYFrtWJjyKEy"/>
+</div>
+<div>
+<h4 class="text-sm font-bold">Midnight Aviators</h4>
+<p class="text-[10px] text-on-surface-variant uppercase">Qty: 1</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold">₦21,000</p>
+<button class="text-error opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer Summary -->
+<div class="p-6 bg-surface-container-low border-t border-surface-container">
+<div class="space-y-2 mb-6">
+<div class="flex justify-between text-on-surface-variant text-sm">
+<span>Subtotal</span>
+<span>₦78,500</span>
+</div>
+<div class="flex justify-between text-on-surface-variant text-sm">
+<span>Tax (7.5%)</span>
+<span>₦5,887.50</span>
+</div>
+<div class="flex justify-between items-center pt-2 mt-2">
+<span class="font-bold text-on-surface uppercase text-xs tracking-widest">Total Amount</span>
+<span class="text-2xl font-black text-primary flex items-baseline">
+<span class="text-sm mr-1">₦</span>84,387.50
+                            </span>
+</div>
+</div>
+<button class="w-full h-14 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-xl font-bold text-sm tracking-widest uppercase shadow-md flex items-center justify-center space-x-3 hover:scale-[0.98] transition-transform">
+<span>Checkout</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</aside>
+</div>
+</main>
+<!-- Checkout Modal Overlay (Active State) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-tertiary/60 backdrop-blur-sm p-4">
+<div class="bg-surface-bright w-full max-w-2xl rounded-[2rem] shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[921px]">
+<!-- Modal Left: Summary -->
+<div class="bg-primary text-on-primary p-8 md:w-5/12 flex flex-col justify-between">
+<div>
+<h3 class="text-sm font-label uppercase tracking-widest text-primary-fixed-dim mb-10">Checkout Summary</h3>
+<div class="space-y-6">
+<div>
+<p class="text-[10px] text-on-primary-container uppercase font-bold tracking-tighter">Amount Due</p>
+<h2 class="text-4xl font-black tracking-tight mt-1">
+<span class="text-xl font-medium opacity-70">₦</span>84,387.50
+                            </h2>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-xs opacity-70">
+<span>Item Count</span>
+<span>3 Units</span>
+</div>
+<div class="flex justify-between text-xs opacity-70">
+<span>Terminal ID</span>
+<span>TRM-042-LGS</span>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-10">
+<p class="text-[10px] text-on-primary-container uppercase font-bold mb-4">Customer Status</p>
+<div class="flex bg-primary-container p-1 rounded-full">
+<button class="flex-1 py-2 text-[10px] font-bold uppercase rounded-full bg-surface-tint text-on-primary">Walk-in</button>
+<button class="flex-1 py-2 text-[10px] font-bold uppercase rounded-full text-on-primary-container hover:text-on-primary transition-colors">Loyalty</button>
+</div>
+</div>
+</div>
+<!-- Modal Right: Payment Method -->
+<div class="p-8 md:w-7/12 bg-surface flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-lg font-bold text-on-surface">Payment Method</h3>
+<button class="w-8 h-8 rounded-full hover:bg-surface-container-low flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-3 mb-8">
+<!-- Method: Cash -->
+<button class="flex flex-col items-center justify-center p-4 rounded-2xl bg-surface-container-low border-2 border-transparent hover:border-secondary transition-all group">
+<span class="material-symbols-outlined text-2xl mb-2 text-on-surface-variant group-hover:text-secondary" data-icon="payments">payments</span>
+<span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant group-hover:text-secondary">Cash</span>
+</button>
+<!-- Method: Card (Active State) -->
+<button class="flex flex-col items-center justify-center p-4 rounded-2xl bg-secondary-container border-2 border-secondary shadow-sm group">
+<span class="material-symbols-outlined text-2xl mb-2 text-on-secondary-container" data-icon="credit_card">credit_card</span>
+<span class="text-xs font-bold uppercase tracking-wider text-on-secondary-container">POS Card</span>
+</button>
+<!-- Method: Bank Transfer -->
+<button class="flex flex-col items-center justify-center p-4 rounded-2xl bg-surface-container-low border-2 border-transparent hover:border-secondary transition-all group">
+<span class="material-symbols-outlined text-2xl mb-2 text-on-surface-variant group-hover:text-secondary" data-icon="account_balance">account_balance</span>
+<span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant group-hover:text-secondary">Transfer</span>
+</button>
+<!-- Method: USSD -->
+<button class="flex flex-col items-center justify-center p-4 rounded-2xl bg-surface-container-low border-2 border-transparent hover:border-secondary transition-all group">
+<span class="material-symbols-outlined text-2xl mb-2 text-on-surface-variant group-hover:text-secondary" data-icon="dialpad">dialpad</span>
+<span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant group-hover:text-secondary">USSD</span>
+</button>
+</div>
+<div class="mb-8">
+<label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant block mb-2">Reference Number (Optional)</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-secondary/20" placeholder="Enter bank ref or auth code" type="text"/>
+</div>
+<div class="mt-auto space-y-3">
+<button class="w-full h-14 bg-surface-tint text-on-primary rounded-2xl font-black text-sm tracking-widest uppercase shadow-lg shadow-surface-tint/20 hover:scale-[0.99] transition-transform">
+                        Confirm Transaction
+                    </button>
+<button class="w-full h-12 bg-transparent text-on-surface-variant rounded-2xl font-bold text-xs tracking-widest uppercase hover:bg-surface-container-low transition-colors">
+                        Cancel Sale
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

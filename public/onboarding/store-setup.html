@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding - Store Setup</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#001a59",
+                        "primary-fixed-dim": "#88d982",
+                        "on-secondary-fixed": "#260059",
+                        "secondary-container": "#b188ff",
+                        "surface-container-high": "#dde9ff",
+                        "on-background": "#0d1c2f",
+                        "outline-variant": "#c6c6cc",
+                        "on-surface": "#0d1c2f",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#b6c4ff",
+                        "primary": "#000b01",
+                        "surface-dim": "#ccdbf4",
+                        "primary-fixed": "#a3f69c",
+                        "on-surface-variant": "#45474c",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-primary": "#88d982",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#44118d",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-fixed-variant": "#264191",
+                        "surface-container": "#e6eeff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#00164e",
+                        "on-primary-fixed": "#002204",
+                        "surface-tint": "#1b6d24",
+                        "tertiary": "#000623",
+                        "on-secondary-fixed-variant": "#572ba0",
+                        "on-primary-container": "#499849",
+                        "surface-container-highest": "#d5e3fd",
+                        "secondary-fixed-dim": "#d3bbff",
+                        "tertiary-fixed": "#dce1ff",
+                        "background": "#f8f9ff",
+                        "primary-container": "#002704",
+                        "surface": "#f8f9ff",
+                        "outline": "#76777c",
+                        "secondary-fixed": "#ebdcff",
+                        "secondary": "#6f46b9",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#233144",
+                        "surface-variant": "#d5e3fd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#005312",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#6b83d7",
+                        "inverse-on-surface": "#ebf1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-glass {
+            background: rgba(248, 249, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar - Authoritative Admin Control -->
+<aside class="bg-[#000623] text-white fixed left-0 top-0 h-full w-64 border-r border-white/10 shadow-xl flex flex-col py-6">
+<div class="px-6 mb-10">
+<div class="text-xs font-bold tracking-widest text-slate-400 uppercase mb-2">Onboarding</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+</div>
+<div>
+<h2 class="text-sm font-bold headline">Step 1 of 4</h2>
+<p class="text-xs text-slate-400">Setup Progress</p>
+</div>
+</div>
+</div>
+<nav class="flex-1">
+<div class="text-slate-400 hover:text-white flex items-center px-4 py-3 mx-2 my-1 transition-all hover:bg-white/5">
+<span class="material-symbols-outlined mr-3" data-icon="storefront">storefront</span>
+<span class="text-sm tracking-wide">Store Setup</span>
+</div>
+<div class="bg-[#6f46b9] text-white rounded-lg mx-2 my-1 flex items-center px-4 py-3 font-semibold translate-x-1 duration-200">
+<span class="material-symbols-outlined mr-3" data-icon="inventory_2">inventory_2</span>
+<span class="text-sm tracking-wide">Products</span>
+</div>
+<div class="text-slate-400 hover:text-white flex items-center px-4 py-3 mx-2 my-1 transition-all hover:bg-white/5">
+<span class="material-symbols-outlined mr-3" data-icon="badge">badge</span>
+<span class="text-sm tracking-wide">Staff</span>
+</div>
+<div class="text-slate-400 hover:text-white flex items-center px-4 py-3 mx-2 my-1 transition-all hover:bg-white/5">
+<span class="material-symbols-outlined mr-3" data-icon="task_alt">task_alt</span>
+<span class="text-sm tracking-wide">Finalize</span>
+</div>
+</nav>
+<div class="mt-auto px-2 space-y-1">
+<button class="w-full text-slate-400 hover:text-white flex items-center px-4 py-3 transition-all hover:bg-white/5">
+<span class="material-symbols-outlined mr-3" data-icon="contact_support">contact_support</span>
+<span class="text-sm tracking-wide">Support</span>
+</button>
+<button class="w-full text-slate-400 hover:text-white flex items-center px-4 py-3 transition-all hover:bg-white/5">
+<span class="material-symbols-outlined mr-3" data-icon="logout">logout</span>
+<span class="text-sm tracking-wide">Logout</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-64 overflow-y-auto bg-surface">
+<!-- TopNavBar - Clean Editorial Anchor -->
+<header class="bg-[#f8f9ff] text-[#000b01] font-['Manrope'] font-bold text-lg flex justify-between items-center px-6 py-4 w-full h-16 sticky top-0 z-10">
+<div class="text-xl font-black text-[#000b01] tracking-tight">Zudo POS</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-[#dde9ff] transition-colors rounded-full">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button class="p-2 hover:bg-[#dde9ff] transition-colors rounded-full">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a professional business administrator in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV0OxW1J88XqC5_PlggBuo9ks8qPvcY_8NxhwVzRuFkfoBSUAP81TjSGPBf3ck-qmeeJKnAXMf58sxQhGv_isBJzuk_-x1pGkiOnOIolGouUW3GzejOoApH2p6AQqahZmiEBG_YB8dGkPgMmeMAX-qSKLkRmq1x68XwQ8B5dd7xhrb3D9Vw20jcjyfQLPRFjo9if0h_8PedHkHec73tezTkaDtifGJB92OcTg-Zb0L-9CnM0Ymn3W_FlIt8OjS44u1B6G6wOmj7rle"/>
+</div>
+</div>
+</header>
+<div class="max-w-4xl mx-auto px-8 py-12">
+<!-- Progress Header Section -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-6">
+<div>
+<span class="text-secondary font-bold text-sm tracking-widest uppercase headline">Phase 02</span>
+<h1 class="text-4xl font-extrabold text-on-surface tracking-tight mt-1">Store Setup</h1>
+</div>
+<div class="text-right">
+<span class="text-on-surface-variant text-sm font-medium">Step 2 of 6</span>
+<div class="w-48 h-2 bg-surface-container-low rounded-full mt-2 overflow-hidden">
+<div class="w-2/6 h-full bg-gradient-to-r from-primary to-primary-container"></div>
+</div>
+</div>
+</div>
+<p class="text-on-surface-variant text-lg leading-relaxed max-w-2xl">
+                        Let's define your primary point of sale. You can add more branches and registers once your initial setup is complete.
+                    </p>
+</section>
+<!-- Asymmetric Bento Grid for Form -->
+<div class="grid grid-cols-12 gap-6 items-start">
+<!-- Left: Main Form Card -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl shadow-sm p-8">
+<form class="space-y-8">
+<div>
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-3">Store Name</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 text-on-surface-variant group-focus-within:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="store">store</span>
+</div>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-lg focus:ring-0 focus:bg-surface-container-lowest transition-all text-on-surface placeholder:text-outline border-l-2 border-transparent focus:border-secondary" placeholder="e.g., Ikeja Flagship" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="md:col-span-2">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-3">Street Address</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 text-on-surface-variant group-focus-within:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</div>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-lg focus:ring-0 focus:bg-surface-container-lowest transition-all text-on-surface placeholder:text-outline border-l-2 border-transparent focus:border-secondary" placeholder="128 Awolowo Road" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-3">City</label>
+<select class="w-full px-4 py-4 bg-surface-container-low border-none rounded-lg focus:ring-0 focus:bg-surface-container-lowest transition-all text-on-surface appearance-none border-l-2 border-transparent focus:border-secondary">
+<option>Lagos</option>
+<option>Abuja</option>
+<option>Port Harcourt</option>
+<option>Ibadan</option>
+<option>Kano</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-3">State</label>
+<select class="w-full px-4 py-4 bg-surface-container-low border-none rounded-lg focus:ring-0 focus:bg-surface-container-lowest transition-all text-on-surface appearance-none border-l-2 border-transparent focus:border-secondary">
+<option>Lagos State</option>
+<option>FCT</option>
+<option>Rivers State</option>
+<option>Oyo State</option>
+<option>Kano State</option>
+</select>
+</div>
+</div>
+<div class="pt-8 flex items-center justify-between">
+<button class="px-6 py-4 rounded-lg font-bold text-sm text-on-surface-variant hover:bg-surface-container transition-colors flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="arrow_back">arrow_back</span>
+                                    BACK
+                                </button>
+<button class="px-10 py-4 bg-gradient-to-br from-primary to-primary-container text-white rounded-lg font-bold text-sm tracking-widest shadow-lg shadow-primary/10 hover:opacity-90 transition-opacity flex items-center gap-3" type="submit">
+                                    CONTINUE TO STEP 3
+                                    <span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Right: Contextual Info & Visual Anchor -->
+<div class="col-span-12 lg:col-span-4 space-y-6">
+<!-- Map Preview Card -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden aspect-square relative group cursor-pointer shadow-sm">
+<img class="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" data-alt="Minimalist stylized street map of an urban district with clean lines and a soft color palette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXK6bf1spDnQz4m8hWw_oxub8OpdNn2TN1Be0iBqZIu9eBn5J-soTFN8fzSZpDZBJKEYMaO5G0reoxbmPDdZOjKXzNsDdjoRtgYyR0Fgb3W52kQPi6PdK_fWmMF07GfkD25zUWvpPb2urWEoo8J0R7ONh25pMUtoKmM1vwU82XEwqdYty800t3tjw-aTVnibUT5oK3ijhUTYSbzBLatSppzoVtWSiXPwBHIXXnmiwhb6586m-8lbVRTQT8a-8syVOhEjtk2ek1FPL1"/>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center animate-pulse">
+<div class="w-4 h-4 bg-secondary rounded-full border-2 border-white"></div>
+</div>
+</div>
+<div class="absolute bottom-4 left-4 right-4 p-4 custom-glass rounded-lg border border-white/20">
+<p class="text-xs font-bold text-on-surface headline">Location Preview</p>
+<p class="text-[10px] text-on-surface-variant mt-1">Automatically pinpointed via address entry.</p>
+</div>
+</div>
+<!-- Pro Tip Card -->
+<div class="bg-tertiary text-white p-6 rounded-xl shadow-xl">
+<span class="material-symbols-outlined text-secondary-container mb-4" data-icon="tips_and_updates">tips_and_updates</span>
+<h3 class="text-lg font-bold headline mb-2">Editorial Tip</h3>
+<p class="text-slate-300 text-sm leading-relaxed">
+                                Branch names like "Ikeja Flagship" or "Victoria Island Hub" help managers filter reports faster during quarterly reviews.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Support FAB - Suppressed on this page per logic but keeping visual structure for system compliance -->
+<div class="fixed bottom-8 right-8">
+<button class="w-14 h-14 bg-secondary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" data-icon="chat_bubble" data-weight="fill" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+</button>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Terms &amp; Privacy - Zudo POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#b188ff",
+                    "inverse-on-surface": "#ebf1ff",
+                    "surface-container-high": "#dde9ff",
+                    "secondary": "#6f46b9",
+                    "on-surface": "#0d1c2f",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#88d982",
+                    "on-primary-fixed-variant": "#005312",
+                    "tertiary": "#000623",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#eff4ff",
+                    "surface-tint": "#1b6d24",
+                    "on-tertiary-fixed-variant": "#264191",
+                    "on-surface-variant": "#45474c",
+                    "on-secondary-fixed": "#260059",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#001a59",
+                    "on-primary-container": "#499849",
+                    "on-error-container": "#93000a",
+                    "outline": "#76777c",
+                    "error": "#ba1a1a",
+                    "on-background": "#0d1c2f",
+                    "surface-container-highest": "#d5e3fd",
+                    "primary-fixed": "#a3f69c",
+                    "secondary-fixed-dim": "#d3bbff",
+                    "tertiary-fixed-dim": "#b6c4ff",
+                    "surface-bright": "#f8f9ff",
+                    "on-tertiary-container": "#6b83d7",
+                    "surface": "#f8f9ff",
+                    "primary-container": "#002704",
+                    "inverse-primary": "#88d982",
+                    "tertiary-fixed": "#dce1ff",
+                    "surface-container": "#e6eeff",
+                    "on-tertiary-fixed": "#00164e",
+                    "secondary-fixed": "#ebdcff",
+                    "background": "#f8f9ff",
+                    "surface-dim": "#ccdbf4",
+                    "on-secondary-container": "#44118d",
+                    "inverse-surface": "#233144",
+                    "surface-variant": "#d5e3fd",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#000b01",
+                    "on-secondary-fixed-variant": "#572ba0",
+                    "outline-variant": "#c6c6cc",
+                    "on-primary-fixed": "#002204"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .prose-section p { margin-bottom: 1.5rem; color: #45474c; line-height: 1.75; }
+        .prose-section h2 { margin-top: 3rem; margin-bottom: 1rem; color: #0d1c2f; font-weight: 800; font-size: 1.5rem; letter-spacing: -0.025em; }
+        .prose-section ul { list-style-type: none; padding-left: 0; margin-bottom: 1.5rem; }
+        .prose-section li { position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; color: #45474c; }
+        .prose-section li::before { content: "•"; position: absolute; left: 0; color: #6f46b9; font-weight: bold; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#f8f9ff]/80 backdrop-blur-md">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-bold tracking-tight text-[#000b01]">Zudo POS</div>
+<!-- Desktop Links -->
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-[#45474c] font-medium hover:text-[#6f46b9] transition-colors duration-200" href="#">Product</a>
+<a class="text-[#45474c] font-medium hover:text-[#6f46b9] transition-colors duration-200" href="#">Features</a>
+<a class="text-[#45474c] font-medium hover:text-[#6f46b9] transition-colors duration-200" href="#">Pricing</a>
+<a class="text-[#45474c] font-medium hover:text-[#6f46b9] transition-colors duration-200" href="#">About</a>
+</div>
+<!-- Actions -->
+<div class="flex items-center space-x-4">
+<button class="text-[#45474c] font-medium hover:text-[#6f46b9] transition-colors duration-200 text-sm tracking-wide uppercase">Login</button>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-bold text-sm tracking-wide uppercase hover:scale-95 transition-transform duration-150">Get Started</button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-6 md:px-0">
+<!-- Hero Header -->
+<header class="max-w-3xl mx-auto mb-16 text-center">
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold uppercase tracking-widest mb-6">
+                Legal Documentation
+            </div>
+<h1 class="text-5xl md:text-6xl font-extrabold text-on-surface mb-6 tracking-tight">
+                Terms &amp; Privacy
+            </h1>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                Last Updated: October 24, 2026. These terms govern your use of Zudo POS platform and define our commitment to your data security.
+            </p>
+</header>
+<!-- Main Content Area -->
+<article class="max-w-2xl mx-auto prose-section">
+<!-- Quick Navigation Tonal Card -->
+<div class="p-8 bg-surface-container-low rounded-xl mb-16 border-l-4 border-secondary">
+<h3 class="font-headline font-bold text-on-surface mb-4">At a Glance</h3>
+<p class="text-sm text-on-surface-variant mb-0">
+                    We've designed our POS to be the "Fluid Authority" in retail. This means we prioritize your transaction speed and data integrity above all else. This document outlines our Mutual Responsibility Framework.
+                </p>
+</div>
+<section id="data-protection">
+<h2>Data Protection &amp; Privacy</h2>
+<p>
+                    Your retail data—including inventory levels, customer profiles, and transaction history—is treated with the highest level of encryption. We utilize Tonal Architecture in our security protocols to ensure that sensitive financial information is siloed from general application logs.
+                </p>
+<ul>
+<li>End-to-end encryption for all ₦ currency transaction data.</li>
+<li>Bi-weekly automated security audits and penetration testing.</li>
+<li>Zero-knowledge architecture for merchant payment credentials.</li>
+<li>Compliance with local Nigerian financial data regulations.</li>
+</ul>
+</section>
+<section id="user-responsibilities">
+<h2>User Responsibilities</h2>
+<p>
+                    To maintain the integrity of "Zudo POS" workspace, users must adhere to specific operational standards. High-speed retail environments require precise input and secure access management.
+                </p>
+<ul>
+<li>Maintaining the confidentiality of cashier and admin login credentials.</li>
+<li>Ensuring hardware compatibility with our minimalist barcode scanning interface.</li>
+<li>Prompt reporting of any unauthorized transaction patterns.</li>
+<li>Adherence to the "No-Line" rule in physical workspace layouts to match UI ergonomics.</li>
+</ul>
+</section>
+<section id="service-level">
+<h2>Service Level Agreement (SLA)</h2>
+<p>
+                    We commit to "The Fluid Authority" standards of uptime. In the Nigerian retail landscape, every second of downtime is a lost sale. Our infrastructure is built for 99.9% availability.
+                </p>
+<div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-6 bg-surface-container-lowest border border-outline-variant/20 rounded-lg">
+<span class="text-secondary font-bold block mb-1">Uptime Goal</span>
+<span class="text-3xl font-headline font-extrabold text-on-surface">99.99%</span>
+</div>
+<div class="p-6 bg-surface-container-lowest border border-outline-variant/20 rounded-lg">
+<span class="text-secondary font-bold block mb-1">Support Response</span>
+<span class="text-3xl font-headline font-extrabold text-on-surface">&lt;15m</span>
+</div>
+</div>
+<p>
+                    Scheduled maintenance will always be performed during off-peak hours (02:00 - 04:00 WAT) to ensure minimal disruption to your checkout flow.
+                </p>
+</section>
+<section id="intellectual-property">
+<h2>Intellectual Property</h2>
+<p>
+                    The visual identity, including the specific tonal depth levels (surface-container-low to highest) and the Manrope/Inter typographic pairing, are proprietary assets of Zudo POS. Unauthorized replication of the "Fluid Authority" UI design system is strictly prohibited.
+                </p>
+</section>
+<!-- Final CTA / Support -->
+<div class="mt-20 p-10 bg-on-surface text-surface rounded-xl text-center relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-secondary to-transparent"></div>
+<h3 class="text-2xl font-headline font-bold mb-4 relative z-10">Have legal questions?</h3>
+<p class="text-surface/70 mb-8 relative z-10 max-w-sm mx-auto">Our compliance team is ready to assist with any specific regulatory queries regarding your retail operations.</p>
+<button class="relative z-10 bg-secondary px-8 py-3 rounded-lg font-bold text-sm tracking-widest uppercase hover:scale-95 transition-transform">Contact Legal Team</button>
+</div>
+</article>
+</main>
+<!-- Footer -->
+<footer class="bg-[#eff4ff] text-[#000b01]">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 px-8 py-12 max-w-7xl mx-auto">
+<div class="col-span-2 md:col-span-1">
+<div class="text-lg font-black text-[#000b01] mb-4">Zudo POS</div>
+<p class="text-xs text-[#45474c] leading-relaxed">
+                    © 2026 Zudo POS. All rights reserved. Built for The Fluid Authority.
+                </p>
+</div>
+<div>
+<h4 class="text-sm font-bold mb-4 text-[#000b01] uppercase tracking-tighter">Legal</h4>
+<ul class="space-y-2">
+<li><a class="text-sm text-[#6f46b9] underline" href="#">Privacy Policy</a></li>
+<li><a class="text-sm text-[#6f46b9] underline" href="#">Terms of Service</a></li>
+<li><a class="text-sm text-[#45474c] hover:text-[#000b01] transition-all" href="#">Documentation</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-sm font-bold mb-4 text-[#000b01] uppercase tracking-tighter">Support</h4>
+<ul class="space-y-2">
+<li><a class="text-sm text-[#45474c] hover:text-[#000b01] transition-all" href="#">Support Center</a></li>
+<li><a class="text-sm text-[#45474c] hover:text-[#000b01] transition-all" href="#">API Reference</a></li>
+<li><a class="text-sm text-[#45474c] hover:text-[#000b01] transition-all" href="#">Contact Sales</a></li>
+</ul>
+</div>
+<div class="hidden md:block">
+<div class="w-full h-32 rounded-lg bg-surface-container-high/50 flex items-center justify-center border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary opacity-30 text-5xl">shield_locked</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
