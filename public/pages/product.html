@@ -14,53 +14,14 @@
         theme: {
           extend: {
             "colors": {
-                    "tertiary": "#000623",
-                    "on-tertiary-container": "#6b83d7",
-                    "inverse-surface": "#233144",
-                    "error-container": "#ffdad6",
-                    "on-secondary-container": "#44118d",
-                    "on-surface-variant": "#45474c",
-                    "on-tertiary-fixed-variant": "#264191",
-                    "on-error-container": "#93000a",
-                    "on-background": "#0d1c2f",
-                    "surface-container-highest": "#d5e3fd",
-                    "background": "#f8f9ff",
-                    "surface-variant": "#d5e3fd",
-                    "on-primary-fixed-variant": "#005312",
-                    "primary-container": "#002704",
-                    "tertiary-fixed": "#dce1ff",
-                    "surface": "#f8f9ff",
-                    "primary-fixed": "#a3f69c",
-                    "on-tertiary": "#ffffff",
-                    "on-primary-container": "#499849",
-                    "on-secondary-fixed-variant": "#572ba0",
-                    "on-primary": "#ffffff",
-                    "on-secondary-fixed": "#260059",
-                    "secondary-fixed-dim": "#d3bbff",
-                    "on-primary-fixed": "#002204",
-                    "inverse-primary": "#88d982",
-                    "surface-dim": "#ccdbf4",
-                    "outline-variant": "#c6c6cc",
-                    "secondary": "#6f46b9",
-                    "secondary-container": "#b188ff",
-                    "primary": "#000b01",
-                    "inverse-on-surface": "#ebf1ff",
-                    "on-tertiary-fixed": "#00164e",
-                    "on-error": "#ffffff",
-                    "surface-container": "#e6eeff",
-                    "error": "#ba1a1a",
-                    "surface-container-high": "#dde9ff",
-                    "surface-bright": "#f8f9ff",
-                    "on-secondary": "#ffffff",
-                    "surface-container-lowest": "#ffffff",
-                    "primary-fixed-dim": "#88d982",
-                    "outline": "#76777c",
-                    "secondary-fixed": "#ebdcff",
-                    "on-surface": "#0d1c2f",
-                    "tertiary-fixed-dim": "#b6c4ff",
-                    "surface-container-low": "#eff4ff",
-                    "tertiary-container": "#001a59",
-                    "surface-tint": "#1b6d24"
+                "primary": "#1b6d24", // Emerald Green
+                "secondary": "#1b6d24",
+                "tertiary": "#000623", // Deep Navy
+                "surface": "#f8f9ff",
+                "on-surface": "#0d1c2f",
+                "on-primary": "#ffffff",
+                "slate-white": "#f8faff",
+                "outline-variant": "#c6c6cc"
             },
             "borderRadius": {
                     "DEFAULT": "0.125rem",
@@ -86,18 +47,24 @@
     </style>
 </head>
 <body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-[#f8f9ff]/80 dark:bg-[#000b01]/80 backdrop-blur-md shadow-sm dark:shadow-none">
-<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
-<div class="text-xl font-black text-[#000b01] dark:text-[#f8f9ff] tracking-tighter font-headline">Zudo POS</div>
-<div class="hidden md:flex items-center gap-8 font-manrope font-bold text-sm tracking-tight">
-<a class="text-[#6f46b9] dark:text-[#b188ff] border-b-2 border-[#6f46b9] pb-1" href="#">Products</a>
-<a class="text-[#45474c] dark:text-[#dde9ff] hover:text-[#000b01] transition-colors duration-300" href="#">Solutions</a>
-<a class="text-[#45474c] dark:text-[#dde9ff] hover:text-[#000b01] transition-colors duration-300" href="#">Pricing</a>
-<a class="text-[#45474c] dark:text-[#dde9ff] hover:text-[#000b01] transition-colors duration-300" href="#">Resources</a>
+<!-- Navigation -->
+<header class="bg-slate-white/80 backdrop-blur-md sticky top-0 z-50">
+<nav class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-10">
+<span class="text-xl font-extrabold tracking-tight text-tertiary brand-font">Zudo POS</span>
+<div class="hidden lg:flex gap-8 items-center">
+<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="product.html">Product</a>
+<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="features.html">Features</a>
+<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="pricing.html">Pricing</a>
+<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="documentation.html">Documentation</a>
+</div>
 </div>
 <div class="flex items-center gap-4">
-<button class="text-[#45474c] font-bold text-sm hover:text-primary transition-all">Login</button>
+<a class="text-tertiary font-bold text-sm px-4 py-2 hover:text-primary transition-colors" href="../onboarding/login.html">Login</a>
+<a class="bg-primary text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-primary/90 transition-all shadow-md shadow-primary/10" href="../onboarding/register.html">Get Started</a>
+</div>
+</nav>
+</header>
 <button class="bg-primary text-on-primary px-5 py-2.5 rounded-lg font-bold text-sm scale-95 active:duration-75 ease-in-out hover:bg-surface-tint transition-all">Get Started</button>
 </div>
 </div>
@@ -321,44 +288,67 @@
 </section>
 </main>
 <!-- Footer -->
-<footer class="bg-[#000623] dark:bg-[#000000] text-[#ffffff] border-t border-[#45474c]/20">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-8 px-8 py-12 w-full max-w-7xl mx-auto">
-<div class="col-span-1 md:col-span-1">
-<div class="font-manrope font-black text-lg text-white mb-6">Zudo POS</div>
-<p class="text-[#c6c6cc] text-xs leading-relaxed uppercase tracking-widest opacity-80">
-                    Precision instruments for the fluid authority.
-                </p>
+<footer class="bg-tertiary py-24 text-white">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-24">
+<div class="col-span-2 md:col-span-1">
+<span class="text-2xl font-extrabold tracking-tight brand-font mb-8 block">Zudo POS</span>
+<p class="text-white/40 text-sm leading-relaxed max-w-xs">Engineered for the speed and reliability required by modern Nigerian commerce. The fluid authority in point of sale systems.</p>
 </div>
 <div>
-<h4 class="font-inter text-xs uppercase tracking-widest text-white mb-6">Platform</h4>
-<div class="flex flex-col gap-4">
-<a class="text-[#c6c6cc] text-xs uppercase tracking-widest hover:text-white transition-all opacity-80 hover:opacity-100" href="#">Products</a>
-<a class="text-[#c6c6cc] text-xs uppercase tracking-widest hover:text-white transition-all opacity-80 hover:opacity-100" href="#">Solutions</a>
-<a class="text-[#c6c6cc] text-xs uppercase tracking-widest hover:text-white transition-all opacity-80 hover:opacity-100" href="#">Hardware</a>
-</div>
-</div>
-<div>
-<h4 class="font-inter text-xs uppercase tracking-widest text-white mb-6">Company</h4>
-<div class="flex flex-col gap-4">
-<a class="text-[#c6c6cc] text-xs uppercase tracking-widest hover:text-white transition-all opacity-80 hover:opacity-100" href="#">Lagos Office</a>
-<a class="text-[#c6c6cc] text-xs uppercase tracking-widest hover:text-white transition-all opacity-80 hover:opacity-100" href="#">Abuja Hub</a>
-<a class="text-[#c6c6cc] text-xs uppercase tracking-widest hover:text-white transition-all opacity-80 hover:opacity-100" href="#">Contact Support</a>
-</div>
+<h5 class="font-bold mb-6 text-primary">Product</h5>
+<ul class="space-y-4 text-sm text-white/50">
+<li><a class="hover:text-white transition-colors" href="product.html">Terminal Software</a></li>
+<li><a class="hover:text-white transition-colors" href="product.html">Inventory Manager</a></li>
+<li><a class="hover:text-white transition-colors" href="features.html">Analytics Engine</a></li>
+<li><a class="hover:text-white transition-colors" href="features.html">Integrations</a></li>
+</ul>
 </div>
 <div>
-<h4 class="font-inter text-xs uppercase tracking-widest text-white mb-6">Legal</h4>
-<div class="flex flex-col gap-4">
-<a class="text-[#c6c6cc] text-xs uppercase tracking-widest hover:text-white transition-all opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
-<a class="text-[#c6c6cc] text-xs uppercase tracking-widest hover:text-white transition-all opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<h5 class="font-bold mb-6 text-primary">Company</h5>
+<ul class="space-y-4 text-sm text-white/50">
+<li><a class="hover:text-white transition-colors" href="about.html">About Us</a></li>
+<li><a class="hover:text-white transition-colors" href="contact.html">Contact Us</a></li>
+<li><a class="hover:text-white transition-colors" href="other/legal.html">Privacy Policy</a></li>
+<li><a class="hover:text-white transition-colors" href="other/legal.html">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6 text-primary">Stay Updated</h5>
+<p class="text-sm text-white/40 mb-6">Get the latest on retail trends and updates.</p>
+<form class="flex">
+<input class="bg-white/5 border border-white/10 rounded-l-xl px-4 py-3 w-full text-sm focus:ring-1 focus:ring-primary focus:border-primary outline-none" placeholder="Email address" type="email"/>
+<button class="bg-primary px-6 rounded-r-xl hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-white">arrow_forward</span>
+</button>
+</form>
 </div>
 </div>
+<div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-white/30 text-[10px] font-bold tracking-widest uppercase">
+<p>© 2026 Zudo POS. Built for Nigeria.</p>
+<div class="flex gap-8">
+<a class="hover:text-white transition-colors" href="https://twitter.com/zudopos" target="_blank" rel="noopener">Twitter</a>
+<a class="hover:text-white transition-colors" href="https://linkedin.com/company/zudopos" target="_blank" rel="noopener">LinkedIn</a>
+<a class="hover:text-white transition-colors" href="https://instagram.com/zudopos" target="_blank" rel="noopener">Instagram</a>
 </div>
-<div class="px-8 py-8 border-t border-white/5 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-<p class="font-inter text-xs uppercase tracking-widest text-[#c6c6cc] opacity-80">© 2026 Zudo POS. Built for the Fluid Authority. Lagos, Nigeria.</p>
-<div class="flex gap-6">
-<span class="material-symbols-outlined text-white opacity-60 hover:opacity-100 cursor-pointer">public</span>
-<span class="material-symbols-outlined text-white opacity-60 hover:opacity-100 cursor-pointer">language</span>
 </div>
 </div>
 </footer>
+<script>
+    // Simple intersection observer for basic fade-in effects
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100');
+                entry.target.classList.remove('opacity-0', 'translate-y-4');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-4');
+        observer.observe(section);
+    });
+</script>
+<script src="../js/utils.js"></script>
 </body></html>
