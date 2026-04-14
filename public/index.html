@@ -54,15 +54,15 @@
 <div class="flex items-center gap-10">
 <span class="text-xl font-extrabold tracking-tight text-tertiary brand-font">Zudo POS</span>
 <div class="hidden lg:flex gap-8 items-center">
-<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="#">Product</a>
-<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="public\pages\features.html">Features</a>
-<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="#">Pricing</a>
-<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="#">Documentation</a>
+<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="pages/product.html">Product</a>
+<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="pages/features.html">Features</a>
+<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="pages/pricing.html">Pricing</a>
+<a class="text-tertiary/70 hover:text-primary font-semibold text-sm transition-colors" href="pages/documentation.html">Documentation</a>
 </div>
 </div>
 <div class="flex items-center gap-4">
-<button class="text-tertiary font-bold text-sm px-4 py-2 hover:text-primary transition-colors">Login</button>
-<button class="bg-primary text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-primary/90 transition-all shadow-md shadow-primary/10">Get Started</button>
+<a class="text-tertiary font-bold text-sm px-4 py-2 hover:text-primary transition-colors" href="onboarding/login.html">Login</a>
+<a class="bg-primary text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-primary/90 transition-all shadow-md shadow-primary/10" href="onboarding/register.html">Get Started</a>
 </div>
 </nav>
 </header>
@@ -79,12 +79,12 @@
                     The high-performance, barcode-ready POS that scales with your ambition. Built for supermarkets, pharmacies, and boutiques across Nigeria.
                 </p>
 <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-<button class="bg-tertiary text-white h-14 px-8 rounded-full font-bold flex items-center justify-center gap-3 hover:bg-tertiary/90 transition-all shadow-xl active:scale-95">
+<a class="bg-tertiary text-white h-14 px-8 rounded-full font-bold flex items-center justify-center gap-3 hover:bg-tertiary/90 transition-all shadow-xl active:scale-95" href="onboarding/register.html">
                         Start Your Free Trial <span class="material-symbols-outlined">arrow_forward</span>
-</button>
-<button class="bg-white text-tertiary border-2 border-tertiary/10 h-14 px-8 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-slate-50 transition-all active:scale-95">
+</a>
+<a class="bg-white text-tertiary border-2 border-tertiary/10 h-14 px-8 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-slate-50 transition-all active:scale-95" href="pages/other/demo.html">
                         Request a Demo
-                    </button>
+                    </a>
 </div>
 </div>
 <div class="relative group">
@@ -275,19 +275,19 @@
 <div>
 <h5 class="font-bold mb-6 text-primary">Product</h5>
 <ul class="space-y-4 text-sm text-white/50">
-<li><a class="hover:text-white transition-colors" href="#">Terminal Software</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Inventory Manager</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Analytics Engine</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Integrations</a></li>
+<li><a class="hover:text-white transition-colors" href="pages/product.html">Terminal Software</a></li>
+<li><a class="hover:text-white transition-colors" href="pages/product.html">Inventory Manager</a></li>
+<li><a class="hover:text-white transition-colors" href="pages/features.html">Analytics Engine</a></li>
+<li><a class="hover:text-white transition-colors" href="pages/features.html">Integrations</a></li>
 </ul>
 </div>
 <div>
 <h5 class="font-bold mb-6 text-primary">Company</h5>
 <ul class="space-y-4 text-sm text-white/50">
-<li><a class="hover:text-white transition-colors" href="#">About Us</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Success Stories</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
-<li><a class="hover:text-white transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-white transition-colors" href="pages/about.html">About Us</a></li>
+<li><a class="hover:text-white transition-colors" href="pages/contact.html">Contact Us</a></li>
+<li><a class="hover:text-white transition-colors" href="pages/other/legal.html">Privacy Policy</a></li>
+<li><a class="hover:text-white transition-colors" href="pages/other/legal.html">Terms of Service</a></li>
 </ul>
 </div>
 <div>
@@ -304,9 +304,9 @@
 <div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-white/30 text-[10px] font-bold tracking-widest uppercase">
 <p>© 2026 Zudo POS. Built for Nigeria.</p>
 <div class="flex gap-8">
-<a class="hover:text-white transition-colors" href="#">Twitter</a>
-<a class="hover:text-white transition-colors" href="#">LinkedIn</a>
-<a class="hover:text-white transition-colors" href="#">Instagram</a>
+<a class="hover:text-white transition-colors" href="https://twitter.com/zudopos" target="_blank" rel="noopener">Twitter</a>
+<a class="hover:text-white transition-colors" href="https://linkedin.com/company/zudopos" target="_blank" rel="noopener">LinkedIn</a>
+<a class="hover:text-white transition-colors" href="https://instagram.com/zudopos" target="_blank" rel="noopener">Instagram</a>
 </div>
 </div>
 </div>
@@ -327,4 +327,5 @@
         observer.observe(section);
     });
 </script>
+<script src="js/utils.js"></script>
 </body></html>

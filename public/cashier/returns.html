@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Returns | Zudo POS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-background": "#0d1c2f",
+              "surface": "#f8f9ff",
+              "surface-container-low": "#eff4ff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#dde9ff",
+              "surface-tint": "#1b6d24",
+              "on-surface": "#0d1c2f",
+              "on-surface-variant": "#45474c",
+              "secondary": "#6f46b9",
+            },
+            fontFamily: {
+              headline: ["Manrope"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      .headline {
+        font-family: "Manrope", sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+  </head>
+  <body class="bg-surface text-on-surface min-h-screen">
+    <aside class="flex flex-col h-full fixed left-0 top-0 z-40 overflow-y-auto bg-surface-container-low h-full w-64">
+      <div class="px-6 py-8">
+        <h1 class="font-bold text-on-surface text-xl tracking-tight">Zudo POS</h1>
+        <p class="text-xs font-label uppercase tracking-widest text-on-surface-variant mt-1">Fluid Authority</p>
+      </div>
+      <nav class="flex-1 mt-4 space-y-1">
+        <a class="flex items-center px-6 py-4 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" href="index.html">
+          <span class="material-symbols-outlined mr-4" data-icon="point_of_sale">point_of_sale</span>
+          <span class="font-label text-sm font-medium tracking-wide">TERMINAL</span>
+        </a>
+        <a class="flex items-center px-6 py-4 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" href="sales.html">
+          <span class="material-symbols-outlined mr-4" data-icon="receipt_long">receipt_long</span>
+          <span class="font-label text-sm font-medium tracking-wide">SALES HISTORY</span>
+        </a>
+        <a class="flex items-center px-6 py-4 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" href="customers.html">
+          <span class="material-symbols-outlined mr-4" data-icon="group">group</span>
+          <span class="font-label text-sm font-medium tracking-wide">CUSTOMERS</span>
+        </a>
+        <a class="flex items-center px-6 py-4 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" href="shift.html">
+          <span class="material-symbols-outlined mr-4" data-icon="schedule">schedule</span>
+          <span class="font-label text-sm font-medium tracking-wide">SHIFTS</span>
+        </a>
+        <a class="flex items-center bg-surface-container-lowest text-secondary rounded-l-full ml-4 shadow-sm font-bold px-6 py-4" href="returns.html">
+          <span class="material-symbols-outlined mr-4" style="font-variation-settings: 'FILL' 1;" data-icon="settings_backup_restore">settings_backup_restore</span>
+          <span class="font-label text-sm font-medium tracking-wide">RETURNS</span>
+        </a>
+        <a class="flex items-center px-6 py-4 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" href="profile.html">
+          <span class="material-symbols-outlined mr-4" data-icon="person">person</span>
+          <span class="font-label text-sm font-medium tracking-wide">PROFILE</span>
+        </a>
+      </nav>
+      <div class="p-6 mt-auto text-xs text-on-surface-variant">
+        <a class="hover:underline" href="../index.html">Logout</a>
+      </div>
+    </aside>
+
+    <main class="ml-64 min-h-screen">
+      <header class="flex justify-between items-center w-full px-8 py-3 h-16 bg-surface sticky top-0 z-30 border-b border-black/5">
+        <h2 class="headline text-lg font-extrabold tracking-tight text-on-surface">Returns</h2>
+        <a class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors" href="profile.html">account_circle</a>
+      </header>
+
+      <div class="p-8 max-w-5xl mx-auto">
+        <div class="bg-surface-container-lowest rounded-2xl border border-black/5 shadow-sm p-8">
+          <p class="text-on-surface-variant leading-relaxed">
+            Returns UI hasn’t been implemented yet. This page exists so the Cashier sidebar links don’t dead-end.
+          </p>
+          <div class="mt-6 flex gap-3">
+            <a class="h-12 px-5 rounded-xl bg-secondary text-white font-bold inline-flex items-center justify-center" href="sales.html">
+              Go to Sales History
+            </a>
+            <a class="h-12 px-5 rounded-xl bg-surface-container-low text-on-surface font-bold inline-flex items-center justify-center" href="index.html">
+              Back to Terminal
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

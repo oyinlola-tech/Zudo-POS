@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Product &amp; Inventory Management | Zudo POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "secondary": "#6f46b9",
+                "on-secondary-fixed": "#260059",
+                "inverse-surface": "#233144",
+                "inverse-primary": "#88d982",
+                "secondary-fixed": "#ebdcff",
+                "on-error-container": "#93000a",
+                "primary": "#000b01",
+                "outline-variant": "#c6c6cc",
+                "on-tertiary": "#ffffff",
+                "on-primary": "#ffffff",
+                "error-container": "#ffdad6",
+                "background": "#f8f9ff",
+                "on-background": "#0d1c2f",
+                "on-tertiary-container": "#6b83d7",
+                "on-tertiary-fixed-variant": "#264191",
+                "on-surface": "#0d1c2f",
+                "on-secondary": "#ffffff",
+                "on-primary-container": "#499849",
+                "secondary-fixed-dim": "#d3bbff",
+                "tertiary-fixed": "#dce1ff",
+                "surface-container-highest": "#d5e3fd",
+                "surface-container-lowest": "#ffffff",
+                "outline": "#76777c",
+                "surface-bright": "#f8f9ff",
+                "on-primary-fixed": "#002204",
+                "tertiary": "#000623",
+                "surface-tint": "#1b6d24",
+                "error": "#ba1a1a",
+                "on-secondary-container": "#44118d",
+                "on-error": "#ffffff",
+                "on-surface-variant": "#45474c",
+                "primary-container": "#002704",
+                "on-secondary-fixed-variant": "#572ba0",
+                "surface-container": "#e6eeff",
+                "tertiary-container": "#001a59",
+                "primary-fixed-dim": "#88d982",
+                "surface-container-low": "#eff4ff",
+                "inverse-on-surface": "#ebf1ff",
+                "tertiary-fixed-dim": "#b6c4ff",
+                "surface-variant": "#d5e3fd",
+                "on-tertiary-fixed": "#00164e",
+                "surface-container-high": "#dde9ff",
+                "surface-dim": "#ccdbf4",
+                "primary-fixed": "#a3f69c",
+                "surface": "#f8f9ff",
+                "on-primary-fixed-variant": "#005312",
+                "secondary-container": "#b188ff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "fontFamily": {
+                "headline": ["Manrope"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .brand-font { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 overflow-y-auto bg-slate-950 flex flex-col z-50 shadow-2xl">
+<div class="p-6 flex flex-col gap-1">
+<h1 class="text-xl font-bold text-white tracking-tight">Zudo POS</h1>
+<p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Admin Dashboard</p>
+</div>
+<nav class="flex-1 px-4 py-2 space-y-1">
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium transition-colors duration-200 hover:bg-slate-900" href="index.html">
+<span class="material-symbols-outlined">dashboard</span> Overview
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium transition-colors duration-200 hover:bg-slate-900" href="sales-management.html">
+<span class="material-symbols-outlined">payments</span> Sales
+</a>
+<a class="bg-emerald-500/10 text-emerald-400 border-l-4 border-emerald-500 py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium transition-colors duration-200" href="product-and-inventory.html">
+<span class="material-symbols-outlined">inventory_2</span> Inventory
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium transition-colors duration-200 hover:bg-slate-900" href="staff_and_role-management.html">
+<span class="material-symbols-outlined">badge</span> Staff
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium transition-colors duration-200 hover:bg-slate-900" href="customer-mangement.html">
+<span class="material-symbols-outlined">group</span> Customers
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium transition-colors duration-200 hover:bg-slate-900" href="loyalty_and_points.html">
+<span class="material-symbols-outlined">card_membership</span> Loyalty
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium transition-colors duration-200 hover:bg-slate-900" href="analytics.html">
+<span class="material-symbols-outlined">analytics</span> Analytics
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium transition-colors duration-200 hover:bg-slate-900" href="branch-management.html">
+<span class="material-symbols-outlined">storefront</span> Branches
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium transition-colors duration-200 hover:bg-slate-900" href="notifications.html">
+<span class="material-symbols-outlined">notifications</span> Notifications
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium transition-colors duration-200 hover:bg-slate-900" href="settings.html">
+<span class="material-symbols-outlined">settings</span> Settings
+</a>
+<a class="text-slate-400 hover:text-white py-3 px-6 flex items-center gap-3 font-manrope text-sm font-medium transition-colors duration-200 hover:bg-slate-900" href="audit_logs.html">
+<span class="material-symbols-outlined">history</span> Audit Logs
+</a>
+</nav>
+<div class="p-6 mt-auto">
+<button class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm rounded-lg transition-all active:scale-95 duration-150">
+                Switch to Cashier
+            </button>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-white/80 backdrop-blur-md border-b border-slate-200/50 flex justify-between items-center px-8 h-16">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-emerald-500/20 placeholder-on-surface-variant" placeholder="Search product name or SKU..." type="text"/>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-all font-manrope text-sm font-bold">
+                Branch Selector <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-slate-200">
+<div class="text-right">
+<p class="text-xs font-bold font-manrope">Adebayo S.</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-tighter">Inventory Manager</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="professional portrait of a confident african male manager in a clean business setting with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyaKakuCrMNbr7tCdzSS2tZas04UdrhsoXNI75SuW45uzlVdzhZsYkj2wpETRCqvQdOWxCQa4bw4pG_yT8_iahUMzAR6nBJVFixvLeCssjQh1FPmAVEiZU24qkIUghXR-jBuKuyLQjoaTpCPVgyjMXNrVSbBuxoI2xf4FfFh9HejtLppcEue2cfrGmd9MUxzmmSqLMxwclo2gHVrJaWGkIF8dDL7UCzMSJWa3JZ-hVo9nGIWhADb6nyke_NWtJDHSlZsy3M5YprgYX"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 pb-12 px-8 min-h-screen">
+<!-- Header & Primary Actions -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="text-3xl font-extrabold tracking-tight text-on-surface mb-1">Inventory Management</h2>
+<p class="text-on-surface-variant font-medium">Control and track 2,481 product units across all branches.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-5 py-3 bg-secondary text-white font-bold rounded-lg hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined">add</span>
+                    ADD PRODUCT
+                </button>
+</div>
+</div>
+<!-- Bento Filter Bar -->
+<div class="grid grid-cols-12 gap-4 mb-6">
+<div class="col-span-8 bg-surface-container-lowest p-2 rounded-xl flex items-center gap-2">
+<div class="flex-1 flex gap-2">
+<select class="bg-surface-container-low border-none rounded-lg px-4 py-2 text-sm font-medium text-on-surface focus:ring-2 focus:ring-emerald-500/20">
+<option>All Categories</option>
+<option>Electronics</option>
+<option>Groceries</option>
+<option>Apparel</option>
+</select>
+<select class="bg-surface-container-low border-none rounded-lg px-4 py-2 text-sm font-medium text-on-surface focus:ring-2 focus:ring-emerald-500/20">
+<option>Stock Status</option>
+<option>In Stock</option>
+<option>Low Stock</option>
+<option>Out of Stock</option>
+</select>
+<select class="bg-surface-container-low border-none rounded-lg px-4 py-2 text-sm font-medium text-on-surface focus:ring-2 focus:ring-emerald-500/20">
+<option>Lagos Mainland</option>
+<option>Victoria Island</option>
+<option>Abuja Central</option>
+</select>
+</div>
+<div class="h-8 w-px bg-slate-200 mx-2"></div>
+<button class="px-4 py-2 text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-2 text-sm font-bold">
+<span class="material-symbols-outlined text-lg">filter_list</span> Reset
+                </button>
+</div>
+<div class="col-span-4 bg-surface-container-lowest p-2 rounded-xl flex items-center justify-around">
+<button class="flex flex-col items-center gap-1 p-2 rounded-lg hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-secondary">upload_file</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Import</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 rounded-lg hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-secondary">tune</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Adjust</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 rounded-lg hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-secondary">barcode_scanner</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Barcodes</span>
+</button>
+</div>
+</div>
+<!-- Dense Data Table Container -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant/10">
+<th class="px-6 py-4 text-[11px] font-extrabold uppercase tracking-widest text-on-surface-variant">Product Name</th>
+<th class="px-6 py-4 text-[11px] font-extrabold uppercase tracking-widest text-on-surface-variant">SKU/Barcode</th>
+<th class="px-6 py-4 text-[11px] font-extrabold uppercase tracking-widest text-on-surface-variant">Category</th>
+<th class="px-6 py-4 text-[11px] font-extrabold uppercase tracking-widest text-on-surface-variant">Price (₦)</th>
+<th class="px-6 py-4 text-[11px] font-extrabold uppercase tracking-widest text-on-surface-variant">Stock Level</th>
+<th class="px-6 py-4 text-[11px] font-extrabold uppercase tracking-widest text-on-surface-variant">Status</th>
+<th class="px-6 py-4 text-right"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0">
+<img alt="Product" class="w-full h-full object-cover" data-alt="professional product photography of high-end studio headphones on a minimalist grey background with soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9XHkJ_8ovjW7MF2KUGF_Q4-c1caPr7SXC0echNIFIXu2ZyxJm8HDoNuhttlD1ysQAcsU4xd8rp82VOOUpI8ZzGWOc9okfvsie9WWlBxefM1XhUNbOk6ZiY1x0lUuiQdqR_9VTOaxENUhneh3AqnFomBZwMuetMZ0aIYJnl92d1EV0SHwxV8BL5RbL2jO22rohGxpn9vqULbP2LiRt8E4GESkpwHOOaC7SIcr4AeFM-Mf4RIMckwW3PJWm1qHQ6q-xRCxXUGR5XBOw"/>
+</div>
+<span class="font-bold text-sm text-on-surface">Studio Wireless Headphones</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-on-surface-variant">7291044321</td>
+<td class="px-6 py-4"><span class="px-3 py-1 bg-surface-container-highest text-on-tertiary-fixed-variant rounded-full text-[10px] font-extrabold uppercase">Electronics</span></td>
+<td class="px-6 py-4 font-manrope font-bold text-sm">₦125,000.00</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-16 h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="w-4/5 h-full bg-emerald-500"></div>
+</div>
+<span class="text-xs font-bold text-on-surface">42 Units</span>
+</div>
+</td>
+<td class="px-6 py-4"><span class="inline-flex items-center gap-1.5 text-[10px] font-bold text-emerald-600 uppercase"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Active</span></td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-slate-400 hover:text-on-surface group-hover:opacity-100 opacity-0 transition-all">more_vert</button>
+</td>
+</tr>
+<!-- Row 2 (Low Stock Warning) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0">
+<img alt="Product" class="w-full h-full object-cover" data-alt="minimalist aesthetic product shot of a luxury white wristwatch on a soft textured fabric background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwz0EeJ1uqNH1WZrRg-QuGF-nVggEfF5QcBNS2m4agNY_XVuINXtXRHr65QS2qQAft0fR-89jxoyh68gZUGpmg_fqK4HrfgzI-5CWmy7bgR0ZYDbKkiCQ5Vlvqyt7rHJfYm53ODGytOvWelRp29OIO4MZXpwUZELn3BQlElJr5kyDDR40XltZgMr0KmoxIenSZ1Zu2NuuQgLuB87Sf3_89N6Eamz_DqLqObIlFxa7A1akewP9qKVXmPyp7JWCONHn6ir7Y48QdCZUb"/>
+</div>
+<span class="font-bold text-sm text-on-surface">Classic Chrono Watch</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-on-surface-variant">8820193420</td>
+<td class="px-6 py-4"><span class="px-3 py-1 bg-surface-container-highest text-on-tertiary-fixed-variant rounded-full text-[10px] font-extrabold uppercase">Accessories</span></td>
+<td class="px-6 py-4 font-manrope font-bold text-sm">₦45,500.00</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-16 h-2 bg-error-container rounded-full overflow-hidden">
+<div class="w-1/5 h-full bg-error"></div>
+</div>
+<span class="text-xs font-bold text-error">3 Units</span>
+</div>
+</td>
+<td class="px-6 py-4"><span class="inline-flex items-center gap-1.5 text-[10px] font-bold text-error uppercase"><span class="w-1.5 h-1.5 rounded-full bg-error"></span> Low Stock</span></td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-slate-400 hover:text-on-surface group-hover:opacity-100 opacity-0 transition-all">more_vert</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0">
+<img alt="Product" class="w-full h-full object-cover" data-alt="vibrant studio lighting photography of a red sport running shoe against a dark shadowy background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACS4spJzfeZovwngwmGuLz6GCcIO7BwnWaLBTO7oEcynzu0WCUxCphbWZn-gfqpm6dyB6h1k5S3HOBDuQSV6XHMTaC2qHgQYa14xO54t-AhHlWz-YPoy5GdRxvETEWDCou59EJTJICwQMS1wOYRha8o4ho3n-BUTYehbYWcaLyXojDQig2BeyuAU4QjzN1148cMnu1LgtnqSvFJASdkpWdlxSHMj3gGsASj0CLjhiyLCXrjmBpOc3IyU1EFC3u4p4Sx8BdU84pGX5-"/>
+</div>
+<span class="font-bold text-sm text-on-surface">HyperDrive Running Shoes</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-on-surface-variant">4102933182</td>
+<td class="px-6 py-4"><span class="px-3 py-1 bg-surface-container-highest text-on-tertiary-fixed-variant rounded-full text-[10px] font-extrabold uppercase">Footwear</span></td>
+<td class="px-6 py-4 font-manrope font-bold text-sm">₦62,000.00</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-16 h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="w-2/3 h-full bg-emerald-500"></div>
+</div>
+<span class="text-xs font-bold text-on-surface">112 Units</span>
+</div>
+</td>
+<td class="px-6 py-4"><span class="inline-flex items-center gap-1.5 text-[10px] font-bold text-emerald-600 uppercase"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Active</span></td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-slate-400 hover:text-on-surface group-hover:opacity-100 opacity-0 transition-all">more_vert</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0">
+<img alt="Product" class="w-full h-full object-cover" data-alt="clean ecommerce shot of essential skincare products in glass bottles arranged on a white stone slab" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDquLpe6msMQ8feDqG0c1BVVFLFXzNgTV-R7_X0vUY-UHXihInbl2KoDw9rms0Fuhp8SvyJuXX1m-iEa66unVfjiA70PR_8NMdi7TEYu17w1ZSKCPrAHy7sp0TliOopND6hczs32eXIDfocDGMlF6FkMnOv7yenn7PL10WtZIgLb2ZrrU41OGrTnthpzhbWp1uKpbS4r0oXLYmj8FqzwnF4WQFfhd3mPfkdvOY8tReBOo5G4Bkyd80eaoaem_uVMk63atUS5zf_730S"/>
+</div>
+<span class="font-bold text-sm text-on-surface">Organic Face Serum</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-on-surface-variant">9002341105</td>
+<td class="px-6 py-4"><span class="px-3 py-1 bg-surface-container-highest text-on-tertiary-fixed-variant rounded-full text-[10px] font-extrabold uppercase">Personal Care</span></td>
+<td class="px-6 py-4 font-manrope font-bold text-sm">₦12,800.00</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-16 h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="w-full h-full bg-emerald-500"></div>
+</div>
+<span class="text-xs font-bold text-on-surface">256 Units</span>
+</div>
+</td>
+<td class="px-6 py-4"><span class="inline-flex items-center gap-1.5 text-[10px] font-bold text-emerald-600 uppercase"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Active</span></td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-slate-400 hover:text-on-surface group-hover:opacity-100 opacity-0 transition-all">more_vert</button>
+</td>
+</tr>
+<!-- Row 5 (Out of Stock) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0">
+<img alt="Product" class="w-full h-full object-cover" data-alt="high-tech gaming mouse with rgb lighting on a dark desk with purple ambient neon glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrrxKVxw_Wj5cbA_YbhKPm2qbYP21rgTNvmKCMbWfSmYvpvONRoQAfC6Xesa0TcyhgReugso6NBjKxXsGbA606MWPqaeDCi-N_FTvxXSG4n058coAh5ddb68QBxv5S1hZg9igdNBk6utQXAEAAsA1k_Lb9uikWpOvFPfdlE-WS2GmLiTdrLu3pz5VOU6JC13PAsGSygDCIe2y87k_J9719awHPpO7canPL4P8JQUOVYUWDHJRbIYSK6RONLshHkNd92a-TrTlRV7c1"/>
+</div>
+<span class="font-bold text-sm text-on-surface">Pro Gaming Mouse</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-on-surface-variant">6650912384</td>
+<td class="px-6 py-4"><span class="px-3 py-1 bg-surface-container-highest text-on-tertiary-fixed-variant rounded-full text-[10px] font-extrabold uppercase">Electronics</span></td>
+<td class="px-6 py-4 font-manrope font-bold text-sm">₦18,000.00</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-16 h-2 bg-slate-200 rounded-full overflow-hidden">
+<div class="w-0 h-full bg-error"></div>
+</div>
+<span class="text-xs font-bold text-outline">0 Units</span>
+</div>
+</td>
+<td class="px-6 py-4"><span class="inline-flex items-center gap-1.5 text-[10px] font-bold text-outline uppercase"><span class="w-1.5 h-1.5 rounded-full bg-outline"></span> Out of Stock</span></td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-slate-400 hover:text-on-surface group-hover:opacity-100 opacity-0 transition-all">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Table Pagination & Footer -->
+<div class="px-6 py-4 bg-surface-container-low/30 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="text-xs font-medium text-on-surface-variant">Showing 1 to 5 of 2,481 products</span>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-lg hover:bg-white transition-all text-on-surface disabled:opacity-30">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-white text-xs font-bold">1</button>
+<button class="w-8 h-8 rounded-lg hover:bg-white text-on-surface text-xs font-bold transition-all">2</button>
+<button class="w-8 h-8 rounded-lg hover:bg-white text-on-surface text-xs font-bold transition-all">3</button>
+<span class="text-xs">...</span>
+<button class="w-8 h-8 rounded-lg hover:bg-white text-on-surface text-xs font-bold transition-all">496</button>
+<button class="p-2 rounded-lg hover:bg-white transition-all text-on-surface">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Floatting Contextual Analytics Card (Bento Style) -->
+<div class="grid grid-cols-3 gap-6 mt-8">
+<div class="bg-surface-container-high/50 backdrop-blur-sm p-6 rounded-2xl border border-white/40">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-secondary bg-white p-2 rounded-xl shadow-sm">inventory</span>
+<span class="text-[10px] font-extrabold text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded">+12%</span>
+</div>
+<p class="text-[11px] font-extrabold uppercase tracking-widest text-on-surface-variant mb-1">Total Inventory Value</p>
+<h3 class="text-2xl font-black font-manrope">₦42.8M</h3>
+</div>
+<div class="bg-error-container/20 p-6 rounded-2xl border border-error/5">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-error bg-white p-2 rounded-xl shadow-sm">warning</span>
+<span class="text-[10px] font-extrabold text-error bg-error/10 px-2 py-0.5 rounded">High Alert</span>
+</div>
+<p class="text-[11px] font-extrabold uppercase tracking-widest text-on-surface-variant mb-1">Low Stock Alerts</p>
+<h3 class="text-2xl font-black font-manrope">24 SKU</h3>
+</div>
+<div class="bg-emerald-500/5 p-6 rounded-2xl border border-emerald-500/10">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-emerald-600 bg-white p-2 rounded-xl shadow-sm">move_to_inbox</span>
+<span class="text-[10px] font-extrabold text-on-surface-variant bg-white px-2 py-0.5 rounded">Today</span>
+</div>
+<p class="text-[11px] font-extrabold uppercase tracking-widest text-on-surface-variant mb-1">Incoming Restocks</p>
+<h3 class="text-2xl font-black font-manrope">12 Shipments</h3>
+</div>
+</div>
+</main>
+</body></html>
