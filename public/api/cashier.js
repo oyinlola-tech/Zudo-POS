@@ -21,8 +21,8 @@
     endShift(data) { return api.post('/shift/end', data) },
     getShiftHistory() { return api.get('/shift/history') },
 
-    processReturn(data) { return api.post('/auth/returns', data) },
-    getReturns(params) { return api.get(`/auth/returns?${new URLSearchParams(params || {})}`) },
+    processReturn(data) { return api.post('/returns', data) },
+    getReturns(params) { return api.get(`/returns?${new URLSearchParams(params || {})}`) },
 
     getProfile() { return api.get('/auth/profile') },
   }

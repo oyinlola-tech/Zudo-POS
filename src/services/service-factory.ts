@@ -19,6 +19,8 @@ import { CreateCustomerCommand, UpdateCustomerCommand, ListCustomersQuery, GetCu
 import { CreateStaffCommand, UpdateStaffCommand, ListStaffQuery, GetStaffQuery } from './staff/index.js'
 import { DashboardQuery, BranchPerformanceQuery } from './analytics/index.js'
 import { GetSettingsQuery, GetBranchesQuery, GetLoyaltyConfigQuery, GetLoyaltyActivityQuery, UpdateSettingsCommand } from './settings/index.js'
+import { ProcessReturnCommand, ListReturnsQuery } from './returns/index.js'
+import { ListBusinessesQuery, GetBusinessQuery, GetRevenueStatsQuery, UpdateBusinessCommand } from './admin/index.js'
 
 export const authService = {
   commands: {
@@ -126,5 +128,25 @@ export const settingsService = {
     getBranches: new GetBranchesQuery(),
     getLoyaltyConfig: new GetLoyaltyConfigQuery(),
     getLoyaltyActivity: new GetLoyaltyActivityQuery(),
+  },
+}
+
+export const returnsService = {
+  commands: {
+    processReturn: new ProcessReturnCommand(),
+  },
+  queries: {
+    listReturns: new ListReturnsQuery(),
+  },
+}
+
+export const adminService = {
+  commands: {
+    updateBusiness: new UpdateBusinessCommand(),
+  },
+  queries: {
+    listBusinesses: new ListBusinessesQuery(),
+    getBusiness: new GetBusinessQuery(),
+    revenueStats: new GetRevenueStatsQuery(),
   },
 }

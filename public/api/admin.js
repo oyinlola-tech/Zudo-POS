@@ -45,5 +45,8 @@
     updateSettings(data) { return api.put('/settings', data) },
 
     getAuditLogs(params) { return api.get(`/settings/loyalty/activity?${new URLSearchParams(params || {})}`) },
+
+    processReturn(data) { return api.post('/returns', data) },
+    getReturns(params) { return api.get(`/returns?${new URLSearchParams(params || {})}`) },
   }
 })()
