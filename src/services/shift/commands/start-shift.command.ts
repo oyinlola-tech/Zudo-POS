@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs'
 import { shiftRepository } from '../../../repositories/shift.repository.js'
 import { userRepository } from '../../../repositories/user.repository.js'
 import { createAuditLog } from '../../../models/AdminAuditLog.model.js'
+import { sendBusinessEmail, shiftNotificationTemplate } from '../../../jobs/email-template.util.js'
 import type { ICommand } from '../../../interfaces/service.interface.js'
 
 export type StartShiftInput = {
@@ -36,6 +37,19 @@ export class StartShiftCommand
       action: 'SHIFT_START',
       entityId: shift.id,
     })
+
+    if (user.email) {
+      try {
+        const html = shiftNotificationTemplate(user.firstName, 'started', { startCash: input.startCash })
+        await sendBusinessEmail({
+          to: user.email,
+          subject: 'Shift started 🚀',
+          text: `Hi ${user.firstName}, your shift has started with ₦${input.startCash.toLocaleString()} starting cash.`,
+          html,
+          businessId: input.businessId,
+        })
+      } catch { /* email failure ok */ }
+    }
 
     return { message: 'Shift started successfully', shiftId: shift.id }
   }
