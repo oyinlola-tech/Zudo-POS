@@ -120,6 +120,7 @@
   <body class="bg-surface text-on-surface h-screen flex overflow-hidden">
     <!-- SideNavBar Component -->
     <div data-component="cashier-sidebar"></div>
+    <div id="app">
     <!-- Main Workspace -->
     <main class="ml-64 flex flex-col flex-1 h-full">
       <!-- TopNavBar Component -->
@@ -405,7 +406,9 @@
         </div>
       </div>
     </div>
+    </div>
     <script src="/js/components.js"></script>
+    <script src="/js/router.js"></script>
     <script>
     window.__pageInit = {
       async fetch() {

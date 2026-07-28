@@ -112,8 +112,9 @@
     </script>
   </head>
   <body class="bg-surface text-on-surface">
-    <!-- SideNavBar (Authority Source: JSON) -->
+    <!-- SideNavBar -->
     <div data-component="admin-sidebar"></div>
+    <div id="app">
     <!-- TopNavBar (Authority Source: JSON) -->
     <header
       class="flex justify-between items-center px-8 h-16 ml-72 w-[calc(100%-18rem)] docked full-width top-0 sticky z-40 bg-[#f8f9ff]/80 dark:bg-[#f8f9ff]/80 backdrop-blur-md"
@@ -499,6 +500,7 @@
         </div>
       </div>
     </main>
+    </div>
     <!-- FAB for Quick Start -->
     <div class="fixed bottom-8 right-8 z-50">
       <button
@@ -512,6 +514,7 @@
     </div>
 
     <script src="/js/components.js"></script>
+    <script src="/js/router.js"></script>
     <script>
     window.__pageInit = { fetch: AdminAPI.getOverview }
     </script>

@@ -31,6 +31,7 @@
   </head>
   <body class="bg-surface text-on-surface">
     <div data-component="superadmin-sidebar"></div>
+    <div id="app">
     <header class="flex justify-between items-center px-8 h-16 ml-72 w-[calc(100%-18rem)] sticky top-0 z-40 bg-[#f8f9ff]/80 backdrop-blur-md border-b border-outline-variant/20">
       <div class="flex items-center gap-4">
         <div class="relative w-80">
@@ -128,7 +129,9 @@
         </div>
       </div>
     </main>
+    </div>
     <script src="/js/components.js"></script>
+    <script src="/js/router.js"></script>
     <script>
       window.__pageInit = {
         fetch: SuperAdminAPI.getOverview,

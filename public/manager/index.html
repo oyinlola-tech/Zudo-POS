@@ -112,6 +112,7 @@
   <body class="bg-background text-on-background selection:bg-secondary-container selection:text-on-secondary-container">
     <!-- Sidebar Navigation -->
     <div data-component="manager-sidebar"></div>
+    <div id="app">
     <!-- Main Content Canvas -->
     <main class="pl-64 min-h-screen">
       <!-- TopAppBar -->
@@ -435,7 +436,9 @@
         </div>
       </div>
     </main>
+    </div>
     <script src="/js/components.js"></script>
+    <script src="/js/router.js"></script>
     <script>
     window.__pageInit = { fetch: ManagerAPI.getOverview }
     </script>

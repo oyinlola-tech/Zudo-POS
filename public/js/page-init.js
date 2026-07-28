@@ -1,10 +1,10 @@
 ;(async function () {
-  const init = window.__pageInit
-  if (!init) return
+  async function initPage() {
+    const init = window.__pageInit
+    if (!init) return
 
-  const appEl = document.getElementById('app') || document.querySelector('main') || document.body
+    const appEl = document.getElementById('app') || document.querySelector('main') || document.body
 
-  async function populate() {
     try {
       if (typeof init.fetch === 'function') {
         const data = await init.fetch()
@@ -20,8 +20,9 @@
     }
   }
 
-  // Wait for components to load first
-  document.addEventListener('components-loaded', populate, { once: true })
-  // Fallback: if components already loaded
-  setTimeout(populate, 500)
+  document.addEventListener('components-loaded', initPage, { once: true })
+  document.addEventListener('router-navigated', () => {
+    setTimeout(initPage, 100)
+  })
+  setTimeout(initPage, 500)
 })()
