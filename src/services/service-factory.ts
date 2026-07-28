@@ -22,6 +22,7 @@ import { GetSettingsQuery, GetBranchesQuery, GetLoyaltyConfigQuery, GetLoyaltyAc
 import { ProcessReturnCommand, ListReturnsQuery } from './returns/index.js'
 import { ListBusinessesQuery, GetBusinessQuery, GetRevenueStatsQuery, UpdateBusinessCommand } from './admin/index.js'
 import { ListAuditLogsQuery } from './audit-log/index.js'
+import { ListRolesQuery, CreateRoleCommand } from './roles/index.js'
 
 export const authService = {
   commands: {
@@ -155,5 +156,14 @@ export const adminService = {
 export const auditLogService = {
   queries: {
     list: new ListAuditLogsQuery(),
+  },
+}
+
+export const rolesService = {
+  commands: {
+    create: new CreateRoleCommand(),
+  },
+  queries: {
+    list: new ListRolesQuery(),
   },
 }
