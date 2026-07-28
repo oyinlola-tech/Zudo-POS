@@ -2,6 +2,7 @@ import crypto from 'crypto'
 import { OTP_EXPIRY_MINUTES } from '../../../constants/index.js'
 import { otpRepository } from '../../../repositories/otp.repository.js'
 import { mailService } from '../../index.js'
+import { getDb } from '../../../databases/index.js'
 import type { ICommand } from '../../../interfaces/service.interface.js'
 
 export type SendOtpInput = {
@@ -24,10 +25,17 @@ export class SendOtpCommand implements ICommand<SendOtpInput, { message: string 
       expiresAt,
     })
 
+    let businessName: string | undefined
+    try {
+      const user = await getDb().user.findUnique({ where: { id: input.userId }, include: { business: true } })
+      if (user?.business) businessName = user.business.name
+    } catch {}
+
     await mailService.commands.sendOtpMail.execute({
       to: input.email,
       code,
       type: input.type,
+      businessName,
     })
 
     return { message: 'OTP sent successfully' }

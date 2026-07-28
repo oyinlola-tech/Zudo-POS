@@ -1,6 +1,6 @@
 import { saleRepository } from '../../../repositories/index.js'
 import { createAuditLog } from '../../../models/AdminAuditLog.model.js'
-import { sendEmail } from '../../../jobs/email.job.js'
+import { sendBusinessEmail } from '../../../jobs/email-template.util.js'
 import { getDb } from '../../../databases/index.js'
 import type { ICommand } from '../../../interfaces/index.js'
 
@@ -35,25 +35,21 @@ export class CreateSaleCommand implements ICommand<CreateSaleInput, Record<strin
         if (customer?.email) {
           const pointsEarned = Math.floor(data.total / 100)
           const html = `
-            <div style="font-family: sans-serif; max-width: 520px; margin: 0 auto;">
-              <h2 style="color: #1b6d24;">Zudo POS</h2>
-              <p>Hi ${customer.firstName},</p>
-              <p>Thank you for your purchase of <strong>₦${data.total.toLocaleString()}</strong>!</p>
-              <div style="background: #f0fdf4; padding: 16px; border-radius: 8px; text-align: center; margin: 16px 0;">
-                <p style="margin: 0; color: #666; font-size: 14px;">Points Earned</p>
-                <p style="margin: 0; font-size: 36px; font-weight: bold; color: #1b6d24;">+${pointsEarned}</p>
-                <p style="margin: 0; color: #666; font-size: 14px;">Total Balance: <strong>${(customer.points + pointsEarned).toLocaleString()}</strong></p>
-              </div>
-              <p style="color: #666; font-size: 14px;">Receipt Ref: ${sale.reference}</p>
-              <hr style="border: none; border-top: 1px solid #eee;" />
-              <p style="color: #999; font-size: 12px;">— Zudo POS Team</p>
+            <p style="color: #374151; font-size: 15px; margin: 0 0 8px;">Hi <strong>${customer.firstName}</strong>,</p>
+            <p style="color: #374151; font-size: 15px; margin: 0 0 16px;">Thank you for your purchase of <strong style="color: #1b6d24;">₦${data.total.toLocaleString()}</strong>!</p>
+            <div style="background: #f0fdf4; padding: 16px; border-radius: 8px; text-align: center; margin: 0 0 16px;">
+              <p style="margin: 0; color: #6b7280; font-size: 14px;">Points Earned</p>
+              <p style="margin: 0; font-size: 36px; font-weight: bold; color: #1b6d24;">+${pointsEarned}</p>
+              <p style="margin: 0; color: #6b7280; font-size: 14px;">Total Balance: <strong>${(customer.points + pointsEarned).toLocaleString()}</strong></p>
             </div>
+            <p style="color: #6b7280; font-size: 14px; margin: 0;">Receipt Ref: ${sale.reference}</p>
           `
-          await sendEmail({
+          await sendBusinessEmail({
             to: customer.email,
-            subject: 'You earned points! — Zudo POS',
+            subject: 'You earned points!',
             text: `Hi ${customer.firstName}, thank you for your purchase of ₦${data.total.toLocaleString()}! You earned ${pointsEarned} points. Total balance: ${(customer.points + pointsEarned).toLocaleString()}. Receipt: ${sale.reference}`,
             html,
+            businessId: data.businessId,
           })
         }
       } catch {
