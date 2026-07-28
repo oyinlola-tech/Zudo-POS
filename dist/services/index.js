@@ -1,2 +1,2 @@
-export { authService, billingService, cryptoService, mailService, shiftService, productService, saleService, customerService, } from './service-factory.js';
+export { authService, billingService, cryptoService, mailService, shiftService, productService, saleService, customerService, staffService, } from './service-factory.js';
 //# sourceMappingURL=index.js.map

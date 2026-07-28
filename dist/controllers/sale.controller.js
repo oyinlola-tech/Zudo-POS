@@ -15,6 +15,7 @@ export async function createSaleHandler(request, reply) {
         tax: body['tax'],
         paymentMethod: body['paymentMethod'],
         notes: body['notes'],
+        customerId: body['customerId'],
         shiftId: body['shiftId'],
         ip: request.ip,
         userAgent: request.headers['user-agent'],

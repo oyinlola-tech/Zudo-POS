@@ -16,10 +16,10 @@
 
     getPOSessions(params) { return api.get(`/shift/history?${new URLSearchParams(params || {})}`) },
 
-    getStaff(params) { return api.get(`/auth/staff?${new URLSearchParams(params || {})}`) },
-    getStaffMember(id) { return api.get(`/auth/staff/${id}`) },
-    createStaff(data) { return api.post('/auth/staff', data) },
-    updateStaff(id, data) { return api.put(`/auth/staff/${id}`, data) },
+    getStaff(params) { return api.get(`/staff?${new URLSearchParams(params || {})}`) },
+    getStaffMember(id) { return api.get(`/staff/${id}`) },
+    createStaff(data) { return api.post('/staff', data) },
+    updateStaff(id, data) { return api.put(`/staff/${id}`, data) },
     getRoles() { return api.get('/auth/roles') },
     createRole(data) { return api.post('/auth/roles', data) },
 

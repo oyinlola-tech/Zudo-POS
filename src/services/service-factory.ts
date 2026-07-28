@@ -16,6 +16,7 @@ import { StartShiftCommand, EndShiftCommand, GetActiveShiftQuery, GetShiftHistor
 import { CreateProductCommand, UpdateProductCommand, DeleteProductCommand, ListProductsQuery, GetProductQuery, SearchProductsQuery, GetInventoryStatsQuery } from './product/index.js'
 import { CreateSaleCommand, VoidSaleCommand, ListSalesQuery, GetSaleQuery, GetSaleStatsQuery } from './sale/index.js'
 import { CreateCustomerCommand, UpdateCustomerCommand, ListCustomersQuery, GetCustomerQuery, CustomerStatsQuery } from './customer/index.js'
+import { CreateStaffCommand, UpdateStaffCommand, ListStaffQuery, GetStaffQuery } from './staff/index.js'
 
 export const authService = {
   commands: {
@@ -93,5 +94,16 @@ export const customerService = {
     list: new ListCustomersQuery(),
     get: new GetCustomerQuery(),
     stats: new CustomerStatsQuery(),
+  },
+}
+
+export const staffService = {
+  commands: {
+    create: new CreateStaffCommand(),
+    update: new UpdateStaffCommand(),
+  },
+  queries: {
+    list: new ListStaffQuery(),
+    get: new GetStaffQuery(),
   },
 }

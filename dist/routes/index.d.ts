@@ -6,4 +6,5 @@ export { registerPublicRoutes } from './public.route.js';
 export { registerProductRoutes } from './product.route.js';
 export { registerSaleRoutes } from './sale.route.js';
 export { registerCustomerRoutes } from './customer.route.js';
+export { registerStaffRoutes } from './staff.route.js';
 //# sourceMappingURL=index.d.ts.map

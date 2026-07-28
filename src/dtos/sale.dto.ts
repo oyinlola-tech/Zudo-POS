@@ -1,6 +1,6 @@
 export type CreateSaleRequest = {
   subtotal: number; total: number; discount?: number; tax?: number
-  paymentMethod?: string; notes?: string; shiftId?: string
+  paymentMethod?: string; notes?: string; shiftId?: string; customerId?: string
   items: Array<{ productId: string; quantity: number; unitPrice: number; total: number }>
 }
 

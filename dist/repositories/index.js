@@ -5,4 +5,5 @@ export { cryptoRepository } from './crypto.repository.js';
 export { productRepository } from './product.repository.js';
 export { saleRepository } from './sale.repository.js';
 export { customerRepository } from './customer.repository.js';
+export { staffRepository } from './staff.repository.js';
 //# sourceMappingURL=index.js.map

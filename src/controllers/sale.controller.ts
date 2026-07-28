@@ -15,6 +15,7 @@ export async function createSaleHandler(request: FastifyRequest, reply: FastifyR
     tax: body['tax'] as number | undefined,
     paymentMethod: body['paymentMethod'] as string | undefined,
     notes: body['notes'] as string | undefined,
+    customerId: body['customerId'] as string | undefined,
     shiftId: body['shiftId'] as string | undefined,
     ip: request.ip,
     userAgent: request.headers['user-agent'],

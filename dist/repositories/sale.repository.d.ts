@@ -3,6 +3,7 @@ export declare const saleRepository: {
         businessId: string;
         userId: string;
         shiftId?: string;
+        customerId?: string;
         subtotal: number;
         discount?: number;
         tax?: number;

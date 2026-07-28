@@ -6,6 +6,7 @@ export type CreateSaleRequest = {
     paymentMethod?: string;
     notes?: string;
     shiftId?: string;
+    customerId?: string;
     items: Array<{
         productId: string;
         quantity: number;

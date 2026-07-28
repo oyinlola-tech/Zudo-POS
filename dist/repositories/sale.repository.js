@@ -9,6 +9,7 @@ export const saleRepository = {
                     businessId: data.businessId,
                     userId: data.userId,
                     shiftId: data.shiftId,
+                    customerId: data.customerId,
                     reference,
                     subtotal: data.subtotal,
                     discount: data.discount ?? 0,
@@ -31,6 +32,22 @@ export const saleRepository = {
                 await tx.product.update({
                     where: { id: item.productId },
                     data: { stock: { decrement: item.quantity } },
+                });
+            }
+            if (data.customerId) {
+                const pointsEarned = Math.floor(data.total / 100);
+                const customer = await tx.customer.findUnique({ where: { id: data.customerId } });
+                const totalPoints = (customer?.points ?? 0) + pointsEarned;
+                const tier = totalPoints >= 1000 ? 'PLATINUM' : totalPoints >= 500 ? 'GOLD' : totalPoints >= 100 ? 'SILVER' : 'BRONZE';
+                await tx.customer.update({
+                    where: { id: data.customerId },
+                    data: {
+                        totalSpent: { increment: data.total },
+                        visitCount: { increment: 1 },
+                        lastVisit: new Date(),
+                        points: { increment: pointsEarned },
+                        loyaltyTier: tier,
+                    },
                 });
             }
             return sale;

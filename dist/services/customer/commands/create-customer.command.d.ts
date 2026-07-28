@@ -23,6 +23,8 @@ export declare class CreateCustomerCommand implements ICommand<CreateCustomerInp
         totalSpent: number;
         visitCount: number;
         lastVisit: Date | null;
+        points: number;
+        loyaltyTier: string;
         notes: string | null;
         isActive: boolean;
         createdAt: Date;

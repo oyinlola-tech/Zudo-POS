@@ -15,6 +15,8 @@ export declare const customerRepository: {
             totalSpent: number;
             visitCount: number;
             lastVisit: Date | null;
+            points: number;
+            loyaltyTier: string;
             notes: string | null;
             isActive: boolean;
             createdAt: Date;
@@ -35,6 +37,8 @@ export declare const customerRepository: {
         totalSpent: number;
         visitCount: number;
         lastVisit: Date | null;
+        points: number;
+        loyaltyTier: string;
         notes: string | null;
         isActive: boolean;
         createdAt: Date;
@@ -51,6 +55,8 @@ export declare const customerRepository: {
         totalSpent: number;
         visitCount: number;
         lastVisit: Date | null;
+        points: number;
+        loyaltyTier: string;
         notes: string | null;
         isActive: boolean;
         createdAt: Date;
@@ -75,6 +81,8 @@ export declare const customerRepository: {
         totalSpent: number;
         visitCount: number;
         lastVisit: Date | null;
+        points: number;
+        loyaltyTier: string;
         notes: string | null;
         isActive: boolean;
         createdAt: Date;
@@ -91,6 +99,8 @@ export declare const customerRepository: {
         totalSpent: number;
         visitCount: number;
         lastVisit: Date | null;
+        points: number;
+        loyaltyTier: string;
         notes: string | null;
         isActive: boolean;
         createdAt: Date;
@@ -107,6 +117,8 @@ export declare const customerRepository: {
         totalSpent: number;
         visitCount: number;
         lastVisit: Date | null;
+        points: number;
+        loyaltyTier: string;
         notes: string | null;
         isActive: boolean;
         createdAt: Date;
