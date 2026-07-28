@@ -17,6 +17,8 @@ import { CreateProductCommand, UpdateProductCommand, DeleteProductCommand, ListP
 import { CreateSaleCommand, VoidSaleCommand, ListSalesQuery, GetSaleQuery, GetSaleStatsQuery } from './sale/index.js'
 import { CreateCustomerCommand, UpdateCustomerCommand, ListCustomersQuery, GetCustomerQuery, CustomerStatsQuery } from './customer/index.js'
 import { CreateStaffCommand, UpdateStaffCommand, ListStaffQuery, GetStaffQuery } from './staff/index.js'
+import { DashboardQuery, BranchPerformanceQuery } from './analytics/index.js'
+import { GetSettingsQuery, GetBranchesQuery, GetLoyaltyConfigQuery, GetLoyaltyActivityQuery, UpdateSettingsCommand } from './settings/index.js'
 
 export const authService = {
   commands: {
@@ -105,5 +107,24 @@ export const staffService = {
   queries: {
     list: new ListStaffQuery(),
     get: new GetStaffQuery(),
+  },
+}
+
+export const analyticsService = {
+  queries: {
+    dashboard: new DashboardQuery(),
+    branchPerformance: new BranchPerformanceQuery(),
+  },
+}
+
+export const settingsService = {
+  commands: {
+    updateSettings: new UpdateSettingsCommand(),
+  },
+  queries: {
+    getSettings: new GetSettingsQuery(),
+    getBranches: new GetBranchesQuery(),
+    getLoyaltyConfig: new GetLoyaltyConfigQuery(),
+    getLoyaltyActivity: new GetLoyaltyActivityQuery(),
   },
 }

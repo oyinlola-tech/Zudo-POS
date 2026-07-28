@@ -28,22 +28,22 @@
     createCustomer(data) { return api.post('/customers', data) },
     getCustomerStats() { return api.get('/customers/stats') },
 
-    getLoyaltyConfig() { return api.get('/auth/loyalty/config') },
-    updateLoyaltyConfig(data) { return api.put('/auth/loyalty/config', data) },
-    getLoyaltyActivity() { return api.get('/auth/loyalty/activity') },
+    getLoyaltyConfig() { return api.get('/settings/loyalty/config') },
+    updateLoyaltyConfig(data) { return api.put('/settings/loyalty/config', data) },
+    getLoyaltyActivity() { return api.get('/settings/loyalty/activity') },
 
-    getAnalytics() { return api.get('/auth/analytics') },
-    getBranchPerformance() { return api.get('/auth/analytics/branches') },
-    getTopProducts() { return api.get('/auth/analytics/top-products') },
+    getAnalytics() { return api.get('/analytics') },
+    getBranchPerformance() { return api.get('/analytics/branches') },
+    getTopProducts() { return api.get('/analytics') },
 
-    getBranches() { return api.get('/auth/branches') },
-    getBranch(id) { return api.get(`/auth/branches/${id}`) },
-    createBranch(data) { return api.post('/auth/branches', data) },
-    updateBranch(id, data) { return api.put(`/auth/branches/${id}`, data) },
+    getBranches() { return api.get('/settings/branches') },
+    getBranch(id) { return api.get(`/settings/branches/${id}`) },
+    createBranch(data) { return api.post('/settings/branches', data) },
+    updateBranch(id, data) { return api.put(`/settings/branches/${id}`, data) },
 
-    getSettings() { return api.get('/auth/settings') },
-    updateSettings(data) { return api.put('/auth/settings', data) },
+    getSettings() { return api.get('/settings') },
+    updateSettings(data) { return api.put('/settings', data) },
 
-    getAuditLogs(params) { return api.get(`/auth/audit-logs?${new URLSearchParams(params || {})}`) },
+    getAuditLogs(params) { return api.get(`/settings/loyalty/activity?${new URLSearchParams(params || {})}`) },
   }
 })()
