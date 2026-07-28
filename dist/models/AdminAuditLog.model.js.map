@@ -1,0 +1,1 @@
+{"version":3,"file":"AdminAuditLog.model.js","sourceRoot":"","sources":["../../src/models/AdminAuditLog.model.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,EAAE,MAAM,uBAAuB,CAAA;AAwB7C,MAAM,CAAC,KAAK,UAAU,cAAc,CAAC,IAQpC;IACC,OAAO,KAAK,EAAE,CAAC,QAAQ,CAAC,MAAM,CAAC,EAAE,IAAI,EAAE,CAAC,CAAA;AAC1C,CAAC"}

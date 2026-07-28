@@ -1,0 +1,1 @@
+export { cache, MemoryCache } from './memory-cache.js'

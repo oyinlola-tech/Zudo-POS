@@ -1,0 +1,1 @@
+{"version":3,"file":"get-product.query.js","sourceRoot":"","sources":["../../../../src/services/product/queries/get-product.query.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,iBAAiB,EAAE,MAAM,gCAAgC,CAAA;AAKlE,MAAM,OAAO,eAAe;IAC1B,KAAK,CAAC,OAAO,CAAC,KAAsB;QAClC,OAAO,iBAAiB,CAAC,QAAQ,CAAC,KAAK,CAAC,EAAE,CAAC,CAAA;IAC7C,CAAC;CACF"}

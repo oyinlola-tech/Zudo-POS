@@ -1,12 +1,6 @@
-/**
- * Zudo POS - Dashboard Module
- * Common functionality for all dashboard pages
- */
 
 const ZudoDashboard = {
-  /**
-   * Initialize dashboard
-   */
+
   init: function() {
     this.initSearch();
     this.initNotifications();
@@ -14,9 +8,6 @@ const ZudoDashboard = {
     this.initDatePicker();
   },
 
-  /**
-   * Initialize header search functionality
-   */
   initSearch: function() {
     const searchInput = document.querySelector('[data-search-input]');
     const searchButton = document.querySelector('[data-search-button]');
@@ -37,18 +28,11 @@ const ZudoDashboard = {
     }
   },
 
-  /**
-   * Perform search
-   */
   performSearch: function(query) {
     console.log('Searching for:', query);
-    // In a real app, this would query an API
     ZudoUtils.showToast(`Searching for "${query}"...`, 'info');
   },
 
-  /**
-   * Initialize notifications dropdown
-   */
   initNotifications: function() {
     const notifButton = document.querySelector('[data-notifications-button]');
     const notifDropdown = document.querySelector('[data-notifications-dropdown]');
@@ -67,7 +51,6 @@ const ZudoDashboard = {
       });
     }
 
-    // Mark notifications as read
     const markReadButtons = document.querySelectorAll('[data-mark-read]');
     markReadButtons.forEach(button => {
       button.addEventListener('click', function() {
@@ -80,9 +63,6 @@ const ZudoDashboard = {
     });
   },
 
-  /**
-   * Initialize user profile menu
-   */
   initUserMenu: function() {
     const userButton = document.querySelector('[data-user-menu-button]');
     const userDropdown = document.querySelector('[data-user-dropdown]');
@@ -101,7 +81,6 @@ const ZudoDashboard = {
       });
     }
 
-    // Logout handler
     const logoutButton = document.querySelector('[data-logout-button]');
     if (logoutButton) {
       logoutButton.addEventListener('click', (e) => {
@@ -112,15 +91,11 @@ const ZudoDashboard = {
     }
   },
 
-  /**
-   * Initialize date picker
-   */
   initDatePicker: function() {
     const dateButton = document.querySelector('[data-date-picker]');
     
     if (dateButton) {
       dateButton.addEventListener('click', () => {
-        // In a real app, this would open a date picker
         const today = new Date().toLocaleDateString('en-NG', {
           day: 'numeric',
           month: 'short',
@@ -131,9 +106,6 @@ const ZudoDashboard = {
     }
   },
 
-  /**
-   * Initialize data tables
-   */
   initDataTable: function(tableSelector) {
     const table = document.querySelector(tableSelector);
     if (!table) return;
@@ -142,7 +114,6 @@ const ZudoDashboard = {
     const searchInput = document.querySelector('[data-table-search]');
     const sortHeaders = table.querySelectorAll('th[data-sort]');
 
-    // Search within table
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
         const query = e.target.value.toLowerCase();
@@ -153,7 +124,6 @@ const ZudoDashboard = {
       });
     }
 
-    // Sort columns
     sortHeaders.forEach(header => {
       header.addEventListener('click', () => {
         const key = header.dataset.sort;
@@ -172,9 +142,6 @@ const ZudoDashboard = {
     });
   },
 
-  /**
-   * Initialize action buttons
-   */
   initActionButtons: function() {
     const actionButtons = document.querySelectorAll('[data-action]');
     
@@ -186,9 +153,6 @@ const ZudoDashboard = {
     });
   },
 
-  /**
-   * Handle action button clicks
-   */
   handleAction: function(action, button) {
     switch(action) {
       case 'export':
@@ -198,7 +162,6 @@ const ZudoDashboard = {
         location.reload();
         break;
       case 'filter':
-        // Toggle filter dropdown
         const filterDropdown = document.querySelector('[data-filter-dropdown]');
         if (filterDropdown) {
           filterDropdown.classList.toggle('hidden');
@@ -210,7 +173,6 @@ const ZudoDashboard = {
   }
 };
 
-// Auto-initialize
 document.addEventListener('DOMContentLoaded', () => {
   ZudoDashboard.init();
 });

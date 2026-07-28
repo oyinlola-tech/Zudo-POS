@@ -1,0 +1,101 @@
+<!doctype html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Platform Analytics - Zudo</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <style>
+      .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+      body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
+      h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: { background: '#f8f9ff', surface: '#f8f9ff', 'surface-bright': '#f8f9ff', 'surface-dim': '#ccdbf4', 'surface-container': '#e6eeff', 'surface-container-low': '#eff4ff', 'surface-container-high': '#dde9ff', 'surface-container-lowest': '#ffffff', 'surface-variant': '#d5e3fd', 'on-surface': '#0d1c2f', 'on-surface-variant': '#45474c', 'on-background': '#0d1c2f', outline: '#76777c', 'outline-variant': '#c6c6cc', primary: '#000b01', 'primary-container': '#002704', 'on-primary': '#ffffff', 'on-primary-container': '#499849', secondary: '#6f46b9', 'secondary-container': '#b188ff', 'on-secondary': '#ffffff', 'on-secondary-container': '#44118d', error: '#ba1a1a', 'error-container': '#ffdad6', 'on-error': '#ffffff', 'on-error-container': '#93000a', 'inverse-surface': '#233144', 'inverse-on-surface': '#ebf1ff', 'surface-tint': '#1b6d24', },
+            borderRadius: { DEFAULT: '0.125rem', lg: '0.25rem', xl: '0.5rem', full: '0.75rem' },
+            fontFamily: { headline: ['Manrope'], body: ['Inter'], label: ['Inter'] },
+          },
+        },
+      }
+    </script>
+    <script src="/js/api.js"></script>
+    <script src="/api/superadmin.js"></script>
+    <script src="/js/data-bind.js"></script>
+    <script src="/js/page-init.js"></script>
+  </head>
+  <body class="bg-surface text-on-surface">
+    <div data-component="superadmin-sidebar"></div>
+    <header class="flex justify-between items-center px-8 h-16 ml-72 w-[calc(100%-18rem)] sticky top-0 z-40 bg-[#f8f9ff]/80 backdrop-blur-md border-b border-outline-variant/20">
+      <div class="flex items-center gap-4">
+        <h2 class="font-headline font-bold text-lg">Platform Analytics</h2>
+      </div>
+      <select class="bg-surface-container-low rounded-lg px-3 py-2 text-sm border border-outline-variant/20 outline-none">
+        <option value="month">Last 30 days</option>
+        <option value="quarter">This quarter</option>
+        <option value="year">This year</option>
+        <option value="all">All time</option>
+      </select>
+    </header>
+    <main class="ml-72 p-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-surface-container-lowest rounded-xl shadow-sm p-6 border border-outline-variant/10">
+          <p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1">Business Growth</p>
+          <p class="text-3xl font-black font-headline" data-text="business_growth" data-format="percentage">—</p>
+          <p class="text-sm text-emerald-600 font-semibold" data-text="business_growth_label">—</p>
+        </div>
+        <div class="bg-surface-container-lowest rounded-xl shadow-sm p-6 border border-outline-variant/10">
+          <p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1">Revenue Growth</p>
+          <p class="text-3xl font-black font-headline" data-text="revenue_growth" data-format="percentage">—</p>
+          <p class="text-sm text-emerald-600 font-semibold" data-text="revenue_growth_label">—</p>
+        </div>
+        <div class="bg-surface-container-lowest rounded-xl shadow-sm p-6 border border-outline-variant/10">
+          <p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1">Churn Rate</p>
+          <p class="text-3xl font-black font-headline" data-text="churn_rate" data-format="percentage">—</p>
+          <p class="text-sm text-emerald-600 font-semibold" data-text="churn_rate_label">—</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-surface-container-lowest rounded-xl shadow-sm p-6 border border-outline-variant/10">
+          <h3 class="font-headline font-bold text-lg mb-4">Revenue by Plan</h3>
+          <div class="space-y-4" id="revenue-by-plan">
+            <template data-list="revenue_by_plan" data-empty="No data available">
+              <div>
+                <div class="flex justify-between text-sm mb-1">
+                  <span data-text="plan">—</span>
+                  <span class="font-semibold" data-text="amount" data-format="currency">—</span>
+                </div>
+                <div class="w-full h-2 bg-surface-container-low rounded-full overflow-hidden">
+                  <div class="h-full rounded-full" data-attr="style:width;pct" data-attr-width="width:pct"></div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+        <div class="bg-surface-container-lowest rounded-xl shadow-sm p-6 border border-outline-variant/10">
+          <h3 class="font-headline font-bold text-lg mb-4">Plan Distribution</h3>
+          <div class="space-y-4" id="plan-distribution">
+            <template data-list="plan_distribution" data-empty="No data">
+              <div class="flex items-center justify-between py-2 border-b border-outline-variant/10">
+                <span class="text-sm font-medium" data-text="plan">—</span>
+                <div class="flex items-center gap-3">
+                  <span class="text-sm font-bold" data-text="count" data-format="number">—</span>
+                  <span class="text-xs text-on-surface-variant" data-text="pct" data-format="percentage">—</span>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="/js/components.js"></script>
+    <script>
+      window.__pageInit = { fetch: () => SuperAdminAPI.getAnalytics('month') }
+    </script>
+  </body>
+</html>

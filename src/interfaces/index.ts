@@ -1,0 +1,1 @@
+export type { ICommand, IQuery, IService } from './service.interface.js'

@@ -1,33 +1,17 @@
-/**
- * Zudo POS - Utility Functions
- * Common shared utilities for the application
- */
-
 const ZudoUtils = {
-  /**
-   * Get current user's role from localStorage
-   */
+
   getUserRole: function() {
     return localStorage.getItem('zudo_role') || 'admin';
   },
 
-  /**
-   * Set user role in localStorage
-   */
   setUserRole: function(role) {
     localStorage.setItem('zudo_role', role);
   },
 
-  /**
-   * Get session token
-   */
   getToken: function() {
     return localStorage.getItem('zudo_token');
   },
 
-  /**
-   * Set session token
-   */
   setToken: function(token) {
     localStorage.setItem('zudo_token', token);
   },
@@ -102,9 +86,7 @@ const ZudoUtils = {
    * Get current page name from URL
    */
   getCurrentPage: function() {
-    const path = window.location.pathname;
-    const page = path.split('/').pop();
-    return page || 'index.html';
+    return window.location.pathname;
   },
 
   /**

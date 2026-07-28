@@ -1,0 +1,264 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum UserRole {
+  OWNER
+  ADMIN
+  MANAGER
+  CASHIER
+  SUPERADMIN
+}
+
+enum BusinessStatus {
+  ACTIVE
+  SUSPENDED
+  TRIAL
+  EXPIRED
+}
+
+enum BusinessPlan {
+  FREE
+  STARTER
+  PROFESSIONAL
+  ENTERPRISE
+}
+
+enum ShiftStatus {
+  OPEN
+  CLOSED
+}
+
+enum SaleStatus {
+  PENDING
+  COMPLETED
+  VOIDED
+  REFUNDED
+}
+
+model Business {
+  id        String   @id @default(uuid())
+  name      String
+  slug      String   @unique
+  email     String?
+  phone     String?
+  address   String?
+  logo      String?
+  plan      BusinessPlan @default(FREE)
+  status    BusinessStatus @default(TRIAL)
+  trialEnds DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  users    User[]
+  settings BusinessSetting[]
+  products Product[]
+  sales    Sale[]
+  customers Customer[]
+  wallets  BusinessCryptoWallet[]
+  cryptoPayments CryptoPayment[]
+}
+
+model BusinessSetting {
+  id        String   @id @default(uuid())
+  businessId String
+  business  Business @relation(fields: [businessId], references: [id])
+  key       String
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([businessId, key])
+}
+
+model Customer {
+  id         String   @id @default(uuid())
+  businessId String
+  business   Business @relation(fields: [businessId], references: [id])
+  firstName  String
+  lastName   String
+  email      String?
+  phone      String?
+  address    String?
+  totalSpent Float    @default(0)
+  visitCount Int      @default(0)
+  lastVisit  DateTime?
+  notes      String?
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([businessId, email])
+  @@index([businessId, phone])
+}
+
+model User {
+  id             String   @id @default(uuid())
+  email          String   @unique
+  passwordHash   String
+  pinHash        String?
+  firstName      String
+  lastName       String
+  phone          String?
+  avatar         String?
+  role           UserRole @default(CASHIER)
+  isActive       Boolean  @default(true)
+  emailVerified  Boolean  @default(false)
+  lastLoginAt    DateTime?
+  businessId     String?
+  business       Business? @relation(fields: [businessId], references: [id])
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  sessions    Session[]
+  auditLogs   AuditLog[]
+  otps        Otp[]
+  shifts      Shift[]
+  sales       Sale[]
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  action    String
+  entity    String?
+  entityId  String?
+  details   String?
+  ip        String?
+  userAgent String?
+  createdAt DateTime @default(now())
+}
+
+model Otp {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  code      String
+  type      String
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Shift {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  businessId  String
+  startedAt   DateTime @default(now())
+  endedAt     DateTime?
+  startCash   Float    @default(0)
+  endCash     Float?
+  expectedCash Float?
+  cashDiff    Float?
+  status      ShiftStatus @default(OPEN)
+  notes       String?
+  sales       Sale[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Product {
+  id          String   @id @default(uuid())
+  businessId  String
+  business    Business @relation(fields: [businessId], references: [id])
+  name        String
+  description String?
+  sku         String?
+  barcode     String?
+  price       Float
+  costPrice   Float?
+  stock       Int      @default(0)
+  lowStockQty Int      @default(10)
+  category    String?
+  image       String?
+  isActive    Boolean  @default(true)
+  saleItems   SaleItem[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([businessId, sku])
+  @@index([businessId, category])
+}
+
+model Sale {
+  id         String   @id @default(uuid())
+  businessId String
+  business   Business @relation(fields: [businessId], references: [id])
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  shiftId    String?
+  shift      Shift?   @relation(fields: [shiftId], references: [id])
+  customerId  String?
+  reference  String   @unique
+  status     SaleStatus @default(COMPLETED)
+  subtotal   Float
+  discount   Float    @default(0)
+  tax        Float    @default(0)
+  total      Float
+  paymentMethod String?
+  notes      String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  items     SaleItem[]
+  cryptoPayment CryptoPayment[]
+}
+
+model SaleItem {
+  id        String  @id @default(uuid())
+  saleId    String
+  sale      Sale    @relation(fields: [saleId], references: [id])
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int
+  unitPrice Float
+  total     Float
+}
+
+model BusinessCryptoWallet {
+  id         String   @id @default(uuid())
+  businessId String
+  business   Business @relation(fields: [businessId], references: [id])
+  currency   String
+  address    String
+  network    String?
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([businessId, currency])
+}
+
+model CryptoPayment {
+  id            String   @id @default(uuid())
+  businessId    String
+  business      Business @relation(fields: [businessId], references: [id])
+  saleId        String?
+  sale          Sale?    @relation(fields: [saleId], references: [id])
+  currency      String
+  amount        Float
+  amountUsd     Float?
+  walletAddress String
+  txHash        String?
+  status        String   @default("pending")
+  confirmations Int?
+  paidAt        DateTime?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}

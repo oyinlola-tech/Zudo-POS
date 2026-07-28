@@ -1,21 +1,12 @@
-/**
- * Zudo POS - Admin Module
- * Specific functionality for admin dashboard
- */
+
 
 const ZudoAdmin = {
-  /**
-   * Initialize admin dashboard
-   */
   init: function() {
     this.initSettings();
     this.initStaffManagement();
     this.initAnalytics();
   },
 
-  /**
-   * Initialize settings toggles
-   */
   initSettings: function() {
     const toggles = document.querySelectorAll('[data-setting-toggle]');
     
@@ -28,19 +19,13 @@ const ZudoAdmin = {
     });
   },
 
-  /**
-   * Save setting
-   */
-  saveSetting: function(setting, value) {
+    saveSetting: function(setting, value) {
     const settings = JSON.parse(localStorage.getItem('zudo_settings') || '{}');
     settings[setting] = value;
     localStorage.setItem('zudo_settings', JSON.stringify(settings));
     ZudoUtils.showToast('Settings saved', 'success');
   },
 
-  /**
-   * Initialize staff role management
-   */
   initStaffManagement: function() {
     const roleSelects = document.querySelectorAll('[data-role-select]');
     
@@ -52,7 +37,6 @@ const ZudoAdmin = {
       });
     });
 
-    // Add staff modal
     const addButton = document.querySelector('[data-add-staff]');
     const modal = document.querySelector('[data-staff-modal]');
     const closeButtons = modal?.querySelectorAll('[data-modal-close]');
@@ -70,17 +54,11 @@ const ZudoAdmin = {
     }
   },
 
-  /**
-   * Update staff role
-   */
   updateStaffRole: function(staffId, role) {
     console.log('Updating staff role:', staffId, role);
     ZudoUtils.showToast(`Role updated to ${role}`, 'success');
   },
 
-  /**
-   * Initialize analytics filters
-   */
   initAnalytics: function() {
     const filterSelects = document.querySelectorAll('[data-analytics-filter]');
     
@@ -93,16 +71,11 @@ const ZudoAdmin = {
     });
   },
 
-  /**
-   * Update analytics
-   */
   updateAnalytics: function(filter, value) {
     console.log('Updating analytics:', filter, value);
-    // In real app, would fetch new data
   }
 };
 
-// Auto-initialize
 document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('[data-admin]')) {
     ZudoAdmin.init();

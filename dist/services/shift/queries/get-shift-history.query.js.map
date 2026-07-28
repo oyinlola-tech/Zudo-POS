@@ -1,0 +1,1 @@
+{"version":3,"file":"get-shift-history.query.js","sourceRoot":"","sources":["../../../../src/services/shift/queries/get-shift-history.query.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,eAAe,EAAE,MAAM,2CAA2C,CAAA;AAK3E,MAAM,OAAO,oBAAoB;IAC/B,KAAK,CAAC,OAAO,CAAC,KAA2B;QACvC,OAAO,eAAe,CAAC,UAAU,CAAC,KAAK,CAAC,MAAM,CAAC,CAAA;IACjD,CAAC;CACF"}

@@ -1,0 +1,126 @@
+<!doctype html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Profile - Zudo</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <style>
+      .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+      body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
+      h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: { background: '#f8f9ff', surface: '#f8f9ff', 'surface-bright': '#f8f9ff', 'surface-dim': '#ccdbf4', 'surface-container': '#e6eeff', 'surface-container-low': '#eff4ff', 'surface-container-high': '#dde9ff', 'surface-container-lowest': '#ffffff', 'surface-variant': '#d5e3fd', 'on-surface': '#0d1c2f', 'on-surface-variant': '#45474c', 'on-background': '#0d1c2f', outline: '#76777c', 'outline-variant': '#c6c6cc', primary: '#000b01', 'primary-container': '#002704', 'on-primary': '#ffffff', 'on-primary-container': '#499849', secondary: '#6f46b9', 'secondary-container': '#b188ff', 'on-secondary': '#ffffff', 'on-secondary-container': '#44118d', error: '#ba1a1a', 'error-container': '#ffdad6', 'on-error': '#ffffff', 'on-error-container': '#93000a', 'inverse-surface': '#233144', 'inverse-on-surface': '#ebf1ff', 'surface-tint': '#1b6d24', },
+            borderRadius: { DEFAULT: '0.125rem', lg: '0.25rem', xl: '0.5rem', full: '0.75rem' },
+            fontFamily: { headline: ['Manrope'], body: ['Inter'], label: ['Inter'] },
+          },
+        },
+      }
+    </script>
+    <script src="/js/api.js"></script>
+    <script src="/api/shared.js"></script>
+    <script src="/js/data-bind.js"></script>
+    <script src="/js/page-init.js"></script>
+  </head>
+  <body class="bg-surface text-on-surface">
+    <div data-component="superadmin-sidebar"></div>
+    <header class="flex justify-between items-center px-8 h-16 ml-72 w-[calc(100%-18rem)] sticky top-0 z-40 bg-[#f8f9ff]/80 backdrop-blur-md border-b border-outline-variant/20">
+      <div class="flex items-center gap-4">
+        <h2 class="font-headline font-bold text-lg">Profile</h2>
+      </div>
+    </header>
+    <main class="ml-72 p-8">
+      <div class="max-w-2xl">
+        <div class="bg-surface-container-lowest rounded-xl shadow-sm p-8 border border-outline-variant/10 mb-6">
+          <div class="flex items-center gap-6 mb-8">
+            <div class="w-20 h-20 rounded-full bg-amber-500 flex items-center justify-center">
+              <span class="material-symbols-outlined text-white text-3xl" style="font-variation-settings:'FILL' 1">shield</span>
+            </div>
+            <div>
+              <h3 class="text-2xl font-headline font-black" data-text="name">—</h3>
+              <p class="text-on-surface-variant" data-text="role">—</p>
+              <p class="text-xs text-on-surface-variant mt-1" data-text="member_since">—</p>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant block mb-1">Full Name</label>
+              <input class="w-full bg-surface-container-low rounded-lg px-4 py-2.5 text-sm border border-outline-variant/20 outline-none focus:border-amber-500" type="text" data-bind="name" />
+            </div>
+            <div>
+              <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant block mb-1">Email</label>
+              <input class="w-full bg-surface-container-low rounded-lg px-4 py-2.5 text-sm border border-outline-variant/20 outline-none focus:border-amber-500" type="email" data-bind="email" />
+            </div>
+            <div>
+              <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant block mb-1">Phone</label>
+              <input class="w-full bg-surface-container-low rounded-lg px-4 py-2.5 text-sm border border-outline-variant/20 outline-none focus:border-amber-500" type="tel" data-bind="phone" />
+            </div>
+          </div>
+          <div class="mt-6 pt-6 border-t border-outline-variant/10">
+            <button class="bg-amber-500 text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-amber-600 transition-colors" id="update-profile">Update Profile</button>
+          </div>
+        </div>
+        <div class="bg-surface-container-lowest rounded-xl shadow-sm p-6 border border-outline-variant/10">
+          <h3 class="font-headline font-bold text-lg mb-4">Security</h3>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between py-3 border-b border-outline-variant/10">
+              <div>
+                <p class="font-medium text-sm">Two-Factor Authentication</p>
+                <p class="text-xs text-on-surface-variant">Add an extra layer of security</p>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input class="sr-only peer" type="checkbox" data-bind="two_factor_enabled" />
+                <div class="w-11 h-6 bg-surface-container-high peer-checked:bg-amber-500 rounded-full peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+              </label>
+            </div>
+            <div class="flex items-center justify-between py-3">
+              <div>
+                <p class="font-medium text-sm">Last Login</p>
+                <p class="text-xs text-on-surface-variant">Your most recent session</p>
+              </div>
+              <span class="text-sm text-on-surface-variant" data-text="last_login" data-format="datetime">—</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="/js/components.js"></script>
+    <script>
+      window.__pageInit = {
+        fetch: SharedAPI.getProfile,
+        afterBind(data) {
+          document.querySelectorAll('[data-bind]').forEach(el => {
+            const path = el.getAttribute('data-bind')
+            const val = path.split('.').reduce((o,k) => o?.[k], data)
+            if (val === undefined || val === null) return
+            if (el.type === 'checkbox') el.checked = Boolean(val)
+            else el.value = val
+          })
+        }
+      }
+
+      document.addEventListener('components-loaded', () => {
+        document.getElementById('update-profile')?.addEventListener('click', async () => {
+          const data = { name: '', email: '', phone: '' }
+          document.querySelectorAll('[data-bind]').forEach(el => {
+            const key = el.getAttribute('data-bind')
+            if (key in data) data[key] = el.value
+          })
+          try {
+            await SharedAPI.updateProfile(data)
+            alert('Profile updated successfully!')
+          } catch (err) {
+            alert('Failed to update profile: ' + err.message)
+          }
+        })
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+{"version":3,"file":"get-wallets.query.js","sourceRoot":"","sources":["../../../../src/services/crypto/queries/get-wallets.query.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,gBAAgB,EAAE,MAAM,4CAA4C,CAAA;AAK7E,MAAM,OAAO,eAAe;IAC1B,KAAK,CAAC,OAAO,CAAC,KAAsB;QAClC,OAAO,gBAAgB,CAAC,UAAU,CAAC,KAAK,CAAC,UAAU,CAAC,CAAA;IACtD,CAAC;CACF"}

@@ -1,0 +1,6 @@
+export enum BusinessPlan {
+  FREE = 'FREE',
+  STARTER = 'STARTER',
+  PROFESSIONAL = 'PROFESSIONAL',
+  ENTERPRISE = 'ENTERPRISE',
+}

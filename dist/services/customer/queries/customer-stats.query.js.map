@@ -1,0 +1,1 @@
+{"version":3,"file":"customer-stats.query.js","sourceRoot":"","sources":["../../../../src/services/customer/queries/customer-stats.query.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,kBAAkB,EAAE,MAAM,gCAAgC,CAAA;AAKnE,MAAM,OAAO,kBAAkB;IAC7B,KAAK,CAAC,OAAO,CAAC,KAAyB;QACrC,OAAO,kBAAkB,CAAC,QAAQ,CAAC,KAAK,CAAC,UAAU,CAAC,CAAA;IACtD,CAAC;CACF"}

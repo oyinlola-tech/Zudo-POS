@@ -1,85 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 
-<html class="scroll-smooth" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Zudo POS | Deep Dive into Fluid Authority</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Zudo POS | Deep Dive into Fluid Authority</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
       tailwind.config = {
-        darkMode: "class",
+        darkMode: 'class',
         theme: {
           extend: {
-            "colors": {
-                "outline": "#76777c",
-                "on-secondary-container": "#44118d",
-                "tertiary-fixed-dim": "#b6c4ff",
-                "error": "#ba1a1a",
-                "surface-container-lowest": "#ffffff",
-                "secondary-container": "#b188ff",
-                "on-surface-variant": "#45474c",
-                "surface-dim": "#ccdbf4",
-                "on-background": "#0d1c2f",
-                "surface-tint": "#1b6d24",
-                "primary-fixed-dim": "#88d982",
-                "on-primary-fixed-variant": "#005312",
-                "on-primary-container": "#499849",
-                "primary-container": "#002704",
-                "on-surface": "#0d1c2f",
-                "surface-container-highest": "#d5e3fd",
-                "on-tertiary-fixed-variant": "#264191",
-                "on-tertiary-fixed": "#00164e",
-                "surface-container-low": "#eff4ff",
-                "on-error-container": "#93000a",
-                "tertiary-container": "#001a59",
-                "error-container": "#ffdad6",
-                "inverse-on-surface": "#ebf1ff",
-                "primary-fixed": "#a3f69c",
-                "primary": "#000b01",
-                "secondary-fixed": "#ebdcff",
-                "background": "#f8f9ff",
-                "on-tertiary": "#ffffff",
-                "surface-container-high": "#dde9ff",
-                "on-secondary-fixed-variant": "#572ba0",
-                "on-secondary": "#ffffff",
-                "on-primary-fixed": "#002204",
-                "secondary": "#6f46b9",
-                "secondary-fixed-dim": "#d3bbff",
-                "outline-variant": "#c6c6cc",
-                "on-error": "#ffffff",
-                "on-secondary-fixed": "#260059",
-                "inverse-primary": "#88d982",
-                "surface-variant": "#d5e3fd",
-                "tertiary": "#000623",
-                "surface-container": "#e6eeff",
-                "surface-bright": "#f8f9ff",
-                "on-tertiary-container": "#6b83d7",
-                "surface": "#f8f9ff",
-                "inverse-surface": "#233144",
-                "tertiary-fixed": "#dce1ff",
-                "on-primary": "#ffffff"
+            colors: {
+              outline: '#76777c',
+              'on-secondary-container': '#44118d',
+              'tertiary-fixed-dim': '#b6c4ff',
+              error: '#ba1a1a',
+              'surface-container-lowest': '#ffffff',
+              'secondary-container': '#b188ff',
+              'on-surface-variant': '#45474c',
+              'surface-dim': '#ccdbf4',
+              'on-background': '#0d1c2f',
+              'surface-tint': '#1b6d24',
+              'primary-fixed-dim': '#88d982',
+              'on-primary-fixed-variant': '#005312',
+              'on-primary-container': '#499849',
+              'primary-container': '#002704',
+              'on-surface': '#0d1c2f',
+              'surface-container-highest': '#d5e3fd',
+              'on-tertiary-fixed-variant': '#264191',
+              'on-tertiary-fixed': '#00164e',
+              'surface-container-low': '#eff4ff',
+              'on-error-container': '#93000a',
+              'tertiary-container': '#001a59',
+              'error-container': '#ffdad6',
+              'inverse-on-surface': '#ebf1ff',
+              'primary-fixed': '#a3f69c',
+              primary: '#000b01',
+              'secondary-fixed': '#ebdcff',
+              background: '#f8f9ff',
+              'on-tertiary': '#ffffff',
+              'surface-container-high': '#dde9ff',
+              'on-secondary-fixed-variant': '#572ba0',
+              'on-secondary': '#ffffff',
+              'on-primary-fixed': '#002204',
+              secondary: '#6f46b9',
+              'secondary-fixed-dim': '#d3bbff',
+              'outline-variant': '#c6c6cc',
+              'on-error': '#ffffff',
+              'on-secondary-fixed': '#260059',
+              'inverse-primary': '#88d982',
+              'surface-variant': '#d5e3fd',
+              tertiary: '#000623',
+              'surface-container': '#e6eeff',
+              'surface-bright': '#f8f9ff',
+              'on-tertiary-container': '#6b83d7',
+              surface: '#f8f9ff',
+              'inverse-surface': '#233144',
+              'tertiary-fixed': '#dce1ff',
+              'on-primary': '#ffffff',
             },
-            "borderRadius": {
-                "DEFAULT": "0.125rem",
-                "lg": "0.25rem",
-                "xl": "0.5rem",
-                "full": "0.75rem"
+            borderRadius: {
+              DEFAULT: '0.125rem',
+              lg: '0.25rem',
+              xl: '0.5rem',
+              full: '0.75rem',
             },
-            "fontFamily": {
-                "headline": ["Manrope"],
-                "body": ["Inter"],
-                "label": ["Inter"]
-            }
+            fontFamily: {
+              headline: ['Manrope'],
+              body: ['Inter'],
+              label: ['Inter'],
+            },
           },
         },
       }
     </script>
-<style>
+    <script src="/js/api.js"></script>
+    <script src="/api/public.js"></script>
+    <script src="/js/data-bind.js"></script>
+    <script src="/js/page-init.js"></script>
+    <style>
       .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
       }
       .glass-nav {
         backdrop-filter: blur(12px);
@@ -90,306 +108,307 @@
         grid-template-columns: 1.2fr 0.8fr;
       }
       .naira-symbol::before {
-        content: "₦";
+        content: '₦';
         margin-right: 2px;
       }
     </style>
-</head>
-<body class="bg-background text-on-surface font-body antialiased">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200/20 dark:border-slate-800/20 shadow-sm transition-all duration-300 ease-in-out h-20">
-<div class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
-<a href="../index.html" class="text-2xl font-black text-emerald-950 dark:text-emerald-50 tracking-tighter font-headline">
-                Zudo POS
-            </a>
-<div class="hidden md:flex items-center space-x-8 font-manrope font-semibold tracking-tight">
-<a class="text-emerald-700 dark:text-emerald-400 border-b-2 border-emerald-700 pb-1" href="product.html">Product</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-emerald-900 dark:hover:text-emerald-100 transition-colors" href="features.html">Features</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-emerald-900 dark:hover:text-emerald-100 transition-colors" href="pricing.html">Pricing</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-emerald-900 dark:hover:text-emerald-100 transition-colors" href="about.html">About</a>
-</div>
-<div class="flex items-center space-x-4">
-<a href="../onboarding/login.html" class="px-5 py-2 text-slate-600 font-semibold hover:bg-slate-100/50 rounded-lg transition-all">Login</a>
-<a href="../onboarding/register.html" class="px-6 py-2.5 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-xl font-bold tracking-tight shadow-md hover:opacity-90 transition-all">Get Started</a>
-</div>
-</div>
-</nav>
-<main class="pt-20">
-<!-- Hero Section: The Fluid Authority -->
-<section class="relative min-h-[819px] flex items-center overflow-hidden bg-surface py-20 px-6">
-<div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-<div>
-<h1 class="text-6xl md:text-7xl font-headline font-extrabold tracking-tighter text-primary leading-none mb-8">
-                        The Speed of Thought <br/><span class="text-on-primary-container">The Weight of Trust.</span>
-</h1>
-<p class="text-xl text-on-surface-variant max-w-xl leading-relaxed mb-10">
-                        Zudo POS isn't just software. It's a high-performance financial engine designed for the Nigerian landscape—where power is fluid, but the mission is absolute.
-                    </p>
-<div class="flex flex-wrap gap-4">
-<a href="documentation.html" class="h-14 px-8 bg-surface-tint text-on-primary rounded-xl font-headline font-bold flex items-center gap-2 shadow-lg">
-  Explore the Core <span class="material-symbols-outlined">arrow_forward</span>
-</a>
-</div>
-</div>
-<div class="relative">
-<div class="aspect-square bg-surface-container-low rounded-full absolute -top-20 -right-20 w-96 h-96 blur-3xl opacity-50"></div>
-<div class="relative z-10 bg-surface-container-lowest rounded-xl shadow-2xl p-4 border border-outline-variant/10">
-<img class="rounded-lg w-full h-full object-cover" data-alt="Close-up of a high-end tablet displaying a sleek point-of-sale interface with clean typography and vibrant charts in a modern retail setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGe4YWGjMb0P5t5NntnbiFAbIZFwzdnjS26KLzwEAp0d5kNfzQhGJkNpsS7LV24kA3vu3USeHOFvfq1XWWT9yniRUXV8mYyIrZFoUmq8bfu0dcnUxZ7LCkbrJmXluViDXVGPLH2hnSoZExjul-n57lbLqsX4vYJbf_-Z_86jqG-j59CEvaJmcV_qesfArRIM_MkwIhaYqPNTY0V-OYEHcG2rUybM2AjU-2uD6It84KyDWr2NTneuwk0DB5XSmIPdajltUvfcs-xSUV"/>
-<div class="absolute -bottom-6 -left-6 bg-primary text-on-primary p-6 rounded-xl shadow-xl">
-<div class="text-xs uppercase tracking-widest font-bold opacity-60 mb-2">Sync Status</div>
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary-fixed">check_circle</span>
-<span class="font-headline font-bold text-lg">99.9% Integrity Verified</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Feature Bento Grid: Technical Core -->
-<section class="py-24 bg-surface-container-low px-6">
-<div class="max-w-7xl mx-auto">
-<div class="mb-16">
-<h2 class="text-4xl font-headline font-bold tracking-tight text-primary">Architectural Pillars</h2>
-<p class="text-on-surface-variant mt-4 text-lg">Precision primitives engineered for unwavering reliability.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-<!-- Column 1: Offline First -->
-<div class="md:col-span-8 bg-surface-container-lowest p-10 rounded-xl flex flex-col justify-between overflow-hidden relative group">
-<div class="relative z-10">
-<span class="material-symbols-outlined text-4xl text-secondary mb-6" data-icon="cloud_off">cloud_off</span>
-<h3 class="text-3xl font-headline font-bold mb-4">Offline-First Architecture</h3>
-<p class="text-on-surface-variant max-w-md text-lg leading-relaxed">
-                                Nigerian internet is unpredictable; your business shouldn't be. Zudo caches your entire inventory and transaction log locally, syncing with the cloud the millisecond connectivity returns.
-                            </p>
-</div>
-<div class="mt-12 flex items-end gap-2 h-24">
-<div class="w-full bg-surface-container-low h-1/3 rounded-t-lg group-hover:h-2/3 transition-all"></div>
-<div class="w-full bg-secondary-container h-1/2 rounded-t-lg group-hover:h-full transition-all"></div>
-<div class="w-full bg-surface-container-low h-1/4 rounded-t-lg group-hover:h-1/2 transition-all"></div>
-<div class="w-full bg-surface-tint h-2/3 rounded-t-lg group-hover:h-3/4 transition-all"></div>
-</div>
-</div>
-<!-- Column 2: Audit Trail -->
-<div class="md:col-span-4 bg-tertiary p-10 rounded-xl text-on-tertiary flex flex-col justify-center">
-<span class="material-symbols-outlined text-4xl mb-6" data-icon="security">security</span>
-<h3 class="text-2xl font-headline font-bold mb-4">Transaction Integrity</h3>
-<p class="text-on-tertiary-container leading-relaxed">
-                            Every tap, change, and refund is logged with immutable cryptographic signatures. A complete audit trail for the fluid authority.
-                        </p>
-<div class="mt-8 pt-8 border-t border-white/10">
-<div class="flex items-center gap-3 text-sm opacity-80 mb-2">
-<span class="material-symbols-outlined text-sm">history</span>
-                                256-bit Audit Locking
-                            </div>
-<div class="flex items-center gap-3 text-sm opacity-80">
-<span class="material-symbols-outlined text-sm">key</span>
-                                Hardware Signature Keys
-                            </div>
-</div>
-</div>
-<!-- Column 3: Hardware -->
-<div class="md:col-span-4 bg-surface-container-high p-8 rounded-xl">
-<h3 class="text-xl font-headline font-bold mb-4">Hardware Neutral</h3>
-<p class="text-on-surface-variant text-sm mb-6">Native compatibility with Star, Epson, and Bluetooth peripherals across Lagos markets.</p>
-<img class="w-full h-32 object-cover rounded-lg" data-alt="A professional barcode scanner and receipt printer placed on a clean wooden desk with soft natural light coming from the side." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfMzzSB2FOLpoY-76rgrIIAdI0OunCfQ1YABwJpK675nNhjlticnOKuo7bGhh9ioTZTot3sHquj9c3XCHNWqjDZTECM0F0MeHOOZG11M4EYFksgagCdOiw15x-jGlJd_0HgCQu8RK6R5fOELvGfmc31wiz_eY9Lvpua-192ffL-r3Bpua5OW42jxRKJ79NdaXvfbbDGyNB4JNdFwm0ug5WCdF4GKgMO6FwdMZdeG4bnGjLxqzDe3J3SQlUOLMrYNSNb87SCP6UKz0u"/>
-</div>
-<!-- Column 4: Performance -->
-<div class="md:col-span-8 bg-gradient-to-br from-secondary to-on-secondary-container p-10 rounded-xl text-on-secondary relative overflow-hidden">
-<div class="relative z-10 flex flex-col md:flex-row items-center gap-10">
-<div class="flex-1">
-<h3 class="text-3xl font-headline font-extrabold mb-4">Zero-Latency Scanning</h3>
-<p class="text-secondary-fixed/80 text-lg leading-relaxed">
-                                    Our search algorithm is optimized for 100,000+ SKUs, delivering sub-10ms response times on entry-level Android tablets.
-                                </p>
-</div>
-<div class="text-7xl font-headline font-black text-secondary-fixed opacity-40">10ms</div>
-</div>
-<div class="absolute -right-20 -bottom-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-</div>
-</div>
-</div>
-</section>
-<!-- Deep Dive: The Interface Mockup -->
-<section class="py-24 bg-surface px-6 overflow-hidden">
-<div class="max-w-7xl mx-auto">
-<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-<div class="max-w-2xl">
-<h2 class="text-4xl font-headline font-bold tracking-tight text-primary">The Editor’s Interface</h2>
-<p class="text-on-surface-variant mt-4 text-lg leading-relaxed">
-                            We abandoned the crowded grid for a high-end editorial layout. Content breathes, actions are intentional, and errors are eliminated through visual hierarchy.
-                        </p>
-</div>
-<div class="flex gap-4">
-<div class="p-4 bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/10 text-center">
-<div class="text-2xl font-headline font-bold text-primary naira-symbol">45,200</div>
-<div class="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Avg Transaction</div>
-</div>
-</div>
-</div>
-<!-- Mockup Shell -->
-<div class="bg-surface-container-low rounded-2xl p-4 md:p-8 shadow-2xl relative">
-<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col md:flex-row h-[700px]">
-<!-- Sidebar (Admin) -->
-<div class="hidden md:flex w-20 bg-tertiary flex-col items-center py-8 gap-10">
-<span class="material-symbols-outlined text-on-tertiary opacity-40">dashboard</span>
-<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">shopping_basket</span>
-<span class="material-symbols-outlined text-on-tertiary opacity-40">inventory_2</span>
-<span class="material-symbols-outlined text-on-tertiary opacity-40">group</span>
-<span class="material-symbols-outlined text-on-tertiary opacity-40 mt-auto">settings</span>
-</div>
-<!-- Content Area -->
-<div class="flex-1 flex flex-col h-full overflow-hidden">
-<!-- Internal Header -->
-<div class="h-20 px-8 flex items-center justify-between border-b border-outline-variant/10">
-<div class="flex items-center gap-4">
-<h4 class="font-headline font-bold text-xl">Current Basket</h4>
-<span class="px-2 py-0.5 bg-surface-dim text-primary text-[10px] font-bold rounded uppercase">Staff: Ayo B.</span>
-</div>
-<div class="flex items-center gap-6">
-<div class="flex items-center gap-2 text-on-surface-variant font-label text-sm">
-<span class="material-symbols-outlined text-sm">wifi</span>
-                                        Cloud Synced
-                                    </div>
-<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-on-secondary-fixed">AB</div>
-</div>
-</div>
-<!-- Main Workspace -->
-<div class="flex-1 flex overflow-hidden">
-<!-- Product Area -->
-<div class="flex-1 p-8 overflow-y-auto bg-surface-bright">
-<div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
-<!-- Item 1 -->
-<div class="bg-surface-container-lowest p-1 border border-outline-variant/20 rounded-xl hover:shadow-md transition-all cursor-pointer">
-<img class="w-full h-32 object-cover rounded-lg mb-4" data-alt="Minimalist white product on a light grey background with professional studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3C2PfQw0cfB4dXQcdg8_TzKKW3lS9Ez-OmV2sM4RfVD2q6ExeNwY_SQWYBbiZI-w9Bt9f3WHFE89A-LpLZ8mRVYhiD5OYlm2iSZ8BPw10HAVIQPH-H_hmMrnGlIBszsfh-87Yj90CZLwXkyPBz5-6BHbE1GegWEa3Lks5NRr0IU1oKsjWIP12Xn5dKBkJNqVbYhvZZw1ZpgqNPnwWcTy5rrIdBytw-SgfABvwmN11HdLy64Ck1elGvzxwvc4GBTlZwYH-KI9fEqyr"/>
-<div class="px-3 pb-3">
-<div class="font-bold text-sm">Artisan Watch</div>
-<div class="text-secondary font-headline font-bold naira-symbol">125,000</div>
-</div>
-</div>
-<!-- Item 2 -->
-<div class="bg-surface-container-lowest p-1 border border-outline-variant/20 rounded-xl hover:shadow-md transition-all cursor-pointer">
-<img class="w-full h-32 object-cover rounded-lg mb-4" data-alt="Vibrant red athletic sneaker isolated on a clean white background with a subtle shadow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAP1dOaKg3UyzNEoOOFrRlgOVanqL_w4Eu1p4ZiSLf9W6GOhYZyYv1rA2eGEk3YPzVSuxrcpfSpggLbHSCkE00mcDM3mJXRnvvXsSe2B87SQUXfbJcfNVB0eNKu1wX_RrHEWKVnl_-l36hSXdi8tiq-b9ytMXmowbpHgGgyF3WsI50Kz26g1c1YDaoGwWmke9arbfZyp8Rt1HMuQWjeszuF8EswzPqyt94KFF5tCQlZY6vOsEfnJhCQbXwJXZYWoVmLBCLR56g6iMVh"/>
-<div class="px-3 pb-3">
-<div class="font-bold text-sm">Swift Runners</div>
-<div class="text-secondary font-headline font-bold naira-symbol">42,500</div>
-</div>
-</div>
-<!-- Item 3 -->
-<div class="bg-surface-container-lowest p-1 border border-outline-variant/20 rounded-xl hover:shadow-md transition-all cursor-pointer">
-<img class="w-full h-32 object-cover rounded-lg mb-4" data-alt="Black premium wireless headphones with sleek metallic accents on a neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZo53YyRy7a8Yx9dTfjrCMkTHeUX0zdIWgxo6h6Gk-s3fhIMxSI7W0PunsreDmC81S2PzJZ1SjZET8DVXxCW59U_aAs3HP9DQJ0boqqYQglOguXftSKytk3JYXBuPo_rqrdWNSI33_EWu4FJx5__rsaW9yZkCC6GrV77GuoVnx-sTkHta40BNh5OfEtVnUZPX2CYfezIsDkLjNcJT4YYgCnZvfmuDH6uatmHgxTOIkCUNf17V6w3VA1Z2CaBDgXUZwR6MaHjIjx0VP"/>
-<div class="px-3 pb-3">
-<div class="font-bold text-sm">Sonic Over-Ear</div>
-<div class="text-secondary font-headline font-bold naira-symbol">88,000</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Cart Sidebar -->
-<div class="w-96 bg-surface-container-low flex flex-col">
-<div class="flex-1 p-6 space-y-4">
-<div class="flex justify-between items-center bg-surface-container-lowest p-4 rounded-xl shadow-sm">
-<div>
-<div class="font-bold text-sm">Artisan Watch</div>
-<div class="text-xs text-on-surface-variant">Qty: 1</div>
-</div>
-<div class="font-headline font-bold naira-symbol">125,000</div>
-</div>
-<div class="flex justify-between items-center bg-surface-container-lowest p-4 rounded-xl shadow-sm">
-<div>
-<div class="font-bold text-sm">Swift Runners</div>
-<div class="text-xs text-on-surface-variant">Qty: 2</div>
-</div>
-<div class="font-headline font-bold naira-symbol">85,000</div>
-</div>
-</div>
-<!-- Payment Methods Selection -->
-<div class="px-6 pb-6">
-<div class="grid grid-cols-2 gap-3 mb-6">
-<button class="py-4 bg-secondary-container text-on-secondary-container rounded-xl flex flex-col items-center gap-1 font-bold">
-<span class="material-symbols-outlined">payments</span>
-                                                Cash
-                                            </button>
-<button class="py-4 bg-surface-container-lowest border border-outline-variant/20 rounded-xl flex flex-col items-center gap-1 font-bold">
-<span class="material-symbols-outlined">credit_card</span>
-                                                POS/Card
-                                            </button>
-</div>
-<div class="flex justify-between items-center mb-6 px-2">
-<span class="font-headline font-bold text-xl uppercase tracking-widest text-on-surface-variant">Total</span>
-<span class="font-headline font-extrabold text-3xl naira-symbol">210,000</span>
-</div>
-<button class="w-full h-16 bg-surface-tint text-on-primary rounded-xl font-headline font-bold text-lg flex items-center justify-center gap-3 shadow-lg">
-                                            Complete Transaction
-                                            <span class="material-symbols-outlined">check</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- CTA Section -->
-<section class="py-24 px-6">
-<div class="max-w-4xl mx-auto text-center bg-tertiary rounded-3xl p-16 relative overflow-hidden">
-<div class="absolute inset-0 bg-gradient-to-tr from-primary-container to-transparent opacity-40"></div>
-<div class="relative z-10">
-<h2 class="text-4xl font-headline font-extrabold text-white mb-6">Ready to deploy Fluid Authority?</h2>
-<p class="text-tertiary-fixed-dim text-xl mb-10 max-w-xl mx-auto">
-                        Join 2,500+ Nigerian retailers scaling with confidence. Start your free technical trial today.
-                    </p>
-<div class="flex flex-col sm:flex-row gap-4 justify-center">
-<!-- Request a Demo (Navigate to a page) -->
-<a href="other/demo.html" class="h-14 px-10 bg-primary-fixed text-on-primary-fixed rounded-xl font-headline font-bold inline-flex items-center justify-center">
-  Request a Demo
-</a>
-
-<!-- View Pricing (Navigate to a page) -->
-<a href="pricing.html" class="h-14 px-10 border border-white/20 text-white rounded-xl font-headline font-bold hover:bg-white/5 transition-all inline-flex items-center justify-center">
-  View Pricing
-</a>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="bg-[#eff4ff] dark:bg-[#000623] w-full pt-16 pb-8 mt-20">
-<div class="grid grid-cols-2 md:grid-cols-4 gap-8 px-8 max-w-7xl mx-auto">
-<div class="col-span-2 md:col-span-1">
-<span class="text-xl font-bold text-[#000b01] dark:text-white mb-4 block font-headline">Zudo POS</span>
-<p class="text-sm text-[#45474c] dark:text-[#c6c6cc] mb-6">Empowering Nigerian retail with precision tools and authority.</p>
-</div>
-<div>
-<h4 class="font-bold mb-4 text-primary">Company</h4>
-<ul class="space-y-3">
-<li><a class="text-[#45474c] dark:text-[#c6c6cc] text-sm hover:text-primary transition-colors" href="../about.html">About Us</a></li>
-<li><a class="text-[#45474c] dark:text-[#c6c6cc] text-sm hover:text-primary transition-colors" href="solutions.html">Solutions</a></li>
-<li><a class="text-[#45474c] dark:text-[#c6c6cc] text-sm hover:text-primary transition-colors" href="resources.html">Resources</a></li>
-</ul>
-</div>
-<div>
-<h4 class="font-bold mb-4 text-primary">Legal</h4>
-<ul class="space-y-3">
-<li><a class="text-[#45474c] dark:text-[#c6c6cc] text-sm hover:text-primary transition-colors" href="legal.html">Privacy Policy</a></li>
-<li><a class="text-[#45474c] dark:text-[#c6c6cc] text-sm hover:text-primary transition-colors" href="legal.html">Terms of Service</a></li>
-</ul>
-</div>
-<div>
-<h4 class="font-bold mb-4 text-primary">Support</h4>
-<ul class="space-y-3">
-<li><a class="text-[#45474c] dark:text-[#c6c6cc] text-sm hover:text-primary transition-colors" href="../contact.html">Help Center</a></li>
-<li><a class="text-[#45474c] dark:text-[#c6c6cc] text-sm hover:text-primary transition-colors" href="../contact.html">Contact Support</a></li>
-</ul>
-</div>
-</div>
-<div class="mt-16 pt-8 border-t border-outline-variant/20 max-w-7xl mx-auto px-8">
-<p class="text-sm text-[#45474c] dark:text-[#c6c6cc] text-center font-body">
-                © 2026 Zudo POS. Built for the Fluid Authority.
+  </head>
+  <body class="bg-background text-on-surface font-body antialiased">
+    <!-- TopNavBar -->
+    <div data-component="public-header"></div>
+    <main class="pt-20">
+      <!-- Hero Section: The Fluid Authority -->
+      <section class="relative min-h-[819px] flex items-center overflow-hidden bg-surface py-20 px-6">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1
+              class="text-6xl md:text-7xl font-headline font-extrabold tracking-tighter text-primary leading-none mb-8"
+            >
+              The Speed of Thought <br /><span class="text-on-primary-container">The Weight of Trust.</span>
+            </h1>
+            <p class="text-xl text-on-surface-variant max-w-xl leading-relaxed mb-10">
+              Zudo POS isn't just software. It's a high-performance financial engine designed for the Nigerian
+              landscape—where power is fluid, but the mission is absolute.
             </p>
-</div>
-</footer>
-<script src="js/footer.js"></script>
-</body></html>
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="/documentation"
+                class="h-14 px-8 bg-surface-tint text-on-primary rounded-xl font-headline font-bold flex items-center gap-2 shadow-lg"
+              >
+                Explore the Core <span class="material-symbols-outlined">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+          <div class="relative">
+            <div
+              class="aspect-square bg-surface-container-low rounded-full absolute -top-20 -right-20 w-96 h-96 blur-3xl opacity-50"
+            ></div>
+            <div
+              class="relative z-10 bg-surface-container-lowest rounded-xl shadow-2xl p-4 border border-outline-variant/10"
+            >
+              <img
+                class="rounded-lg w-full h-full object-cover"
+                data-alt="Close-up of a high-end tablet displaying a sleek point-of-sale interface with clean typography and vibrant charts in a modern retail setting."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGe4YWGjMb0P5t5NntnbiFAbIZFwzdnjS26KLzwEAp0d5kNfzQhGJkNpsS7LV24kA3vu3USeHOFvfq1XWWT9yniRUXV8mYyIrZFoUmq8bfu0dcnUxZ7LCkbrJmXluViDXVGPLH2hnSoZExjul-n57lbLqsX4vYJbf_-Z_86jqG-j59CEvaJmcV_qesfArRIM_MkwIhaYqPNTY0V-OYEHcG2rUybM2AjU-2uD6It84KyDWr2NTneuwk0DB5XSmIPdajltUvfcs-xSUV"
+              />
+              <div class="absolute -bottom-6 -left-6 bg-primary text-on-primary p-6 rounded-xl shadow-xl">
+                <div class="text-xs uppercase tracking-widest font-bold opacity-60 mb-2">Sync Status</div>
+                <div class="flex items-center gap-3">
+                  <span class="material-symbols-outlined text-primary-fixed">check_circle</span>
+                  <span class="font-headline font-bold text-lg">99.9% Integrity Verified</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Feature Bento Grid: Technical Core -->
+      <section class="py-24 bg-surface-container-low px-6">
+        <div class="max-w-7xl mx-auto">
+          <div class="mb-16">
+            <h2 class="text-4xl font-headline font-bold tracking-tight text-primary">Architectural Pillars</h2>
+            <p class="text-on-surface-variant mt-4 text-lg">
+              Precision primitives engineered for unwavering reliability.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <!-- Column 1: Offline First -->
+            <div
+              class="md:col-span-8 bg-surface-container-lowest p-10 rounded-xl flex flex-col justify-between overflow-hidden relative group"
+            >
+              <div class="relative z-10">
+                <span class="material-symbols-outlined text-4xl text-secondary mb-6" data-icon="cloud_off"
+                  >cloud_off</span
+                >
+                <h3 class="text-3xl font-headline font-bold mb-4">Offline-First Architecture</h3>
+                <p class="text-on-surface-variant max-w-md text-lg leading-relaxed">
+                  Nigerian internet is unpredictable; your business shouldn't be. Zudo caches your entire inventory and
+                  transaction log locally, syncing with the cloud the millisecond connectivity returns.
+                </p>
+              </div>
+              <div class="mt-12 flex items-end gap-2 h-24">
+                <div class="w-full bg-surface-container-low h-1/3 rounded-t-lg group-hover:h-2/3 transition-all"></div>
+                <div class="w-full bg-secondary-container h-1/2 rounded-t-lg group-hover:h-full transition-all"></div>
+                <div class="w-full bg-surface-container-low h-1/4 rounded-t-lg group-hover:h-1/2 transition-all"></div>
+                <div class="w-full bg-surface-tint h-2/3 rounded-t-lg group-hover:h-3/4 transition-all"></div>
+              </div>
+            </div>
+            <!-- Column 2: Audit Trail -->
+            <div class="md:col-span-4 bg-tertiary p-10 rounded-xl text-on-tertiary flex flex-col justify-center">
+              <span class="material-symbols-outlined text-4xl mb-6" data-icon="security">security</span>
+              <h3 class="text-2xl font-headline font-bold mb-4">Transaction Integrity</h3>
+              <p class="text-on-tertiary-container leading-relaxed">
+                Every tap, change, and refund is logged with immutable cryptographic signatures. A complete audit trail
+                for the fluid authority.
+              </p>
+              <div class="mt-8 pt-8 border-t border-white/10">
+                <div class="flex items-center gap-3 text-sm opacity-80 mb-2">
+                  <span class="material-symbols-outlined text-sm">history</span>
+                  256-bit Audit Locking
+                </div>
+                <div class="flex items-center gap-3 text-sm opacity-80">
+                  <span class="material-symbols-outlined text-sm">key</span>
+                  Hardware Signature Keys
+                </div>
+              </div>
+            </div>
+            <!-- Column 3: Hardware -->
+            <div class="md:col-span-4 bg-surface-container-high p-8 rounded-xl">
+              <h3 class="text-xl font-headline font-bold mb-4">Hardware Neutral</h3>
+              <p class="text-on-surface-variant text-sm mb-6">
+                Native compatibility with Star, Epson, and Bluetooth peripherals across Lagos markets.
+              </p>
+              <img
+                class="w-full h-32 object-cover rounded-lg"
+                data-alt="A professional barcode scanner and receipt printer placed on a clean wooden desk with soft natural light coming from the side."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfMzzSB2FOLpoY-76rgrIIAdI0OunCfQ1YABwJpK675nNhjlticnOKuo7bGhh9ioTZTot3sHquj9c3XCHNWqjDZTECM0F0MeHOOZG11M4EYFksgagCdOiw15x-jGlJd_0HgCQu8RK6R5fOELvGfmc31wiz_eY9Lvpua-192ffL-r3Bpua5OW42jxRKJ79NdaXvfbbDGyNB4JNdFwm0ug5WCdF4GKgMO6FwdMZdeG4bnGjLxqzDe3J3SQlUOLMrYNSNb87SCP6UKz0u"
+              />
+            </div>
+            <!-- Column 4: Performance -->
+            <div
+              class="md:col-span-8 bg-gradient-to-br from-secondary to-on-secondary-container p-10 rounded-xl text-on-secondary relative overflow-hidden"
+            >
+              <div class="relative z-10 flex flex-col md:flex-row items-center gap-10">
+                <div class="flex-1">
+                  <h3 class="text-3xl font-headline font-extrabold mb-4">Zero-Latency Scanning</h3>
+                  <p class="text-secondary-fixed/80 text-lg leading-relaxed">
+                    Our search algorithm is optimized for 100,000+ SKUs, delivering sub-10ms response times on
+                    entry-level Android tablets.
+                  </p>
+                </div>
+                <div class="text-7xl font-headline font-black text-secondary-fixed opacity-40">10ms</div>
+              </div>
+              <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Deep Dive: The Interface Mockup -->
+      <section class="py-24 bg-surface px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+          <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div class="max-w-2xl">
+              <h2 class="text-4xl font-headline font-bold tracking-tight text-primary">The Editor’s Interface</h2>
+              <p class="text-on-surface-variant mt-4 text-lg leading-relaxed">
+                We abandoned the crowded grid for a high-end editorial layout. Content breathes, actions are
+                intentional, and errors are eliminated through visual hierarchy.
+              </p>
+            </div>
+            <div class="flex gap-4">
+              <div
+                class="p-4 bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/10 text-center"
+              >
+                <div class="text-2xl font-headline font-bold text-primary naira-symbol" data-text="avgTransaction" data-format="number">45,200</div>
+                <div class="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">
+                  Avg Transaction
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Mockup Shell -->
+          <div class="bg-surface-container-low rounded-2xl p-4 md:p-8 shadow-2xl relative">
+            <div
+              class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col md:flex-row h-[700px]"
+            >
+              <!-- Sidebar (Admin) -->
+              <div class="hidden md:flex w-20 bg-tertiary flex-col items-center py-8 gap-10">
+                <span class="material-symbols-outlined text-on-tertiary opacity-40">dashboard</span>
+                <span
+                  class="material-symbols-outlined text-secondary-container"
+                  style="font-variation-settings: 'FILL' 1"
+                  >shopping_basket</span
+                >
+                <span class="material-symbols-outlined text-on-tertiary opacity-40">inventory_2</span>
+                <span class="material-symbols-outlined text-on-tertiary opacity-40">group</span>
+                <span class="material-symbols-outlined text-on-tertiary opacity-40 mt-auto">settings</span>
+              </div>
+              <!-- Content Area -->
+              <div class="flex-1 flex flex-col h-full overflow-hidden">
+                <!-- Internal Header -->
+                <div class="h-20 px-8 flex items-center justify-between border-b border-outline-variant/10">
+                  <div class="flex items-center gap-4">
+                    <h4 class="font-headline font-bold text-xl">Current Basket</h4>
+                    <span class="px-2 py-0.5 bg-surface-dim text-primary text-[10px] font-bold rounded uppercase"
+                      >Staff: Ayo B.</span
+                    >
+                  </div>
+                  <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-2 text-on-surface-variant font-label text-sm">
+                      <span class="material-symbols-outlined text-sm">wifi</span>
+                      Cloud Synced
+                    </div>
+                    <div
+                      class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-on-secondary-fixed"
+                    >
+                      AB
+                    </div>
+                  </div>
+                </div>
+                <!-- Main Workspace -->
+                <div class="flex-1 flex overflow-hidden">
+                  <!-- Product Area -->
+                  <div class="flex-1 p-8 overflow-y-auto bg-surface-bright">
+                    <template data-list="products">
+                      <div
+                        class="bg-surface-container-lowest p-1 border border-outline-variant/20 rounded-xl hover:shadow-md transition-all cursor-pointer"
+                      >
+                        <img
+                          class="w-full h-32 object-cover rounded-lg mb-4"
+                          data-alt="Product image"
+                          src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3C2PfQw0cfB4dXQcdg8_TzKKW3lS9Ez-OmV2sM4RfVD2q6ExeNwY_SQWYBbiZI-w9Bt9f3WHFE89A-LpLZ8mRVYhiD5OYlm2iSZ8BPw10HAVIQPH-H_hmMrnGlIBszsfh-87Yj90CZLwXkyPBz5-6BHbE1GegWEa3Lks5NRr0IU1oKsjWIP12Xn5dKBkJNqVbYhvZZw1ZpgqNPnwWcTy5rrIdBytw-SgfABvwmN11HdLy64Ck1elGvzxwvc4GBTlZwYH-KI9fEqyr"
+                        />
+                        <div class="px-3 pb-3">
+                          <div class="font-bold text-sm" data-text="name">—</div>
+                          <div class="text-secondary font-headline font-bold naira-symbol" data-text="price" data-format="number">—</div>
+                        </div>
+                      </div>
+                    </template>
+                  </div>
+                  <!-- Cart Sidebar -->
+                  <div class="w-96 bg-surface-container-low flex flex-col">
+                    <template data-list="cartItems" data-empty="Your cart is empty">
+                      <div
+                        class="flex justify-between items-center bg-surface-container-lowest p-4 rounded-xl shadow-sm"
+                      >
+                        <div>
+                          <div class="font-bold text-sm" data-text="name">—</div>
+                          <div class="text-xs text-on-surface-variant">Qty: <span data-text="qty">—</span></div>
+                        </div>
+                        <div class="font-headline font-bold naira-symbol" data-text="total" data-format="number">—</div>
+                      </div>
+                    </template>
+                    <!-- Payment Methods Selection -->
+                    <div class="px-6 pb-6">
+                      <div class="grid grid-cols-2 gap-3 mb-6">
+                        <button
+                          class="py-4 bg-secondary-container text-on-secondary-container rounded-xl flex flex-col items-center gap-1 font-bold"
+                        >
+                          <span class="material-symbols-outlined">payments</span>
+                          Cash
+                        </button>
+                        <button
+                          class="py-4 bg-surface-container-lowest border border-outline-variant/20 rounded-xl flex flex-col items-center gap-1 font-bold"
+                        >
+                          <span class="material-symbols-outlined">credit_card</span>
+                          POS/Card
+                        </button>
+                      </div>
+                      <div class="flex justify-between items-center mb-6 px-2">
+                        <span class="font-headline font-bold text-xl uppercase tracking-widest text-on-surface-variant"
+                          >Total</span
+                        >
+                        <span class="font-headline font-extrabold text-3xl naira-symbol" data-text="cartTotal" data-format="number">210,000</span>
+                      </div>
+                      <button
+                        class="w-full h-16 bg-surface-tint text-on-primary rounded-xl font-headline font-bold text-lg flex items-center justify-center gap-3 shadow-lg"
+                      >
+                        Complete Transaction
+                        <span class="material-symbols-outlined">check</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- CTA Section -->
+      <section class="py-24 px-6">
+        <div class="max-w-4xl mx-auto text-center bg-tertiary rounded-3xl p-16 relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-tr from-primary-container to-transparent opacity-40"></div>
+          <div class="relative z-10">
+            <h2 class="text-4xl font-headline font-extrabold text-white mb-6">Ready to deploy Fluid Authority?</h2>
+            <p class="text-tertiary-fixed-dim text-xl mb-10 max-w-xl mx-auto">
+              Join 2,500+ Nigerian retailers scaling with confidence. Start your free technical trial today.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <!-- Request a Demo (Navigate to a page) -->
+              <a
+                href="/demo"
+                class="h-14 px-10 bg-primary-fixed text-on-primary-fixed rounded-xl font-headline font-bold inline-flex items-center justify-center"
+              >
+                Request a Demo
+              </a>
+
+              <!-- View Pricing (Navigate to a page) -->
+              <a
+                href="/pricing"
+                class="h-14 px-10 border border-white/20 text-white rounded-xl font-headline font-bold hover:bg-white/5 transition-all inline-flex items-center justify-center"
+              >
+                View Pricing
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <div data-component="public-footer"></div>
+    
+    <script src="/js/components.js"></script>
+    <script>
+    window.__pageInit = { fetch: PublicAPI.getProduct }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+{"version":3,"file":"sale-stats.query.js","sourceRoot":"","sources":["../../../../src/services/sale/queries/sale-stats.query.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,gCAAgC,CAAA;AAK/D,MAAM,OAAO,iBAAiB;IAC5B,KAAK,CAAC,OAAO,CAAC,KAAqB;QACjC,OAAO,cAAc,CAAC,QAAQ,CAAC,KAAK,CAAC,UAAU,CAAC,CAAA;IAClD,CAAC;CACF"}

@@ -1,0 +1,7 @@
+export { CreateProductCommand } from './create-product.command.js';
+export type { CreateProductInput } from './create-product.command.js';
+export { UpdateProductCommand } from './update-product.command.js';
+export type { UpdateProductInput } from './update-product.command.js';
+export { DeleteProductCommand } from './delete-product.command.js';
+export type { DeleteProductInput } from './delete-product.command.js';
+//# sourceMappingURL=index.d.ts.map

@@ -1,0 +1,1 @@
+export { getDb, disconnectDb } from './prisma.client.js'
