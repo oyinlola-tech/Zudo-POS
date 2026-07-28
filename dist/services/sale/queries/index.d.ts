@@ -1,7 +1,0 @@
-export { ListSalesQuery } from './list-sales.query.js';
-export type { ListSalesInput } from './list-sales.query.js';
-export { GetSaleQuery } from './get-sale.query.js';
-export type { GetSaleInput } from './get-sale.query.js';
-export { GetSaleStatsQuery } from './sale-stats.query.js';
-export type { SaleStatsInput } from './sale-stats.query.js';
-//# sourceMappingURL=index.d.ts.map

@@ -1,1 +1,0 @@
-{"version":3,"file":"inventory-stats.query.js","sourceRoot":"","sources":["../../../../src/services/product/queries/inventory-stats.query.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,iBAAiB,EAAE,MAAM,gCAAgC,CAAA;AAKlE,MAAM,OAAO,sBAAsB;IACjC,KAAK,CAAC,OAAO,CAAC,KAA0B;QACtC,OAAO,iBAAiB,CAAC,iBAAiB,CAAC,KAAK,CAAC,UAAU,CAAC,CAAA;IAC9D,CAAC;CACF"}

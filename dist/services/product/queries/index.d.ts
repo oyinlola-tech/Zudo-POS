@@ -1,9 +1,0 @@
-export { ListProductsQuery } from './list-products.query.js';
-export type { ListProductsInput } from './list-products.query.js';
-export { GetProductQuery } from './get-product.query.js';
-export type { GetProductInput } from './get-product.query.js';
-export { SearchProductsQuery } from './search-products.query.js';
-export type { SearchProductsInput } from './search-products.query.js';
-export { GetInventoryStatsQuery } from './inventory-stats.query.js';
-export type { InventoryStatsInput } from './inventory-stats.query.js';
-//# sourceMappingURL=index.d.ts.map
