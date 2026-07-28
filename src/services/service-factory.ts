@@ -21,6 +21,7 @@ import { DashboardQuery, BranchPerformanceQuery } from './analytics/index.js'
 import { GetSettingsQuery, GetBranchesQuery, GetLoyaltyConfigQuery, GetLoyaltyActivityQuery, UpdateSettingsCommand } from './settings/index.js'
 import { ProcessReturnCommand, ListReturnsQuery } from './returns/index.js'
 import { ListBusinessesQuery, GetBusinessQuery, GetRevenueStatsQuery, UpdateBusinessCommand } from './admin/index.js'
+import { ListAuditLogsQuery } from './audit-log/index.js'
 
 export const authService = {
   commands: {
@@ -148,5 +149,11 @@ export const adminService = {
     listBusinesses: new ListBusinessesQuery(),
     getBusiness: new GetBusinessQuery(),
     revenueStats: new GetRevenueStatsQuery(),
+  },
+}
+
+export const auditLogService = {
+  queries: {
+    list: new ListAuditLogsQuery(),
   },
 }

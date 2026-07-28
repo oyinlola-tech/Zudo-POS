@@ -6,7 +6,8 @@ import bcrypt from 'bcryptjs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { logger } from './cores/logger/index.js'
-import { registerPageRoutes, registerAuthRoutes, registerShiftRoutes, registerCryptoRoutes, registerPublicRoutes, registerProductRoutes, registerSaleRoutes, registerCustomerRoutes, registerStaffRoutes, registerAnalyticsRoutes, registerSettingsRoutes, registerReturnsRoutes, registerAdminRoutes } from './routes/index.js'
+import { registerPageRoutes, registerAuthRoutes, registerShiftRoutes, registerCryptoRoutes, registerPublicRoutes, registerProductRoutes, registerSaleRoutes, registerCustomerRoutes, registerStaffRoutes, registerAnalyticsRoutes, registerSettingsRoutes, registerReturnsRoutes, registerAdminRoutes, registerAuditLogRoutes
+} from './routes/index.js'
 import { getDb } from './databases/index.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -33,6 +34,7 @@ fastify.register(registerAnalyticsRoutes)
 fastify.register(registerSettingsRoutes)
 fastify.register(registerReturnsRoutes)
 fastify.register(registerAdminRoutes)
+fastify.register(registerAuditLogRoutes)
 
 const start = async () => {
   try {
