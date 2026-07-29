@@ -20,7 +20,7 @@
     getInvoice(id) { return api.get(`/auth/billing/invoices/${id}`) },
     getSubscriptionStats() { return api.get('/auth/billing/subscriptions/stats') },
 
-    getAuditLogs(params) { return api.get(`/settings/loyalty/activity?${new URLSearchParams(params || {})}`) },
+    getAuditLogs(params) { return api.get(`/auth/audit-logs?${new URLSearchParams(params || {})}`) },
 
     getAnalytics(period) { return api.get(`/admin/revenue?period=${period || 'month'}`) },
     getRevenueByPlan() { return api.get('/admin/revenue') },

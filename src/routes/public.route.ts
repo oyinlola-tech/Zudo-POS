@@ -71,4 +71,19 @@ export async function registerPublicRoutes(fastify: FastifyInstance) {
     demoUrl: '/register',
     features: ['Full POS interface', 'All reports', 'Staff management', 'Inventory tools'],
   }))
+
+  fastify.get('/api/public/product', async () => ({
+    name: 'Zudo POS',
+    tagline: 'The Fluid Authority for Nigerian Retail',
+    description: 'Offline-first cloud POS system built for Nigerian retail businesses. Process sales offline, sync automatically, manage inventory in real-time.',
+    features: [
+      'Offline-first architecture with auto-sync',
+      'Real-time inventory management',
+      'Customer loyalty & CRM',
+      'Multi-branch support',
+      'Crypto & traditional payments',
+      'Advanced analytics & reports',
+    ],
+    platforms: ['Web', 'iOS', 'Android'],
+  }))
 }

@@ -20,12 +20,14 @@ import { CreateStaffCommand, UpdateStaffCommand, ListStaffQuery, GetStaffQuery }
 import { DashboardQuery, BranchPerformanceQuery } from './analytics/index.js'
 import { GetSettingsQuery, GetBranchesQuery, GetLoyaltyConfigQuery, GetLoyaltyActivityQuery, UpdateSettingsCommand } from './settings/index.js'
 import { ProcessReturnCommand, ListReturnsQuery } from './returns/index.js'
-import { ListBusinessesQuery, GetBusinessQuery, GetRevenueStatsQuery, UpdateBusinessCommand } from './admin/index.js'
+import { ListBusinessesQuery, GetBusinessQuery, GetRevenueStatsQuery, UpdateBusinessCommand, CreateBusinessCommand } from './admin/index.js'
 import { ListAuditLogsQuery } from './audit-log/index.js'
 import { ListRolesQuery, CreateRoleCommand } from './roles/index.js'
 import { ListPlansQuery, GetPlanQuery as BillingGetPlanQuery, ListInvoicesQuery, GetInvoiceQuery, GetSubscriptionStatsQuery, CreatePlanCommand, UpdatePlanCommand } from './billing-plans/index.js'
 import { GetNotificationsQuery, GetUnreadCountQuery, GetBroadcastHistoryQuery } from './notification/index.js'
-import { MarkNotificationReadCommand, MarkAllNotificationsReadCommand, BroadcastNotificationCommand, CreateNotificationCommand } from './notification/index.js'
+import { MarkNotificationReadCommand, MarkAllNotificationsReadCommand, BroadcastNotificationCommand, CreateNotificationCommand, UpdateNotificationSettingsCommand } from './notification/index.js'
+import { ListLoyaltyQuery, GetLoyaltyQuery, UpdateTierCommand } from './loyalty/index.js'
+import { GetReportQuery } from './reports/index.js'
 
 export const authService = {
   commands: {
@@ -148,6 +150,7 @@ export const returnsService = {
 export const adminService = {
   commands: {
     updateBusiness: new UpdateBusinessCommand(),
+    createBusiness: new CreateBusinessCommand(),
   },
   queries: {
     listBusinesses: new ListBusinessesQuery(),
@@ -191,10 +194,27 @@ export const notificationService = {
     markAllRead: new MarkAllNotificationsReadCommand(),
     broadcast: new BroadcastNotificationCommand(),
     create: new CreateNotificationCommand(),
+    updateSettings: new UpdateNotificationSettingsCommand(),
   },
   queries: {
     getNotifications: new GetNotificationsQuery(),
     getUnreadCount: new GetUnreadCountQuery(),
     getBroadcastHistory: new GetBroadcastHistoryQuery(),
+  },
+}
+
+export const loyaltyService = {
+  queries: {
+    list: new ListLoyaltyQuery(),
+    get: new GetLoyaltyQuery(),
+  },
+  commands: {
+    updateTier: new UpdateTierCommand(),
+  },
+}
+
+export const reportsService = {
+  queries: {
+    getReport: new GetReportQuery(),
   },
 }

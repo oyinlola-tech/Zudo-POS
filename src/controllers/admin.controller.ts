@@ -41,3 +41,25 @@ export async function revenueStatsHandler(request: FastifyRequest, reply: Fastif
   const result = await adminService.queries.revenueStats.execute()
   return reply.send(result)
 }
+
+export async function createBusinessHandler(request: FastifyRequest, reply: FastifyReply) {
+  const body = request.body as Record<string, string>
+  if (!body.name || !body.ownerEmail || !body.ownerFirstName || !body.ownerLastName) {
+    return reply.status(400).send({ error: 'name, ownerEmail, ownerFirstName, ownerLastName are required' })
+  }
+  try {
+    const result = await adminService.commands.createBusiness.execute({
+      name: body.name,
+      email: body.email,
+      phone: body.phone,
+      address: body.address,
+      ownerEmail: body.ownerEmail,
+      ownerPassword: body.ownerPassword,
+      ownerFirstName: body.ownerFirstName,
+      ownerLastName: body.ownerLastName,
+    })
+    return reply.status(201).send(result)
+  } catch (err) {
+    return reply.status(400).send({ error: err instanceof Error ? err.message : 'Creation failed' })
+  }
+}

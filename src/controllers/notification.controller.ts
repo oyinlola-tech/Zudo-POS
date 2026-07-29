@@ -46,3 +46,13 @@ export async function broadcastHistoryHandler(request: FastifyRequest, reply: Fa
   const result = await notificationService.queries.getBroadcastHistory.execute({ businessId: request.user.businessId })
   return reply.send(result)
 }
+
+export async function updateNotificationSettingsHandler(request: FastifyRequest, reply: FastifyReply) {
+  if (!request.user?.businessId) return reply.status(401).send({ error: 'Unauthorized' })
+  const body = request.body as Record<string, string>
+  const result = await notificationService.commands.updateSettings.execute({
+    businessId: request.user.businessId,
+    settings: body,
+  })
+  return reply.send(result)
+}

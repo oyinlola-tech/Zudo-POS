@@ -5,11 +5,12 @@ import cookie from '@fastify/cookie'
 import rateLimit from '@fastify/rate-limit'
 import cors from '@fastify/cors'
 import helmet from '@fastify/helmet'
+import multipart from '@fastify/multipart'
 import bcrypt from 'bcryptjs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { logger } from './cores/logger/index.js'
-import { registerPageRoutes, registerAuthRoutes, registerShiftRoutes, registerCryptoRoutes, registerPublicRoutes, registerProductRoutes, registerSaleRoutes, registerCustomerRoutes, registerStaffRoutes, registerAnalyticsRoutes, registerSettingsRoutes, registerReturnsRoutes, registerAdminRoutes, registerAuditLogRoutes, registerRolesRoutes, registerBillingPlansRoutes, registerNotificationRoutes
+import { registerPageRoutes, registerAuthRoutes, registerShiftRoutes, registerCryptoRoutes, registerPublicRoutes, registerProductRoutes, registerSaleRoutes, registerCustomerRoutes, registerStaffRoutes, registerAnalyticsRoutes, registerSettingsRoutes, registerReturnsRoutes, registerAdminRoutes, registerAuditLogRoutes, registerRolesRoutes, registerBillingPlansRoutes, registerNotificationRoutes, registerLoyaltyRoutes, registerReportRoutes, registerUploadRoutes
 } from './routes/index.js'
 import { getDb } from './databases/index.js'
 
@@ -43,6 +44,8 @@ await fastify.register(helmet, {
 })
 
 fastify.register(cookie)
+
+fastify.register(multipart)
 
 fastify.register(fastifyStatic, {
   root: path.join(__dirname, '../public'),
@@ -80,6 +83,9 @@ fastify.register(registerAuditLogRoutes)
 fastify.register(registerRolesRoutes)
 fastify.register(registerBillingPlansRoutes)
 fastify.register(registerNotificationRoutes)
+fastify.register(registerLoyaltyRoutes)
+fastify.register(registerReportRoutes)
+fastify.register(registerUploadRoutes)
 
 const start = async () => {
   try {
