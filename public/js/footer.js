@@ -1,4 +1,3 @@
-// Footer year update script
 document.addEventListener('DOMContentLoaded', function() {
     const currentYear = new Date().getFullYear();
     const copyrightRegex = /© \d{4}/g;
