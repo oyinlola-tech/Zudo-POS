@@ -23,6 +23,7 @@ import { ProcessReturnCommand, ListReturnsQuery } from './returns/index.js'
 import { ListBusinessesQuery, GetBusinessQuery, GetRevenueStatsQuery, UpdateBusinessCommand } from './admin/index.js'
 import { ListAuditLogsQuery } from './audit-log/index.js'
 import { ListRolesQuery, CreateRoleCommand } from './roles/index.js'
+import { ListPlansQuery, GetPlanQuery as BillingGetPlanQuery, ListInvoicesQuery, GetInvoiceQuery, GetSubscriptionStatsQuery, CreatePlanCommand, UpdatePlanCommand } from './billing-plans/index.js'
 
 export const authService = {
   commands: {
@@ -165,5 +166,19 @@ export const rolesService = {
   },
   queries: {
     list: new ListRolesQuery(),
+  },
+}
+
+export const billingPlansService = {
+  commands: {
+    createPlan: new CreatePlanCommand(),
+    updatePlan: new UpdatePlanCommand(),
+  },
+  queries: {
+    listPlans: new ListPlansQuery(),
+    getPlan: new BillingGetPlanQuery(),
+    listInvoices: new ListInvoicesQuery(),
+    getInvoice: new GetInvoiceQuery(),
+    getSubscriptionStats: new GetSubscriptionStatsQuery(),
   },
 }
