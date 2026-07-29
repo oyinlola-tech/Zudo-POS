@@ -37,6 +37,13 @@ export const settingsRepository = {
     })
   },
 
+  async getBranch(businessId: string, id: string) {
+    const row = await getDb().businessSetting.findFirst({ where: { id, businessId, key: { startsWith: 'branch_' } } })
+    if (!row) return null
+    try { return { id: row.id, ...JSON.parse(row.value) } }
+    catch { return { id: row.id, name: row.value } }
+  },
+
   async upsertBranch(businessId: string, id: string | null, data: Record<string, unknown>) {
     if (id) {
       await getDb().businessSetting.update({ where: { id }, data: { value: JSON.stringify(data) } })

@@ -26,6 +26,15 @@ export async function getBranchesHandler(request: FastifyRequest, reply: Fastify
   return reply.send(result)
 }
 
+export async function getBranchHandler(request: FastifyRequest, reply: FastifyReply) {
+  if (!request.user?.businessId) return reply.status(401).send({ error: 'Unauthorized' })
+  const { id } = request.params as { id: string }
+  const { settingsRepository } = await import('../repositories/index.js')
+  const branch = await settingsRepository.getBranch(request.user.businessId, id)
+  if (!branch) return reply.status(404).send({ error: 'Branch not found' })
+  return reply.send(branch)
+}
+
 export async function upsertBranchHandler(request: FastifyRequest, reply: FastifyReply) {
   if (!request.user?.businessId) return reply.status(401).send({ error: 'Unauthorized' })
   const body = request.body as Record<string, unknown>
