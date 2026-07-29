@@ -39,3 +39,29 @@ export type {
   CreateCustomerRequest, UpdateCustomerRequest,
   CustomerResponse, CustomerListResponse, CustomerStatsResponse,
 } from './customer.dto.js'
+
+export type {
+  PlanData, InvoiceData, SubscriptionStats,
+  ListPlansOutput, CreatePlanInput, UpdatePlanInput,
+} from './billing-plans.dto.js'
+
+export type {
+  NotificationItem, NotificationListOutput,
+  UnreadCountOutput, BroadcastInput, BroadcastOutput,
+} from './notification.dto.js'
+
+export type {
+  BusinessData, ListBusinessesOutput, RevenueStatsOutput,
+} from './admin.dto.js'
+
+export type {
+  RoleData, ListRolesOutput, CreateRoleInput,
+} from './roles.dto.js'
+
+export type {
+  ReturnData, ListReturnsOutput, ProcessReturnInput,
+} from './returns.dto.js'
+
+export type {
+  AuditLogData, ListAuditLogsOutput,
+} from './audit-log.dto.js'
