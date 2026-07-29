@@ -2,3 +2,5 @@ export { ListBusinessesQuery, GetBusinessQuery, GetRevenueStatsQuery } from './q
 export type { ListBusinessesInput, GetBusinessInput } from './queries/index.js'
 export { UpdateBusinessCommand } from './commands/index.js'
 export type { UpdateBusinessInput } from './commands/index.js'
+
+export type { BusinessData, ListBusinessesOutput, RevenueStatsOutput } from '../../dtos/admin.dto.js'
