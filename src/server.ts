@@ -52,6 +52,10 @@ fastify.register(fastifyStatic, {
 
 fastify.get('/api/health', async () => ({ status: 'ok', timestamp: new Date().toISOString() }))
 
+fastify.setNotFoundHandler((_req, reply) => {
+  reply.code(404).sendFile('404.html')
+})
+
 const authEndpoints = ['/api/auth/login', '/api/auth/register', '/api/auth/forgot-password', '/api/auth/reset-password', '/api/auth/send-otp', '/api/auth/verify-otp', '/api/auth/forgot-pin']
 fastify.addHook('onRoute', (routeOptions) => {
   if (authEndpoints.includes(routeOptions.url as string)) {
