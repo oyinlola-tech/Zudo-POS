@@ -15,12 +15,12 @@ import { SendOtpMailCommand, MailStatusQuery } from './mail/index.js'
 import { StartShiftCommand, EndShiftCommand, GetActiveShiftQuery, GetShiftHistoryQuery } from './shift/index.js'
 import { CreateProductCommand, UpdateProductCommand, DeleteProductCommand, ListProductsQuery, GetProductQuery, SearchProductsQuery, GetInventoryStatsQuery } from './product/index.js'
 import { CreateSaleCommand, VoidSaleCommand, ListSalesQuery, GetSaleQuery, GetSaleStatsQuery } from './sale/index.js'
-import { CreateCustomerCommand, UpdateCustomerCommand, ListCustomersQuery, GetCustomerQuery, CustomerStatsQuery } from './customer/index.js'
-import { CreateStaffCommand, UpdateStaffCommand, ListStaffQuery, GetStaffQuery } from './staff/index.js'
+import { CreateCustomerCommand, UpdateCustomerCommand, DeleteCustomerCommand, ListCustomersQuery, GetCustomerQuery, CustomerStatsQuery } from './customer/index.js'
+import { CreateStaffCommand, UpdateStaffCommand, DeleteStaffCommand, ListStaffQuery, GetStaffQuery } from './staff/index.js'
 import { DashboardQuery, BranchPerformanceQuery } from './analytics/index.js'
 import { GetSettingsQuery, GetBranchesQuery, GetLoyaltyConfigQuery, GetLoyaltyActivityQuery, UpdateSettingsCommand } from './settings/index.js'
 import { ProcessReturnCommand, ListReturnsQuery } from './returns/index.js'
-import { ListBusinessesQuery, GetBusinessQuery, GetRevenueStatsQuery, UpdateBusinessCommand, CreateBusinessCommand } from './admin/index.js'
+import { ListBusinessesQuery, GetBusinessQuery, GetRevenueStatsQuery, UpdateBusinessCommand, CreateBusinessCommand, DeleteBusinessCommand } from './admin/index.js'
 import { ListAuditLogsQuery } from './audit-log/index.js'
 import { ListRolesQuery, CreateRoleCommand } from './roles/index.js'
 import { ListPlansQuery, GetPlanQuery as BillingGetPlanQuery, ListInvoicesQuery, GetInvoiceQuery, GetSubscriptionStatsQuery, CreatePlanCommand, UpdatePlanCommand } from './billing-plans/index.js'
@@ -100,6 +100,7 @@ export const customerService = {
   commands: {
     create: new CreateCustomerCommand(),
     update: new UpdateCustomerCommand(),
+    delete: new DeleteCustomerCommand(),
   },
   queries: {
     list: new ListCustomersQuery(),
@@ -112,6 +113,7 @@ export const staffService = {
   commands: {
     create: new CreateStaffCommand(),
     update: new UpdateStaffCommand(),
+    delete: new DeleteStaffCommand(),
   },
   queries: {
     list: new ListStaffQuery(),
@@ -151,6 +153,7 @@ export const adminService = {
   commands: {
     updateBusiness: new UpdateBusinessCommand(),
     createBusiness: new CreateBusinessCommand(),
+    deleteBusiness: new DeleteBusinessCommand(),
   },
   queries: {
     listBusinesses: new ListBusinessesQuery(),

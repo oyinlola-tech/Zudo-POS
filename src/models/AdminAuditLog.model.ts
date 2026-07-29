@@ -21,6 +21,8 @@ export type AuditAction =
   | 'SETTINGS_CHANGE'
   | 'CRYPTO_WALLET_UPDATE'
   | 'CRYPTO_PAYMENT'
+  | 'CUSTOMER_DELETE'
+  | 'USER_DELETE'
 
 export async function createAuditLog(data: {
   userId: string

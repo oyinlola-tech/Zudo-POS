@@ -31,4 +31,8 @@ export const staffRepository = {
       select: { id: true, firstName: true, lastName: true, email: true, role: true, isActive: true, lastLoginAt: true, createdAt: true, updatedAt: true, phone: true },
     })
   },
+
+  async remove(id: string) {
+    return getDb().user.update({ where: { id }, data: { isActive: false } })
+  },
 }

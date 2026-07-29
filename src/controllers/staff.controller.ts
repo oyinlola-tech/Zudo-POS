@@ -58,3 +58,17 @@ export async function updateStaffHandler(request: FastifyRequest, reply: Fastify
   })
   return reply.send(result)
 }
+
+export async function deleteStaffHandler(request: FastifyRequest, reply: FastifyReply) {
+  if (!request.user?.businessId) return reply.status(401).send({ error: 'Unauthorized' })
+  const { id } = request.params as { id: string }
+  try {
+    const result = await staffService.commands.delete.execute({
+      id, businessId: request.user.businessId,
+      userId: request.user?.userId, ip: request.ip, userAgent: request.headers['user-agent'],
+    })
+    return reply.send(result)
+  } catch (err) {
+    return reply.status(404).send({ error: err instanceof Error ? err.message : 'Delete failed' })
+  }
+}

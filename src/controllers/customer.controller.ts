@@ -64,3 +64,17 @@ export async function customerStatsHandler(request: FastifyRequest, reply: Fasti
   const result = await customerService.queries.stats.execute({ businessId: request.user.businessId })
   return reply.send(result)
 }
+
+export async function deleteCustomerHandler(request: FastifyRequest, reply: FastifyReply) {
+  if (!request.user?.businessId) return reply.status(401).send({ error: 'Unauthorized' })
+  const { id } = request.params as { id: string }
+  try {
+    const result = await customerService.commands.delete.execute({
+      id, businessId: request.user.businessId,
+      userId: request.user?.userId, ip: request.ip, userAgent: request.headers['user-agent'],
+    })
+    return reply.send(result)
+  } catch (err) {
+    return reply.status(404).send({ error: err instanceof Error ? err.message : 'Delete failed' })
+  }
+}

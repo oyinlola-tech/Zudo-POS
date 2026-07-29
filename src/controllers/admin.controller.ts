@@ -63,3 +63,13 @@ export async function createBusinessHandler(request: FastifyRequest, reply: Fast
     return reply.status(400).send({ error: err instanceof Error ? err.message : 'Creation failed' })
   }
 }
+
+export async function deleteBusinessHandler(request: FastifyRequest, reply: FastifyReply) {
+  const { id } = request.params as { id: string }
+  try {
+    const result = await adminService.commands.deleteBusiness.execute({ id })
+    return reply.send(result)
+  } catch (err) {
+    return reply.status(404).send({ error: err instanceof Error ? err.message : 'Delete failed' })
+  }
+}
