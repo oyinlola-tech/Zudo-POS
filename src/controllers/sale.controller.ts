@@ -36,17 +36,20 @@ export async function listSalesHandler(request: FastifyRequest, reply: FastifyRe
 }
 
 export async function getSaleHandler(request: FastifyRequest, reply: FastifyReply) {
+  if (!request.user?.businessId) return reply.status(401).send({ error: 'Unauthorized' })
   const { id } = request.params as { id: string }
-  const sale = await saleService.queries.get.execute({ id })
+  const sale = await saleService.queries.get.execute({ id, businessId: request.user.businessId })
   if (!sale) return reply.status(404).send({ error: 'Sale not found' })
   return reply.send(sale)
 }
 
 export async function voidSaleHandler(request: FastifyRequest, reply: FastifyReply) {
+  if (!request.user?.businessId) return reply.status(401).send({ error: 'Unauthorized' })
   const { id } = request.params as { id: string }
   try {
     const result = await saleService.commands.void.execute({
       id,
+      businessId: request.user.businessId,
       userId: request.user?.userId,
       ip: request.ip,
       userAgent: request.headers['user-agent'],

@@ -15,8 +15,9 @@ export async function listProductsHandler(request: FastifyRequest, reply: Fastif
 }
 
 export async function getProductHandler(request: FastifyRequest, reply: FastifyReply) {
+  if (!request.user?.businessId) return reply.status(401).send({ error: 'Unauthorized' })
   const { id } = request.params as { id: string }
-  const product = await productService.queries.get.execute({ id })
+  const product = await productService.queries.get.execute({ id, businessId: request.user.businessId })
   if (!product) return reply.status(404).send({ error: 'Product not found' })
   return reply.send(product)
 }
@@ -44,10 +45,12 @@ export async function createProductHandler(request: FastifyRequest, reply: Fasti
 }
 
 export async function updateProductHandler(request: FastifyRequest, reply: FastifyReply) {
+  if (!request.user?.businessId) return reply.status(401).send({ error: 'Unauthorized' })
   const { id } = request.params as { id: string }
   const body = request.body as Record<string, unknown>
   const result = await productService.commands.update.execute({
     id,
+    businessId: request.user.businessId,
     ...body,
     userId: request.user?.userId,
     ip: request.ip,
@@ -57,9 +60,11 @@ export async function updateProductHandler(request: FastifyRequest, reply: Fasti
 }
 
 export async function deleteProductHandler(request: FastifyRequest, reply: FastifyReply) {
+  if (!request.user?.businessId) return reply.status(401).send({ error: 'Unauthorized' })
   const { id } = request.params as { id: string }
   const result = await productService.commands.delete.execute({
     id,
+    businessId: request.user.businessId,
     userId: request.user?.userId,
     ip: request.ip,
     userAgent: request.headers['user-agent'],

@@ -72,11 +72,12 @@ export async function activeShiftHandler(
 }
 
 export async function getShiftByIdHandler(request: FastifyRequest, reply: FastifyReply) {
-  if (!request.user) return reply.status(401).send({ error: 'Unauthorized' })
+  if (!request.user?.businessId) return reply.status(401).send({ error: 'Unauthorized' })
   const { id } = request.params as { id: string }
   const { shiftRepository } = await import('../repositories/index.js')
   const shift = await shiftRepository.findById(id)
   if (!shift) return reply.status(404).send({ error: 'Shift not found' })
+  if (shift.businessId !== request.user.businessId) return reply.status(403).send({ error: 'Forbidden' })
   return reply.send({ shift })
 }
 

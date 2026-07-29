@@ -41,6 +41,7 @@ export async function listInvoicesHandler(request: FastifyRequest, reply: Fastif
 }
 
 export async function getInvoiceHandler(request: FastifyRequest, reply: FastifyReply) {
+  if (!request.user?.businessId) return reply.status(401).send({ error: 'Unauthorized' })
   const { id } = request.params as { id: string }
   const result = await billingPlansService.queries.getInvoice.execute({ invoiceId: id })
   return reply.send(result)
