@@ -24,6 +24,8 @@ import { ListBusinessesQuery, GetBusinessQuery, GetRevenueStatsQuery, UpdateBusi
 import { ListAuditLogsQuery } from './audit-log/index.js'
 import { ListRolesQuery, CreateRoleCommand } from './roles/index.js'
 import { ListPlansQuery, GetPlanQuery as BillingGetPlanQuery, ListInvoicesQuery, GetInvoiceQuery, GetSubscriptionStatsQuery, CreatePlanCommand, UpdatePlanCommand } from './billing-plans/index.js'
+import { GetNotificationsQuery, GetUnreadCountQuery, GetBroadcastHistoryQuery } from './notification/index.js'
+import { MarkNotificationReadCommand, MarkAllNotificationsReadCommand, BroadcastNotificationCommand, CreateNotificationCommand } from './notification/index.js'
 
 export const authService = {
   commands: {
@@ -180,5 +182,19 @@ export const billingPlansService = {
     listInvoices: new ListInvoicesQuery(),
     getInvoice: new GetInvoiceQuery(),
     getSubscriptionStats: new GetSubscriptionStatsQuery(),
+  },
+}
+
+export const notificationService = {
+  commands: {
+    markRead: new MarkNotificationReadCommand(),
+    markAllRead: new MarkAllNotificationsReadCommand(),
+    broadcast: new BroadcastNotificationCommand(),
+    create: new CreateNotificationCommand(),
+  },
+  queries: {
+    getNotifications: new GetNotificationsQuery(),
+    getUnreadCount: new GetUnreadCountQuery(),
+    getBroadcastHistory: new GetBroadcastHistoryQuery(),
   },
 }

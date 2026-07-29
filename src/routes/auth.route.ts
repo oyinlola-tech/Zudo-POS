@@ -21,14 +21,6 @@ async function updateProfileHandler(request: FastifyRequest, reply: FastifyReply
   return reply.send({ message: 'Profile updated' })
 }
 
-async function notificationsHandler(request: FastifyRequest, reply: FastifyReply) {
-  return reply.send({ notifications: [] })
-}
-
-async function markNotifReadHandler(request: FastifyRequest, reply: FastifyReply) {
-  return reply.send({ message: 'Notification marked as read' })
-}
-
 async function onboardingStubHandler(request: FastifyRequest, reply: FastifyReply) {
   return reply.send({ message: 'Saved' })
 }
@@ -46,8 +38,6 @@ export async function registerAuthRoutes(fastify: FastifyInstance) {
   fastify.get('/api/auth/session', { preHandler: [authGuard] }, sessionHandler)
   fastify.get('/api/auth/profile', { preHandler: [authGuard] }, profileHandler)
   fastify.put('/api/auth/profile', { preHandler: [authGuard] }, updateProfileHandler)
-  fastify.get('/api/auth/notifications', { preHandler: [authGuard] }, notificationsHandler)
-  fastify.put('/api/auth/notifications/:id/read', { preHandler: [authGuard] }, markNotifReadHandler)
 
   fastify.post('/api/auth/setup/store', { preHandler: [authGuard] }, onboardingStubHandler)
   fastify.post('/api/auth/setup/staff', { preHandler: [authGuard] }, onboardingStubHandler)
@@ -55,19 +45,7 @@ export async function registerAuthRoutes(fastify: FastifyInstance) {
   fastify.post('/api/auth/setup/features', { preHandler: [authGuard] }, onboardingStubHandler)
   fastify.post('/api/auth/setup/complete', { preHandler: [authGuard] }, onboardingStubHandler)
 
-  fastify.post(
-    '/api/auth/change-password',
-    { preHandler: [authGuard] },
-    changePasswordHandler,
-  )
-  fastify.post(
-    '/api/auth/setup-pin',
-    { preHandler: [authGuard] },
-    setupPinHandler,
-  )
-  fastify.post(
-    '/api/auth/change-pin',
-    { preHandler: [authGuard] },
-    changePinHandler,
-  )
+  fastify.post('/api/auth/change-password', { preHandler: [authGuard] }, changePasswordHandler)
+  fastify.post('/api/auth/setup-pin', { preHandler: [authGuard] }, setupPinHandler)
+  fastify.post('/api/auth/change-pin', { preHandler: [authGuard] }, changePinHandler)
 }
