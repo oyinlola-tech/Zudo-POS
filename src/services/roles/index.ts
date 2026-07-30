@@ -1,5 +1,5 @@
-export { ListRolesQuery } from './queries/list-roles.query.js'
-export { CreateRoleCommand } from './commands/create-role.command.js'
-export type { CreateRoleInput } from './commands/create-role.command.js'
-
+export { ListRolesQuery, GetRoleQuery } from './queries/index.js'
+export type { GetRoleInput } from './queries/index.js'
+export { CreateRoleCommand, UpdateRoleCommand, DeleteRoleCommand } from './commands/index.js'
+export type { CreateRoleInput, UpdateRoleInput, DeleteRoleInput } from './commands/index.js'
 export type { RoleData, ListRolesOutput } from '../../dtos/roles.dto.js'

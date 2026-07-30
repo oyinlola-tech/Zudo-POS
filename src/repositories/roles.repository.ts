@@ -15,6 +15,16 @@ export const rolesRepository = {
     return { role: normalized, permissions: data.permissions ?? {} }
   },
 
+  async getRole(role: string) {
+    const exists = ROLES.includes(role as never)
+    if (!exists) return null
+    return { role, permissions: {} }
+  },
+
+  async updateRole(roleId: string, data: Record<string, unknown>) {
+    return { role: roleId, ...data }
+  },
+
   async getUsersByRole(businessId: string, role: string) {
     return getDb().user.findMany({
       where: { businessId, role: role as never, isActive: true },
