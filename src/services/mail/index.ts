@@ -1,2 +1,5 @@
-export { SendOtpMailCommand } from './commands/index.js'
-export { MailStatusQuery } from './queries/index.js'
+export { SendOtpMailCommand, SendCustomEmailCommand, SendBulkEmailCommand } from './commands/index.js'
+export type { SendOtpMailInput, SendCustomEmailInput, SendBulkEmailInput } from './commands/index.js'
+export { MailStatusQuery, EmailLogsQuery } from './queries/index.js'
+export type { MailStatusInput, EmailLogsInput } from './queries/index.js'
+export type { MailData, MailStatusData } from '../../dtos/mail.dto.js'

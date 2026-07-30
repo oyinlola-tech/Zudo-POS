@@ -1,1 +1,6 @@
 export { SendOtpMailCommand } from './send-mail.command.js'
+export type { SendOtpMailInput } from './send-mail.command.js'
+export { SendCustomEmailCommand } from './send-custom-email.command.js'
+export type { SendCustomEmailInput } from './send-custom-email.command.js'
+export { SendBulkEmailCommand } from './send-bulk-email.command.js'
+export type { SendBulkEmailInput } from './send-bulk-email.command.js'

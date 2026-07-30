@@ -22,3 +22,38 @@ export async function mailStatusHandler(request: FastifyRequest, reply: FastifyR
   const result = await mailService.queries.mailStatus.execute({ messageId })
   return reply.send(result)
 }
+
+export async function sendCustomEmailHandler(request: FastifyRequest, reply: FastifyReply) {
+  const body = request.body as { to?: string; subject?: string; text?: string; html?: string }
+  if (!body.to || !body.subject || !body.text) {
+    return reply.status(400).send({ error: 'to, subject, and text are required' })
+  }
+  try {
+    const result = await mailService.commands.sendCustomEmail.execute({
+      to: body.to, subject: body.subject, text: body.text, html: body.html,
+    })
+    return reply.send(result)
+  } catch (err) {
+    return reply.status(500).send({ error: err instanceof Error ? err.message : 'Failed to send email' })
+  }
+}
+
+export async function sendBulkEmailHandler(request: FastifyRequest, reply: FastifyReply) {
+  const body = request.body as { recipients?: string[]; subject?: string; text?: string; html?: string }
+  if (!body.recipients?.length || !body.subject || !body.text) {
+    return reply.status(400).send({ error: 'recipients, subject, and text are required' })
+  }
+  try {
+    const result = await mailService.commands.sendBulkEmail.execute({
+      recipients: body.recipients, subject: body.subject, text: body.text, html: body.html,
+    })
+    return reply.send(result)
+  } catch (err) {
+    return reply.status(500).send({ error: err instanceof Error ? err.message : 'Failed to send bulk email' })
+  }
+}
+
+export async function emailLogsHandler(_request: FastifyRequest, reply: FastifyReply) {
+  const result = await mailService.queries.emailLogs.execute({})
+  return reply.send(result)
+}
