@@ -57,4 +57,15 @@ export const returnsRepository = {
     ])
     return { items, total, page, limit }
   },
+
+  async findById(id: string) {
+    return getDb().sale.findUnique({
+      where: { id },
+      include: { items: { include: { product: true } } },
+    })
+  },
+
+  async updateStatus(id: string, status: string) {
+    return getDb().sale.update({ where: { id }, data: { status: status as never } })
+  },
 }

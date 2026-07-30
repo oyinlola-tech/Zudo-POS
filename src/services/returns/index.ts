@@ -1,6 +1,5 @@
-export { ProcessReturnCommand } from './commands/index.js'
-export type { ProcessReturnInput } from './commands/index.js'
-export { ListReturnsQuery } from './queries/index.js'
-export type { ListReturnsInput } from './queries/index.js'
-
+export { ProcessReturnCommand, ApproveReturnCommand, RejectReturnCommand } from './commands/index.js'
+export type { ProcessReturnInput, ApproveReturnInput, RejectReturnInput } from './commands/index.js'
+export { ListReturnsQuery, GetReturnQuery } from './queries/index.js'
+export type { ListReturnsInput, GetReturnInput } from './queries/index.js'
 export type { ReturnData, ListReturnsOutput } from '../../dtos/returns.dto.js'

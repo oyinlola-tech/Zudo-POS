@@ -1,2 +1,6 @@
 export { ProcessReturnCommand } from './process-return.command.js'
 export type { ProcessReturnInput } from './process-return.command.js'
+export { ApproveReturnCommand } from './approve-return.command.js'
+export type { ApproveReturnInput } from './approve-return.command.js'
+export { RejectReturnCommand } from './reject-return.command.js'
+export type { RejectReturnInput } from './reject-return.command.js'
