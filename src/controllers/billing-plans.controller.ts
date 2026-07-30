@@ -29,7 +29,7 @@ export async function updatePlanHandler(request: FastifyRequest, reply: FastifyR
   return reply.send(result)
 }
 
-export async function listInvoicesHandler(request: FastifyRequest, reply: FastifyReply) {
+export async function billingPlanListInvoicesHandler(request: FastifyRequest, reply: FastifyReply) {
   if (!request.user?.businessId) return reply.status(401).send({ error: 'Unauthorized' })
   const query = request.query as Record<string, string | undefined>
   const result = await billingPlansService.queries.listInvoices.execute({
@@ -40,7 +40,7 @@ export async function listInvoicesHandler(request: FastifyRequest, reply: Fastif
   return reply.send(result)
 }
 
-export async function getInvoiceHandler(request: FastifyRequest, reply: FastifyReply) {
+export async function billingPlanGetInvoiceHandler(request: FastifyRequest, reply: FastifyReply) {
   if (!request.user?.businessId) return reply.status(401).send({ error: 'Unauthorized' })
   const { id } = request.params as { id: string }
   const result = await billingPlansService.queries.getInvoice.execute({ invoiceId: id })

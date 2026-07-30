@@ -1,4 +1,6 @@
 export { ChangePlanCommand } from './change-plan.command.js'
 export type { ChangePlanInput } from './change-plan.command.js'
 export { GenerateInvoiceCommand } from './generate-invoice.command.js'
-export type { InvoiceData } from './generate-invoice.command.js'
+export type { InvoiceData as GenerateInvoiceInput } from './generate-invoice.command.js'
+export { CancelPlanCommand } from './cancel-plan.command.js'
+export type { CancelPlanInput } from './cancel-plan.command.js'

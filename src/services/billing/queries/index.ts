@@ -1,2 +1,6 @@
 export { GetPlanQuery } from './get-plan.query.js'
 export type { GetPlanInput } from './get-plan.query.js'
+export { ListInvoicesQuery } from './list-invoices.query.js'
+export type { ListInvoicesInput } from './list-invoices.query.js'
+export { GetInvoiceQuery } from './get-invoice.query.js'
+export type { GetInvoiceInput } from './get-invoice.query.js'

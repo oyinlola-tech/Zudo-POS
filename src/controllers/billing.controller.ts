@@ -33,3 +33,31 @@ export async function billingGetPlanHandler(request: FastifyRequest, reply: Fast
   if (!result) return reply.status(404).send({ error: 'Business not found' })
   return reply.send(result)
 }
+
+export async function listInvoicesHandler(request: FastifyRequest, reply: FastifyReply) {
+  const query = request.query as Record<string, string | undefined>
+  const result = await billingService.queries.listInvoices.execute({
+    businessId: (request.params as { businessId: string }).businessId,
+    page: query['page'] ? parseInt(query['page']) : 1,
+    limit: query['limit'] ? parseInt(query['limit']) : 50,
+  })
+  return reply.send(result)
+}
+
+export async function getInvoiceHandler(request: FastifyRequest, reply: FastifyReply) {
+  const { invoiceId } = request.params as { invoiceId: string }
+  const result = await billingService.queries.getInvoice.execute({ invoiceId })
+  if (!result) return reply.status(404).send({ error: 'Invoice not found' })
+  return reply.send(result)
+}
+
+export async function cancelPlanHandler(request: FastifyRequest, reply: FastifyReply) {
+  const body = request.body as { businessId?: string }
+  if (!body.businessId) return reply.status(400).send({ error: 'businessId is required' })
+  try {
+    const result = await billingService.commands.cancelPlan.execute({ businessId: body.businessId })
+    return reply.send(result)
+  } catch (err) {
+    return reply.status(400).send({ error: err instanceof Error ? err.message : 'Cancel plan failed' })
+  }
+}
