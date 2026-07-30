@@ -52,4 +52,11 @@ export const auditLogRepository = {
     ])
     return { items, total, page, limit }
   },
+
+  async findById(id: string) {
+    return getDb().auditLog.findUnique({
+      where: { id },
+      include: { user: { select: { id: true, firstName: true, lastName: true, email: true } } },
+    })
+  },
 }

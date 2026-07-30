@@ -1,4 +1,3 @@
-export { ListAuditLogsQuery } from './queries/list-audit-logs.query.js'
-export type { ListAuditLogsInput } from './queries/list-audit-logs.query.js'
-
+export { ListAuditLogsQuery, GetAuditLogQuery, AuditLogStatsQuery, ExportAuditLogsQuery } from './queries/index.js'
+export type { ListAuditLogsInput, GetAuditLogInput, AuditLogStatsInput, ExportAuditLogsInput } from './queries/index.js'
 export type { AuditLogData, ListAuditLogsOutput } from '../../dtos/audit-log.dto.js'
