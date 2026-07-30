@@ -2,7 +2,7 @@
   const api = window.ZudoAPI
 
   window.ManagerAPI = {
-    getOverview() { return api.get('/auth/profile') },
+    getOverview() { return api.get('/analytics') },
 
     getLiveMonitor() { return api.get('/shift/active') },
 

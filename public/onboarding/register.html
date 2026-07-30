@@ -168,14 +168,14 @@
               system authority.
             </p>
           </div>
-          <form action="/business-setup" class="space-y-8" method="get">
+          <form id="registerForm" class="space-y-8">
             <!-- Section: Personal Identity -->
             <div class="space-y-4">
               <label class="block">
                 <span class="block text-xs font-bold font-label uppercase tracking-widest text-on-surface-variant mb-2"
                   >Full Name</span
                 >
-                <input
+                <input id="regName"
                   class="w-full h-14 px-4 rounded-lg bg-surface-container-low border-none focus:ring-0 focus:bg-surface-container-lowest transition-all placeholder:text-outline border-l-2 border-transparent focus:border-secondary"
                   placeholder="John Doe"
                   type="text"
@@ -187,7 +187,7 @@
                     class="block text-xs font-bold font-label uppercase tracking-widest text-on-surface-variant mb-2"
                     >Email or Phone</span
                   >
-                  <input
+                  <input id="regEmail"
                     class="w-full h-14 px-4 rounded-lg bg-surface-container-low border-none focus:ring-0 focus:bg-surface-container-lowest transition-all placeholder:text-outline border-l-2 border-transparent focus:border-secondary"
                     placeholder="+234 800 000 0000"
                     type="text"
@@ -198,7 +198,7 @@
                     class="block text-xs font-bold font-label uppercase tracking-widest text-on-surface-variant mb-2"
                     >Password</span
                   >
-                  <input
+                  <input id="regPassword"
                     class="w-full h-14 px-4 rounded-lg bg-surface-container-low border-none focus:ring-0 focus:bg-surface-container-lowest transition-all placeholder:text-outline border-l-2 border-transparent focus:border-secondary"
                     placeholder="••••••••"
                     type="password"
@@ -214,7 +214,7 @@
                     class="block text-xs font-bold font-label uppercase tracking-widest text-on-surface-variant mb-2"
                     >Business Name</span
                   >
-                  <input
+                  <input id="regBusiness"
                     class="w-full h-14 px-4 rounded-lg bg-surface-container-low border-none focus:ring-0 focus:bg-surface-container-lowest transition-all placeholder:text-outline border-l-2 border-transparent focus:border-secondary"
                     placeholder="The Fashion House"
                     type="text"
@@ -225,7 +225,7 @@
                     class="block text-xs font-bold font-label uppercase tracking-widest text-on-surface-variant mb-2"
                     >Business Type</span
                   >
-                  <select
+                  <select id="regIndustry"
                     class="w-full h-14 px-4 rounded-lg bg-surface-container-low border-none focus:ring-0 focus:bg-surface-container-lowest transition-all text-on-surface-variant appearance-none border-l-2 border-transparent focus:border-secondary"
                   >
                     <option>Select Industry</option>
@@ -266,8 +266,42 @@
         </div>
       </section>
     </main>
-    <script src="../js/utils.js"></script>
-    <script src="../js/onboarding.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/api/auth.js"></script>
     <script src="/js/components.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('registerForm')
+  if (!form) return
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const name = document.getElementById('regName').value.trim()
+    const parts = name.split(' ')
+    const firstName = parts[0]
+    const lastName = parts.slice(1).join(' ') || firstName
+    const email = document.getElementById('regEmail').value.trim()
+    const password = document.getElementById('regPassword').value
+    const businessName = document.getElementById('regBusiness').value.trim()
+    const btn = form.querySelector('button[type="submit"]')
+    btn.disabled = true
+    btn.innerHTML = '<span class="animate-spin material-symbols-outlined">progress_activity</span>'
+    try {
+      const res = await AuthAPI.register({ email, password, firstName, lastName, businessName })
+      if (res.token) {
+        localStorage.setItem('zudo_token', res.token)
+        window.location.href = '/onboarding/setup'
+      }
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Registration failed'
+      const errorEl = document.getElementById('regError') || (() => { const el = document.createElement('p'); el.id = 'regError'; el.className = 'text-red-500 text-sm mt-2 text-center'; form.prepend(el); return el })()
+      errorEl.textContent = msg
+    } finally {
+      btn.disabled = false
+      btn.innerHTML = 'ESTABLISH AUTHORITY <span class="material-symbols-outlined text-[18px]">arrow_forward</span>'
+    }
+  })
+})
+</script>
 </body>
 </html>

@@ -242,30 +242,32 @@
                 >New Entry</span
               >
             </div>
-            <form action="/feature-setup" class="space-y-6" method="get">
+            <form id="productForm" class="space-y-6">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="md:col-span-2">
                   <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2"
                     >Product Name</label
                   >
-                  <input
-                    class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest transition-all"
-                    placeholder="e.g. Vintage Leather Journal"
-                    type="text"
-                  />
+<input
+                      id="productName"
+                      class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest transition-all"
+                      placeholder="e.g. Vintage Leather Journal"
+                      type="text"
+                    />
                 </div>
                 <div>
                   <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2"
                     >Category</label
                   >
-                  <select
-                    class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest transition-all appearance-none"
-                  >
-                    <option>Select Category</option>
-                    <option>Stationery</option>
-                    <option>Accessories</option>
-                    <option>Bags</option>
-                  </select>
+<select
+                      id="productCategory"
+                      class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest transition-all appearance-none"
+                    >
+                      <option>Select Category</option>
+                      <option>Stationery</option>
+                      <option>Accessories</option>
+                      <option>Bags</option>
+                    </select>
                 </div>
                 <div>
                   <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2"
@@ -274,6 +276,7 @@
                   <div class="relative">
                     <span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-primary">₦</span>
                     <input
+                      id="productPrice"
                       class="w-full bg-surface-container-low border-none rounded-lg p-4 pl-10 focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest transition-all font-headline font-bold"
                       placeholder="0.00"
                       type="number"
@@ -284,11 +287,12 @@
                   <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2"
                     >Stock Quantity</label
                   >
-                  <input
-                    class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest transition-all"
-                    placeholder="0"
-                    type="number"
-                  />
+<input
+                      id="productStock"
+                      class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest transition-all"
+                      placeholder="0"
+                      type="number"
+                    />
                 </div>
                 <div>
                   <div class="flex justify-between items-center mb-2">
@@ -310,6 +314,7 @@
                   </div>
                   <div class="flex gap-2">
                     <input
+                      id="productBarcode"
                       class="flex-grow bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest transition-all font-mono"
                       placeholder="Scan or type barcode"
                       type="text"
@@ -427,8 +432,40 @@
         </button>
       </div>
     </main>
-    <script src="../js/utils.js"></script>
-    <script src="../js/onboarding.js"></script>
-    <script src="/js/components.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/api/auth.js"></script>
+    <script>
+      const form = document.getElementById('productForm')
+      const submitBtn = form.querySelector('button[type="submit"]')
+      const originalText = submitBtn.innerHTML
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const data = {
+          name: document.getElementById('productName').value,
+          category: document.getElementById('productCategory').value,
+          price: document.getElementById('productPrice').value,
+          stock: document.getElementById('productStock').value,
+          barcode: document.getElementById('productBarcode').value,
+        }
+        submitBtn.disabled = true
+        submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Saving...'
+
+        try {
+          await AuthAPI.setupProducts(data)
+          window.location.href = '/onboarding/feature-setup'
+        } catch (err) {
+          const existing = form.querySelector('.error-message')
+          if (existing) existing.remove()
+          const p = document.createElement('p')
+          p.className = 'error-message text-sm text-error bg-error-container p-4 rounded-xl'
+          p.textContent = err.message || 'Something went wrong'
+          form.prepend(p)
+          submitBtn.disabled = false
+          submitBtn.innerHTML = originalText
+        }
+      })
+    </script>
 </body>
 </html>

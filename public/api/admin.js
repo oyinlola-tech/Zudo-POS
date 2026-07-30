@@ -2,7 +2,7 @@
   const api = window.ZudoAPI
 
   window.AdminAPI = {
-    getOverview() { return api.get('/auth/profile') },
+    getOverview() { return api.get('/analytics') },
 
     getSales(params) { return api.get(`/sales?${new URLSearchParams(params || {})}`) },
     getSalesStats() { return api.get('/sales/stats') },

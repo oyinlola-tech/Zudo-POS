@@ -176,7 +176,7 @@
             <h2 class="text-3xl font-extrabold text-on-surface headline tracking-tight">Welcome back</h2>
             <p class="text-on-surface-variant mt-2 font-medium">Please enter your terminal credentials to continue.</p>
           </header>
-          <form class="space-y-6">
+          <form id="loginForm" class="space-y-6">
             <!-- Identity Field -->
             <div class="space-y-2">
               <label class="block text-sm font-bold text-on-surface tracking-tight uppercase" for="identity"
@@ -261,6 +261,35 @@
         </div>
       </section>
     </main>
+    <script src="/js/utils.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/api/auth.js"></script>
     <script src="/js/components.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('loginForm')
+  if (!form) return
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const btn = form.querySelector('button[type="submit"]')
+    btn.disabled = true
+    btn.innerHTML = '<span class="animate-spin material-symbols-outlined">progress_activity</span>'
+    try {
+      const res = await AuthAPI.login(document.getElementById('identity').value, document.getElementById('password').value)
+      if (res.token) {
+        localStorage.setItem('zudo_token', res.token)
+        window.location.href = res.user?.role === 'SUPERADMIN' ? '/superadmin' : res.user?.role === 'MANAGER' ? '/manager' : '/admin'
+      }
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Login failed'
+      const errorEl = document.getElementById('loginError') || (() => { const el = document.createElement('p'); el.id = 'loginError'; el.className = 'text-red-500 text-sm mt-2'; form.prepend(el); return el })()
+      errorEl.textContent = msg
+    } finally {
+      btn.disabled = false
+      btn.innerHTML = '<span class="text-sm tracking-[0.1em] uppercase">Login to Terminal</span> <span class="material-symbols-outlined">arrow_forward</span>'
+    }
+  })
+})
+</script>
 </body>
 </html>

@@ -235,16 +235,17 @@
                 >
                 Add Staff Member
               </h3>
-              <form action="/feature-setup" class="space-y-5" method="get">
+              <form id="staffForm" class="space-y-5">
                 <div class="space-y-2">
                   <label class="text-xs font-label font-bold text-on-surface-variant uppercase tracking-wider"
                     >Full Name</label
                   >
-                  <input
-                    class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-secondary/20 rounded-lg py-3 px-4 text-on-surface placeholder:text-outline transition-all"
-                    placeholder="e.g. Chinelo Okoro"
-                    type="text"
-                  />
+<input
+                      id="staffName"
+                      class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-secondary/20 rounded-lg py-3 px-4 text-on-surface placeholder:text-outline transition-all"
+                      placeholder="e.g. Chinelo Okoro"
+                      type="text"
+                    />
                 </div>
                 <div class="space-y-2">
                   <label class="text-xs font-label font-bold text-on-surface-variant uppercase tracking-wider"
@@ -280,6 +281,7 @@
                   >
                   <div class="relative">
                     <input
+                      id="staffEmail"
                       class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-secondary/20 rounded-lg py-3 px-10 text-on-surface placeholder:text-outline transition-all"
                       placeholder="name@store.com"
                       type="text"
@@ -292,8 +294,9 @@
                   </div>
                 </div>
                 <button
+                  id="addStaffBtn"
                   class="w-full h-[56px] mt-4 rounded-xl bg-gradient-to-br from-secondary to-[#44118d] text-white font-headline font-bold text-sm uppercase tracking-widest shadow-lg hover:shadow-secondary/30 transition-all flex items-center justify-center gap-2"
-                  type="button"
+                  type="submit"
                 >
                   <span class="material-symbols-outlined" data-icon="add">add</span>
                   Add to Roster
@@ -465,8 +468,37 @@
         <span class="material-symbols-outlined text-base" data-icon="close">close</span>
       </button>
     </div>
-    <script src="../js/utils.js"></script>
-    <script src="../js/onboarding.js"></script>
-    <script src="/js/components.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/api/auth.js"></script>
+    <script>
+      const form = document.getElementById('staffForm')
+      const submitBtn = document.getElementById('addStaffBtn')
+      const originalText = submitBtn.innerHTML
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const data = {
+          name: document.getElementById('staffName').value,
+          email: document.getElementById('staffEmail').value,
+        }
+        submitBtn.disabled = true
+        submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Adding...'
+
+        try {
+          await AuthAPI.setupStaff(data)
+          window.location.href = '/onboarding/feature-setup'
+        } catch (err) {
+          const existing = form.querySelector('.error-message')
+          if (existing) existing.remove()
+          const p = document.createElement('p')
+          p.className = 'error-message text-sm text-error bg-error-container p-4 rounded-xl'
+          p.textContent = err.message || 'Something went wrong'
+          form.prepend(p)
+          submitBtn.disabled = false
+          submitBtn.innerHTML = originalText
+        }
+      })
+    </script>
 </body>
 </html>

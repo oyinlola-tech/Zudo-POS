@@ -111,6 +111,10 @@
             }
           }
           this.setActiveNav()
+          const role = this.currentPath.split('/')[1]
+          if (role === 'admin' && window.ZudoAdmin) setTimeout(() => ZudoAdmin.init(), 100)
+          else if (role === 'cashier' && window.ZudoCashier) setTimeout(() => ZudoCashier.init(), 100)
+          else if (role === 'manager' && window.ZudoManager) setTimeout(() => ZudoManager.init(), 100)
         }, 50)
       } catch (err) {
         hideLoader()

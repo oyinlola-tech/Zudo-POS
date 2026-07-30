@@ -218,7 +218,7 @@
           <div class="grid grid-cols-12 gap-6 items-start">
             <!-- Left: Main Form Card -->
             <div class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl shadow-sm p-8">
-              <form action="/staff-setup" class="space-y-8" method="get">
+              <form id="storeForm" class="space-y-8">
                 <div>
                   <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-3"
                     >Store Name</label
@@ -230,6 +230,7 @@
                       <span class="material-symbols-outlined" data-icon="store">store</span>
                     </div>
                     <input
+                      id="storeName"
                       class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-lg focus:ring-0 focus:bg-surface-container-lowest transition-all text-on-surface placeholder:text-outline border-l-2 border-transparent focus:border-secondary"
                       placeholder="e.g., Ikeja Flagship"
                       type="text"
@@ -248,6 +249,7 @@
                         <span class="material-symbols-outlined" data-icon="location_on">location_on</span>
                       </div>
                       <input
+                        id="storeAddress"
                         class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-lg focus:ring-0 focus:bg-surface-container-lowest transition-all text-on-surface placeholder:text-outline border-l-2 border-transparent focus:border-secondary"
                         placeholder="128 Awolowo Road"
                         type="text"
@@ -259,6 +261,7 @@
                       >City</label
                     >
                     <select
+                      id="storeCity"
                       class="w-full px-4 py-4 bg-surface-container-low border-none rounded-lg focus:ring-0 focus:bg-surface-container-lowest transition-all text-on-surface appearance-none border-l-2 border-transparent focus:border-secondary"
                     >
                       <option>Lagos</option>
@@ -273,6 +276,7 @@
                       >State</label
                     >
                     <select
+                      id="storeState"
                       class="w-full px-4 py-4 bg-surface-container-low border-none rounded-lg focus:ring-0 focus:bg-surface-container-lowest transition-all text-on-surface appearance-none border-l-2 border-transparent focus:border-secondary"
                     >
                       <option>Lagos State</option>
@@ -352,8 +356,39 @@
         </div>
       </main>
     </div>
-    <script src="../js/utils.js"></script>
-    <script src="../js/onboarding.js"></script>
-    <script src="/js/components.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/api/auth.js"></script>
+    <script>
+      const form = document.getElementById('storeForm')
+      const submitBtn = form.querySelector('button[type="submit"]')
+      const originalText = submitBtn.innerHTML
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const data = {
+          name: document.getElementById('storeName').value,
+          address: document.getElementById('storeAddress').value,
+          city: document.getElementById('storeCity').value,
+          state: document.getElementById('storeState').value,
+        }
+        submitBtn.disabled = true
+        submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Saving...'
+
+        try {
+          await AuthAPI.setupStore(data)
+          window.location.href = '/onboarding/product-setup'
+        } catch (err) {
+          const existing = form.querySelector('.error-message')
+          if (existing) existing.remove()
+          const p = document.createElement('p')
+          p.className = 'error-message text-sm text-error bg-error-container p-4 rounded-xl'
+          p.textContent = err.message || 'Something went wrong'
+          form.prepend(p)
+          submitBtn.disabled = false
+          submitBtn.innerHTML = originalText
+        }
+      })
+    </script>
 </body>
 </html>

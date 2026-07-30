@@ -2,7 +2,7 @@
   const api = window.ZudoAPI
 
   window.SuperAdminAPI = {
-    getOverview() { return api.get('/auth/profile') },
+    getOverview() { return api.get('/admin/revenue') },
     getRevenueData(period) { return api.get(`/admin/revenue?period=${period || 'month'}`) },
     getGrowthMetrics() { return api.get('/admin/revenue') },
 

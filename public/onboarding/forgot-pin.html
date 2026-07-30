@@ -164,6 +164,9 @@
       </p>
     </div>
 
+    <script src="/js/utils.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/api/auth.js"></script>
     <script>
       const form = document.getElementById('pinForm')
       const emailInput = document.getElementById('email')
@@ -190,27 +193,15 @@
         messageBox.className = 'hidden p-4 rounded-xl text-sm'
 
         try {
-          const res = await fetch('/api/auth/send-otp', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: emailInput.value, type: 'pin_reset' }),
-          })
-          const data = await res.json()
-
-          if (res.ok) {
-            otpSection.classList.remove('hidden')
-            sendOtpBtn.classList.add('hidden')
-            messageBox.className = 'p-4 rounded-xl text-sm bg-primary-fixed/20 text-primary'
-            messageBox.textContent = data.message || 'Verification code sent to your email'
-            messageBox.classList.remove('hidden')
-          } else {
-            messageBox.className = 'p-4 rounded-xl text-sm bg-error-container text-on-error-container'
-            messageBox.textContent = data.error || 'Something went wrong'
-            messageBox.classList.remove('hidden')
-          }
-        } catch {
+          const data = await AuthAPI.sendOtp(emailInput.value, 'pin_reset')
+          otpSection.classList.remove('hidden')
+          sendOtpBtn.classList.add('hidden')
+          messageBox.className = 'p-4 rounded-xl text-sm bg-primary-fixed/20 text-primary'
+          messageBox.textContent = data.message || 'Verification code sent to your email'
+          messageBox.classList.remove('hidden')
+        } catch (err) {
           messageBox.className = 'p-4 rounded-xl text-sm bg-error-container text-on-error-container'
-          messageBox.textContent = 'Network error. Please try again.'
+          messageBox.textContent = err.message || 'Something went wrong'
           messageBox.classList.remove('hidden')
         } finally {
           sendBtnText.textContent = 'Send Verification Code'
@@ -227,30 +218,14 @@
           submitBtn.disabled = true
 
           try {
-            const res = await fetch('/api/auth/forgot-pin', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                email: emailInput.value,
-                otp: document.getElementById('otp').value,
-                newPin: document.getElementById('newPin').value,
-              }),
-            })
-            const data = await res.json()
-
-            if (res.ok) {
-              messageBox.className = 'p-4 rounded-xl text-sm bg-primary-fixed/20 text-primary'
-              messageBox.textContent = data.message || 'PIN reset successfully! Redirecting...'
-              messageBox.classList.remove('hidden')
-              setTimeout(() => { window.location.href = '/login' }, 2000)
-            } else {
-              messageBox.className = 'p-4 rounded-xl text-sm bg-error-container text-on-error-container'
-              messageBox.textContent = data.error || data.message || 'Something went wrong'
-              messageBox.classList.remove('hidden')
-            }
-          } catch {
+            const data = await AuthAPI.forgotPin(emailInput.value, document.getElementById('otp').value, document.getElementById('newPin').value)
+            messageBox.className = 'p-4 rounded-xl text-sm bg-primary-fixed/20 text-primary'
+            messageBox.textContent = data.message || 'PIN reset successfully! Redirecting...'
+            messageBox.classList.remove('hidden')
+            setTimeout(() => { window.location.href = '/login' }, 2000)
+          } catch (err) {
             messageBox.className = 'p-4 rounded-xl text-sm bg-error-container text-on-error-container'
-            messageBox.textContent = 'Network error. Please try again.'
+            messageBox.textContent = err.message || 'Something went wrong'
             messageBox.classList.remove('hidden')
           } finally {
             btnText.textContent = 'Reset PIN'

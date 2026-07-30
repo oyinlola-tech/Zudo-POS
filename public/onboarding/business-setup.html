@@ -168,7 +168,7 @@
               system authority.
             </p>
           </div>
-          <form action="/store-setup" class="space-y-8" method="get">
+          <form id="businessForm" class="space-y-8">
             <!-- Section: Personal Identity -->
             <div class="space-y-4">
               <label class="block">
@@ -176,6 +176,7 @@
                   >Full Name</span
                 >
                 <input
+                  id="fullName"
                   class="w-full h-14 px-4 rounded-lg bg-surface-container-low border-none focus:ring-0 focus:bg-surface-container-lowest transition-all placeholder:text-outline border-l-2 border-transparent focus:border-secondary"
                   placeholder="John Doe"
                   type="text"
@@ -187,22 +188,24 @@
                     class="block text-xs font-bold font-label uppercase tracking-widest text-on-surface-variant mb-2"
                     >Email or Phone</span
                   >
-                  <input
-                    class="w-full h-14 px-4 rounded-lg bg-surface-container-low border-none focus:ring-0 focus:bg-surface-container-lowest transition-all placeholder:text-outline border-l-2 border-transparent focus:border-secondary"
-                    placeholder="+234 800 000 0000"
-                    type="text"
-                  />
+<input
+                  id="contactEmail"
+                  class="w-full h-14 px-4 rounded-lg bg-surface-container-low border-none focus:ring-0 focus:bg-surface-container-lowest transition-all placeholder:text-outline border-l-2 border-transparent focus:border-secondary"
+                  placeholder="+234 800 000 0000"
+                  type="text"
+                />
                 </label>
                 <label class="block">
                   <span
                     class="block text-xs font-bold font-label uppercase tracking-widest text-on-surface-variant mb-2"
                     >Password</span
                   >
-                  <input
-                    class="w-full h-14 px-4 rounded-lg bg-surface-container-low border-none focus:ring-0 focus:bg-surface-container-lowest transition-all placeholder:text-outline border-l-2 border-transparent focus:border-secondary"
-                    placeholder="••••••••"
-                    type="password"
-                  />
+<input
+                  id="contactPassword"
+                  class="w-full h-14 px-4 rounded-lg bg-surface-container-low border-none focus:ring-0 focus:bg-surface-container-lowest transition-all placeholder:text-outline border-l-2 border-transparent focus:border-secondary"
+                  placeholder="••••••••"
+                  type="password"
+                />
                 </label>
               </div>
             </div>
@@ -214,20 +217,22 @@
                     class="block text-xs font-bold font-label uppercase tracking-widest text-on-surface-variant mb-2"
                     >Business Name</span
                   >
-                  <input
-                    class="w-full h-14 px-4 rounded-lg bg-surface-container-low border-none focus:ring-0 focus:bg-surface-container-lowest transition-all placeholder:text-outline border-l-2 border-transparent focus:border-secondary"
-                    placeholder="The Fashion House"
-                    type="text"
-                  />
+<input
+                  id="businessName"
+                  class="w-full h-14 px-4 rounded-lg bg-surface-container-low border-none focus:ring-0 focus:bg-surface-container-lowest transition-all placeholder:text-outline border-l-2 border-transparent focus:border-secondary"
+                  placeholder="The Fashion House"
+                  type="text"
+                />
                 </label>
                 <label class="block">
                   <span
                     class="block text-xs font-bold font-label uppercase tracking-widest text-on-surface-variant mb-2"
                     >Business Type</span
                   >
-                  <select
-                    class="w-full h-14 px-4 rounded-lg bg-surface-container-low border-none focus:ring-0 focus:bg-surface-container-lowest transition-all text-on-surface-variant appearance-none border-l-2 border-transparent focus:border-secondary"
-                  >
+<select
+                  id="businessType"
+                  class="w-full h-14 px-4 rounded-lg bg-surface-container-low border-none focus:ring-0 focus:bg-surface-container-lowest transition-all text-on-surface-variant appearance-none border-l-2 border-transparent focus:border-secondary"
+                >
                     <option>Select Industry</option>
                     <option>Fashion &amp; Retail</option>
                     <option>Grocery &amp; Supermarket</option>
@@ -262,8 +267,40 @@
         </div>
       </section>
     </main>
-    <script src="../js/utils.js"></script>
-    <script src="../js/onboarding.js"></script>
-    <script src="/js/components.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/api/auth.js"></script>
+    <script>
+      const form = document.getElementById('businessForm')
+      const submitBtn = form.querySelector('button[type="submit"]')
+      const originalText = submitBtn.innerHTML
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const data = {
+          name: document.getElementById('fullName').value,
+          email: document.getElementById('contactEmail').value,
+          password: document.getElementById('contactPassword').value,
+          businessName: document.getElementById('businessName').value,
+          businessType: document.getElementById('businessType').value,
+        }
+        submitBtn.disabled = true
+        submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Creating...'
+
+        try {
+          await AuthAPI.setupBusiness(data)
+          window.location.href = '/onboarding/store-setup'
+        } catch (err) {
+          const existing = form.querySelector('.error-message')
+          if (existing) existing.remove()
+          const p = document.createElement('p')
+          p.className = 'error-message text-sm text-error bg-error-container p-4 rounded-xl'
+          p.textContent = err.message || 'Something went wrong'
+          form.prepend(p)
+          submitBtn.disabled = false
+          submitBtn.innerHTML = originalText
+        }
+      })
+    </script>
 </body>
 </html>

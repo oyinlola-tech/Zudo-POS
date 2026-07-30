@@ -210,8 +210,18 @@
         </div>
       </main>
     </div>
-    <script src="../js/utils.js"></script>
-    <script src="../js/onboarding.js"></script>
-    <script src="/js/components.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/api/auth.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+        try {
+          await AuthAPI.completeOnboarding()
+        } catch (err) {
+          console.error('Onboarding completion error:', err)
+        }
+        window.location.href = '/admin'
+      })
+    </script>
 </body>
 </html>

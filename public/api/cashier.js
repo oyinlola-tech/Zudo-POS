@@ -2,7 +2,7 @@
   const api = window.ZudoAPI
 
   window.CashierAPI = {
-    getTerminalData() { return api.get('/auth/profile') },
+    getTerminalData() { return api.get('/analytics') },
 
     getProducts(query) { return api.get(`/products?search=${encodeURIComponent(query || '')}`) },
     searchProducts(q) { return api.get(`/products/search?q=${encodeURIComponent(q)}`) },

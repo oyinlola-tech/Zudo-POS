@@ -204,6 +204,7 @@
             <div class="h-full bg-gradient-to-r from-secondary to-secondary-container w-[83%] rounded-full"></div>
           </div>
         </div>
+        <form id="featureForm">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <!-- Section 1: Payment Methods -->
           <div class="lg:col-span-7 space-y-6">
@@ -230,7 +231,7 @@
                   </div>
                 </div>
                 <label class="relative inline-flex items-center cursor-pointer">
-                  <input checked="" class="sr-only peer" type="checkbox" />
+                  <input id="featureCash" checked="" class="sr-only peer" type="checkbox" />
                   <div
                     class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"
                   ></div>
@@ -252,7 +253,7 @@
                   </div>
                 </div>
                 <label class="relative inline-flex items-center cursor-pointer">
-                  <input checked="" class="sr-only peer" type="checkbox" />
+                  <input id="featureBankTransfer" checked="" class="sr-only peer" type="checkbox" />
                   <div
                     class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"
                   ></div>
@@ -274,7 +275,7 @@
                   </div>
                 </div>
                 <label class="relative inline-flex items-center cursor-pointer">
-                  <input checked="" class="sr-only peer" type="checkbox" />
+                  <input id="featurePosTerminal" checked="" class="sr-only peer" type="checkbox" />
                   <div
                     class="w-11 h-6 bg-white/40 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-on-secondary-container after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-on-secondary-container"
                   ></div>
@@ -301,7 +302,7 @@
                       >Enabled</span
                     >
                     <label class="relative inline-flex items-center cursor-pointer">
-                      <input checked="" class="sr-only peer" type="checkbox" />
+                      <input id="featureBarcode" checked="" class="sr-only peer" type="checkbox" />
                       <div
                         class="w-9 h-5 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"
                       ></div>
@@ -321,7 +322,7 @@
                     <span class="material-symbols-outlined" data-icon="loyalty">loyalty</span>
                   </div>
                   <label class="relative inline-flex items-center cursor-pointer">
-                    <input class="sr-only peer" type="checkbox" />
+                    <input id="featureLoyalty" class="sr-only peer" type="checkbox" />
                     <div
                       class="w-9 h-5 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-secondary"
                     ></div>
@@ -335,26 +336,26 @@
             </div>
           </div>
         </div>
-        <!-- Sticky Footer CTA -->
-        <div
-          class="fixed bottom-0 right-0 left-0 md:left-64 p-6 bg-surface/80 backdrop-blur-md border-t border-outline-variant/20 flex items-center justify-between"
+      <!-- Sticky Footer CTA -->
+      <div
+        class="fixed bottom-0 right-0 left-0 md:left-64 p-6 bg-surface/80 backdrop-blur-md border-t border-outline-variant/20 flex items-center justify-between"
+      >
+        <a
+          class="px-6 py-3 font-bold text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg flex items-center gap-2"
+          href="/product-setup"
         >
-          <a
-            class="px-6 py-3 font-bold text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg flex items-center gap-2"
-            href="/product-setup"
-          >
-            <span class="material-symbols-outlined text-sm" data-icon="arrow_back">arrow_back</span>
-            Back
-          </a>
-          <a
-            class="px-10 py-4 bg-primary text-white font-black rounded-lg transition-transform active:scale-95 shadow-xl flex items-center gap-3"
-            href="/onboarding-completion"
-          >
-            Continue to Final Step
-            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
-          </a>
-        </div>
+          <span class="material-symbols-outlined text-sm" data-icon="arrow_back">arrow_back</span>
+          Back
+        </a>
+        <button
+          class="px-10 py-4 bg-primary text-white font-black rounded-lg transition-transform active:scale-95 shadow-xl flex items-center gap-3"
+          type="submit"
+        >
+          Continue to Final Step
+          <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+        </button>
       </div>
+    </form>
     </main>
     <!-- Visual Polish: Ambient Light Background -->
     <div
@@ -363,8 +364,40 @@
     <div
       class="fixed bottom-0 left-64 -z-10 w-[400px] h-[400px] bg-primary-container/5 blur-[100px] rounded-full pointer-events-none"
     ></div>
-    <script src="../js/utils.js"></script>
-    <script src="../js/onboarding.js"></script>
-    <script src="/js/components.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/api/auth.js"></script>
+    <script>
+      const form = document.getElementById('featureForm')
+      const submitBtn = form.querySelector('button[type="submit"]')
+      const originalText = submitBtn.innerHTML
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const data = {
+          cash: document.getElementById('featureCash').checked,
+          bankTransfer: document.getElementById('featureBankTransfer').checked,
+          posTerminal: document.getElementById('featurePosTerminal').checked,
+          barcode: document.getElementById('featureBarcode').checked,
+          loyalty: document.getElementById('featureLoyalty').checked,
+        }
+        submitBtn.disabled = true
+        submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Saving...'
+
+        try {
+          await AuthAPI.setupFeatures(data)
+          window.location.href = '/onboarding/onboarding-completion'
+        } catch (err) {
+          const existing = form.querySelector('.error-message')
+          if (existing) existing.remove()
+          const p = document.createElement('p')
+          p.className = 'error-message text-sm text-error bg-error-container p-4 rounded-xl'
+          p.textContent = err.message || 'Something went wrong'
+          form.prepend(p)
+          submitBtn.disabled = false
+          submitBtn.innerHTML = originalText
+        }
+      })
+    </script>
 </body>
 </html>
