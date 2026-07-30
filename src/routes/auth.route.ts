@@ -15,6 +15,12 @@ import {
   forgotPinHandler,
 } from '../controllers/auth.controller.js'
 import { authGuard } from '../middlewares/auth.middleware.js'
+import { validateBody } from '../middlewares/validate.middleware.js'
+import {
+  registerSchema, loginSchema, forgotPasswordSchema, resetPasswordSchema,
+  changePasswordSchema, sendOtpSchema, verifyOtpSchema,
+  setupPinSchema, changePinSchema, forgotPinSchema,
+} from '../validators/auth.validator.js'
 import { getDb } from '../databases/index.js'
 import bcrypt from 'bcryptjs'
 
@@ -112,14 +118,14 @@ async function onboardCompleteHandler(request: FastifyRequest, reply: FastifyRep
 }
 
 export async function registerAuthRoutes(fastify: FastifyInstance) {
-  fastify.post('/api/auth/register', registerHandler)
-  fastify.post('/api/auth/login', loginHandler)
+  fastify.post('/api/auth/register', { preHandler: [validateBody(registerSchema)] }, registerHandler)
+  fastify.post('/api/auth/login', { preHandler: [validateBody(loginSchema)] }, loginHandler)
 
-  fastify.post('/api/auth/forgot-password', forgotPasswordHandler)
-  fastify.post('/api/auth/reset-password', resetPasswordHandler)
-  fastify.post('/api/auth/send-otp', sendOtpHandler)
-  fastify.post('/api/auth/verify-otp', verifyOtpHandler)
-  fastify.post('/api/auth/forgot-pin', forgotPinHandler)
+  fastify.post('/api/auth/forgot-password', { preHandler: [validateBody(forgotPasswordSchema)] }, forgotPasswordHandler)
+  fastify.post('/api/auth/reset-password', { preHandler: [validateBody(resetPasswordSchema)] }, resetPasswordHandler)
+  fastify.post('/api/auth/send-otp', { preHandler: [validateBody(sendOtpSchema)] }, sendOtpHandler)
+  fastify.post('/api/auth/verify-otp', { preHandler: [validateBody(verifyOtpSchema)] }, verifyOtpHandler)
+  fastify.post('/api/auth/forgot-pin', { preHandler: [validateBody(forgotPinSchema)] }, forgotPinHandler)
 
   fastify.get('/api/auth/session', { preHandler: [authGuard] }, sessionHandler)
   fastify.get('/api/auth/profile', { preHandler: [authGuard] }, profileHandler)
@@ -131,7 +137,7 @@ export async function registerAuthRoutes(fastify: FastifyInstance) {
   fastify.post('/api/auth/setup/features', { preHandler: [authGuard] }, onboardFeaturesHandler)
   fastify.post('/api/auth/setup/complete', { preHandler: [authGuard] }, onboardCompleteHandler)
 
-  fastify.post('/api/auth/change-password', { preHandler: [authGuard] }, changePasswordHandler)
-  fastify.post('/api/auth/setup-pin', { preHandler: [authGuard] }, setupPinHandler)
-  fastify.post('/api/auth/change-pin', { preHandler: [authGuard] }, changePinHandler)
+  fastify.post('/api/auth/change-password', { preHandler: [authGuard, validateBody(changePasswordSchema)] }, changePasswordHandler)
+  fastify.post('/api/auth/setup-pin', { preHandler: [authGuard, validateBody(setupPinSchema)] }, setupPinHandler)
+  fastify.post('/api/auth/change-pin', { preHandler: [authGuard, validateBody(changePinSchema)] }, changePinHandler)
 }
