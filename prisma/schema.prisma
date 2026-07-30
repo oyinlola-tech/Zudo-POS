@@ -28,6 +28,23 @@ enum BusinessPlan {
   ENTERPRISE
 }
 
+enum PurchaseOrderStatus {
+  PENDING
+  APPROVED
+  RECEIVED
+  CANCELLED
+}
+
+enum DiscountType {
+  PERCENTAGE
+  FIXED
+}
+
+enum TaxType {
+  INCLUSIVE
+  EXCLUSIVE
+}
+
 enum ShiftStatus {
   OPEN
   CLOSED
@@ -61,6 +78,11 @@ model Business {
   customers Customer[]
   wallets  BusinessCryptoWallet[]
   cryptoPayments CryptoPayment[]
+  expenses Expense[]
+  suppliers Supplier[]
+  purchaseOrders PurchaseOrder[]
+  taxes Tax[]
+  discounts Discount[]
 }
 
 model BusinessSetting {
@@ -191,6 +213,7 @@ model Product {
   image       String?
   isActive    Boolean  @default(true)
   saleItems   SaleItem[]
+  purchaseOrderItems PurchaseOrderItem[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -263,4 +286,95 @@ model CryptoPayment {
   paidAt        DateTime?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+}
+
+model Expense {
+  id          String   @id @default(uuid())
+  businessId  String
+  business    Business @relation(fields: [businessId], references: [id])
+  category    String
+  amount      Float
+  description String?
+  reference   String?
+  date        DateTime @default(now())
+  createdBy   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Supplier {
+  id          String   @id @default(uuid())
+  businessId  String
+  business    Business @relation(fields: [businessId], references: [id])
+  name        String
+  contactName String?
+  email       String?
+  phone       String?
+  address     String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  purchaseOrders PurchaseOrder[]
+  @@unique([businessId, name])
+}
+
+model PurchaseOrder {
+  id           String              @id @default(uuid())
+  businessId   String
+  business     Business            @relation(fields: [businessId], references: [id])
+  supplierId   String?
+  supplier     Supplier?           @relation(fields: [supplierId], references: [id])
+  reference    String              @unique
+  status       PurchaseOrderStatus @default(PENDING)
+  total        Float               @default(0)
+  notes        String?
+  createdBy    String
+  receivedAt   DateTime?
+  createdAt    DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
+
+  items PurchaseOrderItem[]
+}
+
+model PurchaseOrderItem {
+  id             String        @id @default(uuid())
+  purchaseOrderId String
+  purchaseOrder  PurchaseOrder @relation(fields: [purchaseOrderId], references: [id])
+  productId      String
+  product        Product       @relation(fields: [productId], references: [id])
+  quantity       Int
+  unitCost       Float
+  total          Float
+}
+
+model Tax {
+  id         String   @id @default(uuid())
+  businessId String
+  business   Business @relation(fields: [businessId], references: [id])
+  name       String
+  rate       Float
+  type       TaxType  @default(EXCLUSIVE)
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([businessId, name])
+}
+
+model Discount {
+  id          String       @id @default(uuid())
+  businessId  String
+  business    Business     @relation(fields: [businessId], references: [id])
+  name        String
+  type        DiscountType @default(PERCENTAGE)
+  value       Float
+  minPurchase Float?
+  isActive    Boolean      @default(true)
+  startsAt    DateTime?
+  endsAt      DateTime?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@unique([businessId, name])
 }

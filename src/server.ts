@@ -10,6 +10,8 @@ import bcrypt from 'bcryptjs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { logger } from './cores/logger/index.js'
+import { registerJobHandlers } from './jobs/dispatcher.js'
+import { sanitizeInput } from './middlewares/validate.middleware.js'
 import { registerPageRoutes, registerAuthRoutes, registerShiftRoutes, registerCryptoRoutes, registerPublicRoutes, registerProductRoutes, registerSaleRoutes, registerCustomerRoutes, registerStaffRoutes, registerAnalyticsRoutes, registerSettingsRoutes, registerReturnsRoutes, registerAdminRoutes, registerAuditLogRoutes, registerRolesRoutes, registerBillingPlansRoutes, registerNotificationRoutes, registerLoyaltyRoutes, registerReportRoutes, registerUploadRoutes, registerBillingRoutes, registerMailRoutes
 } from './routes/index.js'
 import { getDb } from './databases/index.js'
@@ -50,7 +52,6 @@ fastify.register(multipart)
 fastify.register(fastifyStatic, {
   root: path.join(__dirname, '../public'),
   prefix: '/',
-  decorateReply: false,
 })
 
 fastify.get('/api/health', async () => ({ status: 'ok', timestamp: new Date().toISOString() }))
@@ -64,6 +65,13 @@ fastify.addHook('onRoute', (routeOptions) => {
   if (authEndpoints.includes(routeOptions.url as string)) {
     routeOptions.config = { ...routeOptions.config, rateLimit: { max: 10, timeWindow: '1 minute' } }
   }
+})
+
+fastify.addHook('preHandler', (request, _reply, done) => {
+  if (request.body && typeof request.body === 'object') {
+    request.body = sanitizeInput(request.body) as typeof request.body
+  }
+  done()
 })
 
 fastify.register(registerPageRoutes)
@@ -91,6 +99,7 @@ fastify.register(registerMailRoutes)
 
 const start = async () => {
   try {
+    registerJobHandlers()
     const port = parseInt(process.env['PORT'] ?? '3000', 10)
 
     if (process.env['SEED_SUPERADMIN'] === 'true') {

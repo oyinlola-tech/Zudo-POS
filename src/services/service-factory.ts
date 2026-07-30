@@ -6,12 +6,12 @@ import {
   ForgotPinCommand, SetupPinCommand, AdminChangeStaffPinCommand,
   GetSessionQuery, GetProfileQuery,
 } from './auth/index.js'
-import { ChangePlanCommand, GenerateInvoiceCommand, GetPlanQuery } from './billing/index.js'
+import { ChangePlanCommand, GenerateInvoiceCommand, CancelPlanCommand, GetPlanQuery, ListInvoicesQuery, GetInvoiceQuery } from './billing/index.js'
 import {
   GeneratePaymentQrCommand, ConfirmCryptoPaymentCommand,
   GetCryptoRateCommand, GetWalletsQuery, UpsertWalletQuery,
 } from './crypto/index.js'
-import { SendOtpMailCommand, MailStatusQuery } from './mail/index.js'
+import { SendOtpMailCommand, SendCustomEmailCommand, SendBulkEmailCommand, MailStatusQuery, EmailLogsQuery } from './mail/index.js'
 import { StartShiftCommand, EndShiftCommand, GetActiveShiftQuery, GetShiftHistoryQuery } from './shift/index.js'
 import { CreateProductCommand, UpdateProductCommand, DeleteProductCommand, ListProductsQuery, GetProductQuery, SearchProductsQuery, GetInventoryStatsQuery } from './product/index.js'
 import { CreateSaleCommand, VoidSaleCommand, ListSalesQuery, GetSaleQuery, GetSaleStatsQuery } from './sale/index.js'
@@ -19,15 +19,36 @@ import { CreateCustomerCommand, UpdateCustomerCommand, DeleteCustomerCommand, Li
 import { CreateStaffCommand, UpdateStaffCommand, DeleteStaffCommand, ListStaffQuery, GetStaffQuery } from './staff/index.js'
 import { DashboardQuery, BranchPerformanceQuery } from './analytics/index.js'
 import { GetSettingsQuery, GetBranchesQuery, GetLoyaltyConfigQuery, GetLoyaltyActivityQuery, UpdateSettingsCommand } from './settings/index.js'
-import { ProcessReturnCommand, ListReturnsQuery } from './returns/index.js'
+import { ProcessReturnCommand, ApproveReturnCommand, RejectReturnCommand, ListReturnsQuery, GetReturnQuery } from './returns/index.js'
 import { ListBusinessesQuery, GetBusinessQuery, GetRevenueStatsQuery, UpdateBusinessCommand, CreateBusinessCommand, DeleteBusinessCommand } from './admin/index.js'
-import { ListAuditLogsQuery } from './audit-log/index.js'
-import { ListRolesQuery, CreateRoleCommand } from './roles/index.js'
-import { ListPlansQuery, GetPlanQuery as BillingGetPlanQuery, ListInvoicesQuery, GetInvoiceQuery, GetSubscriptionStatsQuery, CreatePlanCommand, UpdatePlanCommand } from './billing-plans/index.js'
+import { ListAuditLogsQuery, GetAuditLogQuery, AuditLogStatsQuery, ExportAuditLogsQuery } from './audit-log/index.js'
+import { ListRolesQuery, GetRoleQuery, CreateRoleCommand, UpdateRoleCommand, DeleteRoleCommand } from './roles/index.js'
+import { ListPlansQuery, GetPlanQuery as BillingGetPlanQuery, ListInvoicesQuery as BillingListInvoicesQuery, GetInvoiceQuery as BillingGetInvoiceQuery, GetSubscriptionStatsQuery, CreatePlanCommand, UpdatePlanCommand } from './billing-plans/index.js'
 import { GetNotificationsQuery, GetUnreadCountQuery, GetBroadcastHistoryQuery } from './notification/index.js'
 import { MarkNotificationReadCommand, MarkAllNotificationsReadCommand, BroadcastNotificationCommand, CreateNotificationCommand, UpdateNotificationSettingsCommand } from './notification/index.js'
 import { ListLoyaltyQuery, GetLoyaltyQuery, UpdateTierCommand } from './loyalty/index.js'
-import { GetReportQuery } from './reports/index.js'
+import { GetReportQuery, ListReportsQuery, ExportReportQuery, ScheduleReportCommand } from './reports/index.js'
+import {
+  CreateExpenseCommand, UpdateExpenseCommand, DeleteExpenseCommand,
+  ListExpensesQuery, GetExpenseQuery,
+} from './expense/index.js'
+import {
+  CreateSupplierCommand, UpdateSupplierCommand, DeleteSupplierCommand,
+  ListSuppliersQuery, GetSupplierQuery,
+} from './supplier/index.js'
+import {
+  CreatePurchaseOrderCommand, UpdatePurchaseOrderCommand, DeletePurchaseOrderCommand,
+  ReceivePurchaseOrderCommand, CancelPurchaseOrderCommand,
+  ListPurchaseOrdersQuery, GetPurchaseOrderQuery,
+} from './purchase-order/index.js'
+import {
+  CreateTaxCommand, UpdateTaxCommand, DeleteTaxCommand,
+  ListTaxesQuery, GetTaxQuery,
+} from './tax/index.js'
+import {
+  CreateDiscountCommand, UpdateDiscountCommand, DeleteDiscountCommand,
+  ListDiscountsQuery, GetDiscountQuery,
+} from './discount/index.js'
 
 export const authService = {
   commands: {
@@ -47,8 +68,16 @@ export const authService = {
 }
 
 export const billingService = {
-  commands: { changePlan: new ChangePlanCommand(), generateInvoice: new GenerateInvoiceCommand() },
-  queries: { getPlan: new GetPlanQuery() },
+  commands: {
+    changePlan: new ChangePlanCommand(),
+    generateInvoice: new GenerateInvoiceCommand(),
+    cancelPlan: new CancelPlanCommand(),
+  },
+  queries: {
+    getPlan: new GetPlanQuery(),
+    listInvoices: new ListInvoicesQuery(),
+    getInvoice: new GetInvoiceQuery(),
+  },
 }
 
 export const cryptoService = {
@@ -61,8 +90,12 @@ export const cryptoService = {
 }
 
 export const mailService = {
-  commands: { sendOtpMail: new SendOtpMailCommand() },
-  queries: { mailStatus: new MailStatusQuery() },
+  commands: {
+    sendOtpMail: new SendOtpMailCommand(),
+    sendCustomEmail: new SendCustomEmailCommand(),
+    sendBulkEmail: new SendBulkEmailCommand(),
+  },
+  queries: { mailStatus: new MailStatusQuery(), emailLogs: new EmailLogsQuery() },
 }
 
 export const shiftService = {
@@ -143,9 +176,12 @@ export const settingsService = {
 export const returnsService = {
   commands: {
     processReturn: new ProcessReturnCommand(),
+    approveReturn: new ApproveReturnCommand(),
+    rejectReturn: new RejectReturnCommand(),
   },
   queries: {
     listReturns: new ListReturnsQuery(),
+    getReturn: new GetReturnQuery(),
   },
 }
 
@@ -165,15 +201,21 @@ export const adminService = {
 export const auditLogService = {
   queries: {
     list: new ListAuditLogsQuery(),
+    get: new GetAuditLogQuery(),
+    stats: new AuditLogStatsQuery(),
+    export: new ExportAuditLogsQuery(),
   },
 }
 
 export const rolesService = {
   commands: {
     create: new CreateRoleCommand(),
+    update: new UpdateRoleCommand(),
+    delete: new DeleteRoleCommand(),
   },
   queries: {
     list: new ListRolesQuery(),
+    get: new GetRoleQuery(),
   },
 }
 
@@ -185,8 +227,8 @@ export const billingPlansService = {
   queries: {
     listPlans: new ListPlansQuery(),
     getPlan: new BillingGetPlanQuery(),
-    listInvoices: new ListInvoicesQuery(),
-    getInvoice: new GetInvoiceQuery(),
+    listInvoices: new BillingListInvoicesQuery(),
+    getInvoice: new BillingGetInvoiceQuery(),
     getSubscriptionStats: new GetSubscriptionStatsQuery(),
   },
 }
@@ -219,5 +261,72 @@ export const loyaltyService = {
 export const reportsService = {
   queries: {
     getReport: new GetReportQuery(),
+    list: new ListReportsQuery(),
+    export: new ExportReportQuery(),
+  },
+  commands: {
+    schedule: new ScheduleReportCommand(),
+  },
+}
+
+export const expenseService = {
+  commands: {
+    create: new CreateExpenseCommand(),
+    update: new UpdateExpenseCommand(),
+    delete: new DeleteExpenseCommand(),
+  },
+  queries: {
+    list: new ListExpensesQuery(),
+    get: new GetExpenseQuery(),
+  },
+}
+
+export const supplierService = {
+  commands: {
+    create: new CreateSupplierCommand(),
+    update: new UpdateSupplierCommand(),
+    delete: new DeleteSupplierCommand(),
+  },
+  queries: {
+    list: new ListSuppliersQuery(),
+    get: new GetSupplierQuery(),
+  },
+}
+
+export const purchaseOrderService = {
+  commands: {
+    create: new CreatePurchaseOrderCommand(),
+    update: new UpdatePurchaseOrderCommand(),
+    delete: new DeletePurchaseOrderCommand(),
+    receive: new ReceivePurchaseOrderCommand(),
+    cancel: new CancelPurchaseOrderCommand(),
+  },
+  queries: {
+    list: new ListPurchaseOrdersQuery(),
+    get: new GetPurchaseOrderQuery(),
+  },
+}
+
+export const taxService = {
+  commands: {
+    create: new CreateTaxCommand(),
+    update: new UpdateTaxCommand(),
+    delete: new DeleteTaxCommand(),
+  },
+  queries: {
+    list: new ListTaxesQuery(),
+    get: new GetTaxQuery(),
+  },
+}
+
+export const discountService = {
+  commands: {
+    create: new CreateDiscountCommand(),
+    update: new UpdateDiscountCommand(),
+    delete: new DeleteDiscountCommand(),
+  },
+  queries: {
+    list: new ListDiscountsQuery(),
+    get: new GetDiscountQuery(),
   },
 }

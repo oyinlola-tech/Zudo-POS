@@ -65,3 +65,28 @@ export type {
 export type {
   AuditLogData, ListAuditLogsOutput,
 } from './audit-log.dto.js'
+
+export type {
+  CreateExpenseRequest, UpdateExpenseRequest,
+  ExpenseResponse, ExpenseListResponse,
+} from './expense.dto.js'
+
+export type {
+  CreateSupplierRequest, UpdateSupplierRequest,
+  SupplierResponse, SupplierListResponse,
+} from './supplier.dto.js'
+
+export type {
+  CreatePurchaseOrderRequest, UpdatePurchaseOrderRequest,
+  PurchaseOrderResponse, PurchaseOrderListResponse,
+} from './purchase-order.dto.js'
+
+export type {
+  CreateTaxRequest, UpdateTaxRequest,
+  TaxResponse, TaxListResponse,
+} from './tax.dto.js'
+
+export type {
+  CreateDiscountRequest, UpdateDiscountRequest,
+  DiscountResponse, DiscountListResponse,
+} from './discount.dto.js'
